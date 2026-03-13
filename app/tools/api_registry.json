@@ -1,0 +1,2815 @@
+{
+  "get_address": {
+    "domain": "hr",
+    "endpoint": "/api/Address",
+    "method": "GET",
+    "description": "Fetch all Address records",
+    "parameters": {}
+  },
+  "get_address_id": {
+    "domain": "hr",
+    "endpoint": "/api/Address/{id}",
+    "method": "GET",
+    "description": "Fetch Address details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_aiquestionbank": {
+    "domain": "hr",
+    "endpoint": "/api/AIQuestionBank",
+    "method": "GET",
+    "description": "Fetch all AIQuestionBank records",
+    "parameters": {}
+  },
+  "get_aiquestionbank_id": {
+    "domain": "hr",
+    "endpoint": "/api/AIQuestionBank/{id}",
+    "method": "GET",
+    "description": "Fetch AIQuestionBank details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_aiquestionbank_updateaiquestionbankstatus_aiquestionbankid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AIQuestionBank/UpdateAIQuestionBankStatus/{AIQuestionBankId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AIQuestionBank details using parameters",
+    "parameters": {
+      "AIQuestionBankId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_alertmessage": {
+    "domain": "hr",
+    "endpoint": "/api/AlertMessage",
+    "method": "GET",
+    "description": "Fetch all AlertMessage records",
+    "parameters": {}
+  },
+  "get_alertmessage_id": {
+    "domain": "hr",
+    "endpoint": "/api/AlertMessage/{id}",
+    "method": "GET",
+    "description": "Fetch AlertMessage details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_alertmessage_updatealertmessagestatus_alertmessageid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AlertMessage/UpdateAlertMessageStatus/{AlertMessageId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AlertMessage details using parameters",
+    "parameters": {
+      "AlertMessageId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_alerttype": {
+    "domain": "hr",
+    "endpoint": "/api/AlertType",
+    "method": "GET",
+    "description": "Fetch all AlertType records",
+    "parameters": {}
+  },
+  "get_alerttype_id": {
+    "domain": "hr",
+    "endpoint": "/api/AlertType/{id}",
+    "method": "GET",
+    "description": "Fetch AlertType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_appraisalreport": {
+    "domain": "hr",
+    "endpoint": "/api/AppraisalReport",
+    "method": "GET",
+    "description": "Fetch all AppraisalReport records",
+    "parameters": {}
+  },
+  "get_appraisalreport_id": {
+    "domain": "hr",
+    "endpoint": "/api/AppraisalReport/{id}",
+    "method": "GET",
+    "description": "Fetch AppraisalReport details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_appraisalreport_updateappraisalreportstatus_appraisalreportid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AppraisalReport/UpdateAppraisalReportStatus/{AppraisalReportId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AppraisalReport details using parameters",
+    "parameters": {
+      "AppraisalReportId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_asset": {
+    "domain": "asset",
+    "endpoint": "/api/Asset",
+    "method": "GET",
+    "description": "Fetch all Asset records",
+    "parameters": {}
+  },
+  "get_asset_getassetlog_assetid_serialnumber": {
+    "domain": "asset",
+    "endpoint": "/api/Asset/GetAssetLog/{AssetId}/{SerialNumber}",
+    "method": "GET",
+    "description": "Fetch Asset details using parameters",
+    "parameters": {
+      "AssetId": "resource id",
+      "SerialNumber": "SerialNumber"
+    }
+  },
+  "get_asset_id": {
+    "domain": "asset",
+    "endpoint": "/api/Asset/{id}",
+    "method": "GET",
+    "description": "Fetch Asset details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_asset_serialno": {
+    "domain": "asset",
+    "endpoint": "/api/Asset/{SerialNo}",
+    "method": "GET",
+    "description": "Fetch Asset details using parameters",
+    "parameters": {
+      "SerialNo": "SerialNo"
+    }
+  },
+  "get_assetbrand": {
+    "domain": "asset",
+    "endpoint": "/api/AssetBrand",
+    "method": "GET",
+    "description": "Fetch all AssetBrand records",
+    "parameters": {}
+  },
+  "get_assetbrand_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetBrand/{id}",
+    "method": "GET",
+    "description": "Fetch AssetBrand details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_assetbrand_name": {
+    "domain": "asset",
+    "endpoint": "/api/AssetBrand/{Name}",
+    "method": "GET",
+    "description": "Fetch AssetBrand details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_assetcategory": {
+    "domain": "asset",
+    "endpoint": "/api/AssetCategory",
+    "method": "GET",
+    "description": "Fetch all AssetCategory records",
+    "parameters": {}
+  },
+  "get_assetcategory_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetCategory/{id}",
+    "method": "GET",
+    "description": "Fetch AssetCategory details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_assetcategory_name": {
+    "domain": "asset",
+    "endpoint": "/api/AssetCategory/{Name}",
+    "method": "GET",
+    "description": "Fetch AssetCategory details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_assetmaintance": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance",
+    "method": "GET",
+    "description": "Fetch all AssetMaintance records",
+    "parameters": {}
+  },
+  "get_assetmaintance_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance/{id}",
+    "method": "GET",
+    "description": "Fetch AssetMaintance details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_assetmaintance_getassetmaintanceproblemsdetail_assetmaintanceid_assetid_serialno": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance/GetAssetMaintanceProblemsDetail/{AssetMaintanceId}/{AssetId}/{SerialNo}",
+    "method": "GET",
+    "description": "Fetch AssetMaintance details using parameters",
+    "parameters": {
+      "AssetMaintanceId": "resource id",
+      "AssetId": "resource id",
+      "SerialNo": "SerialNo"
+    }
+  },
+  "get_assetmaintance_updateassetmaintancestatus_assetmaintanceid_status_updatedby": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance/UpdateAssetMaintanceStatus/{AssetMaintanceId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AssetMaintance details using parameters",
+    "parameters": {
+      "AssetMaintanceId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_assetstatus": {
+    "domain": "asset",
+    "endpoint": "/api/AssetStatus",
+    "method": "GET",
+    "description": "Fetch all AssetStatus records",
+    "parameters": {}
+  },
+  "get_assetstatus_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetStatus/{id}",
+    "method": "GET",
+    "description": "Fetch AssetStatus details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_assetvendor": {
+    "domain": "asset",
+    "endpoint": "/api/AssetVendor",
+    "method": "GET",
+    "description": "Fetch all AssetVendor records",
+    "parameters": {}
+  },
+  "get_assetvendor_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetVendor/{id}",
+    "method": "GET",
+    "description": "Fetch AssetVendor details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_assetvendor_name": {
+    "domain": "asset",
+    "endpoint": "/api/AssetVendor/{Name}",
+    "method": "GET",
+    "description": "Fetch AssetVendor details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_associatedeductiondetail": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionDetail",
+    "method": "GET",
+    "description": "Fetch all AssociateDeductionDetail records",
+    "parameters": {}
+  },
+  "get_associatedeductiondetail_id": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionDetail/{id}",
+    "method": "GET",
+    "description": "Fetch AssociateDeductionDetail details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_associatedeductiondetail_updateassociatedeductiondetailstatus_associatedeductiondetailid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionDetail/UpdateAssociateDeductionDetailStatus/{AssociateDeductionDetailId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AssociateDeductionDetail details using parameters",
+    "parameters": {
+      "AssociateDeductionDetailId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_associatedeductionhead": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionHead",
+    "method": "GET",
+    "description": "Fetch all AssociateDeductionHead records",
+    "parameters": {}
+  },
+  "get_associatedeductionhead_id": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionHead/{id}",
+    "method": "GET",
+    "description": "Fetch AssociateDeductionHead details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_associatedeductionhead_updateassociatedeductionheadstatus_associatedeductionheadid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionHead/UpdateAssociateDeductionHeadStatus/{AssociateDeductionHeadId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AssociateDeductionHead details using parameters",
+    "parameters": {
+      "AssociateDeductionHeadId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_associatedeductionsub": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionSub",
+    "method": "GET",
+    "description": "Fetch all AssociateDeductionSub records",
+    "parameters": {}
+  },
+  "get_associatedeductionsub_id": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionSub/{id}",
+    "method": "GET",
+    "description": "Fetch AssociateDeductionSub details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_associatedeductionsub_updateassociatedeductionsubstatus_associatedeductionsubid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionSub/UpdateAssociateDeductionSubStatus/{AssociateDeductionSubId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch AssociateDeductionSub details using parameters",
+    "parameters": {
+      "AssociateDeductionSubId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_bank": {
+    "domain": "hr",
+    "endpoint": "/api/Bank",
+    "method": "GET",
+    "description": "Fetch all Bank records",
+    "parameters": {}
+  },
+  "get_bank_id": {
+    "domain": "hr",
+    "endpoint": "/api/Bank/{id}",
+    "method": "GET",
+    "description": "Fetch Bank details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_certificateofintern_getcertificateofintern_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/CertificateOfIntern/GetCertificateOfIntern/{EmpRegId}",
+    "method": "GET",
+    "description": "Fetch CertificateOfIntern details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    }
+  },
+  "get_certification": {
+    "domain": "hr",
+    "endpoint": "/api/Certification",
+    "method": "GET",
+    "description": "Fetch all Certification records",
+    "parameters": {}
+  },
+  "get_certification_id": {
+    "domain": "hr",
+    "endpoint": "/api/Certification/{id}",
+    "method": "GET",
+    "description": "Fetch Certification details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_certification_name": {
+    "domain": "hr",
+    "endpoint": "/api/Certification/{Name}",
+    "method": "GET",
+    "description": "Fetch Certification details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_city": {
+    "domain": "hr",
+    "endpoint": "/api/City",
+    "method": "GET",
+    "description": "Fetch all City records",
+    "parameters": {}
+  },
+  "get_city_id": {
+    "domain": "hr",
+    "endpoint": "/api/City/{id}",
+    "method": "GET",
+    "description": "Fetch City details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_city_updatecitystatus_cityid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/City/UpdateCityStatus/{CityId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch City details using parameters",
+    "parameters": {
+      "CityId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_client": {
+    "domain": "client",
+    "endpoint": "/api/Client",
+    "method": "GET",
+    "description": "Fetch all Client records",
+    "parameters": {}
+  },
+  "get_client_id": {
+    "domain": "client",
+    "endpoint": "/api/Client/{id}",
+    "method": "GET",
+    "description": "Fetch Client details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_client_updateclientstatus_clientid_status_updatedby": {
+    "domain": "client",
+    "endpoint": "/api/Client/UpdateClientStatus/{ClientId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Client details using parameters",
+    "parameters": {
+      "ClientId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_contact": {
+    "domain": "hr",
+    "endpoint": "/api/Contact",
+    "method": "GET",
+    "description": "Fetch all Contact records",
+    "parameters": {}
+  },
+  "get_contact_id": {
+    "domain": "hr",
+    "endpoint": "/api/Contact/{id}",
+    "method": "GET",
+    "description": "Fetch Contact details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_contact_mobile": {
+    "domain": "hr",
+    "endpoint": "/api/Contact/{Mobile}",
+    "method": "GET",
+    "description": "Fetch Contact details using parameters",
+    "parameters": {
+      "Mobile": "Mobile"
+    }
+  },
+  "get_country": {
+    "domain": "hr",
+    "endpoint": "/api/Country",
+    "method": "GET",
+    "description": "Fetch all Country records",
+    "parameters": {}
+  },
+  "get_country_id": {
+    "domain": "hr",
+    "endpoint": "/api/Country/{id}",
+    "method": "GET",
+    "description": "Fetch Country details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_dashboarddetail_getrolebasedashboarddetail_rolename_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetRoleBaseDashboardDetail/{RoleName}/{EmpRegId}",
+    "method": "GET",
+    "description": "Fetch DashboardDetail details using parameters",
+    "parameters": {
+      "RoleName": "RoleName",
+      "EmpRegId": "employee registration id"
+    }
+  },
+  "get_dashboarddetail_getclientdashboarddetail": {
+    "domain": "client",
+    "endpoint": "/api/DashboardDetail/GetClientDashboardDetail",
+    "method": "GET",
+    "description": "Fetch all DashboardDetail records",
+    "parameters": {}
+  },
+  "get_dashboarddetail_getprojectdashboarddetail": {
+    "domain": "project",
+    "endpoint": "/api/DashboardDetail/GetProjectDashboardDetail",
+    "method": "GET",
+    "description": "Fetch all DashboardDetail records",
+    "parameters": {}
+  },
+  "get_dashboarddetail_getassetdashboarddetail": {
+    "domain": "asset",
+    "endpoint": "/api/DashboardDetail/GetAssetDashboardDetail",
+    "method": "GET",
+    "description": "Fetch all DashboardDetail records",
+    "parameters": {}
+  },
+  "get_dashboarddetail_getemployeedashboarddetail": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetEmployeeDashboardDetail",
+    "method": "GET",
+    "description": "Fetch all DashboardDetail records",
+    "parameters": {}
+  },
+  "get_dashboarddetail_gettaskdashboarddetail_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetTaskDashboardDetail/{EmpRegId}",
+    "method": "GET",
+    "description": "Fetch DashboardDetail details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    }
+  },
+  "get_dashboarddetail_getemployeeprofiledetail_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetEmployeeProfileDetail/{EmpRegId}",
+    "method": "GET",
+    "description": "Fetch DashboardDetail details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    }
+  },
+  "get_deductionplan": {
+    "domain": "hr",
+    "endpoint": "/api/DeductionPlan",
+    "method": "GET",
+    "description": "Fetch all DeductionPlan records",
+    "parameters": {}
+  },
+  "get_deductionplan_id": {
+    "domain": "hr",
+    "endpoint": "/api/DeductionPlan/{id}",
+    "method": "GET",
+    "description": "Fetch DeductionPlan details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_deductionplan_updatedeductionplanstatus_deductionplanid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/DeductionPlan/UpdateDeductionPlanStatus/{DeductionPlanId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch DeductionPlan details using parameters",
+    "parameters": {
+      "DeductionPlanId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_department": {
+    "domain": "hr",
+    "endpoint": "/api/Department",
+    "method": "GET",
+    "description": "Fetch all Department records",
+    "parameters": {}
+  },
+  "get_department_id": {
+    "domain": "hr",
+    "endpoint": "/api/Department/{id}",
+    "method": "GET",
+    "description": "Fetch Department details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_department_departmentname": {
+    "domain": "hr",
+    "endpoint": "/api/Department/{DepartmentName}",
+    "method": "GET",
+    "description": "Fetch Department details using parameters",
+    "parameters": {
+      "DepartmentName": "DepartmentName"
+    }
+  },
+  "get_designation": {
+    "domain": "hr",
+    "endpoint": "/api/Designation",
+    "method": "GET",
+    "description": "Fetch all Designation records",
+    "parameters": {}
+  },
+  "get_designation_id": {
+    "domain": "hr",
+    "endpoint": "/api/Designation/{id}",
+    "method": "GET",
+    "description": "Fetch Designation details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_designation_designation": {
+    "domain": "hr",
+    "endpoint": "/api/Designation/{Designation}",
+    "method": "GET",
+    "description": "Fetch Designation details using parameters",
+    "parameters": {
+      "Designation": "Designation"
+    }
+  },
+  "get_education": {
+    "domain": "hr",
+    "endpoint": "/api/Education",
+    "method": "GET",
+    "description": "Fetch all Education records",
+    "parameters": {}
+  },
+  "get_education_id": {
+    "domain": "hr",
+    "endpoint": "/api/Education/{id}",
+    "method": "GET",
+    "description": "Fetch Education details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empbankaccount": {
+    "domain": "employee",
+    "endpoint": "/api/EmpBankAccount",
+    "method": "GET",
+    "description": "Fetch all EmpBankAccount records",
+    "parameters": {}
+  },
+  "get_empbankaccount_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpBankAccount/{id}",
+    "method": "GET",
+    "description": "Fetch EmpBankAccount details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empbankaccount_accountno": {
+    "domain": "employee",
+    "endpoint": "/api/EmpBankAccount/{AccountNo}",
+    "method": "GET",
+    "description": "Fetch EmpBankAccount details using parameters",
+    "parameters": {
+      "AccountNo": "AccountNo"
+    }
+  },
+  "get_empeducation": {
+    "domain": "employee",
+    "endpoint": "/api/EmpEducation",
+    "method": "GET",
+    "description": "Fetch all EmpEducation records",
+    "parameters": {}
+  },
+  "get_empeducation_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpEducation/{id}",
+    "method": "GET",
+    "description": "Fetch EmpEducation details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empeducation_name": {
+    "domain": "employee",
+    "endpoint": "/api/EmpEducation/{Name}",
+    "method": "GET",
+    "description": "Fetch EmpEducation details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_empfamily": {
+    "domain": "employee",
+    "endpoint": "/api/EmpFamily",
+    "method": "GET",
+    "description": "Fetch all EmpFamily records",
+    "parameters": {}
+  },
+  "get_empfamily_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpFamily/{id}",
+    "method": "GET",
+    "description": "Fetch EmpFamily details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empfamily_mobile": {
+    "domain": "employee",
+    "endpoint": "/api/EmpFamily/{Mobile}",
+    "method": "GET",
+    "description": "Fetch EmpFamily details using parameters",
+    "parameters": {
+      "Mobile": "Mobile"
+    }
+  },
+  "get_empidentity": {
+    "domain": "employee",
+    "endpoint": "/api/EmpIdentity",
+    "method": "GET",
+    "description": "Fetch all EmpIdentity records",
+    "parameters": {}
+  },
+  "get_empidentity_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpIdentity/{id}",
+    "method": "GET",
+    "description": "Fetch EmpIdentity details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empidentity_aadhaarno": {
+    "domain": "employee",
+    "endpoint": "/api/EmpIdentity/{AadhaarNo}",
+    "method": "GET",
+    "description": "Fetch EmpIdentity details using parameters",
+    "parameters": {
+      "AadhaarNo": "AadhaarNo"
+    }
+  },
+  "get_employeestatus": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeStatus",
+    "method": "GET",
+    "description": "Fetch all EmployeeStatus records",
+    "parameters": {}
+  },
+  "get_employeestatus_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeStatus/{id}",
+    "method": "GET",
+    "description": "Fetch EmployeeStatus details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_employeetasktimesheet": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet",
+    "method": "GET",
+    "description": "Fetch all EmployeeTaskTimeSheet records",
+    "parameters": {}
+  },
+  "get_employeetasktimesheet_getemployeetasktimesheet_empregid_monthid_year": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/GetEmployeeTaskTimeSheet/{EmpRegId}/{MonthId}/{Year}",
+    "method": "GET",
+    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "MonthId": "resource id",
+      "Year": "Year"
+    }
+  },
+  "get_employeetasktimesheet_getemployeetasktimesheetdetail_projectid_taskid_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/GetEmployeeTaskTimeSheetDetail/{ProjectId}/{TaskId}/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "parameters": {
+      "ProjectId": "resource id",
+      "TaskId": "resource id",
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    }
+  },
+  "get_employeetasktimesheet_getemployeetasktimesheetdescriptiondetail_projectid_taskid_empregid_timesheetdate": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/GetEmployeeTaskTimeSheetDescriptionDetail/{ProjectId}/{TaskId}/{EmpRegId}/{TimeSheetDate}",
+    "method": "GET",
+    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "parameters": {
+      "ProjectId": "resource id",
+      "TaskId": "resource id",
+      "EmpRegId": "employee registration id",
+      "TimeSheetDate": "TimeSheetDate"
+    }
+  },
+  "get_employeetasktimesheet_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/{id}",
+    "method": "GET",
+    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_employeetasktimesheet_updateemployeetasktimesheetstatus_employeetasktimesheetid_status_updatedby": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/UpdateEmployeeTaskTimeSheetStatus/{EmployeeTaskTimeSheetId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "parameters": {
+      "EmployeeTaskTimeSheetId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_employeetasktimesheet_timesheetapprovereject_timesheetid_statusid_statusname_statusremarks_updatedby": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/TimeSheetApproveReject/{TimeSheetId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "parameters": {
+      "TimeSheetId": "resource id",
+      "StatusId": "resource id",
+      "StatusName": "StatusName",
+      "StatusRemarks": "StatusRemarks",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_employment": {
+    "domain": "employee",
+    "endpoint": "/api/Employment",
+    "method": "GET",
+    "description": "Fetch all Employment records",
+    "parameters": {}
+  },
+  "get_employment_id": {
+    "domain": "employee",
+    "endpoint": "/api/Employment/{id}",
+    "method": "GET",
+    "description": "Fetch Employment details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_emppersdtls": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls",
+    "method": "GET",
+    "description": "Fetch all EmpPersDtls records",
+    "parameters": {}
+  },
+  "get_emppersdtls_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls/{id}",
+    "method": "GET",
+    "description": "Fetch EmpPersDtls details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_emppersdtls_updateemployeestatus_empregid_status_updatedby": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls/UpdateEmployeeStatus/{EmpRegId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch EmpPersDtls details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_emppersdtls_fullname": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls/{FullName}",
+    "method": "GET",
+    "description": "Fetch EmpPersDtls details using parameters",
+    "parameters": {
+      "FullName": "FullName"
+    }
+  },
+  "get_empreg": {
+    "domain": "employee",
+    "endpoint": "/api/EmpReg",
+    "method": "GET",
+    "description": "Fetch all EmpReg records",
+    "parameters": {}
+  },
+  "get_empreg_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpReg/{id}",
+    "method": "GET",
+    "description": "Fetch EmpReg details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empreg_fullname": {
+    "domain": "employee",
+    "endpoint": "/api/EmpReg/{FullName}",
+    "method": "GET",
+    "description": "Fetch EmpReg details using parameters",
+    "parameters": {
+      "FullName": "FullName"
+    }
+  },
+  "get_emptype": {
+    "domain": "employee",
+    "endpoint": "/api/EmpType",
+    "method": "GET",
+    "description": "Fetch all EmpType records",
+    "parameters": {}
+  },
+  "get_emptype_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpType/{id}",
+    "method": "GET",
+    "description": "Fetch EmpType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empworkexperience": {
+    "domain": "employee",
+    "endpoint": "/api/EmpWorkExperience",
+    "method": "GET",
+    "description": "Fetch all EmpWorkExperience records",
+    "parameters": {}
+  },
+  "get_empworkexperience_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpWorkExperience/{id}",
+    "method": "GET",
+    "description": "Fetch EmpWorkExperience details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_empworkexperience_serialno": {
+    "domain": "employee",
+    "endpoint": "/api/EmpWorkExperience/{SerialNo}",
+    "method": "GET",
+    "description": "Fetch EmpWorkExperience details using parameters",
+    "parameters": {
+      "SerialNo": "SerialNo"
+    }
+  },
+  "get_epf": {
+    "domain": "hr",
+    "endpoint": "/api/EPF",
+    "method": "GET",
+    "description": "Fetch all EPF records",
+    "parameters": {}
+  },
+  "get_epf_id": {
+    "domain": "hr",
+    "endpoint": "/api/EPF/{id}",
+    "method": "GET",
+    "description": "Fetch EPF details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_errorlog": {
+    "domain": "hr",
+    "endpoint": "/api/ErrorLog",
+    "method": "GET",
+    "description": "Fetch all ErrorLog records",
+    "parameters": {}
+  },
+  "get_errorlog_id": {
+    "domain": "hr",
+    "endpoint": "/api/ErrorLog/{id}",
+    "method": "GET",
+    "description": "Fetch ErrorLog details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_errorlog_updateerrorlogstatus_errorlogid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/ErrorLog/UpdateErrorLogStatus/{ErrorLogId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch ErrorLog details using parameters",
+    "parameters": {
+      "ErrorLogId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_esic": {
+    "domain": "hr",
+    "endpoint": "/api/ESIC",
+    "method": "GET",
+    "description": "Fetch all ESIC records",
+    "parameters": {}
+  },
+  "get_esic_id": {
+    "domain": "hr",
+    "endpoint": "/api/ESIC/{id}",
+    "method": "GET",
+    "description": "Fetch ESIC details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_expense": {
+    "domain": "hr",
+    "endpoint": "/api/Expense",
+    "method": "GET",
+    "description": "Fetch all Expense records",
+    "parameters": {}
+  },
+  "get_expense_id": {
+    "domain": "hr",
+    "endpoint": "/api/Expense/{id}",
+    "method": "GET",
+    "description": "Fetch Expense details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_expense_updateexpensestatus_expenseid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Expense/UpdateExpenseStatus/{ExpenseId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Expense details using parameters",
+    "parameters": {
+      "ExpenseId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_expensecategory": {
+    "domain": "hr",
+    "endpoint": "/api/ExpenseCategory",
+    "method": "GET",
+    "description": "Fetch all ExpenseCategory records",
+    "parameters": {}
+  },
+  "get_expensecategory_id": {
+    "domain": "hr",
+    "endpoint": "/api/ExpenseCategory/{id}",
+    "method": "GET",
+    "description": "Fetch ExpenseCategory details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_expensecategory_name": {
+    "domain": "hr",
+    "endpoint": "/api/ExpenseCategory/{Name}",
+    "method": "GET",
+    "description": "Fetch ExpenseCategory details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_family": {
+    "domain": "hr",
+    "endpoint": "/api/Family",
+    "method": "GET",
+    "description": "Fetch all Family records",
+    "parameters": {}
+  },
+  "get_family_id": {
+    "domain": "hr",
+    "endpoint": "/api/Family/{id}",
+    "method": "GET",
+    "description": "Fetch Family details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_financialyear": {
+    "domain": "hr",
+    "endpoint": "/api/FinancialYear",
+    "method": "GET",
+    "description": "Fetch all FinancialYear records",
+    "parameters": {}
+  },
+  "get_financialyear_id": {
+    "domain": "hr",
+    "endpoint": "/api/FinancialYear/{id}",
+    "method": "GET",
+    "description": "Fetch FinancialYear details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_financialyear_updatefinancialyearstatus_financialyearid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/FinancialYear/UpdateFinancialYearStatus/{FinancialYearId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch FinancialYear details using parameters",
+    "parameters": {
+      "FinancialYearId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_gender": {
+    "domain": "hr",
+    "endpoint": "/api/Gender",
+    "method": "GET",
+    "description": "Fetch all Gender records",
+    "parameters": {}
+  },
+  "get_gender_id": {
+    "domain": "hr",
+    "endpoint": "/api/Gender/{id}",
+    "method": "GET",
+    "description": "Fetch Gender details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_gender_updategenderstatus_financialyearid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Gender/UpdateGenderStatus/{FinancialYearId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Gender details using parameters",
+    "parameters": {
+      "FinancialYearId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_happybirthday_gethappybirthdaymessage": {
+    "domain": "hr",
+    "endpoint": "/api/HappyBirthday/GetHappyBirthdayMessage",
+    "method": "GET",
+    "description": "Fetch all HappyBirthday records",
+    "parameters": {}
+  },
+  "get_holiday": {
+    "domain": "hr",
+    "endpoint": "/api/HoliDay",
+    "method": "GET",
+    "description": "Fetch all HoliDay records",
+    "parameters": {}
+  },
+  "get_holiday_id": {
+    "domain": "hr",
+    "endpoint": "/api/HoliDay/{id}",
+    "method": "GET",
+    "description": "Fetch HoliDay details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_holiday_name": {
+    "domain": "hr",
+    "endpoint": "/api/HoliDay/{Name}",
+    "method": "GET",
+    "description": "Fetch HoliDay details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_holidaycalendar": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayCalendar",
+    "method": "GET",
+    "description": "Fetch all HolidayCalendar records",
+    "parameters": {}
+  },
+  "get_holidaycalendar_id": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayCalendar/{id}",
+    "method": "GET",
+    "description": "Fetch HolidayCalendar details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_holidaycalendar_updateholidaycalendarstatus_holidaycalendarid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayCalendar/UpdateHolidayCalendarStatus/{HolidayCalendarId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch HolidayCalendar details using parameters",
+    "parameters": {
+      "HolidayCalendarId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_holidaytype": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayType",
+    "method": "GET",
+    "description": "Fetch all HolidayType records",
+    "parameters": {}
+  },
+  "get_holidaytype_id": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayType/{id}",
+    "method": "GET",
+    "description": "Fetch HolidayType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_hrmsreports_getemployeeweeklywisereports": {
+    "domain": "employee",
+    "endpoint": "/api/HRMSReports/GetEmployeeWeeklyWiseReports",
+    "method": "GET",
+    "description": "Fetch all HRMSReports records",
+    "parameters": {}
+  },
+  "get_hrmsreports_getemployeeattendanceweeklyreport": {
+    "domain": "employee",
+    "endpoint": "/api/HRMSReports/GetEmployeeAttendanceWeeklyReport",
+    "method": "GET",
+    "description": "Fetch all HRMSReports records",
+    "parameters": {}
+  },
+  "get_jobpost": {
+    "domain": "hr",
+    "endpoint": "/api/JobPost",
+    "method": "GET",
+    "description": "Fetch all JobPost records",
+    "parameters": {}
+  },
+  "get_jobpost_id": {
+    "domain": "hr",
+    "endpoint": "/api/JobPost/{id}",
+    "method": "GET",
+    "description": "Fetch JobPost details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_jobpost_updatejobpoststatus_jobpostid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/JobPost/UpdateJobPostStatus/{JobPostId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch JobPost details using parameters",
+    "parameters": {
+      "JobPostId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_jobpostdetail": {
+    "domain": "hr",
+    "endpoint": "/api/JobPostDetail",
+    "method": "GET",
+    "description": "Fetch all JobPostDetail records",
+    "parameters": {}
+  },
+  "get_jobpostdetail_id": {
+    "domain": "hr",
+    "endpoint": "/api/JobPostDetail/{id}",
+    "method": "GET",
+    "description": "Fetch JobPostDetail details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_jobpostdetail_updatejobpostdetailstatus_jobpostdetailid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/JobPostDetail/UpdateJobPostDetailStatus/{JobPostDetailId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch JobPostDetail details using parameters",
+    "parameters": {
+      "JobPostDetailId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_jobtitle": {
+    "domain": "hr",
+    "endpoint": "/api/JobTitle",
+    "method": "GET",
+    "description": "Fetch all JobTitle records",
+    "parameters": {}
+  },
+  "get_jobtitle_id": {
+    "domain": "hr",
+    "endpoint": "/api/JobTitle/{id}",
+    "method": "GET",
+    "description": "Fetch JobTitle details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_language": {
+    "domain": "hr",
+    "endpoint": "/api/Language",
+    "method": "GET",
+    "description": "Fetch all Language records",
+    "parameters": {}
+  },
+  "get_language_id": {
+    "domain": "hr",
+    "endpoint": "/api/Language/{id}",
+    "method": "GET",
+    "description": "Fetch Language details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_language_name": {
+    "domain": "hr",
+    "endpoint": "/api/Language/{Name}",
+    "method": "GET",
+    "description": "Fetch Language details using parameters",
+    "parameters": {
+      "Name": "Name"
+    }
+  },
+  "get_leave": {
+    "domain": "leave",
+    "endpoint": "/api/Leave",
+    "method": "GET",
+    "description": "Fetch all Leave records",
+    "parameters": {}
+  },
+  "get_leave_id": {
+    "domain": "leave",
+    "endpoint": "/api/Leave/{id}",
+    "method": "GET",
+    "description": "Fetch Leave details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_leave_updateleavestatus_leavedetailid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/Leave/UpdateLeaveStatus/{LeaveDetailId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Leave details using parameters",
+    "parameters": {
+      "LeaveDetailId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_leaveapply": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApply",
+    "method": "GET",
+    "description": "Fetch all LeaveApply records",
+    "parameters": {}
+  },
+  "get_leaveapply_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApply/{id}",
+    "method": "GET",
+    "description": "Fetch LeaveApply details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_leaveapply_updateleaveapplystatus_leaveapplyid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApply/UpdateLeaveApplyStatus/{LeaveApplyId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch LeaveApply details using parameters",
+    "parameters": {
+      "LeaveApplyId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_leaveapply_updateleaveapplystatus_leaveapplyid_statusid_statusname_statusremarks_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApply/UpdateLeaveApplyStatus/{LeaveApplyId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch LeaveApply details using parameters",
+    "parameters": {
+      "LeaveApplyId": "resource id",
+      "StatusId": "resource id",
+      "StatusName": "StatusName",
+      "StatusRemarks": "StatusRemarks",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_leaveapprovreject": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApprovReject",
+    "method": "GET",
+    "description": "Fetch all LeaveApprovReject records",
+    "parameters": {}
+  },
+  "get_leaveapprovreject_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApprovReject/{id}",
+    "method": "GET",
+    "description": "Fetch LeaveApprovReject details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_leaveassign": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveAssign",
+    "method": "GET",
+    "description": "Fetch all LeaveAssign records",
+    "parameters": {}
+  },
+  "get_leaveassign_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveAssign/{id}",
+    "method": "GET",
+    "description": "Fetch LeaveAssign details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_leaveassign_updateleaveassignstatus_leaveassignid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveAssign/UpdateLeaveAssignStatus/{LeaveAssignId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch LeaveAssign details using parameters",
+    "parameters": {
+      "LeaveAssignId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_leavedashboard_getallleavedashboarddetailwithempid_empregid_financialyearid": {
+    "domain": "employee",
+    "endpoint": "/api/LeaveDashboard/GetAllLeaveDashboardDetailWithEmpId/{EmpRegid}/{FinancialYearId}",
+    "method": "GET",
+    "description": "Fetch LeaveDashboard details using parameters",
+    "parameters": {
+      "EmpRegid": "employee registration id",
+      "FinancialYearId": "resource id"
+    }
+  },
+  "get_leavedashboard_getleavedashboarddetailwithempid_empregid_leavetypeid_leavetypename_financialyearid": {
+    "domain": "employee",
+    "endpoint": "/api/LeaveDashboard/GetLeaveDashboardDetailWithEmpId/{EmpRegid}/{LeaveTypeId}/{LeaveTypeName}/{FinancialYearId}",
+    "method": "GET",
+    "description": "Fetch LeaveDashboard details using parameters",
+    "parameters": {
+      "EmpRegid": "employee registration id",
+      "LeaveTypeId": "resource id",
+      "LeaveTypeName": "LeaveTypeName",
+      "FinancialYearId": "resource id"
+    }
+  },
+  "get_leavepolicy": {
+    "domain": "leave",
+    "endpoint": "/api/LeavePolicy",
+    "method": "GET",
+    "description": "Fetch all LeavePolicy records",
+    "parameters": {}
+  },
+  "get_leavepolicy_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeavePolicy/{id}",
+    "method": "GET",
+    "description": "Fetch LeavePolicy details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_leavepolicy_updateleavepolicystatus_leavepolicyid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeavePolicy/UpdateLeavePolicyStatus/{LeavePolicyId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch LeavePolicy details using parameters",
+    "parameters": {
+      "LeavePolicyId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_leavetype": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveType",
+    "method": "GET",
+    "description": "Fetch all LeaveType records",
+    "parameters": {}
+  },
+  "get_leavetype_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveType/{id}",
+    "method": "GET",
+    "description": "Fetch LeaveType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_leavetype_updateleavetypestatus_leavetypeid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveType/UpdateLeaveTypeStatus/{LeaveTypeId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch LeaveType details using parameters",
+    "parameters": {
+      "LeaveTypeId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_mailsave": {
+    "domain": "hr",
+    "endpoint": "/api/MailSave",
+    "method": "GET",
+    "description": "Fetch all MailSave records",
+    "parameters": {}
+  },
+  "get_mailsave_id": {
+    "domain": "hr",
+    "endpoint": "/api/MailSave/{id}",
+    "method": "GET",
+    "description": "Fetch MailSave details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_manager": {
+    "domain": "hr",
+    "endpoint": "/api/Manager",
+    "method": "GET",
+    "description": "Fetch all Manager records",
+    "parameters": {}
+  },
+  "get_manager_id": {
+    "domain": "hr",
+    "endpoint": "/api/Manager/{id}",
+    "method": "GET",
+    "description": "Fetch Manager details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_manager_manager": {
+    "domain": "hr",
+    "endpoint": "/api/Manager/{Manager}",
+    "method": "GET",
+    "description": "Fetch Manager details using parameters",
+    "parameters": {
+      "Manager": "Manager"
+    }
+  },
+  "get_manager_getmanagername_departmentid_desginationid": {
+    "domain": "hr",
+    "endpoint": "/api/Manager/GetManagerName/{DepartmentId}/{DesginationId}",
+    "method": "GET",
+    "description": "Fetch Manager details using parameters",
+    "parameters": {
+      "DepartmentId": "resource id",
+      "DesginationId": "resource id"
+    }
+  },
+  "get_managesalarydays": {
+    "domain": "payroll",
+    "endpoint": "/api/ManageSalaryDays",
+    "method": "GET",
+    "description": "Fetch all ManageSalaryDays records",
+    "parameters": {}
+  },
+  "get_managesalarydays_id": {
+    "domain": "payroll",
+    "endpoint": "/api/ManageSalaryDays/{id}",
+    "method": "GET",
+    "description": "Fetch ManageSalaryDays details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_managesalarydays_updatemanagesalarydaysstatus_managesalarydaysid_status_updatedby": {
+    "domain": "payroll",
+    "endpoint": "/api/ManageSalaryDays/UpdateManageSalaryDaysStatus/{ManageSalaryDaysId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch ManageSalaryDays details using parameters",
+    "parameters": {
+      "ManageSalaryDaysId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_manualattendance": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance",
+    "method": "GET",
+    "description": "Fetch all ManualAttendance records",
+    "parameters": {}
+  },
+  "get_manualattendance_id": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/{id}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_manualattendance_getattandencedetailbyid_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/GetAttandenceDetailById/{EmpRegId}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    }
+  },
+  "get_manualattendance_getattandencedetailmonthwise_flag_empregid_monthid_year": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/GetAttandenceDetailMonthWise/{Flag}/{EmpRegId}/{MonthId}/{Year}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "Flag": "Flag",
+      "EmpRegId": "employee registration id",
+      "MonthId": "resource id",
+      "Year": "Year"
+    }
+  },
+  "get_manualattendance_getapprovalrejectbysupervisoryid_supervisoryid": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/GetApprovalRejectBySupervisoryId/{SupervisoryId}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "SupervisoryId": "resource id"
+    }
+  },
+  "get_manualattendance_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    }
+  },
+  "get_manualattendance_updatemanualattestatus_manualattendanceid_statusid_statusname_statusremarks_updatedby": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/UpdateManualAtteStatus/{ManualAttendanceId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "ManualAttendanceId": "resource id",
+      "StatusId": "resource id",
+      "StatusName": "StatusName",
+      "StatusRemarks": "StatusRemarks",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_manualattendance_att_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/{Att}/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "Att": "Att",
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    }
+  },
+  "get_manualattendance_type": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/{Type}",
+    "method": "GET",
+    "description": "Fetch ManualAttendance details using parameters",
+    "parameters": {
+      "Type": "Type"
+    }
+  },
+  "get_medical": {
+    "domain": "hr",
+    "endpoint": "/api/Medical",
+    "method": "GET",
+    "description": "Fetch all Medical records",
+    "parameters": {}
+  },
+  "get_medical_id": {
+    "domain": "hr",
+    "endpoint": "/api/Medical/{id}",
+    "method": "GET",
+    "description": "Fetch Medical details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_menu": {
+    "domain": "hr",
+    "endpoint": "/api/Menu",
+    "method": "GET",
+    "description": "Fetch all Menu records",
+    "parameters": {}
+  },
+  "get_menu_id": {
+    "domain": "hr",
+    "endpoint": "/api/Menu/{id}",
+    "method": "GET",
+    "description": "Fetch Menu details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_menu_updatemenustatus_menuid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Menu/UpdateMenuStatus/{MenuId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Menu details using parameters",
+    "parameters": {
+      "MenuId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_office": {
+    "domain": "hr",
+    "endpoint": "/api/Office",
+    "method": "GET",
+    "description": "Fetch all Office records",
+    "parameters": {}
+  },
+  "get_office_id": {
+    "domain": "hr",
+    "endpoint": "/api/Office/{id}",
+    "method": "GET",
+    "description": "Fetch Office details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_organationleaveassign": {
+    "domain": "leave",
+    "endpoint": "/api/OrganationleaveAssign",
+    "method": "GET",
+    "description": "Fetch all OrganationleaveAssign records",
+    "parameters": {}
+  },
+  "get_organationleaveassign_id": {
+    "domain": "leave",
+    "endpoint": "/api/OrganationleaveAssign/{id}",
+    "method": "GET",
+    "description": "Fetch OrganationleaveAssign details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_organationleaveassign_updateorganationleaveassignstatus_organationleaveassignid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/OrganationleaveAssign/UpdateOrganationleaveAssignStatus/{OrganationleaveAssignId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch OrganationleaveAssign details using parameters",
+    "parameters": {
+      "OrganationleaveAssignId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_project": {
+    "domain": "project",
+    "endpoint": "/api/Project",
+    "method": "GET",
+    "description": "Fetch all Project records",
+    "parameters": {}
+  },
+  "get_project_id": {
+    "domain": "project",
+    "endpoint": "/api/Project/{id}",
+    "method": "GET",
+    "description": "Fetch Project details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_project_updateprojectstatus_projectid_status_updatedby": {
+    "domain": "project",
+    "endpoint": "/api/Project/UpdateProjectStatus/{ProjectId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Project details using parameters",
+    "parameters": {
+      "ProjectId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_project_projectactivedeactive_projectid_status_updatedby": {
+    "domain": "project",
+    "endpoint": "/api/Project/ProjectActiveDeactive/{ProjectId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Project details using parameters",
+    "parameters": {
+      "ProjectId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_project_getprojectreportdetail_projectid_startdate_enddate": {
+    "domain": "project",
+    "endpoint": "/api/Project/GetProjectReportDetail/{ProjectId}/{StartDate}/{EndDate}",
+    "method": "GET",
+    "description": "Fetch Project details using parameters",
+    "parameters": {
+      "ProjectId": "resource id",
+      "StartDate": "StartDate",
+      "EndDate": "EndDate"
+    }
+  },
+  "get_projectassigneduser": {
+    "domain": "project",
+    "endpoint": "/api/ProjectAssignedUser",
+    "method": "GET",
+    "description": "Fetch all ProjectAssignedUser records",
+    "parameters": {}
+  },
+  "get_projectassigneduser_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectAssignedUser/{id}",
+    "method": "GET",
+    "description": "Fetch ProjectAssignedUser details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_projectassigneduser_updateprojectassigneduserstatus_projassuserid_status_updatedby_statusremarks": {
+    "domain": "project",
+    "endpoint": "/api/ProjectAssignedUser/UpdateProjectAssignedUserStatus/{ProjAssUserId}/{Status}/{UpdatedBy}/{StatusRemarks}",
+    "method": "GET",
+    "description": "Fetch ProjectAssignedUser details using parameters",
+    "parameters": {
+      "ProjAssUserId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusRemarks": "StatusRemarks"
+    }
+  },
+  "get_projectcredential": {
+    "domain": "project",
+    "endpoint": "/api/ProjectCredential",
+    "method": "GET",
+    "description": "Fetch all ProjectCredential records",
+    "parameters": {}
+  },
+  "get_projectcredential_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectCredential/{id}",
+    "method": "GET",
+    "description": "Fetch ProjectCredential details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_projectdocument": {
+    "domain": "project",
+    "endpoint": "/api/ProjectDocument",
+    "method": "GET",
+    "description": "Fetch all ProjectDocument records",
+    "parameters": {}
+  },
+  "get_projectdocument_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectDocument/{id}",
+    "method": "GET",
+    "description": "Fetch ProjectDocument details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_projectmanager": {
+    "domain": "project",
+    "endpoint": "/api/ProjectManager",
+    "method": "GET",
+    "description": "Fetch all ProjectManager records",
+    "parameters": {}
+  },
+  "get_projectmanager_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectManager/{id}",
+    "method": "GET",
+    "description": "Fetch ProjectManager details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_projectmanager_updateprojectmanagerstatus_projectmanagerid_status_updatedby_statusremarks": {
+    "domain": "project",
+    "endpoint": "/api/ProjectManager/UpdateProjectManagerStatus/{ProjectManagerId}/{Status}/{UpdatedBy}/{StatusRemarks}",
+    "method": "GET",
+    "description": "Fetch ProjectManager details using parameters",
+    "parameters": {
+      "ProjectManagerId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusRemarks": "StatusRemarks"
+    }
+  },
+  "get_projectmemorandum": {
+    "domain": "project",
+    "endpoint": "/api/ProjectMemorandum",
+    "method": "GET",
+    "description": "Fetch all ProjectMemorandum records",
+    "parameters": {}
+  },
+  "get_projectmemorandum_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectMemorandum/{id}",
+    "method": "GET",
+    "description": "Fetch ProjectMemorandum details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_projectsupervisor": {
+    "domain": "project",
+    "endpoint": "/api/ProjectSupervisor",
+    "method": "GET",
+    "description": "Fetch all ProjectSupervisor records",
+    "parameters": {}
+  },
+  "get_projectsupervisor_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectSupervisor/{id}",
+    "method": "GET",
+    "description": "Fetch ProjectSupervisor details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_projectsupervisor_updateprojectsupervisorstatus_projectsupervisorid_status_updatedby_statusremarks": {
+    "domain": "project",
+    "endpoint": "/api/ProjectSupervisor/UpdateProjectSupervisorStatus/{ProjectSupervisorId}/{Status}/{UpdatedBy}/{StatusRemarks}",
+    "method": "GET",
+    "description": "Fetch ProjectSupervisor details using parameters",
+    "parameters": {
+      "ProjectSupervisorId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusRemarks": "StatusRemarks"
+    }
+  },
+  "get_reimbursementamount": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementAmount",
+    "method": "GET",
+    "description": "Fetch all ReimbursementAmount records",
+    "parameters": {}
+  },
+  "get_reimbursementamount_id": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementAmount/{id}",
+    "method": "GET",
+    "description": "Fetch ReimbursementAmount details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_reimbursementamount_getreimbursementdetailbyempregid_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/ReimbursementAmount/GetReimbursementDetailbyEmpRegId/{EmpRegId}",
+    "method": "GET",
+    "description": "Fetch ReimbursementAmount details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    }
+  },
+  "get_reimbursementamount_updatereimbursementamountstatus_reimbursementamountid_status_updatedby_statusid_approvedmessage": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementAmount/UpdateReimbursementAmountStatus/{ReimbursementAmountId}/{Status}/{UpdatedBy}/{StatusId}/{ApprovedMessage}",
+    "method": "GET",
+    "description": "Fetch ReimbursementAmount details using parameters",
+    "parameters": {
+      "ReimbursementAmountId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusId": "resource id",
+      "ApprovedMessage": "ApprovedMessage"
+    }
+  },
+  "get_reimbursementtype": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementType",
+    "method": "GET",
+    "description": "Fetch all ReimbursementType records",
+    "parameters": {}
+  },
+  "get_reimbursementtype_id": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementType/{id}",
+    "method": "GET",
+    "description": "Fetch ReimbursementType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_reimbursementtype_updatereimbursementtypestatus_reimbursementtypeid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementType/UpdateReimbursementTypeStatus/{ReimbursementTypeId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch ReimbursementType details using parameters",
+    "parameters": {
+      "ReimbursementTypeId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_resignationletter": {
+    "domain": "hr",
+    "endpoint": "/api/ResignationLetter",
+    "method": "GET",
+    "description": "Fetch all ResignationLetter records",
+    "parameters": {}
+  },
+  "get_resignationletter_id": {
+    "domain": "hr",
+    "endpoint": "/api/ResignationLetter/{id}",
+    "method": "GET",
+    "description": "Fetch ResignationLetter details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_resignationletter_getresignationletter_empregid_empname_statusid_status_statusremarks_resignationremarks": {
+    "domain": "employee",
+    "endpoint": "/api/ResignationLetter/GetResignationLetter/{EmpRegId}/{EmpName}/{StatusId}/{Status}/{StatusRemarks}/{ResignationRemarks}",
+    "method": "GET",
+    "description": "Fetch ResignationLetter details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "EmpName": "EmpName",
+      "StatusId": "resource id",
+      "Status": "Status",
+      "StatusRemarks": "StatusRemarks",
+      "ResignationRemarks": "ResignationRemarks"
+    }
+  },
+  "get_reviews": {
+    "domain": "hr",
+    "endpoint": "/api/Reviews",
+    "method": "GET",
+    "description": "Fetch all Reviews records",
+    "parameters": {}
+  },
+  "get_reviews_id": {
+    "domain": "hr",
+    "endpoint": "/api/Reviews/{id}",
+    "method": "GET",
+    "description": "Fetch Reviews details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_reviewtype": {
+    "domain": "hr",
+    "endpoint": "/api/ReviewType",
+    "method": "GET",
+    "description": "Fetch all ReviewType records",
+    "parameters": {}
+  },
+  "get_reviewtype_id": {
+    "domain": "hr",
+    "endpoint": "/api/ReviewType/{id}",
+    "method": "GET",
+    "description": "Fetch ReviewType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_role": {
+    "domain": "hr",
+    "endpoint": "/api/Role",
+    "method": "GET",
+    "description": "Fetch all Role records",
+    "parameters": {}
+  },
+  "get_role_id": {
+    "domain": "hr",
+    "endpoint": "/api/Role/{id}",
+    "method": "GET",
+    "description": "Fetch Role details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_role_rolename": {
+    "domain": "hr",
+    "endpoint": "/api/Role/{RoleName}",
+    "method": "GET",
+    "description": "Fetch Role details using parameters",
+    "parameters": {
+      "RoleName": "RoleName"
+    }
+  },
+  "get_salary": {
+    "domain": "payroll",
+    "endpoint": "/api/Salary",
+    "method": "GET",
+    "description": "Fetch all Salary records",
+    "parameters": {}
+  },
+  "get_salary_id": {
+    "domain": "payroll",
+    "endpoint": "/api/Salary/{id}",
+    "method": "GET",
+    "description": "Fetch Salary details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salarycomponent": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryComponent",
+    "method": "GET",
+    "description": "Fetch all SalaryComponent records",
+    "parameters": {}
+  },
+  "get_salarycomponent_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryComponent/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryComponent details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salarycomponent_updatesalarycomponentstatus_salarycomponentid_status_updatedby": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryComponent/UpdateSalaryComponentStatus/{SalaryComponentId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch SalaryComponent details using parameters",
+    "parameters": {
+      "SalaryComponentId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_salarydeduction": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryDeduction",
+    "method": "GET",
+    "description": "Fetch all SalaryDeduction records",
+    "parameters": {}
+  },
+  "get_salarydeduction_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryDeduction/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryDeduction details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salarydetailperemployee_getsalarydetailperemployee_empregid_year_month": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryDetailPerEmployee/GetSalaryDetailPerEmployee/{EmpRegId}/{Year}/{Month}",
+    "method": "GET",
+    "description": "Fetch SalaryDetailPerEmployee details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Year": "Year",
+      "Month": "Month"
+    }
+  },
+  "get_salarydetailperemployee_getsalarylistperemployee_empregid_year": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryDetailPerEmployee/GetSalaryListPerEmployee/{EmpRegId}/{Year}",
+    "method": "GET",
+    "description": "Fetch SalaryDetailPerEmployee details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Year": "Year"
+    }
+  },
+  "get_salaryearning": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning",
+    "method": "GET",
+    "description": "Fetch all SalaryEarning records",
+    "parameters": {}
+  },
+  "get_salaryearning_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryEarning details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salaryearning_getsalaryearningdetail_earningtypeid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/GetSalaryEarningDetail/{EarningTypeId}",
+    "method": "GET",
+    "description": "Fetch SalaryEarning details using parameters",
+    "parameters": {
+      "EarningTypeId": "resource id"
+    }
+  },
+  "get_salaryearning_updatesalaryearningstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/UpdateSalaryEarningStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Fetch SalaryEarning details using parameters",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    }
+  },
+  "get_salaryearning_getsalaryearningdetailwithearningid_earningid_earningtypeid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/GetSalaryEarningDetailWithEarningId/{EarningId}/{EarningTypeId}",
+    "method": "GET",
+    "description": "Fetch SalaryEarning details using parameters",
+    "parameters": {
+      "EarningId": "resource id",
+      "EarningTypeId": "resource id"
+    }
+  },
+  "get_salaryearning_getsalaryearningallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/GetSalaryEarningAllComponentsDetail",
+    "method": "GET",
+    "description": "Fetch all SalaryEarning records",
+    "parameters": {}
+  },
+  "get_salaryearningtype": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarningType",
+    "method": "GET",
+    "description": "Fetch all SalaryEarningType records",
+    "parameters": {}
+  },
+  "get_salaryearningtype_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarningType/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryEarningType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salaryearningtype_updatesalaryearningtypestatus_salaryearningtypeid_status_updatedby": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarningType/UpdateSalaryEarningTypeStatus/{SalaryEarningTypeId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch SalaryEarningType details using parameters",
+    "parameters": {
+      "SalaryEarningTypeId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_salarygenerate_getsalarygeneratebyempregid_empregid_financialyear_month_monthname": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetSalaryGenerateByEmpRegId/{EmpRegId}/{FinancialYear}/{Month}/{MonthName}",
+    "method": "GET",
+    "description": "Fetch SalaryGenerate details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName"
+    }
+  },
+  "get_salarygenerate_getsalarygenerateforall_financialyear_month_monthname": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryGenerate/GetSalaryGenerateForAll/{FinancialYear}/{Month}/{MonthName}",
+    "method": "GET",
+    "description": "Fetch SalaryGenerate details using parameters",
+    "parameters": {
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName"
+    }
+  },
+  "get_salarygenerate_getemployeesalarycomputation_empregid_financialyear_month_monthname_paymentmodeid_paymentmodename": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetEmployeeSalaryComputation/{EmpRegId}/{FinancialYear}/{Month}/{MonthName}/{PaymentModeId}/{PaymentModeName}",
+    "method": "GET",
+    "description": "Fetch SalaryGenerate details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName",
+      "PaymentModeId": "resource id",
+      "PaymentModeName": "PaymentModeName"
+    }
+  },
+  "get_salarygenerate_getgetmonthwisesalarydetail_empregid_financialyear_month_monthname": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetGetMonthWiseSalaryDetail/{EmpRegId}/{FinancialYear}/{Month}/{MonthName}",
+    "method": "GET",
+    "description": "Fetch SalaryGenerate details using parameters",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName"
+    }
+  },
+  "get_salarygenerate_getmonthwiseemployeeactivelist_financialyear_month_monthname_paymentmodeid_paymentmodename": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetMonthWiseEmployeeActiveList/{FinancialYear}/{Month}/{MonthName}/{PaymentModeId}/{PaymentModeName}",
+    "method": "GET",
+    "description": "Fetch SalaryGenerate details using parameters",
+    "parameters": {
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName",
+      "PaymentModeId": "resource id",
+      "PaymentModeName": "PaymentModeName"
+    }
+  },
+  "get_salarypostdeduction": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction",
+    "method": "GET",
+    "description": "Fetch all SalaryPostDeduction records",
+    "parameters": {}
+  },
+  "get_salarypostdeduction_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryPostDeduction details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salarypostdeduction_updatesalarypostdeductionstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/UpdateSalaryPostDeductionStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Fetch SalaryPostDeduction details using parameters",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    }
+  },
+  "get_salarypostdeduction_getsalarypostdeductionallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionAllComponentsDetail",
+    "method": "GET",
+    "description": "Fetch all SalaryPostDeduction records",
+    "parameters": {}
+  },
+  "get_salarypostdeduction_getsalarypostdeductiondetailwithearningid_postdeductionid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionDetailWithEarningId/{PostDeductionId}",
+    "method": "GET",
+    "description": "Fetch SalaryPostDeduction details using parameters",
+    "parameters": {
+      "PostDeductionId": "resource id"
+    }
+  },
+  "get_salaryprededuction": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction",
+    "method": "GET",
+    "description": "Fetch all SalaryPreDeduction records",
+    "parameters": {}
+  },
+  "get_salaryprededuction_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryPreDeduction details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salaryprededuction_updatesalarypredeductionstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/UpdateSalaryPreDeductionStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Fetch SalaryPreDeduction details using parameters",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    }
+  },
+  "get_salaryprededuction_getsalarypredeductionallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionAllComponentsDetail",
+    "method": "GET",
+    "description": "Fetch all SalaryPreDeduction records",
+    "parameters": {}
+  },
+  "get_salaryprededuction_getsalarypredeductiondetailwithearningid_predeductionid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionDetailWithEarningId/{PreDeductionId}",
+    "method": "GET",
+    "description": "Fetch SalaryPreDeduction details using parameters",
+    "parameters": {
+      "PreDeductionId": "resource id"
+    }
+  },
+  "get_salaryreimbursement": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement",
+    "method": "GET",
+    "description": "Fetch all SalaryReimbursement records",
+    "parameters": {}
+  },
+  "get_salaryreimbursement_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryReimbursement details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salaryreimbursement_updatesalaryreimbursementstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/UpdateSalaryReimbursementStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Fetch SalaryReimbursement details using parameters",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    }
+  },
+  "get_salaryreimbursement_getreimbursementallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/GetReimbursementAllComponentsDetail",
+    "method": "GET",
+    "description": "Fetch all SalaryReimbursement records",
+    "parameters": {}
+  },
+  "get_salaryreimbursement_getsalaryreimbursementdetailwithearningid_reimbursementid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/GetSalaryReimbursementDetailWithEarningId/{ReimbursementId}",
+    "method": "GET",
+    "description": "Fetch SalaryReimbursement details using parameters",
+    "parameters": {
+      "ReimbursementId": "resource id"
+    }
+  },
+  "get_salarytamplate": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplate",
+    "method": "GET",
+    "description": "Fetch all SalaryTamplate records",
+    "parameters": {}
+  },
+  "get_salarytamplate_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplate/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryTamplate details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salarytamplate_getsalarytamplates": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplate/GetSalaryTamplates",
+    "method": "GET",
+    "description": "Fetch all SalaryTamplate records",
+    "parameters": {}
+  },
+  "get_salarytamplate_getsalarytamplatedetailbyid_templateid": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailById/{TemplateId}",
+    "method": "GET",
+    "description": "Fetch SalaryTamplate details using parameters",
+    "parameters": {
+      "TemplateId": "resource id"
+    }
+  },
+  "get_salarytamplate_getsalarytamplatedetailbyidwithamount_templateid_salaryamount": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailByIdWithAmount/{TemplateId}/{SalaryAmount}",
+    "method": "GET",
+    "description": "Fetch SalaryTamplate details using parameters",
+    "parameters": {
+      "TemplateId": "resource id",
+      "SalaryAmount": "SalaryAmount"
+    }
+  },
+  "get_salarytamplatewithregid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplateWithRegId",
+    "method": "GET",
+    "description": "Fetch all SalaryTamplateWithRegId records",
+    "parameters": {}
+  },
+  "get_salarytamplatewithregid_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplateWithRegId/{id}",
+    "method": "GET",
+    "description": "Fetch SalaryTamplateWithRegId details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_salarytamplatewithregid_getassignedsalarytemplatedetail": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryTamplateWithRegId/GetAssignedSalaryTemplateDetail",
+    "method": "GET",
+    "description": "Fetch all SalaryTamplateWithRegId records",
+    "parameters": {}
+  },
+  "get_skill": {
+    "domain": "hr",
+    "endpoint": "/api/Skill",
+    "method": "GET",
+    "description": "Fetch all Skill records",
+    "parameters": {}
+  },
+  "get_skill_id": {
+    "domain": "hr",
+    "endpoint": "/api/Skill/{id}",
+    "method": "GET",
+    "description": "Fetch Skill details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_state": {
+    "domain": "hr",
+    "endpoint": "/api/State",
+    "method": "GET",
+    "description": "Fetch all State records",
+    "parameters": {}
+  },
+  "get_state_id": {
+    "domain": "hr",
+    "endpoint": "/api/State/{id}",
+    "method": "GET",
+    "description": "Fetch State details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_state_statename": {
+    "domain": "hr",
+    "endpoint": "/api/State/{StateName}",
+    "method": "GET",
+    "description": "Fetch State details using parameters",
+    "parameters": {
+      "StateName": "StateName"
+    }
+  },
+  "get_submenu": {
+    "domain": "hr",
+    "endpoint": "/api/SubMenu",
+    "method": "GET",
+    "description": "Fetch all SubMenu records",
+    "parameters": {}
+  },
+  "get_submenu_id": {
+    "domain": "hr",
+    "endpoint": "/api/SubMenu/{id}",
+    "method": "GET",
+    "description": "Fetch SubMenu details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_submenu_updatesubmenustatus_submenuid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/SubMenu/UpdateSubMenuStatus/{SubMenuId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch SubMenu details using parameters",
+    "parameters": {
+      "SubMenuId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_supervisor": {
+    "domain": "hr",
+    "endpoint": "/api/Supervisor",
+    "method": "GET",
+    "description": "Fetch all Supervisor records",
+    "parameters": {}
+  },
+  "get_supervisor_id": {
+    "domain": "hr",
+    "endpoint": "/api/Supervisor/{id}",
+    "method": "GET",
+    "description": "Fetch Supervisor details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_supervisor_supervisor": {
+    "domain": "hr",
+    "endpoint": "/api/Supervisor/{Supervisor}",
+    "method": "GET",
+    "description": "Fetch Supervisor details using parameters",
+    "parameters": {
+      "Supervisor": "Supervisor"
+    }
+  },
+  "get_supervisor_getsupervisorname_departmentid_designationid": {
+    "domain": "hr",
+    "endpoint": "/api/Supervisor/GetSupervisorName/{DepartmentId}/{designationId}",
+    "method": "GET",
+    "description": "Fetch Supervisor details using parameters",
+    "parameters": {
+      "DepartmentId": "resource id",
+      "designationId": "resource id"
+    }
+  },
+  "get_task": {
+    "domain": "task",
+    "endpoint": "/api/Task",
+    "method": "GET",
+    "description": "Fetch all Task records",
+    "parameters": {}
+  },
+  "get_task_id": {
+    "domain": "task",
+    "endpoint": "/api/Task/{id}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_task_updatetaskstatus_taskid_status_updatedby": {
+    "domain": "task",
+    "endpoint": "/api/Task/UpdateTaskStatus/{TaskId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "TaskId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    }
+  },
+  "get_task_rolesummary_departmentid": {
+    "domain": "task",
+    "endpoint": "/api/Task/RoleSummary/{departmentId}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "departmentId": "resource id"
+    }
+  },
+  "get_task_employeesummary_fyear": {
+    "domain": "employee",
+    "endpoint": "/api/Task/EmployeeSummary/{FYear}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "FYear": "FYear"
+    }
+  },
+  "get_task_summary_employeeid_monthid_fyear": {
+    "domain": "employee",
+    "endpoint": "/api/Task/Summary/{EmployeeId}/{MonthId}/{FYear}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "EmployeeId": "resource id",
+      "MonthId": "resource id",
+      "FYear": "FYear"
+    }
+  },
+  "get_task_attendancesummary_department": {
+    "domain": "task",
+    "endpoint": "/api/Task/AttendanceSummary/{department}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "department": "department"
+    }
+  },
+  "get_task_leavesummary_monthid_fyear": {
+    "domain": "leave",
+    "endpoint": "/api/Task/LeaveSummary/{MonthId}/{FYear}",
+    "method": "GET",
+    "description": "Fetch Task details using parameters",
+    "parameters": {
+      "MonthId": "resource id",
+      "FYear": "FYear"
+    }
+  },
+  "get_taskdetail": {
+    "domain": "task",
+    "endpoint": "/api/TaskDetail",
+    "method": "GET",
+    "description": "Fetch all TaskDetail records",
+    "parameters": {}
+  },
+  "get_taskdetail_id": {
+    "domain": "task",
+    "endpoint": "/api/TaskDetail/{id}",
+    "method": "GET",
+    "description": "Fetch TaskDetail details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_taskerrordetail": {
+    "domain": "task",
+    "endpoint": "/api/TaskErrorDetail",
+    "method": "GET",
+    "description": "Fetch all TaskErrorDetail records",
+    "parameters": {}
+  },
+  "get_taskerrordetail_id": {
+    "domain": "task",
+    "endpoint": "/api/TaskErrorDetail/{id}",
+    "method": "GET",
+    "description": "Fetch TaskErrorDetail details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_userregistration": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration",
+    "method": "GET",
+    "description": "Fetch all UserRegistration records",
+    "parameters": {}
+  },
+  "get_userregistration_id": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration/{id}",
+    "method": "GET",
+    "description": "Fetch UserRegistration details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_userregistration_updateuserregistrationstatus_id_status": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration/UpdateUserRegistrationStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Fetch UserRegistration details using parameters",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    }
+  },
+  "get_userregistration_getuserregistrationdetailwithearningid_id": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration/GetUserRegistrationDetailWithEarningId/{Id}",
+    "method": "GET",
+    "description": "Fetch UserRegistration details using parameters",
+    "parameters": {
+      "Id": "resource id"
+    }
+  },
+  "get_workshift": {
+    "domain": "hr",
+    "endpoint": "/api/WorkShift",
+    "method": "GET",
+    "description": "Fetch all WorkShift records",
+    "parameters": {}
+  },
+  "get_workshift_id": {
+    "domain": "hr",
+    "endpoint": "/api/WorkShift/{id}",
+    "method": "GET",
+    "description": "Fetch WorkShift details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_worktype": {
+    "domain": "hr",
+    "endpoint": "/api/WorkType",
+    "method": "GET",
+    "description": "Fetch all WorkType records",
+    "parameters": {}
+  },
+  "get_worktype_id": {
+    "domain": "hr",
+    "endpoint": "/api/WorkType/{id}",
+    "method": "GET",
+    "description": "Fetch WorkType details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_zipcodedetail": {
+    "domain": "hr",
+    "endpoint": "/api/ZipCodeDetail",
+    "method": "GET",
+    "description": "Fetch all ZipCodeDetail records",
+    "parameters": {}
+  },
+  "get_zipcodedetail_id": {
+    "domain": "hr",
+    "endpoint": "/api/ZipCodeDetail/{id}",
+    "method": "GET",
+    "description": "Fetch ZipCodeDetail details using parameters",
+    "parameters": {
+      "id": "resource id"
+    }
+  },
+  "get_zipcodedetail_getzipcodedetaildetail_zipcode_flag": {
+    "domain": "hr",
+    "endpoint": "/api/ZipCodeDetail/GetZipCodeDetailDetail/{ZipCode}/{Flag}",
+    "method": "GET",
+    "description": "Fetch ZipCodeDetail details using parameters",
+    "parameters": {
+      "ZipCode": "ZipCode",
+      "Flag": "Flag"
+    }
+  }
+}

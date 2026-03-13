@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+requests
+redis
+chromadb
+sentence-transformers
+ollama
+pydantic
+python-dotenv
