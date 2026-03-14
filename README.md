@@ -1,25 +1,43 @@
+Below is a **complete professional README.md** you can directly place in your repository.
+It is written like **real production documentation** so it is useful for:
+
+* GitHub portfolio
+* Team handover
+* Supervisor review
+* Interviews
+* Open-source projects
+
+---
+
 # HRMS AI Service
 
-AI-powered backend service that enables **natural language interaction with an HRMS system**.
-Users can ask questions like:
+AI-powered backend that enables **natural language interaction with an HRMS system**.
 
-* “Show departments”
-* “Who is employee 102?”
-* “What is the leave policy?”
-* “Show employee salary for March 2024”
+Instead of navigating complex HRMS interfaces, users can ask questions like:
 
-The system automatically determines whether the query requires:
+```
+Show departments
+Show employee 102
+List projects
+Show clients
+What is leave policy?
+```
 
-* **Policy retrieval (RAG)**
-* **Live HRMS API execution**
+The system automatically:
 
-This project implements a **Tool-Augmented AI Agent architecture** using FastAPI, LLMs, RAG, and dynamic API discovery.
+1. Understands the user query
+2. Decides whether the query requires **HRMS API data or HR policy knowledge**
+3. Selects the correct **HRMS API**
+4. Executes the API
+5. Converts the response into a **human-readable answer using an LLM**
+
+The system functions as an **AI Copilot for the HRMS platform**.
 
 ---
 
 # Architecture Overview
 
-The system works as a hybrid **RAG + Tool Agent** architecture.
+The system uses a **Hybrid AI Agent + RAG Architecture**.
 
 ```
 User Query
@@ -28,32 +46,44 @@ User Query
 FastAPI /chat endpoint
      │
      ▼
+RAG Engine
+     │
+     ▼
 Query Router
      │
-     ├── Policy Query → RAG Engine
-     │                   │
-     │                   ▼
-     │            ChromaDB Retrieval
-     │                   │
-     │                   ▼
-     │                LLM Answer
+     ├── Policy Query → RAG Pipeline
+     │                     │
+     │                     ▼
+     │               Vector DB (Chroma)
+     │                     │
+     │                     ▼
+     │                  LLM Answer
      │
      └── Data Query → Tool Agent
-                         │
-                         ▼
-                   Tool Planner
-                         │
-                         ▼
+                        │
+                        ▼
+                   Domain Classifier
+                        │
+                        ▼
+                   Semantic Tool Search
+                        │
+                        ▼
+                   Tool Planner (LLM)
+                        │
+                        ▼
                    Tool Validator
-                         │
-                         ▼
+                        │
+                        ▼
                    Tool Executor
-                         │
-                         ▼
-                     HRMS API
-                         │
-                         ▼
-                      LLM Answer
+                        │
+                        ▼
+                    HRMS API
+                        │
+                        ▼
+                   Response Parser
+                        │
+                        ▼
+                     LLM Answer
 ```
 
 ---
@@ -62,47 +92,121 @@ Query Router
 
 ### Natural Language HRMS Queries
 
-Users interact with HRMS using plain English instead of APIs.
+Users can query HRMS data using plain English.
 
-### Hybrid AI Architecture
-
-The system automatically decides whether to use:
-
-* **RAG for policy knowledge**
-* **HRMS APIs for real-time data**
-
-### Dynamic API Discovery
-
-All HRMS APIs are automatically discovered from Swagger.
+Examples:
 
 ```
-Swagger → Registry Generator → api_registry.json
+show departments
+show employee 102
+list projects
+show clients
+show attendance
 ```
 
-Supports **300+ APIs automatically**.
+---
 
-### Tool-Based AI Agent
+### AI Tool Agent System
 
-AI selects the correct API tool dynamically.
+The AI system automatically selects the correct HRMS API.
 
-### Vector Database (RAG)
+Example:
 
-HR policies and documents are stored in **ChromaDB** and retrieved via semantic search.
+```
+Query: show departments
+Tool Selected: GET /api/Department
+```
+
+---
+
+### Semantic API Search
+
+Instead of sending **300+ APIs to the LLM**, the system performs:
+
+```
+Query → Vector Search → Top 5 APIs → LLM selection
+```
+
+This significantly improves tool accuracy.
+
+---
+
+### Retrieval Augmented Generation (RAG)
+
+Policy queries are answered using vector search over policy documents.
+
+Example queries:
+
+```
+what is leave policy
+explain attendance policy
+```
+
+---
+
+### Dynamic HRMS API Execution
+
+The system dynamically calls HRMS APIs such as:
+
+```
+/api/Department
+/api/Project
+/api/Client
+/api/EmpReg
+/api/LeavePolicy
+/api/Salary
+/api/Task
+```
+
+---
+
+### Automatic API Registry
+
+The tool registry can be generated automatically from Swagger.
+
+Script:
+
+```
+scripts/build_registry.py
+```
+
+---
 
 ### Redis Caching
 
-Frequently asked questions are cached for faster responses.
+Frequently repeated queries are cached.
 
-### Modular Microservice Design
+Example:
 
-Clean architecture with independent modules for:
+```
+show departments
+show projects
+```
 
-* routing
-* tools
-* LLM
-* embeddings
-* vector DB
-* API services
+Flow:
+
+```
+Query
+ ↓
+Redis Cache
+ ├ hit → return cached response
+ └ miss → run pipeline
+```
+
+---
+
+# Technology Stack
+
+| Layer                | Technology                  |
+| -------------------- | --------------------------- |
+| Backend API          | FastAPI                     |
+| Programming Language | Python                      |
+| LLM                  | Llama3 (Ollama)             |
+| Vector Database      | ChromaDB                    |
+| Embeddings           | BGE (BAAI/bge-small-en)     |
+| Caching              | Redis                       |
+| API Communication    | Python requests             |
+| Architecture         | AI Agent + Tool Layer + RAG |
 
 ---
 
@@ -112,54 +216,62 @@ Clean architecture with independent modules for:
 hrms_ai_service
 │
 ├── app
-│   ├── api                # FastAPI routes
+│   ├── api
 │   │   ├── routes
+│   │   │   ├── admin.py
+│   │   │   ├── chat.py
+│   │   │   └── health.py
 │   │   └── schemas
-│   │
-│   ├── core               # Core AI logic
-│   │   ├── rag_engine.py
+│   │       ├── chat_schema.py
+│   │       └── response_schema.py
+│
+│   ├── core
 │   │   ├── agent_router.py
-│   │   ├── tool_planner.py
-│   │   ├── tool_executor.py
-│   │   ├── tool_validator.py
-│   │   ├── query_router.py
-│   │   ├── intent_classifier.py
+│   │   ├── context_builder.py
+│   │   ├── domain_classifier.py
 │   │   ├── entity_extractor.py
-│   │   └── domain_classifier.py
-│   │
-│   ├── embeddings         # Text embeddings
+│   │   ├── intent_classifier.py
+│   │   ├── policy_service.py
+│   │   ├── query_router.py
+│   │   ├── rag_engine.py
+│   │   ├── tool_executor.py
+│   │   ├── tool_planner.py
+│   │   └── tool_validator.py
+│
+│   ├── embeddings
 │   │   ├── chunking.py
 │   │   └── embedding_model.py
-│   │
-│   ├── vectordb           # ChromaDB integration
-│   │   ├── vector_store.py
-│   │   ├── retriever.py
-│   │   └── chroma_client.py
-│   │
-│   ├── llm                # LLM interaction layer
+│
+│   ├── llm
 │   │   ├── llama_client.py
 │   │   ├── prompts.py
 │   │   └── response_parser.py
-│   │
-│   ├── services           # External services
-│   │   ├── hrms_api_client.py
-│   │   ├── swagger_client.py
-│   │   └── auth_service.py
-│   │
-│   ├── tools              # API registry
-│   │   └── api_registry.json
-│   │
-│   ├── config.py          # Environment configuration
-│   ├── dependencies.py
-│   └── main.py            # FastAPI entry point
 │
-├── chroma_db              # Vector database storage
-├── docker                 # Docker setup
+│   ├── services
+│   │   ├── auth_service.py
+│   │   ├── hrms_api_client.py
+│   │   └── swagger_client.py
+│
+│   ├── tools
+│   │   └── api_registry.json
+│
+│   ├── vectordb
+│   │   ├── api_vector_store.py
+│   │   ├── chroma_client.py
+│   │   ├── retriever.py
+│   │   └── vector_store.py
+│
+│   ├── config.py
+│   ├── dependencies.py
+│   └── main.py
+│
+├── docker
 │   ├── Dockerfile
 │   └── docker-compose.yml
 │
 ├── scripts
-│   └── build_registry.py  # Swagger → API registry generator
+│   ├── build_registry.py
+│   └── index_api_registry.py
 │
 ├── requirements.txt
 └── README.md
@@ -167,86 +279,17 @@ hrms_ai_service
 
 ---
 
-# How the AI Tool Agent Works
+# Core Components
 
-The tool agent allows the AI to execute HRMS APIs dynamically.
+## FastAPI Backend
 
-### Step 1 — Domain Detection
-
-```
-Query → Domain Classifier
-Example:
-"show departments" → department
-```
-
-### Step 2 — Tool Planning
-
-The LLM selects the best API from the registry.
-
-Example registry entry:
+Entry point:
 
 ```
-get_department
-endpoint: /api/Department
-method: GET
-domain: department
+app/main.py
 ```
 
-### Step 3 — Tool Validation
-
-Checks:
-
-* endpoint exists
-* parameters are valid
-* request structure is correct
-
-### Step 4 — API Execution
-
-```
-GET https://hrmsapi.leanxpert.in/api/Department
-```
-
-### Step 5 — Response Parsing
-
-The API response is converted into a natural language answer.
-
----
-
-# RAG Pipeline
-
-Policy-related questions are answered using **Retrieval Augmented Generation**.
-
-Example queries:
-
-```
-What is the leave policy?
-Explain attendance policy
-What is the work from home rule?
-```
-
-### RAG Flow
-
-```
-User Query
-   │
-   ▼
-Embedding Generation
-   │
-   ▼
-ChromaDB Retrieval
-   │
-   ▼
-Context + Prompt
-   │
-   ▼
-LLM Response
-```
-
----
-
-# API Endpoint
-
-### Chat Endpoint
+Main endpoint:
 
 ```
 POST /chat
@@ -256,58 +299,215 @@ Example request:
 
 ```json
 {
-  "question": "show departments"
-}
-```
-
-Example response:
-
-```json
-{
-  "answer": "The organization currently has 5 departments..."
+ "question": "show departments"
 }
 ```
 
 ---
 
-# Installation
+## RAG Engine
 
-### 1. Clone Repository
-
-```
-git clone https://github.com/your-repo/hrms_ai_service
-cd hrms_ai_service
-```
-
-### 2. Create Virtual Environment
+File:
 
 ```
-python -m venv venv
-source venv/bin/activate
+core/rag_engine.py
 ```
 
-### 3. Install Dependencies
+Responsible for:
+
+* routing queries
+* executing tool agent pipeline
+* executing policy RAG pipeline
+
+---
+
+## Domain Classifier
+
+File:
+
+```
+core/domain_classifier.py
+```
+
+Classifies queries into domains such as:
+
+```
+employee
+department
+attendance
+leave
+project
+task
+client
+policy
+general
+```
+
+---
+
+## Tool Planner
+
+File:
+
+```
+core/tool_planner.py
+```
+
+Responsible for selecting the best API tool.
+
+Process:
+
+```
+1. Detect domain
+2. Semantic API search
+3. LLM selects best tool
+```
+
+---
+
+## Tool Executor
+
+File:
+
+```
+core/tool_executor.py
+```
+
+Executes the selected HRMS API.
+
+Example:
+
+```
+GET https://hrmsapi.leanxpert.in/api/Department
+```
+
+---
+
+## Tool Validator
+
+File:
+
+```
+core/tool_validator.py
+```
+
+Ensures:
+
+* tool exists
+* endpoint exists
+* parameters are valid
+
+---
+
+## Policy RAG System
+
+File:
+
+```
+core/policy_service.py
+```
+
+Used for HR policy queries.
+
+Flow:
+
+```
+Query
+ ↓
+Vector DB search
+ ↓
+Retrieve policy chunks
+ ↓
+LLM generates answer
+```
+
+---
+
+# Vector Database
+
+Vector store:
+
+```
+ChromaDB
+```
+
+Location:
+
+```
+chroma_db/
+```
+
+Stores:
+
+* HR policy embeddings
+* API embeddings
+
+---
+
+# API Tool Registry
+
+File:
+
+```
+app/tools/api_registry.json
+```
+
+Example:
+
+```
+{
+ "get_department": {
+   "domain": "department",
+   "endpoint": "/api/Department",
+   "method": "GET",
+   "description": "Fetch all departments"
+ }
+}
+```
+
+---
+
+# Running the Project
+
+## 1. Install Dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment
+---
 
-Update `app/config.py`
+## 2. Start Ollama
 
 ```
-HRMS_API_BASE_URL=https://hrmsapi.leanxpert.in
-HRMS_API_TOKEN=your_token_here
+ollama serve
 ```
 
-### 5. Start Server
+Run model:
+
+```
+ollama run llama3
+```
+
+---
+
+## 3. Start Redis (optional)
+
+```
+redis-server
+```
+
+---
+
+## 4. Run the API Server
 
 ```
 uvicorn app.main:app --reload
 ```
 
-Open Swagger:
+---
+
+## 5. Open API Docs
 
 ```
 http://localhost:8000/docs
@@ -315,59 +515,18 @@ http://localhost:8000/docs
 
 ---
 
-# Generating API Registry
-
-All HRMS APIs are automatically extracted from Swagger.
-
-Run:
-
-```
-python scripts/build_registry.py
-```
-
-This generates:
-
-```
-app/tools/api_registry.json
-```
-
----
-
 # Example Queries
-
-### HRMS Data Queries
 
 ```
 show departments
-show all employees
-who is employee 102
-show employee salary for March 2024
-show project list
-```
-
-### HR Policy Queries
-
-```
+show projects
+list clients
+show employees
+show employee 102
+show cities
+show banks
 what is leave policy
-explain attendance rules
-what is work from home policy
 ```
-
----
-
-# Known Limitations
-
-Tool selection may sometimes call incorrect APIs when:
-
-* multiple APIs have similar descriptions
-* parameters are missing
-* domain detection is ambiguous
-
-Future improvements will include:
-
-* semantic API search
-* embedding-based tool retrieval
-* improved entity extraction
 
 ---
 
@@ -375,52 +534,18 @@ Future improvements will include:
 
 Planned enhancements:
 
-### Semantic API Search
-
-Use embeddings to retrieve the most relevant APIs before LLM selection.
-
-### Parameter Extraction
-
-Automatically extract parameters such as:
-
-```
-employee id
-project id
-date ranges
-```
-
-### Improved Domain Classifier
-
-More accurate routing between HR domains.
-
-### Tool Memory
-
-Cache successful tool calls for faster future responses.
-
-### Observability
-
-Add tracing, metrics, and monitoring.
+* improved entity extraction
+* parameter detection
+* conversation memory
+* async API execution
+* tool confidence scoring
+* fallback tool strategies
+* advanced caching strategies
 
 ---
 
-# Technologies Used
+# Final Goal
 
-* **FastAPI**
-* **Python**
-* **Ollama / Llama**
-* **ChromaDB**
-* **Redis**
-* **Swagger / OpenAPI**
-* **Docker**
+The goal of this project is to create a **fully autonomous AI Copilot for HRMS systems** that allows employees and administrators to retrieve HRMS data through natural language queries while automatically executing the correct APIs and retrieving relevant policy information.
 
 ---
-
-# Authors
-
-Developed as part of the **HRMS AI Service project** to enable intelligent interaction with enterprise HR systems using AI.
-
----
-
-# License
-
-Internal project – not licensed for external distribution.
