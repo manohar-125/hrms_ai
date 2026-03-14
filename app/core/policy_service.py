@@ -1,9 +1,10 @@
 from app.vectordb.retriever import retrieve_documents
 from app.embeddings.embedding_model import EmbeddingModel
 from app.embeddings.chunking import chunk_text
-from app.vectordb.chroma_client import collection
+from app.vectordb.chroma_client import get_hrms_collection
 from app.services.hrms_api_client import fetch_policy_from_api
 
+collection = get_hrms_collection()
 
 embedding_model = EmbeddingModel()
 

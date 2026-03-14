@@ -11,13 +11,17 @@ embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
 
 
 # Persistent Chroma client
-client = chromadb.PersistentClient(
+_client = chromadb.PersistentClient(
     path=settings.CHROMA_PATH
 )
 
 
-# Create / Get collection
-collection = client.get_or_create_collection(
-    name="hrms_documents",
-    embedding_function=embedding_function
-)
+def get_chroma_client():
+    return _client
+
+
+def get_hrms_collection():
+    return _client.get_or_create_collection(
+        name="hrms_documents",
+        embedding_function=embedding_function
+    )

@@ -1,7 +1,7 @@
-from app.vectordb.chroma_client import collection
+from app.vectordb.chroma_client import get_hrms_collection
 from app.embeddings.embedding_model import get_embedding
 
-
+collection = get_hrms_collection()
 def retrieve_documents(query: str, top_k: int = 3):
 
     query_embedding = get_embedding(query)

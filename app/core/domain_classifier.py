@@ -48,4 +48,13 @@ def classify_domain(question: str):
 
     response = generate_response(prompt)
 
-    return response.strip().lower()
+    domain = response.strip().lower()
+
+    # clean possible LLM prefixes
+    if "domain:" in domain:
+        domain = domain.split("domain:")[-1].strip()
+
+    # sometimes LLM returns extra text
+    domain = domain.split()[0]
+
+    return domain
