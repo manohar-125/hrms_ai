@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+
+  hrms-ai-service:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: hrms_ai_service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../chroma_db:/app/chroma_db
+    env_file:
+      - ../.env
+    depends_on:
+      - redis
+      - ollama
+    environment:
+      - REDIS_HOST=redis
+      - OLLAMA_BASE_URL=http://ollama:11434
+
+  redis:
+    image: redis:7
+    container_name: hrms_redis
+    ports:
+      - "6379:6379"
+
+  ollama:
+    image: ollama/ollama
+    container_name: hrms_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:
