@@ -3,1474 +3,2235 @@
     "domain": "hr",
     "endpoint": "/api/Address",
     "method": "GET",
-    "description": "Fetch all Address records",
-    "parameters": {}
+    "description": "Retrieve employee Address details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "address",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_address_id": {
     "domain": "hr",
     "endpoint": "/api/Address/{id}",
     "method": "GET",
-    "description": "Fetch Address details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_aiquestionbank": {
-    "domain": "hr",
-    "endpoint": "/api/AIQuestionBank",
-    "method": "GET",
-    "description": "Fetch all AIQuestionBank records",
-    "parameters": {}
-  },
-  "get_aiquestionbank_id": {
-    "domain": "hr",
-    "endpoint": "/api/AIQuestionBank/{id}",
-    "method": "GET",
-    "description": "Fetch AIQuestionBank details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    },
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "address",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_alertmessage": {
     "domain": "hr",
     "endpoint": "/api/AlertMessage",
     "method": "GET",
-    "description": "Fetch all AlertMessage records",
-    "parameters": {}
-  },
-  "get_alerttype": {
-    "domain": "hr",
-    "endpoint": "/api/AlertType",
-    "method": "GET",
-    "description": "Fetch all AlertType records",
-    "parameters": {}
-  },
-  "get_appraisalreport": {
-    "domain": "hr",
-    "endpoint": "/api/AppraisalReport",
-    "method": "GET",
-    "description": "Fetch all AppraisalReport records",
-    "parameters": {}
-  },
-  "get_appraisalreport_id": {
-    "domain": "hr",
-    "endpoint": "/api/AppraisalReport/{id}",
-    "method": "GET",
-    "description": "Fetch AppraisalReport details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_asset": {
-    "domain": "asset",
-    "endpoint": "/api/Asset",
-    "method": "GET",
-    "description": "Fetch all Asset records",
-    "parameters": {}
-  },
-  "get_asset_getassetlog_assetid_serialnumber": {
-    "domain": "asset",
-    "endpoint": "/api/Asset/GetAssetLog/{AssetId}/{SerialNumber}",
-    "method": "GET",
-    "description": "Fetch Asset details using parameters",
-    "parameters": {
-      "AssetId": "resource id",
-      "SerialNumber": "SerialNumber"
-    }
-  },
-  "get_assetbrand": {
-    "domain": "asset",
-    "endpoint": "/api/AssetBrand",
-    "method": "GET",
-    "description": "Fetch all AssetBrand records",
-    "parameters": {}
-  },
-  "get_assetcategory": {
-    "domain": "asset",
-    "endpoint": "/api/AssetCategory",
-    "method": "GET",
-    "description": "Fetch all AssetCategory records",
-    "parameters": {}
-  },
-  "get_assetmaintance": {
-    "domain": "asset",
-    "endpoint": "/api/AssetMaintance",
-    "method": "GET",
-    "description": "Fetch all AssetMaintance records",
-    "parameters": {}
-  },
-  "get_assetmaintance_getassetmaintanceproblemsdetail_assetmaintanceid_assetid_serialno": {
-    "domain": "asset",
-    "endpoint": "/api/AssetMaintance/GetAssetMaintanceProblemsDetail/{AssetMaintanceId}/{AssetId}/{SerialNo}",
-    "method": "GET",
-    "description": "Fetch AssetMaintance details using parameters",
-    "parameters": {
-      "AssetMaintanceId": "resource id",
-      "AssetId": "resource id",
-      "SerialNo": "SerialNo"
-    }
-  },
-  "get_assetstatus": {
-    "domain": "asset",
-    "endpoint": "/api/AssetStatus",
-    "method": "GET",
-    "description": "Fetch all AssetStatus records",
-    "parameters": {}
-  },
-  "get_assetstatus_id": {
-    "domain": "asset",
-    "endpoint": "/api/AssetStatus/{id}",
-    "method": "GET",
-    "description": "Fetch AssetStatus details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_assetvendor": {
-    "domain": "asset",
-    "endpoint": "/api/AssetVendor",
-    "method": "GET",
-    "description": "Fetch all AssetVendor records",
-    "parameters": {}
-  },
-  "get_associatedeductiondetail": {
-    "domain": "hr",
-    "endpoint": "/api/AssociateDeductionDetail",
-    "method": "GET",
-    "description": "Fetch all AssociateDeductionDetail records",
-    "parameters": {}
-  },
-  "get_associatedeductionhead": {
-    "domain": "hr",
-    "endpoint": "/api/AssociateDeductionHead",
-    "method": "GET",
-    "description": "Fetch all AssociateDeductionHead records",
-    "parameters": {}
-  },
-  "get_associatedeductionhead_id": {
-    "domain": "hr",
-    "endpoint": "/api/AssociateDeductionHead/{id}",
-    "method": "GET",
-    "description": "Fetch AssociateDeductionHead details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    "description": "Retrieve AlertMessage information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "alertmessage",
+      "retrieve"
+    ]
   },
   "get_associatedeductionsub": {
     "domain": "hr",
     "endpoint": "/api/AssociateDeductionSub",
     "method": "GET",
-    "description": "Fetch all AssociateDeductionSub records",
-    "parameters": {}
-  },
-  "get_associatedeductionsub_id": {
-    "domain": "hr",
-    "endpoint": "/api/AssociateDeductionSub/{id}",
-    "method": "GET",
-    "description": "Fetch AssociateDeductionSub details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    "description": "Retrieve AssociateDeductionSub information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "associatedeductionsub",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_bank": {
     "domain": "hr",
     "endpoint": "/api/Bank",
     "method": "GET",
-    "description": "Fetch all Bank records",
-    "parameters": {}
+    "description": "Retrieve Bank information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "bank",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_bank_id": {
     "domain": "hr",
     "endpoint": "/api/Bank/{id}",
     "method": "GET",
-    "description": "Fetch Bank details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "bank",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_certification": {
     "domain": "hr",
     "endpoint": "/api/Certification",
     "method": "GET",
-    "description": "Fetch all Certification records",
-    "parameters": {}
+    "description": "Retrieve Certification information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "certification",
+      "api"
+    ]
   },
   "get_certification_name": {
     "domain": "hr",
     "endpoint": "/api/Certification/{Name}",
     "method": "GET",
-    "description": "Fetch Certification details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "Name": "Name"
-    }
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "name",
+      "system",
+      "hrms",
+      "certification"
+    ]
   },
   "get_city": {
     "domain": "hr",
     "endpoint": "/api/City",
     "method": "GET",
-    "description": "Fetch all City records",
-    "parameters": {}
+    "description": "Retrieve City information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "city",
+      "retrieve"
+    ]
   },
   "get_client": {
     "domain": "client",
     "endpoint": "/api/Client",
     "method": "GET",
-    "description": "Fetch all Client records",
-    "parameters": {}
+    "description": "Retrieve Client information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "client",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_client_id": {
     "domain": "client",
     "endpoint": "/api/Client/{id}",
     "method": "GET",
-    "description": "Fetch Client details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "client",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_client_updateclientstatus_clientid_status_updatedby": {
     "domain": "client",
     "endpoint": "/api/Client/UpdateClientStatus/{ClientId}/{status}/{UpdatedBy}",
     "method": "GET",
-    "description": "Fetch Client details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "ClientId": "resource id",
+      "ClientId": "client id",
       "status": "status",
       "UpdatedBy": "UpdatedBy"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "client",
+      "from",
+      "system",
+      "hrms",
+      "updatedby"
+    ]
   },
   "get_contact": {
     "domain": "hr",
     "endpoint": "/api/Contact",
     "method": "GET",
-    "description": "Fetch all Contact records",
-    "parameters": {}
+    "description": "Retrieve employee Contact details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "contact",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_country": {
     "domain": "hr",
     "endpoint": "/api/Country",
     "method": "GET",
-    "description": "Fetch all Country records",
-    "parameters": {}
+    "description": "Retrieve Country information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "country",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_country_id": {
     "domain": "hr",
     "endpoint": "/api/Country/{id}",
     "method": "GET",
-    "description": "Fetch Country details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "country",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_dashboarddetail_getclientdashboarddetail": {
     "domain": "client",
     "endpoint": "/api/DashboardDetail/GetClientDashboardDetail",
     "method": "GET",
-    "description": "Fetch all DashboardDetail records",
-    "parameters": {}
+    "description": "Retrieve GetClientDashboardDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "client",
+      "getclientdashboarddetail",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_dashboarddetail_getprojectdashboarddetail": {
     "domain": "project",
     "endpoint": "/api/DashboardDetail/GetProjectDashboardDetail",
     "method": "GET",
-    "description": "Fetch all DashboardDetail records",
-    "parameters": {}
-  },
-  "get_dashboarddetail_getassetdashboarddetail": {
-    "domain": "asset",
-    "endpoint": "/api/DashboardDetail/GetAssetDashboardDetail",
-    "method": "GET",
-    "description": "Fetch all DashboardDetail records",
-    "parameters": {}
+    "description": "Retrieve GetProjectDashboardDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "getprojectdashboarddetail",
+      "project",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_dashboarddetail_getemployeedashboarddetail": {
     "domain": "employee",
     "endpoint": "/api/DashboardDetail/GetEmployeeDashboardDetail",
     "method": "GET",
-    "description": "Fetch all DashboardDetail records",
-    "parameters": {}
+    "description": "Retrieve employee GetEmployeeDashboardDetail details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "getemployeedashboarddetail",
+      "dashboarddetail"
+    ]
   },
   "get_deductionplan": {
     "domain": "hr",
     "endpoint": "/api/DeductionPlan",
     "method": "GET",
-    "description": "Fetch all DeductionPlan records",
-    "parameters": {}
+    "description": "Retrieve DeductionPlan information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "deductionplan",
+      "retrieve"
+    ]
   },
   "get_deductionplan_id": {
     "domain": "hr",
     "endpoint": "/api/DeductionPlan/{id}",
     "method": "GET",
-    "description": "Fetch DeductionPlan details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "deductionplan",
+      "retrieve"
+    ]
   },
   "get_department": {
     "domain": "hr",
     "endpoint": "/api/Department",
     "method": "GET",
-    "description": "Fetch all Department records",
-    "parameters": {}
+    "description": "Retrieve Department information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve",
+      "api"
+    ]
   },
   "get_department_id": {
     "domain": "hr",
     "endpoint": "/api/Department/{id}",
     "method": "GET",
-    "description": "Fetch Department details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve",
+      "api"
+    ]
   },
   "get_designation": {
     "domain": "hr",
     "endpoint": "/api/Designation",
     "method": "GET",
-    "description": "Fetch all Designation records",
-    "parameters": {}
+    "description": "Retrieve Designation information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "designation",
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_designation_id": {
     "domain": "hr",
     "endpoint": "/api/Designation/{id}",
     "method": "GET",
-    "description": "Fetch Designation details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "designation",
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
-  "get_designation_designation": {
+  "get_designation_by_designation_name": {
     "domain": "hr",
     "endpoint": "/api/Designation/{Designation}",
     "method": "GET",
-    "description": "Fetch Designation details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "Designation": "Designation"
-    }
+      "Designation": "Designation name"
+    },
+    "keywords": [
+      "designation",
+      "information",
+      "the",
+      "get",
+      "from",
+      "name",
+      "system",
+      "hrms"
+    ]
   },
   "get_education": {
     "domain": "hr",
     "endpoint": "/api/Education",
     "method": "GET",
-    "description": "Fetch all Education records",
-    "parameters": {}
+    "description": "Retrieve Education information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "education",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_education_id": {
     "domain": "hr",
     "endpoint": "/api/Education/{id}",
     "method": "GET",
-    "description": "Fetch Education details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "education",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_empbankaccount": {
     "domain": "employee",
     "endpoint": "/api/EmpBankAccount",
     "method": "GET",
-    "description": "Fetch all EmpBankAccount records",
-    "parameters": {}
+    "description": "Retrieve employee bank account details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "employee",
+      "bank",
+      "account",
+      "accounts",
+      "empbankaccount",
+      "details",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_empeducation": {
     "domain": "employee",
     "endpoint": "/api/EmpEducation",
     "method": "GET",
-    "description": "Fetch all EmpEducation records",
-    "parameters": {}
+    "description": "Retrieve employee EmpEducation details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "empeducation",
+      "details",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_empfamily": {
     "domain": "employee",
     "endpoint": "/api/EmpFamily",
     "method": "GET",
-    "description": "Fetch all EmpFamily records",
-    "parameters": {}
+    "description": "Retrieve employee EmpFamily details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "empfamily",
+      "retrieve"
+    ]
   },
   "get_empfamily_id": {
     "domain": "employee",
     "endpoint": "/api/EmpFamily/{id}",
     "method": "GET",
-    "description": "Fetch EmpFamily details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "empfamily",
+      "retrieve"
+    ]
   },
   "get_empidentity": {
     "domain": "employee",
     "endpoint": "/api/EmpIdentity",
     "method": "GET",
-    "description": "Fetch all EmpIdentity records",
-    "parameters": {}
+    "description": "Retrieve employee EmpIdentity details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "empidentity",
+      "details",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_employeetasktimesheet": {
     "domain": "employee",
     "endpoint": "/api/EmployeeTaskTimeSheet",
     "method": "GET",
-    "description": "Fetch all EmployeeTaskTimeSheet records",
-    "parameters": {}
+    "description": "Retrieve employee EmployeeTaskTimeSheet details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "employeetasktimesheet",
+      "retrieve"
+    ]
   },
   "get_employeetasktimesheet_id": {
     "domain": "employee",
     "endpoint": "/api/EmployeeTaskTimeSheet/{id}",
     "method": "GET",
-    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "employeetasktimesheet",
+      "retrieve"
+    ]
   },
   "get_employeetasktimesheet_timesheetapprovereject_timesheetid_statusid_statusname_statusremarks_updatedby": {
     "domain": "employee",
     "endpoint": "/api/EmployeeTaskTimeSheet/TimeSheetApproveReject/{TimeSheetId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
     "method": "GET",
-    "description": "Fetch EmployeeTaskTimeSheet details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
-      "TimeSheetId": "resource id",
-      "StatusId": "resource id",
+      "TimeSheetId": "time sheet id",
+      "StatusId": "status id",
       "StatusName": "StatusName",
       "StatusRemarks": "StatusRemarks",
       "UpdatedBy": "UpdatedBy"
-    }
+    },
+    "keywords": [
+      "statusremarks",
+      "the",
+      "timesheetapprovereject",
+      "get",
+      "from",
+      "statusid",
+      "details",
+      "system"
+    ]
   },
   "get_employment": {
     "domain": "employee",
     "endpoint": "/api/Employment",
     "method": "GET",
-    "description": "Fetch all Employment records",
-    "parameters": {}
+    "description": "Retrieve employee Employment details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "employment",
+      "retrieve"
+    ]
   },
   "get_employment_id": {
     "domain": "employee",
     "endpoint": "/api/Employment/{id}",
     "method": "GET",
-    "description": "Fetch Employment details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "employment",
+      "retrieve"
+    ]
   },
   "get_emppersdtls": {
     "domain": "employee",
     "endpoint": "/api/EmpPersDtls",
     "method": "GET",
-    "description": "Fetch all EmpPersDtls records",
-    "parameters": {}
-  },
-  "get_empreg": {
-    "domain": "employee",
-    "endpoint": "/api/EmpReg",
-    "method": "GET",
-    "description": "Fetch all EmpReg records",
-    "parameters": {}
+    "description": "Retrieve employee EmpPersDtls details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "emppersdtls",
+      "details",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_emptype": {
     "domain": "employee",
     "endpoint": "/api/EmpType",
     "method": "GET",
-    "description": "Fetch all EmpType records",
-    "parameters": {}
+    "description": "Retrieve EmpType information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "emptype",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_emptype_id": {
     "domain": "employee",
     "endpoint": "/api/EmpType/{id}",
     "method": "GET",
-    "description": "Fetch EmpType details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "emptype",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_empworkexperience": {
     "domain": "employee",
     "endpoint": "/api/EmpWorkExperience",
     "method": "GET",
-    "description": "Fetch all EmpWorkExperience records",
-    "parameters": {}
-  },
-  "get_epf": {
-    "domain": "hr",
-    "endpoint": "/api/EPF",
-    "method": "GET",
-    "description": "Fetch all EPF records",
-    "parameters": {}
+    "description": "Retrieve employee EmpWorkExperience details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "from",
+      "empworkexperience",
+      "details",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_errorlog": {
     "domain": "hr",
     "endpoint": "/api/ErrorLog",
     "method": "GET",
-    "description": "Fetch all ErrorLog records",
-    "parameters": {}
+    "description": "Retrieve ErrorLog information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "errorlog",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_errorlog_id": {
     "domain": "hr",
     "endpoint": "/api/ErrorLog/{id}",
     "method": "GET",
-    "description": "Fetch ErrorLog details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_esic": {
-    "domain": "hr",
-    "endpoint": "/api/ESIC",
-    "method": "GET",
-    "description": "Fetch all ESIC records",
-    "parameters": {}
-  },
-  "get_expense": {
-    "domain": "hr",
-    "endpoint": "/api/Expense",
-    "method": "GET",
-    "description": "Fetch all Expense records",
-    "parameters": {}
-  },
-  "get_expense_id": {
-    "domain": "hr",
-    "endpoint": "/api/Expense/{id}",
-    "method": "GET",
-    "description": "Fetch Expense details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_expensecategory": {
-    "domain": "hr",
-    "endpoint": "/api/ExpenseCategory",
-    "method": "GET",
-    "description": "Fetch all ExpenseCategory records",
-    "parameters": {}
-  },
-  "get_expensecategory_id": {
-    "domain": "hr",
-    "endpoint": "/api/ExpenseCategory/{id}",
-    "method": "GET",
-    "description": "Fetch ExpenseCategory details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_family": {
-    "domain": "hr",
-    "endpoint": "/api/Family",
-    "method": "GET",
-    "description": "Fetch all Family records",
-    "parameters": {}
-  },
-  "get_family_id": {
-    "domain": "hr",
-    "endpoint": "/api/Family/{id}",
-    "method": "GET",
-    "description": "Fetch Family details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "errorlog",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_financialyear": {
     "domain": "hr",
     "endpoint": "/api/FinancialYear",
     "method": "GET",
-    "description": "Fetch all FinancialYear records",
-    "parameters": {}
+    "description": "Retrieve FinancialYear information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "financialyear",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_financialyear_id": {
     "domain": "hr",
     "endpoint": "/api/FinancialYear/{id}",
     "method": "GET",
-    "description": "Fetch FinancialYear details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "financialyear",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_gender": {
     "domain": "hr",
     "endpoint": "/api/Gender",
     "method": "GET",
-    "description": "Fetch all Gender records",
-    "parameters": {}
-  },
-  "get_happybirthday_gethappybirthdaymessage": {
-    "domain": "hr",
-    "endpoint": "/api/HappyBirthday/GetHappyBirthdayMessage",
-    "method": "GET",
-    "description": "Fetch all HappyBirthday records",
-    "parameters": {}
-  },
-  "get_holiday": {
-    "domain": "hr",
-    "endpoint": "/api/HoliDay",
-    "method": "GET",
-    "description": "Fetch all HoliDay records",
-    "parameters": {}
+    "description": "Retrieve Gender information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "gender",
+      "retrieve"
+    ]
   },
   "get_holidaycalendar": {
     "domain": "hr",
     "endpoint": "/api/HolidayCalendar",
     "method": "GET",
-    "description": "Fetch all HolidayCalendar records",
-    "parameters": {}
-  },
-  "get_holidaytype": {
-    "domain": "hr",
-    "endpoint": "/api/HolidayType",
-    "method": "GET",
-    "description": "Fetch all HolidayType records",
-    "parameters": {}
-  },
-  "get_holidaytype_id": {
-    "domain": "hr",
-    "endpoint": "/api/HolidayType/{id}",
-    "method": "GET",
-    "description": "Fetch HolidayType details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_hrmsreports_getemployeeweeklywisereports": {
-    "domain": "employee",
-    "endpoint": "/api/HRMSReports/GetEmployeeWeeklyWiseReports",
-    "method": "GET",
-    "description": "Fetch all HRMSReports records",
-    "parameters": {}
-  },
-  "get_hrmsreports_getemployeeattendanceweeklyreport": {
-    "domain": "employee",
-    "endpoint": "/api/HRMSReports/GetEmployeeAttendanceWeeklyReport",
-    "method": "GET",
-    "description": "Fetch all HRMSReports records",
-    "parameters": {}
-  },
-  "get_jobpost": {
-    "domain": "hr",
-    "endpoint": "/api/JobPost",
-    "method": "GET",
-    "description": "Fetch all JobPost records",
-    "parameters": {}
-  },
-  "get_jobpost_id": {
-    "domain": "hr",
-    "endpoint": "/api/JobPost/{id}",
-    "method": "GET",
-    "description": "Fetch JobPost details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_jobpostdetail": {
-    "domain": "hr",
-    "endpoint": "/api/JobPostDetail",
-    "method": "GET",
-    "description": "Fetch all JobPostDetail records",
-    "parameters": {}
-  },
-  "get_jobpostdetail_id": {
-    "domain": "hr",
-    "endpoint": "/api/JobPostDetail/{id}",
-    "method": "GET",
-    "description": "Fetch JobPostDetail details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    "description": "Retrieve HolidayCalendar information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "holidaycalendar",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_jobtitle": {
     "domain": "hr",
     "endpoint": "/api/JobTitle",
     "method": "GET",
-    "description": "Fetch all JobTitle records",
-    "parameters": {}
+    "description": "Retrieve JobTitle information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "jobtitle",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_jobtitle_id": {
     "domain": "hr",
     "endpoint": "/api/JobTitle/{id}",
     "method": "GET",
-    "description": "Fetch JobTitle details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "jobtitle",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_language": {
     "domain": "hr",
     "endpoint": "/api/Language",
     "method": "GET",
-    "description": "Fetch all Language records",
-    "parameters": {}
-  },
-  "get_leave": {
-    "domain": "leave",
-    "endpoint": "/api/Leave",
-    "method": "GET",
-    "description": "Fetch all Leave records",
-    "parameters": {}
+    "description": "Retrieve Language information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "language",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_leaveapply": {
     "domain": "leave",
     "endpoint": "/api/LeaveApply",
     "method": "GET",
-    "description": "Fetch all LeaveApply records",
-    "parameters": {}
+    "description": "Retrieve LeaveApply information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "information",
+      "the",
+      "get",
+      "from",
+      "leaveapply",
+      "system",
+      "hrms"
+    ]
   },
   "get_leaveapply_id": {
     "domain": "leave",
     "endpoint": "/api/LeaveApply/{id}",
     "method": "GET",
-    "description": "Fetch LeaveApply details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "leave",
+      "information",
+      "the",
+      "get",
+      "from",
+      "leaveapply",
+      "system",
+      "hrms"
+    ]
   },
   "get_leaveapply_updateleaveapplystatus_leaveapplyid_statusid_statusname_statusremarks_updatedby": {
     "domain": "leave",
     "endpoint": "/api/LeaveApply/UpdateLeaveApplyStatus/{LeaveApplyId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
     "method": "GET",
-    "description": "Fetch LeaveApply details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "LeaveApplyId": "resource id",
-      "StatusId": "resource id",
+      "LeaveApplyId": "leave apply id",
+      "StatusId": "status id",
       "StatusName": "StatusName",
       "StatusRemarks": "StatusRemarks",
       "UpdatedBy": "UpdatedBy"
-    }
-  },
-  "get_leaveapprovreject": {
-    "domain": "leave",
-    "endpoint": "/api/LeaveApprovReject",
-    "method": "GET",
-    "description": "Fetch all LeaveApprovReject records",
-    "parameters": {}
-  },
-  "get_leaveassign": {
-    "domain": "leave",
-    "endpoint": "/api/LeaveAssign",
-    "method": "GET",
-    "description": "Fetch all LeaveAssign records",
-    "parameters": {}
+    },
+    "keywords": [
+      "leave",
+      "information",
+      "statusremarks",
+      "updateleaveapplystatus",
+      "the",
+      "get",
+      "from",
+      "leaveapply"
+    ]
   },
   "get_leavedashboard_getallleavedashboarddetailwithempid_empregid_financialyearid": {
     "domain": "employee",
     "endpoint": "/api/LeaveDashboard/GetAllLeaveDashboardDetailWithEmpId/{EmpRegid}/{FinancialYearId}",
     "method": "GET",
-    "description": "Fetch LeaveDashboard details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
       "EmpRegid": "employee registration id",
-      "FinancialYearId": "resource id"
-    }
-  },
-  "get_leavepolicy": {
-    "domain": "leave",
-    "endpoint": "/api/LeavePolicy",
-    "method": "GET",
-    "description": "Fetch all LeavePolicy records",
-    "parameters": {}
-  },
-  "get_leavepolicy_id": {
-    "domain": "leave",
-    "endpoint": "/api/LeavePolicy/{id}",
-    "method": "GET",
-    "description": "Fetch LeavePolicy details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+      "FinancialYearId": "Financial year id"
+    },
+    "keywords": [
+      "getallleavedashboarddetailwithempid",
+      "the",
+      "get",
+      "from",
+      "empregid",
+      "financialyearid",
+      "leavedashboard",
+      "details"
+    ]
   },
   "get_leavetype": {
     "domain": "leave",
     "endpoint": "/api/LeaveType",
     "method": "GET",
-    "description": "Fetch all LeaveType records",
-    "parameters": {}
+    "description": "Retrieve LeaveType information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "leavetype"
+    ]
   },
   "get_leavetype_id": {
     "domain": "leave",
     "endpoint": "/api/LeaveType/{id}",
     "method": "GET",
-    "description": "Fetch LeaveType details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_mailsave": {
-    "domain": "hr",
-    "endpoint": "/api/MailSave",
-    "method": "GET",
-    "description": "Fetch all MailSave records",
-    "parameters": {}
-  },
-  "get_mailsave_id": {
-    "domain": "hr",
-    "endpoint": "/api/MailSave/{id}",
-    "method": "GET",
-    "description": "Fetch MailSave details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    },
+    "keywords": [
+      "leave",
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "leavetype"
+    ]
   },
   "get_manager": {
     "domain": "hr",
     "endpoint": "/api/Manager",
     "method": "GET",
-    "description": "Fetch all Manager records",
-    "parameters": {}
+    "description": "Retrieve Manager information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "manager",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_manager_id": {
     "domain": "hr",
     "endpoint": "/api/Manager/{id}",
     "method": "GET",
-    "description": "Fetch Manager details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "manager",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_manager_getmanagername_departmentid_desginationid": {
     "domain": "hr",
     "endpoint": "/api/Manager/GetManagerName/{DepartmentId}/{DesginationId}",
     "method": "GET",
-    "description": "Fetch Manager details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "DepartmentId": "resource id",
-      "DesginationId": "resource id"
-    }
+      "DepartmentId": "department id",
+      "DesginationId": "designation id"
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "manager",
+      "system",
+      "desginationid",
+      "hrms"
+    ]
   },
   "get_managesalarydays": {
     "domain": "payroll",
     "endpoint": "/api/ManageSalaryDays",
     "method": "GET",
-    "description": "Fetch all ManageSalaryDays records",
-    "parameters": {}
+    "description": "Retrieve ManageSalaryDays information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "managesalarydays",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_managesalarydays_id": {
     "domain": "payroll",
     "endpoint": "/api/ManageSalaryDays/{id}",
     "method": "GET",
-    "description": "Fetch ManageSalaryDays details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "managesalarydays",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_manualattendance": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance",
     "method": "GET",
-    "description": "Fetch all ManualAttendance records",
-    "parameters": {}
+    "description": "Retrieve employee ManualAttendance details from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "the",
+      "get",
+      "manualattendance",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "attendance"
+    ]
   },
   "get_manualattendance_id": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance/{id}",
     "method": "GET",
-    "description": "Fetch ManualAttendance details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "the",
+      "get",
+      "manualattendance",
+      "from",
+      "details",
+      "system",
+      "hrms",
+      "attendance"
+    ]
   },
   "get_manualattendance_getapprovalrejectbysupervisoryid_supervisoryid": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance/GetApprovalRejectBySupervisoryId/{SupervisoryId}",
     "method": "GET",
-    "description": "Fetch ManualAttendance details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
-      "SupervisoryId": "resource id"
-    }
+      "SupervisoryId": "supervisory id"
+    },
+    "keywords": [
+      "getapprovalrejectbysupervisoryid",
+      "the",
+      "get",
+      "manualattendance",
+      "from",
+      "details",
+      "system",
+      "hrms"
+    ]
   },
   "get_manualattendance_updatemanualattestatus_manualattendanceid_statusid_statusname_statusremarks_updatedby": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance/UpdateManualAtteStatus/{ManualAttendanceId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
     "method": "GET",
-    "description": "Fetch ManualAttendance details using parameters",
+    "description": "Retrieve employee  details from the HRMS system",
     "parameters": {
-      "ManualAttendanceId": "resource id",
-      "StatusId": "resource id",
+      "ManualAttendanceId": "manual attendance id",
+      "StatusId": "status id",
       "StatusName": "StatusName",
       "StatusRemarks": "StatusRemarks",
       "UpdatedBy": "UpdatedBy"
-    }
-  },
-  "get_medical": {
-    "domain": "hr",
-    "endpoint": "/api/Medical",
-    "method": "GET",
-    "description": "Fetch all Medical records",
-    "parameters": {}
+    },
+    "keywords": [
+      "statusname",
+      "manualattendanceid",
+      "statusremarks",
+      "api",
+      "the",
+      "get",
+      "from",
+      "statusid"
+    ]
   },
   "get_projectmanager": {
     "domain": "project",
     "endpoint": "/api/ProjectManager",
     "method": "GET",
-    "description": "Fetch all ProjectManager records",
-    "parameters": {}
+    "description": "Retrieve ProjectManager information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "project",
+      "the",
+      "get",
+      "from",
+      "projectmanager",
+      "system",
+      "hrms"
+    ]
   },
   "get_projectmanager_id": {
     "domain": "project",
     "endpoint": "/api/ProjectManager/{id}",
     "method": "GET",
-    "description": "Fetch ProjectManager details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "project",
+      "the",
+      "get",
+      "from",
+      "projectmanager",
+      "system",
+      "hrms"
+    ]
   },
   "get_projectmemorandum": {
     "domain": "project",
     "endpoint": "/api/ProjectMemorandum",
     "method": "GET",
-    "description": "Fetch all ProjectMemorandum records",
-    "parameters": {}
-  },
-  "get_projectmemorandum_id": {
-    "domain": "project",
-    "endpoint": "/api/ProjectMemorandum/{id}",
-    "method": "GET",
-    "description": "Fetch ProjectMemorandum details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    "description": "Retrieve ProjectMemorandum information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "project",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "projectmemorandum"
+    ]
   },
   "get_projectsupervisor": {
     "domain": "project",
     "endpoint": "/api/ProjectSupervisor",
     "method": "GET",
-    "description": "Fetch all ProjectSupervisor records",
-    "parameters": {}
+    "description": "Retrieve ProjectSupervisor information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "projectsupervisor",
+      "project",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_projectsupervisor_id": {
     "domain": "project",
     "endpoint": "/api/ProjectSupervisor/{id}",
     "method": "GET",
-    "description": "Fetch ProjectSupervisor details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_reimbursementamount": {
-    "domain": "hr",
-    "endpoint": "/api/ReimbursementAmount",
-    "method": "GET",
-    "description": "Fetch all ReimbursementAmount records",
-    "parameters": {}
-  },
-  "get_reimbursementamount_id": {
-    "domain": "hr",
-    "endpoint": "/api/ReimbursementAmount/{id}",
-    "method": "GET",
-    "description": "Fetch ReimbursementAmount details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_reimbursementamount_updatereimbursementamountstatus_reimbursementamountid_status_updatedby_statusid_approvedmessage": {
-    "domain": "hr",
-    "endpoint": "/api/ReimbursementAmount/UpdateReimbursementAmountStatus/{ReimbursementAmountId}/{Status}/{UpdatedBy}/{StatusId}/{ApprovedMessage}",
-    "method": "GET",
-    "description": "Fetch ReimbursementAmount details using parameters",
-    "parameters": {
-      "ReimbursementAmountId": "resource id",
-      "Status": "Status",
-      "UpdatedBy": "UpdatedBy",
-      "StatusId": "resource id",
-      "ApprovedMessage": "ApprovedMessage"
-    }
+    },
+    "keywords": [
+      "information",
+      "projectsupervisor",
+      "project",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_reimbursementtype": {
     "domain": "hr",
     "endpoint": "/api/ReimbursementType",
     "method": "GET",
-    "description": "Fetch all ReimbursementType records",
-    "parameters": {}
+    "description": "Retrieve ReimbursementType information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "reimbursementtype",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_reimbursementtype_id": {
     "domain": "hr",
     "endpoint": "/api/ReimbursementType/{id}",
     "method": "GET",
-    "description": "Fetch ReimbursementType details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_resignationletter": {
-    "domain": "hr",
-    "endpoint": "/api/ResignationLetter",
-    "method": "GET",
-    "description": "Fetch all ResignationLetter records",
-    "parameters": {}
-  },
-  "get_resignationletter_id": {
-    "domain": "hr",
-    "endpoint": "/api/ResignationLetter/{id}",
-    "method": "GET",
-    "description": "Fetch ResignationLetter details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_reviews": {
-    "domain": "hr",
-    "endpoint": "/api/Reviews",
-    "method": "GET",
-    "description": "Fetch all Reviews records",
-    "parameters": {}
-  },
-  "get_reviews_id": {
-    "domain": "hr",
-    "endpoint": "/api/Reviews/{id}",
-    "method": "GET",
-    "description": "Fetch Reviews details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
-  },
-  "get_reviewtype": {
-    "domain": "hr",
-    "endpoint": "/api/ReviewType",
-    "method": "GET",
-    "description": "Fetch all ReviewType records",
-    "parameters": {}
-  },
-  "get_reviewtype_id": {
-    "domain": "hr",
-    "endpoint": "/api/ReviewType/{id}",
-    "method": "GET",
-    "description": "Fetch ReviewType details using parameters",
-    "parameters": {
-      "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "reimbursementtype",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_role": {
     "domain": "hr",
     "endpoint": "/api/Role",
     "method": "GET",
-    "description": "Fetch all Role records",
-    "parameters": {}
+    "description": "Retrieve Role information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "role",
+      "retrieve"
+    ]
   },
   "get_role_id": {
     "domain": "hr",
     "endpoint": "/api/Role/{id}",
     "method": "GET",
-    "description": "Fetch Role details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_salary": {
-    "domain": "payroll",
-    "endpoint": "/api/Salary",
-    "method": "GET",
-    "description": "Fetch all Salary records",
-    "parameters": {}
-  },
-  "get_salarycomponent": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryComponent",
-    "method": "GET",
-    "description": "Fetch all SalaryComponent records",
-    "parameters": {}
-  },
-  "get_salarydeduction": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryDeduction",
-    "method": "GET",
-    "description": "Fetch all SalaryDeduction records",
-    "parameters": {}
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "role",
+      "retrieve"
+    ]
   },
   "get_salaryearning": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning",
     "method": "GET",
-    "description": "Fetch all SalaryEarning records",
-    "parameters": {}
+    "description": "Retrieve SalaryEarning information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll",
+      "salaryearning"
+    ]
   },
   "get_salaryearning_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning/{id}",
     "method": "GET",
-    "description": "Fetch SalaryEarning details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll",
+      "salaryearning"
+    ]
   },
   "get_salaryearning_updatesalaryearningstatus_id_status": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning/UpdateSalaryEarningStatus/{Id}/{status}",
     "method": "GET",
-    "description": "Fetch SalaryEarning details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "Id": "resource id",
       "status": "status"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "updatesalaryearningstatus",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryearning_getsalaryearningdetailwithearningid_earningid_earningtypeid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning/GetSalaryEarningDetailWithEarningId/{EarningId}/{EarningTypeId}",
     "method": "GET",
-    "description": "Fetch SalaryEarning details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "EarningId": "resource id",
-      "EarningTypeId": "resource id"
-    }
+      "EarningId": "earning id",
+      "EarningTypeId": "earning type id"
+    },
+    "keywords": [
+      "getsalaryearningdetailwithearningid",
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryearning_getsalaryearningallcomponentsdetail": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning/GetSalaryEarningAllComponentsDetail",
     "method": "GET",
-    "description": "Fetch all SalaryEarning records",
-    "parameters": {}
+    "description": "Retrieve GetSalaryEarningAllComponentsDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "getsalaryearningallcomponentsdetail",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryearningtype": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarningType",
     "method": "GET",
-    "description": "Fetch all SalaryEarningType records",
-    "parameters": {}
+    "description": "Retrieve SalaryEarningType information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salaryearningtype",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryearningtype_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarningType/{id}",
     "method": "GET",
-    "description": "Fetch SalaryEarningType details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salaryearningtype",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salarypostdeduction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction",
     "method": "GET",
-    "description": "Fetch all SalaryPostDeduction records",
-    "parameters": {}
+    "description": "Retrieve SalaryPostDeduction information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll",
+      "salarypostdeduction"
+    ]
   },
   "get_salarypostdeduction_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction/{id}",
     "method": "GET",
-    "description": "Fetch SalaryPostDeduction details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll",
+      "salarypostdeduction"
+    ]
   },
   "get_salarypostdeduction_getsalarypostdeductionallcomponentsdetail": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionAllComponentsDetail",
     "method": "GET",
-    "description": "Fetch all SalaryPostDeduction records",
-    "parameters": {}
+    "description": "Retrieve GetSalaryPostDeductionAllComponentsDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "getsalarypostdeductionallcomponentsdetail",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salarypostdeduction_getsalarypostdeductiondetailwithearningid_postdeductionid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionDetailWithEarningId/{PostDeductionId}",
     "method": "GET",
-    "description": "Fetch SalaryPostDeduction details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "PostDeductionId": "resource id"
-    }
+      "PostDeductionId": "post deduction id"
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "getsalarypostdeductiondetailwithearningid",
+      "postdeductionid",
+      "system",
+      "hrms"
+    ]
   },
   "get_salaryprededuction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction",
     "method": "GET",
-    "description": "Fetch all SalaryPreDeduction records",
-    "parameters": {}
+    "description": "Retrieve SalaryPreDeduction information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salaryprededuction",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryprededuction_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction/{id}",
     "method": "GET",
-    "description": "Fetch SalaryPreDeduction details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salaryprededuction",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryprededuction_getsalarypredeductionallcomponentsdetail": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionAllComponentsDetail",
     "method": "GET",
-    "description": "Fetch all SalaryPreDeduction records",
-    "parameters": {}
+    "description": "Retrieve GetSalaryPreDeductionAllComponentsDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "getsalarypredeductionallcomponentsdetail",
+      "salaryprededuction",
+      "system",
+      "hrms"
+    ]
   },
   "get_salaryprededuction_getsalarypredeductiondetailwithearningid_predeductionid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionDetailWithEarningId/{PreDeductionId}",
     "method": "GET",
-    "description": "Fetch SalaryPreDeduction details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "PreDeductionId": "resource id"
-    }
+      "PreDeductionId": "pre deduction id"
+    },
+    "keywords": [
+      "information",
+      "predeductionid",
+      "the",
+      "get",
+      "from",
+      "getsalarypredeductiondetailwithearningid",
+      "salaryprededuction",
+      "system"
+    ]
   },
   "get_salaryreimbursement": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement",
     "method": "GET",
-    "description": "Fetch all SalaryReimbursement records",
-    "parameters": {}
+    "description": "Retrieve SalaryReimbursement information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "salaryreimbursement",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryreimbursement_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement/{id}",
     "method": "GET",
-    "description": "Fetch SalaryReimbursement details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "salaryreimbursement",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryreimbursement_updatesalaryreimbursementstatus_id_status": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement/UpdateSalaryReimbursementStatus/{Id}/{status}",
     "method": "GET",
-    "description": "Fetch SalaryReimbursement details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "Id": "resource id",
       "status": "status"
-    }
+    },
+    "keywords": [
+      "information",
+      "salaryreimbursement",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salaryreimbursement_getreimbursementallcomponentsdetail": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement/GetReimbursementAllComponentsDetail",
     "method": "GET",
-    "description": "Fetch all SalaryReimbursement records",
-    "parameters": {}
+    "description": "Retrieve GetReimbursementAllComponentsDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "getreimbursementallcomponentsdetail",
+      "salaryreimbursement",
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_salaryreimbursement_getsalaryreimbursementdetailwithearningid_reimbursementid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement/GetSalaryReimbursementDetailWithEarningId/{ReimbursementId}",
     "method": "GET",
-    "description": "Fetch SalaryReimbursement details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "ReimbursementId": "resource id"
-    }
+      "ReimbursementId": "reimbursement id"
+    },
+    "keywords": [
+      "api",
+      "salaryreimbursement",
+      "information",
+      "the",
+      "get",
+      "from",
+      "reimbursementid",
+      "system"
+    ]
   },
   "get_salarytamplate_getsalarytamplates": {
     "domain": "payroll",
     "endpoint": "/api/SalaryTamplate/GetSalaryTamplates",
     "method": "GET",
-    "description": "Fetch all SalaryTamplate records",
-    "parameters": {}
+    "description": "Retrieve GetSalaryTamplates information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "getsalarytamplates",
+      "the",
+      "get",
+      "from",
+      "salarytamplate",
+      "system",
+      "hrms"
+    ]
   },
   "get_salarytamplate_getsalarytamplatedetailbyid_templateid": {
     "domain": "employee",
     "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailById/{TemplateId}",
     "method": "GET",
-    "description": "Fetch SalaryTamplate details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "TemplateId": "resource id"
-    }
+      "TemplateId": "template id"
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salarytamplate",
+      "system",
+      "hrms",
+      "templateid"
+    ]
   },
   "get_salarytamplate_getsalarytamplatedetailbyidwithamount_templateid_salaryamount": {
     "domain": "employee",
     "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailByIdWithAmount/{TemplateId}/{SalaryAmount}",
     "method": "GET",
-    "description": "Fetch SalaryTamplate details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "TemplateId": "resource id",
+      "TemplateId": "template id",
       "SalaryAmount": "SalaryAmount"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salarytamplate",
+      "system",
+      "salaryamount",
+      "templateid"
+    ]
   },
   "get_salarytamplatewithregid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryTamplateWithRegId",
     "method": "GET",
-    "description": "Fetch all SalaryTamplateWithRegId records",
-    "parameters": {}
+    "description": "Retrieve SalaryTamplateWithRegId information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "salarytamplatewithregid",
+      "system",
+      "hrms",
+      "payroll"
+    ]
   },
   "get_salarytamplatewithregid_getassignedsalarytemplatedetail": {
     "domain": "employee",
     "endpoint": "/api/SalaryTamplateWithRegId/GetAssignedSalaryTemplateDetail",
     "method": "GET",
-    "description": "Fetch all SalaryTamplateWithRegId records",
-    "parameters": {}
+    "description": "Retrieve GetAssignedSalaryTemplateDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "getassignedsalarytemplatedetail",
+      "salarytamplatewithregid",
+      "system",
+      "hrms"
+    ]
   },
   "get_skill": {
     "domain": "hr",
     "endpoint": "/api/Skill",
     "method": "GET",
-    "description": "Fetch all Skill records",
-    "parameters": {}
+    "description": "Retrieve Skill information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "skill",
+      "retrieve"
+    ]
   },
   "get_skill_id": {
     "domain": "hr",
     "endpoint": "/api/Skill/{id}",
     "method": "GET",
-    "description": "Fetch Skill details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "skill",
+      "retrieve"
+    ]
   },
   "get_state": {
     "domain": "hr",
     "endpoint": "/api/State",
     "method": "GET",
-    "description": "Fetch all State records",
-    "parameters": {}
+    "description": "Retrieve State information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "state",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_state_id": {
     "domain": "hr",
     "endpoint": "/api/State/{id}",
     "method": "GET",
-    "description": "Fetch State details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "state",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_submenu": {
     "domain": "hr",
     "endpoint": "/api/SubMenu",
     "method": "GET",
-    "description": "Fetch all SubMenu records",
-    "parameters": {}
+    "description": "Retrieve SubMenu information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "submenu",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_submenu_id": {
     "domain": "hr",
     "endpoint": "/api/SubMenu/{id}",
     "method": "GET",
-    "description": "Fetch SubMenu details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "submenu",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_supervisor": {
     "domain": "hr",
     "endpoint": "/api/Supervisor",
     "method": "GET",
-    "description": "Fetch all Supervisor records",
-    "parameters": {}
+    "description": "Retrieve Supervisor information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "supervisor",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_supervisor_id": {
     "domain": "hr",
     "endpoint": "/api/Supervisor/{id}",
     "method": "GET",
-    "description": "Fetch Supervisor details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "supervisor",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_supervisor_getsupervisorname_departmentid_designationid": {
     "domain": "hr",
     "endpoint": "/api/Supervisor/GetSupervisorName/{DepartmentId}/{designationId}",
     "method": "GET",
-    "description": "Fetch Supervisor details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "DepartmentId": "resource id",
-      "designationId": "resource id"
-    }
+      "DepartmentId": "department id",
+      "designationId": "designation id"
+    },
+    "keywords": [
+      "information",
+      "departmentid",
+      "the",
+      "get",
+      "from",
+      "getsupervisorname",
+      "supervisor",
+      "system"
+    ]
   },
   "get_task": {
     "domain": "task",
     "endpoint": "/api/Task",
     "method": "GET",
-    "description": "Fetch all Task records",
-    "parameters": {}
+    "description": "Retrieve Task information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "task",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_task_updatetaskstatus_taskid_status_updatedby": {
     "domain": "task",
     "endpoint": "/api/Task/UpdateTaskStatus/{TaskId}/{Status}/{UpdatedBy}",
     "method": "GET",
-    "description": "Fetch Task details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "TaskId": "resource id",
+      "TaskId": "task id",
       "Status": "Status",
       "UpdatedBy": "UpdatedBy"
-    }
+    },
+    "keywords": [
+      "taskid",
+      "information",
+      "the",
+      "task",
+      "get",
+      "from",
+      "updatetaskstatus",
+      "system"
+    ]
   },
   "get_task_rolesummary_departmentid": {
     "domain": "task",
     "endpoint": "/api/Task/RoleSummary/{departmentId}",
     "method": "GET",
-    "description": "Fetch Task details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
-      "departmentId": "resource id"
-    }
+      "departmentId": "department id"
+    },
+    "keywords": [
+      "information",
+      "the",
+      "task",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "rolesummary"
+    ]
   },
   "get_task_attendancesummary_department": {
     "domain": "task",
     "endpoint": "/api/Task/AttendanceSummary/{department}",
     "method": "GET",
-    "description": "Fetch Task details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "department": "department"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "task",
+      "get",
+      "from",
+      "attendancesummary",
+      "system",
+      "hrms"
+    ]
   },
   "get_taskdetail": {
     "domain": "task",
     "endpoint": "/api/TaskDetail",
     "method": "GET",
-    "description": "Fetch all TaskDetail records",
-    "parameters": {}
+    "description": "Retrieve TaskDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "taskdetail",
+      "the",
+      "task",
+      "get",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_taskdetail_id": {
     "domain": "task",
     "endpoint": "/api/TaskDetail/{id}",
     "method": "GET",
-    "description": "Fetch TaskDetail details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "taskdetail",
+      "the",
+      "task",
+      "get",
+      "from",
+      "system",
+      "hrms"
+    ]
   },
   "get_taskerrordetail": {
     "domain": "task",
     "endpoint": "/api/TaskErrorDetail",
     "method": "GET",
-    "description": "Fetch all TaskErrorDetail records",
-    "parameters": {}
+    "description": "Retrieve TaskErrorDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "task",
+      "get",
+      "from",
+      "taskerrordetail",
+      "system",
+      "hrms"
+    ]
   },
   "get_taskerrordetail_id": {
     "domain": "task",
     "endpoint": "/api/TaskErrorDetail/{id}",
     "method": "GET",
-    "description": "Fetch TaskErrorDetail details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
-  },
-  "get_userregistration": {
-    "domain": "hr",
-    "endpoint": "/api/UserRegistration",
-    "method": "GET",
-    "description": "Fetch all UserRegistration records",
-    "parameters": {}
+    },
+    "keywords": [
+      "information",
+      "the",
+      "task",
+      "get",
+      "from",
+      "taskerrordetail",
+      "system",
+      "hrms"
+    ]
   },
   "get_workshift": {
     "domain": "hr",
     "endpoint": "/api/WorkShift",
     "method": "GET",
-    "description": "Fetch all WorkShift records",
-    "parameters": {}
+    "description": "Retrieve WorkShift information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "workshift",
+      "retrieve"
+    ]
   },
   "get_workshift_id": {
     "domain": "hr",
     "endpoint": "/api/WorkShift/{id}",
     "method": "GET",
-    "description": "Fetch WorkShift details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "workshift",
+      "retrieve"
+    ]
   },
   "get_worktype": {
     "domain": "hr",
     "endpoint": "/api/WorkType",
     "method": "GET",
-    "description": "Fetch all WorkType records",
-    "parameters": {}
+    "description": "Retrieve WorkType information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "worktype",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_worktype_id": {
     "domain": "hr",
     "endpoint": "/api/WorkType/{id}",
     "method": "GET",
-    "description": "Fetch WorkType details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "worktype",
+      "get",
+      "from",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_zipcodedetail": {
     "domain": "hr",
     "endpoint": "/api/ZipCodeDetail",
     "method": "GET",
-    "description": "Fetch all ZipCodeDetail records",
-    "parameters": {}
+    "description": "Retrieve ZipCodeDetail information from the HRMS system",
+    "parameters": {},
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "zipcodedetail",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_zipcodedetail_id": {
     "domain": "hr",
     "endpoint": "/api/ZipCodeDetail/{id}",
     "method": "GET",
-    "description": "Fetch ZipCodeDetail details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "id": "resource id"
-    }
+    },
+    "keywords": [
+      "information",
+      "the",
+      "get",
+      "from",
+      "zipcodedetail",
+      "system",
+      "hrms",
+      "retrieve"
+    ]
   },
   "get_zipcodedetail_getzipcodedetaildetail_zipcode_flag": {
     "domain": "hr",
     "endpoint": "/api/ZipCodeDetail/GetZipCodeDetailDetail/{ZipCode}/{Flag}",
     "method": "GET",
-    "description": "Fetch ZipCodeDetail details using parameters",
+    "description": "Retrieve  information from the HRMS system",
     "parameters": {
       "ZipCode": "ZipCode",
       "Flag": "Flag"
-    }
+    },
+    "keywords": [
+      "information",
+      "flag",
+      "the",
+      "getzipcodedetaildetail",
+      "get",
+      "from",
+      "zipcode",
+      "zipcodedetail"
+    ]
   }
 }

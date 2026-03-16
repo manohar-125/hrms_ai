@@ -2,35 +2,46 @@ from app.llm.llama_client import generate_response
 
 
 DOMAIN_PROMPT = """
-You are a domain classifier for an HRMS AI assistant.
+You are an HRMS domain classifier.
 
-Classify the user's question into ONE of the following domains:
+Your task: Classify the user question into exactly ONE domain.
 
-employee
-department
-attendance
-leave
-payroll
-project
-task
-client
-policy
-general
+Available domains (choose only one):
+- employee (employee records, profiles, information)
+- department (department data, structures, organization)
+- attendance (attendance records, check-in/out, time tracking)
+- leave (leave requests, balances, policies, approvals)
+- payroll (salary, compensation, payments, deductions)
+- project (projects, assignments, tracking)
+- task (tasks, work items, assignments)
+- client (client records, relationships)
+- policy (HR policies, guidelines, rules)
+- general (other, unrelated, miscellaneous)
 
-Return ONLY the domain word.
+Classification Rules:
+1. Return ONLY the domain name in lowercase.
+2. Do NOT include explanations.
+3. If multiple domains match, choose the PRIMARY domain.
+4. Be strict: pick only the best match.
 
 Examples:
 
-Question: Show employee details
+Question: Show all employees
 Domain: employee
 
-Question: Show departments
+Question: What departments exist
 Domain: department
 
-Question: Show leave balance
+Question: Check my attendance
+Domain: attendance
+
+Question: Show my leave balance
 Domain: leave
 
-Question: What is leave policy
+Question: List all projects
+Domain: project
+
+Question: What is the leave policy
 Domain: policy
 
 Now classify this question:

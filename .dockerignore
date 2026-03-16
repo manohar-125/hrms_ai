@@ -1,9 +1,49 @@
+# Git
+.git
+.gitignore
+
+# Python cache
 __pycache__
 *.pyc
 *.pyo
 *.pyd
-.env
-.git
-.gitignore
-node_modules
+
+# Virtual environments
 venv
+env
+.venv
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+
+# Local databases
+*.db
+*.sqlite3
+
+# Vector DB
+chroma_db/
+
+# IDE
+.vscode
+.idea
+
+# MacOS files
+.DS_Store
+
+# Testing
+.pytest_cache
+.coverage
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Temporary
+*.tmp
+*.temp

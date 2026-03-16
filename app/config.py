@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     HRMS_API_TOKEN: str
 
     class Config:
-        env_file = ".env"
+        env_file = ".env.local"
 
 
 settings = Settings()

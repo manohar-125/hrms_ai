@@ -1,23 +1,19 @@
-# .gitignore for HRMS AI Service
+# ============================
+# HRMS AI Service - .gitignore
+# ============================
 
 # ----------------------------
-
 # Python
-
 # ----------------------------
-
-**pycache**/
+__pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
 
 # ----------------------------
-
-# Virtual Environment
-
+# Virtual Environments
 # ----------------------------
-
 venv/
 env/
 ENV/
@@ -25,135 +21,94 @@ ENV/
 venv.bak/
 
 # ----------------------------
-
 # Environment Variables
-
 # ----------------------------
-
 .env
 .env.*
 *.env
 
 # ----------------------------
-
-# IDE / Editor
-
+# IDE / Editors
 # ----------------------------
-
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# ----------------------------
+# OS Files
+# ----------------------------
 .DS_Store
+Thumbs.db
 
 # ----------------------------
-
 # Logs
-
 # ----------------------------
-
 *.log
 logs/
 
 # ----------------------------
-
 # Database Files
-
 # ----------------------------
-
 *.sqlite3
 *.db
 
 # ----------------------------
-
-# Chroma Vector DB
-
+# Chroma Vector Database
 # ----------------------------
-
 chroma_db/
 *.bin
+*.parquet
 
 # ----------------------------
-
-# Redis Dump
-
+# Redis
 # ----------------------------
-
 dump.rdb
 
 # ----------------------------
-
 # Docker
-
 # ----------------------------
-
 docker/*.log
 docker-compose.override.yml
 
 # ----------------------------
-
-# Build / Distribution
-
+# Python Build / Distribution
 # ----------------------------
-
 build/
 dist/
 *.egg-info/
 .eggs/
 
 # ----------------------------
-
-# Python Testing
-
+# Testing
 # ----------------------------
-
 .coverage
 htmlcov/
 .pytest_cache/
 
 # ----------------------------
-
 # Cache Files
-
 # ----------------------------
-
 .cache/
+.mypy_cache/
 
 # ----------------------------
-
-# OS Files
-
-# ----------------------------
-
-Thumbs.db
-.DS_Store
-
-# ----------------------------
-
 # Temporary Files
-
 # ----------------------------
-
 *.tmp
 *.temp
 *.bak
 
 # ----------------------------
-
 # Secrets
-
 # ----------------------------
-
 secrets/
 private_keys/
 config.local.py
 
 # ----------------------------
-
 # Node (if frontend added later)
-
 # ----------------------------
-
 node_modules/
 npm-debug.log
 yarn-error.log

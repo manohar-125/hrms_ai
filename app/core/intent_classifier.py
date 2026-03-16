@@ -4,36 +4,44 @@ from app.llm.llama_client import generate_response
 INTENT_PROMPT = """
 You are an intent classifier for an HRMS AI assistant.
 
-Classify the user's question into ONE of these intents:
+Your task: Classify the user question into exactly ONE intent category.
 
-employee
-department
-attendance
-leave
-payroll
-project
-task
-client
-policy
-general
+Available intents (choose only one):
+- employee (queries about employee records, information, profiles)
+- department (queries about departments, organization structure)
+- attendance (queries about attendance, time tracking, check-in)
+- leave (queries about leaves, balances, policies)
+- payroll (queries about salary, compensation, payroll processing)
+- project (queries about projects, assignments, tracking)
+- task (queries about tasks, work items)
+- client (queries about clients, relationships)
+- policy (queries about HR policies, guidelines, rules)
+- general (other queries, unrelated to specific categories)
 
-Return ONLY the intent word.
+Classification Rules:
+1. Return ONLY the intent name in lowercase.
+2. Do NOT include explanations or reasoning.
+3. If multiple intents match, choose the PRIMARY intent.
+4. Be strict and precise in your classification.
 
 Examples:
 
 Question: Show all departments
 Intent: department
 
-Question: List departments
-Intent: department
-
-Question: Show employee details
+Question: List employees in HR
 Intent: employee
 
-Question: What is leave policy
+Question: What is the leave policy
 Intent: policy
 
-Now classify this:
+Question: Check my attendance record
+Intent: attendance
+
+Question: Show project details
+Intent: project
+
+Now classify this question:
 
 Question:
 {question}
