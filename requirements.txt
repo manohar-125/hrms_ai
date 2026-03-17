@@ -1,9 +1,26 @@
-fastapi
-uvicorn
-requests
-redis
-chromadb
-sentence-transformers
-ollama
-pydantic
-python-dotenv
+# Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# HTTP Client
+requests==2.31.0
+
+# Caching
+redis==5.0.1
+
+# Vector Database
+chromadb==0.4.24
+
+# Embeddings & ML
+sentence-transformers==2.2.2
+numpy==1.24.3
+scipy==1.11.4
+
+# LLM Integration
+ollama==0.1.32
+
+# Data Validation
+pydantic==2.5.0
+
+# Configuration
+python-dotenv==1.0.0

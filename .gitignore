@@ -100,6 +100,25 @@ htmlcov/
 *.bak
 
 # ----------------------------
+# Documentation (Generated)
+# ----------------------------
+CODEBASE_ANALYSIS.md
+
+# ----------------------------
+# Node/npm (if used)
+# ----------------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# ----------------------------
+# IDE Specific
+# ----------------------------
+*.iml
+.gradle
+local.properties
+
+# ----------------------------
 # Secrets
 # ----------------------------
 secrets/
