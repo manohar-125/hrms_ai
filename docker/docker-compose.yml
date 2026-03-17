@@ -1,16 +1,12 @@
 services:
 
   hrms-ai-service:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
+    image: manohar12500/hrms_ai:latest
     container_name: hrms_ai_service
     ports:
       - "8000:8000"
-    volumes:
-      - ../:/app
     env_file:
-      - ../.env.docker
+      - ./.env
     environment:
       - PYTHONUNBUFFERED=1
     depends_on:
