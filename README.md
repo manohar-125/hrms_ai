@@ -944,22 +944,342 @@ Then restart: `docker compose down && docker compose up`
 
 ## Development
 
-### Running Locally (Without Docker)
+### Running Locally (Without Docker) - Complete Step-by-Step Guide
 
-**Prerequisites:**
+This guide is for when you have a **ZIP file** of the code and want to run everything locally on your machine with **Python 3.11.15** and **locally-installed Ollama**.
+
+#### Step 1: Verify Prerequisites
+
+Before starting, check if you have the required software:
+
 ```bash
-# Install Python 3.11
-# Install system dependencies
+# Check Python version (must be 3.11+)
+python3 --version
+# Expected output: Python 3.11.15 (or higher 3.11.x)
+
+# Check if Ollama is installed
+ollama --version
+# Expected output: ollama version X.X.X
+
+# Check if Redis is installed
+redis-cli --version
+# Expected output: redis-cli version X.X.X
+```
+
+**If any are missing:**
+- **Python 3.11.15**: Download from https://www.python.org/downloads/
+- **Ollama**: Download from https://ollama.ai (or https://ollama.com)
+- **Redis**: 
+  - macOS: `brew install redis`
+  - Linux: `sudo apt-get install redis-server`
+  - Windows: Download from https://github.com/microsoftarchive/redis/releases
+
+#### Step 2: Extract and Navigate to Project
+
+```bash
+# Extract the ZIP file
+unzip hrms_ai_service.zip
+cd hrms_ai_service
+
+# Verify project structure
+ls -la
+# Should see: app/, docker/, scripts/, requirements.txt, README.md, etc.
+```
+
+#### Step 3: Create Python Virtual Environment
+
+**Why virtual environment?** It isolates project dependencies so they don't conflict with system packages.
+
+```bash
+# Create virtual environment named 'venv'
+python3.11 -m venv venv
+
+# Activate virtual environment
+# On macOS/Linux:
+source venv/bin/activate
+
+# On Windows PowerShell:
+venv\Scripts\Activate.ps1
+
+# On Windows CMD:
+venv\Scripts\activate.bat
+
+# Verify activation (you should see '(venv)' in terminal)
+which python
+# Output should be: /path/to/project/venv/bin/python
+```
+
+#### Step 4: Upgrade pip and Install Dependencies
+
+```bash
+# Upgrade pip to latest version
+pip install --upgrade pip
+
+# Install all dependencies from requirements.txt
 pip install -r requirements.txt
 
-# Start services separately
+# Verify installation
+pip list
+# Should show: fastapi, uvicorn, redis, chromadb, sentence-transformers, ollama, pydantic, python-dotenv
+```
+
+#### Step 5: Create Environment Configuration File
+
+```bash
+# Copy example environment file
+cp .env.example .env
+
+# Edit .env file with your settings
+# Use your favorite editor: nano, vim, code, etc.
+nano .env
+```
+
+**Edit `./.env` with these values:**
+
+```env
+# ======================
+# Ollama Configuration
+# ======================
+# Since Ollama is running locally, use localhost
+OLLAMA_URL=http://localhost:11434
+LLM_MODEL=llama2
+EMBED_MODEL=BAAI/bge-small-en
+CHROMA_PATH=./chroma_db
+
+# ======================
+# HRMS API Configuration
+# ======================
+HRMS_API_BASE_URL=https://hrmsapi.leanxpert.in
+HRMS_API_TOKEN=your_actual_token_here
+
+# ======================
+# Redis Configuration
+# ======================
+# Since Redis is running locally on default port
+REDIS_URL=redis://localhost:6379
+CACHE_TTL=600
+
+# ======================
+# Application Configuration
+# ======================
+APP_PORT=8000
+```
+
+**Save the file:**
+- Nano: Press `Ctrl+O`, then `Enter`, then `Ctrl+X`
+- Vim: Press `:wq` and `Enter`
+
+#### Step 6: Start External Services (3 Terminals)
+
+You need **3 separate terminal tabs/windows** to run:
+1. Ollama
+2. Redis
+3. FastAPI application
+
+**Terminal 1 - Start Ollama:**
+
+```bash
+# Make sure virtualenv is NOT active for this
+# (Ollama is a standalone service)
 ollama serve
+
+# Expected output:
+# listening on 127.0.0.1:11434
+```
+
+**Wait 5-10 seconds** for Ollama to fully start. You should see output like:
+```
+time=2024-03-17T21:00:00.123Z level=INFO msg="listening on 127.0.0.1:11434"
+```
+
+**Terminal 2 - Start Redis:**
+
+```bash
+# Open a new terminal tab (NOT in your project directory)
+redis-server
+
+# Expected output:
+# * Ready to accept connections
+```
+
+Keep this running in the background.
+
+**Terminal 3 - Run FastAPI Application:**
+
+```bash
+# Navigate to project directory
+cd /path/to/hrms_ai_service
+
+# Activate virtual environment (if not already active)
+source venv/bin/activate
+
+# Start FastAPI development server
+python -m uvicorn app.main:app --reload
+
+# Expected output:
+# INFO:     Uvicorn running on http://127.0.0.1:8000
+# INFO:     Application startup complete
+```
+
+The `--reload` flag automatically restarts the server when you edit Python files.
+
+#### Step 7: Verify Everything is Running
+
+Open a **new terminal** (4th tab) and test:
+
+```bash
+# Verify Ollama is running
+curl http://localhost:11434/api/tags
+# Should return JSON with available models
+
+# Verify Redis is running
+redis-cli ping
+# Should return: PONG
+
+# Verify FastAPI is running
+curl http://localhost:8000/health
+# Should return: {"status":"ok"}
+```
+
+#### Step 8: Test the API
+
+**Using cURL:**
+
+```bash
+curl -X POST "http://localhost:8000/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is the leave policy?"}'
+
+# Expected response:
+# {"answer": "According to the leave policy..."}
+```
+
+**Using Python:**
+
+Create a test file `test_api.py`:
+
+```python
+import requests
+
+url = "http://localhost:8000/chat"
+payload = {"question": "Show employee 102"}
+headers = {"Content-Type": "application/json"}
+
+response = requests.post(url, json=payload, headers=headers)
+print("Status Code:", response.status_code)
+print("Response:", response.json())
+```
+
+Run it:
+```bash
+python test_api.py
+```
+
+**Using Interactive API Documentation:**
+
+Open browser: **http://localhost:8000/docs**
+- Click "POST /chat"
+- Click "Try it out"
+- Enter: `{"question": "What is the leave policy?"}`
+- Click "Execute"
+
+#### Step 9: Development Workflow
+
+While developing locally:
+
+```bash
+# Terminal 1 - Ollama (running)
+# Terminal 2 - Redis (running)
+# Terminal 3 - FastAPI (running with --reload)
+
+# Make code changes in your editor
+# FastAPI automatically restarts → no need to stop/restart
+
+# Keep both services running
+# When done, press Ctrl+C in each terminal to stop
+```
+
+**Stopping all services:**
+
+```bash
+# Terminal 1 (Ollama): Press Ctrl+C
+# Terminal 2 (Redis): Press Ctrl+C
+# Terminal 3 (FastAPI): Press Ctrl+C
+
+# Deactivate virtual environment
+deactivate
+```
+
+#### Troubleshooting Local Setup
+
+**Problem: ModuleNotFoundError when running FastAPI**
+
+```bash
+# Check virtualenv is activated
+which python
+# Should show path with 'venv'
+
+# If not activated:
+source venv/bin/activate
+
+# Reinstall dependencies
+pip install -r requirements.txt
+```
+
+**Problem: Port 8000 already in use**
+
+```bash
+# Find what's using port 8000
+lsof -i :8000
+
+# Kill the process
+kill -9 <PID>
+
+# Or change port in .env
+APP_PORT=8001
+```
+
+**Problem: Cannot connect to Ollama**
+
+```bash
+# Check Ollama is running
+curl http://localhost:11434/api/tags
+
+# If fails, restart Ollama in Terminal 1
+ollama serve
+```
+
+**Problem: Redis connection refused**
+
+```bash
+# Check Redis is running
+redis-cli ping
+
+# If fails, restart Redis in Terminal 2
 redis-server
 ```
 
-**Run application:**
+**Problem: "No Ollama models found"**
+
 ```bash
-python -m uvicorn app.main:app --reload
+# Pull a model first
+ollama pull llama2
+
+# List available models
+ollama list
+```
+
+---
+
+### Running with Docker (Alternative)
+
+If you prefer containerized setup instead:
+
+```bash
+cd docker
+cp .env.example .env
+docker compose up
+# Services start automatically: no separate terminals needed
 ```
 
 ### Building & Deploying Docker Image
