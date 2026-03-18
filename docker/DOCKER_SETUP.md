@@ -211,6 +211,65 @@ curl http://localhost:11434/api/tags
 docker exec -it hrms_ai_ollama ollama pull your-model-name
 ```
 
+## 🚀 Production Deployment (Pre-built Image)
+
+This workflow builds the image once and pushes to Docker Hub for use across multiple systems.
+
+### On Development/Build System
+
+**Step 1: Build and Push to Docker Hub**
+
+```bash
+# Make script executable
+chmod +x docker/build-and-push.sh
+
+# Run automated build and push
+./docker/build-and-push.sh
+```
+
+Or manually:
+
+```bash
+# Build the image
+docker build -f docker/Dockerfile -t manohar12500/hrms_ai:latest .
+
+# Login to Docker Hub (one-time only)
+docker login
+
+# Push to Docker Hub
+docker push manohar12500/hrms_ai:latest
+```
+
+### On Production/Other Systems
+
+**Step 1: Setup (Any system with Docker)**
+
+```bash
+# Clone project
+git clone <your-repo> hrms_ai_service
+cd hrms_ai_service
+
+# Setup environment
+cp docker/.env.example .env
+nano .env  # Edit with HRMS API credentials
+```
+
+**Step 2: Start Services**
+
+```bash
+# Start all services (downloads pre-built image)
+docker-compose -f docker/docker-compose.yml up -d
+
+# Wait 2-3 minutes for Ollama startup, then pull models
+docker exec -it hrms_ai_ollama ollama pull llama2
+docker exec -it hrms_ai_ollama ollama pull nomic-embed-text
+
+# Verify deployment
+curl http://localhost:8000/health
+```
+
+✅ **Instant deployment** on any system, no build time needed!
+
 ## Production Recommendations
 
 1. **Use Named Volumes**: Already implemented for data persistence
