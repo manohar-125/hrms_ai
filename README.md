@@ -1,4 +1,4 @@
-# HRMS AI Service - Complete Documentation
+# HRMS AI Service
 
 **AI-powered backend system for natural language interaction with HRMS (Human Resource Management) systems.**
 
@@ -21,7 +21,6 @@ Enable users to query employee data and HR policies using natural language inste
 11. [Processing Pipeline](#processing-pipeline)
 12. [Example Queries](#example-queries)
 13. [Troubleshooting](#troubleshooting)
-14. [Development](#development)
 
 ---
 
@@ -58,7 +57,6 @@ Enable users to query employee data and HR policies using natural language inste
 | **Policy RAG** | Vector database for storing/retrieving HR policy documents |
 | **Multi-stage LLM** | Ollama-powered intent classification, entity extraction, response generation |
 | **Redis Caching** | Caches frequent queries for improved response time |
-| **Docker Deployment** | Easy deployment with Docker & Docker Compose |
 | **API Registry** | Swagger-based HRMS API discovery and indexing |
 
 ---
@@ -79,10 +77,6 @@ Enable users to query employee data and HR policies using natural language inste
 ### Data & Cache
 - **Redis** - Caching layer (600s TTL)
 - **Requests** - HTTP client
-
-### Infrastructure
-- **Docker** - Containerization
-- **Docker Compose** - Multi-container orchestration
 
 ---
 
@@ -140,12 +134,6 @@ hrms_ai_service/
 │   ├── config.py                    # Configuration & env variables
 │   └── main.py                      # FastAPI app initialization
 │
-├── docker/
-│   ├── Dockerfile                   # Container image definition
-│   ├── docker-compose.yml           # Multi-container orchestration
-│   ├── .env.example                 # Environment template
-│   └── README.md                    # Docker setup guide
-│
 ├── scripts/
 │   ├── build_registry.py            # Fetch & build API registry from Swagger
 │   └── index_api_registry.py        # Index APIs into vector database
@@ -154,8 +142,8 @@ hrms_ai_service/
 ├── dump.rdb                         # Redis snapshot (local)
 │
 ├── requirements.txt                 # Python dependencies
-├── README.md                        # This file
-└── .env.example                     # Environment template
+├── .env                             # Environment configuration
+└── README.md                        # This file
 
 ```
 
@@ -164,109 +152,91 @@ hrms_ai_service/
 ## Prerequisites
 
 ### System Requirements
-- Docker Desktop installed (https://www.docker.com/products/docker-desktop/)
-- At least 4GB RAM available
-- Internet connection (for downloading images)
+- **Python 3.11+** - Core runtime
+- **Ollama** - Local LLM inference (download from https://ollama.ai)
+- **Redis** - Caching service (download or install via package manager)
+- **At least 4GB RAM** - For running Ollama models
+
+### Installation
+
+**Python 3.11:**
+- macOS: `brew install python@3.11` or download from https://www.python.org/downloads/
+- Linux: `sudo apt-get install python3.11`
+- Windows: Download from https://www.python.org/downloads/
+
+**Ollama:**
+- Download from https://ollama.ai
+- Install and run `ollama serve`
+
+**Redis:**
+- macOS: `brew install redis`
+- Linux: `sudo apt-get install redis-server`
+- Windows: Download from https://github.com/microsoftarchive/redis/releases
 
 ### External Services
-1. **Ollama Server** - LLM inference
-   - Runs in Docker container automatically
-   - Default URL: `http://ollama:11434`
-   
-2. **Redis** - Caching
-   - Runs in Docker or local server
-   - Default: `localhost:6379`
-   
-3. **HRMS API** - Your HR management system
-   - Must be accessible from container
+1. **HRMS API** - Your HR management system
+   - Must be accessible from your machine
    - Requires API token/credentials
 
 ---
 
 ## Installation & Setup
 
-### 1. Clone Repository
+### Quick Start (5 Minutes)
 
+**1. Clone/Extract Repository:**
 ```bash
-git clone <your-repo-url>
-cd hrms_ai_service
+cd /path/to/hrms_ai_service
 ```
 
-### 2. Create Environment File
-
-Choose Option A (recommended for sharing) or Option B (local development):
-
-**Option A: Docker Deployment (Using Pre-built Image)**
-
+**2. Create Virtual Environment:**
 ```bash
-cd docker
+python3.11 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# OR
+venv\Scripts\activate  # Windows
+```
+
+**3. Install Dependencies:**
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+**4. Configure Environment:**
+```bash
+# Copy and edit environment file
 cp .env.example .env
-# Edit .env with your configuration
-docker compose up
+# Edit .env with your HRMS API credentials
 ```
 
-**Option B: Local Development (Build from Source)**
+**5. Start Services (3 Terminal Windows):**
 
+**Terminal 1 - Ollama:**
 ```bash
-cd docker
-cp .env.example .env
-# Edit .env with your configuration
-docker compose up --build
+ollama serve
 ```
 
-### 3. Configure Environment Variables
-
-Edit `docker/.env`:
-
-```env
-# ======================
-# Ollama Configuration
-# ======================
-OLLAMA_URL=http://ollama:11434
-LLM_MODEL=llama3
-EMBED_MODEL=BAAI/bge-small-en
-CHROMA_PATH=/app/chroma_db
-
-# ======================
-# HRMS API Configuration
-# ======================
-HRMS_API_BASE_URL=https://hrmsapi.leanxpert.in
-HRMS_API_TOKEN=your_actual_token_here
-
-# ======================
-# Redis Configuration
-# ======================
-REDIS_URL=redis://localhost:6379
-CACHE_TTL=600
-
-# ======================
-# Application Configuration
-# ======================
-APP_PORT=8000
-```
-
-### 4. Start Services
-
+**Terminal 2 - Redis:**
 ```bash
-cd docker
-docker compose up
+redis-server
 ```
 
-**Services started:**
-- FastAPI server: http://localhost:8000
-- Ollama LLM: http://localhost:11434
-- Redis cache: localhost:6379
-- ChromaDB: embedded in app
-
-### 5. Verify Installation
-
+**Terminal 3 - FastAPI:**
 ```bash
-# Check health endpoint
+source venv/bin/activate
+python -m uvicorn app.main:app --reload
+```
+
+**6. Verify Installation:**
+```bash
 curl http://localhost:8000/health
-
-# Expected response:
-# {"status":"ok"}
+# Response: {"status":"ok"}
 ```
+
+**7. Access API:**
+- Swagger UI: http://localhost:8000/docs
+- Test endpoint: POST http://localhost:8000/chat
 
 ---
 
@@ -274,12 +244,35 @@ curl http://localhost:8000/health
 
 ### Environment Variables
 
+Create a `.env` file in the project root (copy from `.env.example`):
+
+```env
+# Ollama Configuration
+OLLAMA_URL=http://localhost:11434
+LLM_MODEL=llama2
+EMBED_MODEL=BAAI/bge-small-en
+CHROMA_PATH=./chroma_db
+
+# HRMS API Configuration
+HRMS_API_BASE_URL=https://hrmsapi.leanxpert.in
+HRMS_API_TOKEN=your_actual_token_here
+
+# Redis Configuration
+REDIS_URL=redis://localhost:6379
+CACHE_TTL=600
+
+# Application Configuration
+APP_PORT=8000
+```
+
+### Configuration Reference
+
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `OLLAMA_URL` | `http://ollama:11434` | URL to Ollama LLM service |
-| `LLM_MODEL` | `llama3` | Model to use (llama3, mistral, etc.) |
+| `OLLAMA_URL` | `http://localhost:11434` | URL to Ollama LLM service |
+| `LLM_MODEL` | `llama2` | Model to use (llama2, mistral, etc.) |
 | `EMBED_MODEL` | `BAAI/bge-small-en` | Embedding model for text chunks |
-| `CHROMA_PATH` | `/app/chroma_db` | Path to vector database |
+| `CHROMA_PATH` | `./chroma_db` | Path to vector database |
 | `HRMS_API_BASE_URL` | — | Your HRMS API endpoint |
 | `HRMS_API_TOKEN` | — | HRMS API authentication token |
 | `REDIS_URL` | `redis://localhost:6379` | Redis connection string |
@@ -288,16 +281,11 @@ curl http://localhost:8000/health
 
 ### Port Conflicts
 
-If port 8000 is already in use:
-
-```bash
-# Edit docker/.env
+If port 8000 is already in use, edit `.env`:
+```env
 APP_PORT=9000
-
-# Restart
-docker compose down
-docker compose up
 ```
+Then restart the FastAPI server.
 
 ---
 
@@ -884,13 +872,12 @@ LLM Formatting: Convert list to natural language
 
 ### Issue: Connection to Ollama Failed
 
-**Error:** `Connection refused: http://ollama:11434`
+**Error:** `Connection refused: http://localhost:11434`
 
 **Solutions:**
-1. Check Ollama is running: `docker logs <ollama-container>`
-2. Wait 30 seconds for Ollama to start
-3. Verify network: `docker network ls`
-4. Rebuild: `docker compose down && docker compose up --build`
+1. Verify Ollama is running: `curl http://localhost:11434/api/tags`
+2. Start Ollama: `ollama serve`
+3. Check if port 11434 is available: `lsof -i :11434`
 
 ### Issue: ChromaDB Collection Not Found
 
@@ -905,20 +892,33 @@ python scripts/index_api_registry.py
 ### Issue: Port 8000 Already in Use
 
 **Solution:**
-Change port in `docker/.env`:
+```bash
+# Find process using port 8000
+lsof -i :8000
+
+# Kill it
+kill -9 <PID>
+
+# OR change APP_PORT in .env file
 ```
-APP_PORT=9000
-```
-Then restart: `docker compose down && docker compose up`
 
 ### Issue: Redis Connection Failed
 
 **Error:** `Connection refused: localhost:6379`
 
 **Solutions:**
-1. Check Redis is running: `docker ps | grep redis`
-2. Clear cache flag in code (fallback to no-cache mode)
-3. Restart Redis: `docker compose restart redis`
+1. Check Redis is running: `redis-cli ping` (should return PONG)
+2. Start Redis: `redis-server`
+3. Verify port 6379 is available: `lsof -i :6379`
+
+### Issue: Python ModuleNotFoundError
+
+**Error:** `ModuleNotFoundError: No module named 'fastapi'`
+
+**Solutions:**
+1. Verify virtual environment is activated: `which python` (should show venv path)
+2. Reinstall dependencies: `pip install -r requirements.txt`
+3. Check Python version: `python --version` (should be 3.11+)
 
 ### Issue: HRMS API Call Fails
 
@@ -926,390 +926,66 @@ Then restart: `docker compose down && docker compose up`
 
 **Solutions:**
 1. Verify `HRMS_API_BASE_URL` in `.env`
-2. Check `HRMS_API_TOKEN` is correct
-3. Test API manually: `curl http://api-url/health`
-4. Check network connectivity: `docker exec hrms-ai-service ping hrmsapi.leanxpert.in`
+2. Check `HRMS_API_TOKEN` is correct and not expired
+3. Test API manually: `curl https://your-api-url/health`
+4. Check network connectivity: `ping your-api-url`
 
 ### Issue: Slow Response Times
 
-**Cause:** Ollama model is slow or LLM context is large
+**Causes and Solutions:**
+- Ollama model is slow → Use smaller model: `LLM_MODEL=mistral-lite`
+- Large context → Reduce context window in llama_client.py
+- Cache TTL too short → Increase: `CACHE_TTL=3600` (1 hour)
+- Check system resources: `top` or `Activity Monitor` (macOS)
 
-**Solutions:**
-1. Use smaller model: `LLM_MODEL=mistral-lite`
-2. Reduce context window in llama_client.py
-3. Increase cache TTL: `CACHE_TTL=3600` (1 hour)
-4. Check server resources: `docker stats`
+### Issue: No Ollama Models Found
 
----
+**Error:** `No models available`
 
-## Development
-
-### Running Locally (Without Docker) - Complete Step-by-Step Guide
-
-This guide is for when you have a **ZIP file** of the code and want to run everything locally on your machine with **Python 3.11.15** and **locally-installed Ollama**.
-
-#### Step 1: Verify Prerequisites
-
-Before starting, check if you have the required software:
-
+**Solution:**
 ```bash
-# Check Python version (must be 3.11+)
-python3 --version
-# Expected output: Python 3.11.15 (or higher 3.11.x)
-
-# Check if Ollama is installed
-ollama --version
-# Expected output: ollama version X.X.X
-
-# Check if Redis is installed
-redis-cli --version
-# Expected output: redis-cli version X.X.X
-```
-
-**If any are missing:**
-- **Python 3.11.15**: Download from https://www.python.org/downloads/
-- **Ollama**: Download from https://ollama.ai (or https://ollama.com)
-- **Redis**: 
-  - macOS: `brew install redis`
-  - Linux: `sudo apt-get install redis-server`
-  - Windows: Download from https://github.com/microsoftarchive/redis/releases
-
-#### Step 2: Extract and Navigate to Project
-
-```bash
-# Extract the ZIP file
-unzip hrms_ai_service.zip
-cd hrms_ai_service
-
-# Verify project structure
-ls -la
-# Should see: app/, docker/, scripts/, requirements.txt, README.md, etc.
-```
-
-#### Step 3: Create Python Virtual Environment
-
-**Why virtual environment?** It isolates project dependencies so they don't conflict with system packages.
-
-```bash
-# Create virtual environment named 'venv'
-python3.11 -m venv venv
-
-# Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-
-# On Windows PowerShell:
-venv\Scripts\Activate.ps1
-
-# On Windows CMD:
-venv\Scripts\activate.bat
-
-# Verify activation (you should see '(venv)' in terminal)
-which python
-# Output should be: /path/to/project/venv/bin/python
-```
-
-#### Step 4: Upgrade pip and Install Dependencies
-
-```bash
-# Upgrade pip to latest version
-pip install --upgrade pip
-
-# Install all dependencies from requirements.txt
-pip install -r requirements.txt
-
-# Verify installation
-pip list
-# Should show: fastapi, uvicorn, redis, chromadb, sentence-transformers, ollama, pydantic, python-dotenv
-```
-
-#### Step 5: Create Environment Configuration File
-
-```bash
-# Copy example environment file
-cp .env.example .env
-
-# Edit .env file with your settings
-# Use your favorite editor: nano, vim, code, etc.
-nano .env
-```
-
-**Edit `./.env` with these values:**
-
-```env
-# ======================
-# Ollama Configuration
-# ======================
-# Since Ollama is running locally, use localhost
-OLLAMA_URL=http://localhost:11434
-LLM_MODEL=llama2
-EMBED_MODEL=BAAI/bge-small-en
-CHROMA_PATH=./chroma_db
-
-# ======================
-# HRMS API Configuration
-# ======================
-HRMS_API_BASE_URL=https://hrmsapi.leanxpert.in
-HRMS_API_TOKEN=your_actual_token_here
-
-# ======================
-# Redis Configuration
-# ======================
-# Since Redis is running locally on default port
-REDIS_URL=redis://localhost:6379
-CACHE_TTL=600
-
-# ======================
-# Application Configuration
-# ======================
-APP_PORT=8000
-```
-
-**Save the file:**
-- Nano: Press `Ctrl+O`, then `Enter`, then `Ctrl+X`
-- Vim: Press `:wq` and `Enter`
-
-#### Step 6: Start External Services (3 Terminals)
-
-You need **3 separate terminal tabs/windows** to run:
-1. Ollama
-2. Redis
-3. FastAPI application
-
-**Terminal 1 - Start Ollama:**
-
-```bash
-# Make sure virtualenv is NOT active for this
-# (Ollama is a standalone service)
-ollama serve
-
-# Expected output:
-# listening on 127.0.0.1:11434
-```
-
-**Wait 5-10 seconds** for Ollama to fully start. You should see output like:
-```
-time=2024-03-17T21:00:00.123Z level=INFO msg="listening on 127.0.0.1:11434"
-```
-
-**Terminal 2 - Start Redis:**
-
-```bash
-# Open a new terminal tab (NOT in your project directory)
-redis-server
-
-# Expected output:
-# * Ready to accept connections
-```
-
-Keep this running in the background.
-
-**Terminal 3 - Run FastAPI Application:**
-
-```bash
-# Navigate to project directory
-cd /path/to/hrms_ai_service
-
-# Activate virtual environment (if not already active)
-source venv/bin/activate
-
-# Start FastAPI development server
-python -m uvicorn app.main:app --reload
-
-# Expected output:
-# INFO:     Uvicorn running on http://127.0.0.1:8000
-# INFO:     Application startup complete
-```
-
-The `--reload` flag automatically restarts the server when you edit Python files.
-
-#### Step 7: Verify Everything is Running
-
-Open a **new terminal** (4th tab) and test:
-
-```bash
-# Verify Ollama is running
-curl http://localhost:11434/api/tags
-# Should return JSON with available models
-
-# Verify Redis is running
-redis-cli ping
-# Should return: PONG
-
-# Verify FastAPI is running
-curl http://localhost:8000/health
-# Should return: {"status":"ok"}
-```
-
-#### Step 8: Test the API
-
-**Using cURL:**
-
-```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is the leave policy?"}'
-
-# Expected response:
-# {"answer": "According to the leave policy..."}
-```
-
-**Using Python:**
-
-Create a test file `test_api.py`:
-
-```python
-import requests
-
-url = "http://localhost:8000/chat"
-payload = {"question": "Show employee 102"}
-headers = {"Content-Type": "application/json"}
-
-response = requests.post(url, json=payload, headers=headers)
-print("Status Code:", response.status_code)
-print("Response:", response.json())
-```
-
-Run it:
-```bash
-python test_api.py
-```
-
-**Using Interactive API Documentation:**
-
-Open browser: **http://localhost:8000/docs**
-- Click "POST /chat"
-- Click "Try it out"
-- Enter: `{"question": "What is the leave policy?"}`
-- Click "Execute"
-
-#### Step 9: Development Workflow
-
-While developing locally:
-
-```bash
-# Terminal 1 - Ollama (running)
-# Terminal 2 - Redis (running)
-# Terminal 3 - FastAPI (running with --reload)
-
-# Make code changes in your editor
-# FastAPI automatically restarts → no need to stop/restart
-
-# Keep both services running
-# When done, press Ctrl+C in each terminal to stop
-```
-
-**Stopping all services:**
-
-```bash
-# Terminal 1 (Ollama): Press Ctrl+C
-# Terminal 2 (Redis): Press Ctrl+C
-# Terminal 3 (FastAPI): Press Ctrl+C
-
-# Deactivate virtual environment
-deactivate
-```
-
-#### Troubleshooting Local Setup
-
-**Problem: ModuleNotFoundError when running FastAPI**
-
-```bash
-# Check virtualenv is activated
-which python
-# Should show path with 'venv'
-
-# If not activated:
-source venv/bin/activate
-
-# Reinstall dependencies
-pip install -r requirements.txt
-```
-
-**Problem: Port 8000 already in use**
-
-```bash
-# Find what's using port 8000
-lsof -i :8000
-
-# Kill the process
-kill -9 <PID>
-
-# Or change port in .env
-APP_PORT=8001
-```
-
-**Problem: Cannot connect to Ollama**
-
-```bash
-# Check Ollama is running
-curl http://localhost:11434/api/tags
-
-# If fails, restart Ollama in Terminal 1
-ollama serve
-```
-
-**Problem: Redis connection refused**
-
-```bash
-# Check Redis is running
-redis-cli ping
-
-# If fails, restart Redis in Terminal 2
-redis-server
-```
-
-**Problem: "No Ollama models found"**
-
-```bash
-# Pull a model first
+# Pull a model
 ollama pull llama2
 
 # List available models
 ollama list
+
+# Run served model first
+ollama serve llama2
+```
+
+### Issue: Virtual Environment Not Activating
+
+**Solution:**
+```bash
+# macOS/Linux
+source venv/bin/activate
+
+# Windows PowerShell
+venv\Scripts\Activate.ps1
+
+# Windows CMD
+venv\Scripts\activate.bat
+
+# Verify activation
+which python  # Should show venv path
 ```
 
 ---
 
-### Running with Docker (Alternative)
+### Testing the API
 
-If you prefer containerized setup instead:
-
+**Using cURL:**
 ```bash
-cd docker
-cp .env.example .env
-docker compose up
-# Services start automatically: no separate terminals needed
+curl -X POST "http://localhost:8000/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is the leave policy?"}'
 ```
 
-### Building & Deploying Docker Image
+**Using Swagger UI:**
+Open browser: http://localhost:8000/docs
 
-**Build locally:**
-```bash
-docker build -f docker/Dockerfile -t myregistry/hrms_ai:latest .
-```
-
-**Push to Docker Hub:**
-```bash
-docker login
-docker push myregistry/hrms_ai:latest
-```
-
-**Run from image:**
-```bash
-docker run -p 8000:8000 --env-file .env myregistry/hrms_ai:latest
-```
-
-### Adding New HRMS APIs
-
-1. Add Swagger URL to `scripts/build_registry.py`
-2. Run: `python scripts/build_registry.py`
-3. Index into vector DB: `python scripts/index_api_registry.py`
-4. System will automatically discover and rank new APIs
-
-### Testing
-
-**Manual API testing:**
+**Using Python:**
 ```python
 import requests
 response = requests.post(
@@ -1319,8 +995,16 @@ response = requests.post(
 print(response.json())
 ```
 
-**Debug logging:**
-Add to any file:
+### Adding New HRMS APIs
+
+1. Add Swagger URL to [scripts/build_registry.py](scripts/build_registry.py)
+2. Run: `python scripts/build_registry.py`
+3. Index into vector DB: `python scripts/index_api_registry.py`
+4. System automatically discovers and ranks new APIs
+
+### Debug Mode
+
+Enable debug logging in your code:
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -1330,41 +1014,16 @@ logger.debug(f"Variable: {variable}")
 
 ---
 
-## Support & Resources
+## Resources
 
 - **FastAPI Docs:** https://fastapi.tiangolo.com
 - **Ollama Project:** https://ollama.ai
 - **ChromaDB Docs:** https://docs.trychroma.com
-- **Docker Docs:** https://docs.docker.com
+- **python-dotenv:** https://github.com/theskumar/python-dotenv
 
 ---
 
-**Last Updated:** March 2026  
 **Version:** 1.0.0  
-**Maintainer:** Shyam Manohar
-
-• keyword matching
-• semantic similarity
-
-Tool Executor
-Calls HRMS API.
-
-RAG Engine
-Retrieves HR policies from vector store.
-
-LLM Client
-Uses Ollama for reasoning.
-
----
-
-# Deployment
-
-The system is fully containerized using Docker.
-
-Run with:
-
-```
-docker compose up --build
-```
+**Last Updated:** March 2026
 
 ---
