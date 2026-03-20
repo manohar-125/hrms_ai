@@ -52,23 +52,6 @@
       "retrieve"
     ]
   },
-  "get_associatedeductionsub": {
-    "domain": "hr",
-    "endpoint": "/api/AssociateDeductionSub",
-    "method": "GET",
-    "description": "Retrieve AssociateDeductionSub information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "associatedeductionsub",
-      "hrms",
-      "retrieve"
-    ]
-  },
   "get_bank": {
     "domain": "hr",
     "endpoint": "/api/Bank",
@@ -194,27 +177,6 @@
       "retrieve"
     ]
   },
-  "get_client_updateclientstatus_clientid_status_updatedby": {
-    "domain": "client",
-    "endpoint": "/api/Client/UpdateClientStatus/{ClientId}/{status}/{UpdatedBy}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "ClientId": "client id",
-      "status": "status",
-      "UpdatedBy": "UpdatedBy"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "client",
-      "from",
-      "system",
-      "hrms",
-      "updatedby"
-    ]
-  },
   "get_contact": {
     "domain": "hr",
     "endpoint": "/api/Contact",
@@ -230,93 +192,6 @@
       "system",
       "hrms",
       "retrieve"
-    ]
-  },
-  "get_country": {
-    "domain": "hr",
-    "endpoint": "/api/Country",
-    "method": "GET",
-    "description": "Retrieve Country information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "country",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_country_id": {
-    "domain": "hr",
-    "endpoint": "/api/Country/{id}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "id": "resource id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "country",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_dashboarddetail_getclientdashboarddetail": {
-    "domain": "client",
-    "endpoint": "/api/DashboardDetail/GetClientDashboardDetail",
-    "method": "GET",
-    "description": "Retrieve GetClientDashboardDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "client",
-      "getclientdashboarddetail",
-      "from",
-      "system",
-      "hrms"
-    ]
-  },
-  "get_dashboarddetail_getprojectdashboarddetail": {
-    "domain": "project",
-    "endpoint": "/api/DashboardDetail/GetProjectDashboardDetail",
-    "method": "GET",
-    "description": "Retrieve GetProjectDashboardDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "getprojectdashboarddetail",
-      "project",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms"
-    ]
-  },
-  "get_dashboarddetail_getemployeedashboarddetail": {
-    "domain": "employee",
-    "endpoint": "/api/DashboardDetail/GetEmployeeDashboardDetail",
-    "method": "GET",
-    "description": "Retrieve employee GetEmployeeDashboardDetail details from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "getemployeedashboarddetail",
-      "dashboarddetail"
     ]
   },
   "get_deductionplan": {
@@ -603,29 +478,6 @@
       "hrms",
       "employeetasktimesheet",
       "retrieve"
-    ]
-  },
-  "get_employeetasktimesheet_timesheetapprovereject_timesheetid_statusid_statusname_statusremarks_updatedby": {
-    "domain": "employee",
-    "endpoint": "/api/EmployeeTaskTimeSheet/TimeSheetApproveReject/{TimeSheetId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
-    "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
-    "parameters": {
-      "TimeSheetId": "time sheet id",
-      "StatusId": "status id",
-      "StatusName": "StatusName",
-      "StatusRemarks": "StatusRemarks",
-      "UpdatedBy": "UpdatedBy"
-    },
-    "keywords": [
-      "statusremarks",
-      "the",
-      "timesheetapprovereject",
-      "get",
-      "from",
-      "statusid",
-      "details",
-      "system"
     ]
   },
   "get_employment": {
@@ -929,74 +781,12 @@
       "hrms"
     ]
   },
-  "get_leaveapply_updateleaveapplystatus_leaveapplyid_statusid_statusname_statusremarks_updatedby": {
-    "domain": "leave",
-    "endpoint": "/api/LeaveApply/UpdateLeaveApplyStatus/{LeaveApplyId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "LeaveApplyId": "leave apply id",
-      "StatusId": "status id",
-      "StatusName": "StatusName",
-      "StatusRemarks": "StatusRemarks",
-      "UpdatedBy": "UpdatedBy"
-    },
-    "keywords": [
-      "leave",
-      "information",
-      "statusremarks",
-      "updateleaveapplystatus",
-      "the",
-      "get",
-      "from",
-      "leaveapply"
-    ]
-  },
-  "get_leavedashboard_getallleavedashboarddetailwithempid_empregid_financialyearid": {
-    "domain": "employee",
-    "endpoint": "/api/LeaveDashboard/GetAllLeaveDashboardDetailWithEmpId/{EmpRegid}/{FinancialYearId}",
-    "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
-    "parameters": {
-      "EmpRegid": "employee registration id",
-      "FinancialYearId": "Financial year id"
-    },
-    "keywords": [
-      "getallleavedashboarddetailwithempid",
-      "the",
-      "get",
-      "from",
-      "empregid",
-      "financialyearid",
-      "leavedashboard",
-      "details"
-    ]
-  },
   "get_leavetype": {
     "domain": "leave",
     "endpoint": "/api/LeaveType",
     "method": "GET",
     "description": "Retrieve LeaveType information from the HRMS system",
     "parameters": {},
-    "keywords": [
-      "leave",
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "leavetype"
-    ]
-  },
-  "get_leavetype_id": {
-    "domain": "leave",
-    "endpoint": "/api/LeaveType/{id}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "id": "resource id"
-    },
     "keywords": [
       "leave",
       "information",
@@ -1042,26 +832,6 @@
       "system",
       "hrms",
       "retrieve"
-    ]
-  },
-  "get_manager_getmanagername_departmentid_desginationid": {
-    "domain": "hr",
-    "endpoint": "/api/Manager/GetManagerName/{DepartmentId}/{DesginationId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "DepartmentId": "department id",
-      "DesginationId": "designation id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "manager",
-      "system",
-      "desginationid",
-      "hrms"
     ]
   },
   "get_managesalarydays": {
@@ -1134,48 +904,6 @@
       "system",
       "hrms",
       "attendance"
-    ]
-  },
-  "get_manualattendance_getapprovalrejectbysupervisoryid_supervisoryid": {
-    "domain": "attendance",
-    "endpoint": "/api/ManualAttendance/GetApprovalRejectBySupervisoryId/{SupervisoryId}",
-    "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
-    "parameters": {
-      "SupervisoryId": "supervisory id"
-    },
-    "keywords": [
-      "getapprovalrejectbysupervisoryid",
-      "the",
-      "get",
-      "manualattendance",
-      "from",
-      "details",
-      "system",
-      "hrms"
-    ]
-  },
-  "get_manualattendance_updatemanualattestatus_manualattendanceid_statusid_statusname_statusremarks_updatedby": {
-    "domain": "attendance",
-    "endpoint": "/api/ManualAttendance/UpdateManualAtteStatus/{ManualAttendanceId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
-    "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
-    "parameters": {
-      "ManualAttendanceId": "manual attendance id",
-      "StatusId": "status id",
-      "StatusName": "StatusName",
-      "StatusRemarks": "StatusRemarks",
-      "UpdatedBy": "UpdatedBy"
-    },
-    "keywords": [
-      "statusname",
-      "manualattendanceid",
-      "statusremarks",
-      "api",
-      "the",
-      "get",
-      "from",
-      "statusid"
     ]
   },
   "get_projectmanager": {
@@ -1375,99 +1103,6 @@
       "salaryearning"
     ]
   },
-  "get_salaryearning_updatesalaryearningstatus_id_status": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryEarning/UpdateSalaryEarningStatus/{Id}/{status}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "Id": "resource id",
-      "status": "status"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "updatesalaryearningstatus",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
-  "get_salaryearning_getsalaryearningdetailwithearningid_earningid_earningtypeid": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryEarning/GetSalaryEarningDetailWithEarningId/{EarningId}/{EarningTypeId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "EarningId": "earning id",
-      "EarningTypeId": "earning type id"
-    },
-    "keywords": [
-      "getsalaryearningdetailwithearningid",
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
-  "get_salaryearning_getsalaryearningallcomponentsdetail": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryEarning/GetSalaryEarningAllComponentsDetail",
-    "method": "GET",
-    "description": "Retrieve GetSalaryEarningAllComponentsDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "getsalaryearningallcomponentsdetail",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
-  "get_salaryearningtype": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryEarningType",
-    "method": "GET",
-    "description": "Retrieve SalaryEarningType information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "salaryearningtype",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
-  "get_salaryearningtype_id": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryEarningType/{id}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "id": "resource id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "salaryearningtype",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
   "get_salarypostdeduction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction",
@@ -1502,42 +1137,6 @@
       "hrms",
       "payroll",
       "salarypostdeduction"
-    ]
-  },
-  "get_salarypostdeduction_getsalarypostdeductionallcomponentsdetail": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionAllComponentsDetail",
-    "method": "GET",
-    "description": "Retrieve GetSalaryPostDeductionAllComponentsDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "getsalarypostdeductionallcomponentsdetail",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
-  "get_salarypostdeduction_getsalarypostdeductiondetailwithearningid_postdeductionid": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionDetailWithEarningId/{PostDeductionId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "PostDeductionId": "post deduction id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "getsalarypostdeductiondetailwithearningid",
-      "postdeductionid",
-      "system",
-      "hrms"
     ]
   },
   "get_salaryprededuction": {
@@ -1576,42 +1175,6 @@
       "payroll"
     ]
   },
-  "get_salaryprededuction_getsalarypredeductionallcomponentsdetail": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionAllComponentsDetail",
-    "method": "GET",
-    "description": "Retrieve GetSalaryPreDeductionAllComponentsDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "getsalarypredeductionallcomponentsdetail",
-      "salaryprededuction",
-      "system",
-      "hrms"
-    ]
-  },
-  "get_salaryprededuction_getsalarypredeductiondetailwithearningid_predeductionid": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionDetailWithEarningId/{PreDeductionId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "PreDeductionId": "pre deduction id"
-    },
-    "keywords": [
-      "information",
-      "predeductionid",
-      "the",
-      "get",
-      "from",
-      "getsalarypredeductiondetailwithearningid",
-      "salaryprededuction",
-      "system"
-    ]
-  },
   "get_salaryreimbursement": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement",
@@ -1646,62 +1209,6 @@
       "system",
       "hrms",
       "payroll"
-    ]
-  },
-  "get_salaryreimbursement_updatesalaryreimbursementstatus_id_status": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryReimbursement/UpdateSalaryReimbursementStatus/{Id}/{status}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "Id": "resource id",
-      "status": "status"
-    },
-    "keywords": [
-      "information",
-      "salaryreimbursement",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "payroll"
-    ]
-  },
-  "get_salaryreimbursement_getreimbursementallcomponentsdetail": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryReimbursement/GetReimbursementAllComponentsDetail",
-    "method": "GET",
-    "description": "Retrieve GetReimbursementAllComponentsDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "getreimbursementallcomponentsdetail",
-      "salaryreimbursement",
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms"
-    ]
-  },
-  "get_salaryreimbursement_getsalaryreimbursementdetailwithearningid_reimbursementid": {
-    "domain": "payroll",
-    "endpoint": "/api/SalaryReimbursement/GetSalaryReimbursementDetailWithEarningId/{ReimbursementId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "ReimbursementId": "reimbursement id"
-    },
-    "keywords": [
-      "api",
-      "salaryreimbursement",
-      "information",
-      "the",
-      "get",
-      "from",
-      "reimbursementid",
-      "system"
     ]
   },
   "get_salarytamplate_getsalarytamplates": {
@@ -1740,26 +1247,6 @@
       "templateid"
     ]
   },
-  "get_salarytamplate_getsalarytamplatedetailbyidwithamount_templateid_salaryamount": {
-    "domain": "employee",
-    "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailByIdWithAmount/{TemplateId}/{SalaryAmount}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "TemplateId": "template id",
-      "SalaryAmount": "SalaryAmount"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "salarytamplate",
-      "system",
-      "salaryamount",
-      "templateid"
-    ]
-  },
   "get_salarytamplatewithregid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryTamplateWithRegId",
@@ -1775,23 +1262,6 @@
       "system",
       "hrms",
       "payroll"
-    ]
-  },
-  "get_salarytamplatewithregid_getassignedsalarytemplatedetail": {
-    "domain": "employee",
-    "endpoint": "/api/SalaryTamplateWithRegId/GetAssignedSalaryTemplateDetail",
-    "method": "GET",
-    "description": "Retrieve GetAssignedSalaryTemplateDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "getassignedsalarytemplatedetail",
-      "salarytamplatewithregid",
-      "system",
-      "hrms"
     ]
   },
   "get_skill": {
@@ -1836,25 +1306,6 @@
     "method": "GET",
     "description": "Retrieve State information from the HRMS system",
     "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "state",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_state_id": {
-    "domain": "hr",
-    "endpoint": "/api/State/{id}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "id": "resource id"
-    },
     "keywords": [
       "information",
       "the",
@@ -1938,26 +1389,6 @@
       "retrieve"
     ]
   },
-  "get_supervisor_getsupervisorname_departmentid_designationid": {
-    "domain": "hr",
-    "endpoint": "/api/Supervisor/GetSupervisorName/{DepartmentId}/{designationId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "DepartmentId": "department id",
-      "designationId": "designation id"
-    },
-    "keywords": [
-      "information",
-      "departmentid",
-      "the",
-      "get",
-      "from",
-      "getsupervisorname",
-      "supervisor",
-      "system"
-    ]
-  },
   "get_task": {
     "domain": "task",
     "endpoint": "/api/Task",
@@ -1973,65 +1404,6 @@
       "system",
       "hrms",
       "retrieve"
-    ]
-  },
-  "get_task_updatetaskstatus_taskid_status_updatedby": {
-    "domain": "task",
-    "endpoint": "/api/Task/UpdateTaskStatus/{TaskId}/{Status}/{UpdatedBy}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "TaskId": "task id",
-      "Status": "Status",
-      "UpdatedBy": "UpdatedBy"
-    },
-    "keywords": [
-      "taskid",
-      "information",
-      "the",
-      "task",
-      "get",
-      "from",
-      "updatetaskstatus",
-      "system"
-    ]
-  },
-  "get_task_rolesummary_departmentid": {
-    "domain": "task",
-    "endpoint": "/api/Task/RoleSummary/{departmentId}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "departmentId": "department id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "task",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "rolesummary"
-    ]
-  },
-  "get_task_attendancesummary_department": {
-    "domain": "task",
-    "endpoint": "/api/Task/AttendanceSummary/{department}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "department": "department"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "task",
-      "get",
-      "from",
-      "attendancesummary",
-      "system",
-      "hrms"
     ]
   },
   "get_taskdetail": {
@@ -2140,98 +1512,6 @@
       "hrms",
       "workshift",
       "retrieve"
-    ]
-  },
-  "get_worktype": {
-    "domain": "hr",
-    "endpoint": "/api/WorkType",
-    "method": "GET",
-    "description": "Retrieve WorkType information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "worktype",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_worktype_id": {
-    "domain": "hr",
-    "endpoint": "/api/WorkType/{id}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "id": "resource id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "worktype",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_zipcodedetail": {
-    "domain": "hr",
-    "endpoint": "/api/ZipCodeDetail",
-    "method": "GET",
-    "description": "Retrieve ZipCodeDetail information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "zipcodedetail",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_zipcodedetail_id": {
-    "domain": "hr",
-    "endpoint": "/api/ZipCodeDetail/{id}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "id": "resource id"
-    },
-    "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "zipcodedetail",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
-  },
-  "get_zipcodedetail_getzipcodedetaildetail_zipcode_flag": {
-    "domain": "hr",
-    "endpoint": "/api/ZipCodeDetail/GetZipCodeDetailDetail/{ZipCode}/{Flag}",
-    "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
-    "parameters": {
-      "ZipCode": "ZipCode",
-      "Flag": "Flag"
-    },
-    "keywords": [
-      "information",
-      "flag",
-      "the",
-      "getzipcodedetaildetail",
-      "get",
-      "from",
-      "zipcode",
-      "zipcodedetail"
     ]
   }
 }
