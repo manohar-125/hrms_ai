@@ -1,8 +1,10 @@
 import requests
+import logging
 from app.config import settings
 
 BASE_URL = settings.HRMS_API_BASE_URL
 TOKEN = settings.HRMS_API_TOKEN
+logger = logging.getLogger(__name__)
 
 
 def get(endpoint: str, params: dict | None = None):
@@ -58,21 +60,46 @@ def get(endpoint: str, params: dict | None = None):
 
 def fetch_policy_from_api():
     """
-    Fetch leave policy from HRMS API
-    Used when embedding does not exist in vector DB
+    Fetch policy documents from HRMS API.
+    Primary endpoint: /api/Policies
+    Fallback endpoint: /LeavePolicy
     """
 
-    result = get("/LeavePolicy")
+    logger.info("Fetching policies from endpoint: /api/Policies")
+    result = get("/api/Policies")
 
     if not result["success"]:
+        logger.warning("Primary policy endpoint failed, trying fallback /LeavePolicy")
+        result = get("/LeavePolicy")
+
+    if not result["success"]:
+        logger.warning("Failed to fetch policies from both endpoints")
         return None
 
     data = result["data"]
-
-    # convert JSON policy to text for embedding
     if isinstance(data, list):
-        text = "\n".join([str(item) for item in data])
+        logger.info("Policies API returned %d records", len(data))
     else:
-        text = str(data)
+        logger.info("Policies API returned non-list payload type: %s", type(data).__name__)
 
-    return text
+    return data
+
+
+def download_binary(url: str):
+    """
+    Download a binary file (used for policy PDFs).
+    """
+
+    headers = {
+        "Authorization": f"Bearer {TOKEN}"
+    }
+
+    try:
+        logger.info("Downloading policy PDF from URL: %s", url)
+        response = requests.get(url, headers=headers, timeout=20)
+        response.raise_for_status()
+        logger.info("Policy PDF downloaded successfully (bytes=%d)", len(response.content))
+        return response.content
+    except requests.exceptions.RequestException as exc:
+        logger.warning("Failed downloading binary from %s: %s", url, str(exc))
+        return None

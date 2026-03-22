@@ -479,12 +479,11 @@
       "employeetasktimesheet",
       "retrieve"
     ]
-  },
-  "get_employment": {
+  },"get_employment": {
     "domain": "employee",
     "endpoint": "/api/Employment",
     "method": "GET",
-    "description": "Retrieve employee Employment details from the HRMS system",
+    "description": "Retrieve employee details from the HRMS system",
     "parameters": {},
     "keywords": [
       "the",
@@ -501,7 +500,7 @@
     "domain": "employee",
     "endpoint": "/api/Employment/{id}",
     "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
+    "description": "Retrieve employee details from the HRMS system",
     "parameters": {
       "id": "resource id"
     },
@@ -520,13 +519,13 @@
     "domain": "employee",
     "endpoint": "/api/EmpPersDtls",
     "method": "GET",
-    "description": "Retrieve employee EmpPersDtls details from the HRMS system",
+    "description": "Retrieve employee personal details from the HRMS system",
     "parameters": {},
     "keywords": [
       "the",
       "get",
       "from",
-      "emppersdtls",
+      "personal details",
       "details",
       "system",
       "hrms",
@@ -537,14 +536,14 @@
     "domain": "employee",
     "endpoint": "/api/EmpType",
     "method": "GET",
-    "description": "Retrieve EmpType information from the HRMS system",
+    "description": "Retrieve employee type information from the HRMS system",
     "parameters": {},
     "keywords": [
       "information",
       "the",
       "get",
       "from",
-      "emptype",
+      "employee type",
       "system",
       "hrms",
       "retrieve"
@@ -554,7 +553,7 @@
     "domain": "employee",
     "endpoint": "/api/EmpType/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve employee type information from the HRMS system",
     "parameters": {
       "id": "resource id"
     },
@@ -563,7 +562,7 @@
       "the",
       "get",
       "from",
-      "emptype",
+      "employee type",
       "system",
       "hrms",
       "retrieve"
@@ -675,23 +674,6 @@
       "retrieve"
     ]
   },
-  "get_holidaycalendar": {
-    "domain": "hr",
-    "endpoint": "/api/HolidayCalendar",
-    "method": "GET",
-    "description": "Retrieve HolidayCalendar information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "information",
-      "the",
-      "holidaycalendar",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
-  },
   "get_jobtitle": {
     "domain": "hr",
     "endpoint": "/api/JobTitle",
@@ -779,23 +761,6 @@
       "leaveapply",
       "system",
       "hrms"
-    ]
-  },
-  "get_leavetype": {
-    "domain": "leave",
-    "endpoint": "/api/LeaveType",
-    "method": "GET",
-    "description": "Retrieve LeaveType information from the HRMS system",
-    "parameters": {},
-    "keywords": [
-      "leave",
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "leavetype"
     ]
   },
   "get_manager": {

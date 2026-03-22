@@ -1,7 +1,8 @@
 import requests
+import logging
 from app.config import settings
 
-
+logger = logging.getLogger(__name__)
 BASE_URL = settings.HRMS_API_BASE_URL
 TOKEN = settings.HRMS_API_TOKEN
 
@@ -15,11 +16,12 @@ class ToolExecutor:
 
         url = f"{BASE_URL}{endpoint}"
 
-        print("[ToolExecutor] Calling:", url)
-
         headers = {
             "Authorization": f"Bearer {TOKEN}"
         }
+
+        # Log outgoing API request
+        logger.info(f"[ToolExecutor] Calling: {url}")
 
         if method == "GET":
             response = requests.get(url, headers=headers)

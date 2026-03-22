@@ -15,10 +15,12 @@ class APIVectorStore:
             name=COLLECTION_NAME
         )
 
-    def index_tools(self, registry_path="app/tools/api_registry.json"):
+    def _load_registry(self, registry_path):
 
         with open(registry_path) as f:
-            registry = json.load(f)
+            return json.load(f)
+
+    def _build_docs_and_ids(self, registry: dict):
 
         docs = []
         ids = []
@@ -35,6 +37,28 @@ class APIVectorStore:
             docs.append(text)
             ids.append(tool_name)
 
+        return docs, ids
+
+    def sync_tools(self, registry_path="app/tools/api_registry.json"):
+
+        registry = self._load_registry(registry_path)
+
+        desired_ids = set(registry.keys())
+        existing = self.collection.get(include=[])
+        existing_ids = set(existing.get("ids", []))
+
+        stale_ids = list(existing_ids - desired_ids)
+        if stale_ids:
+            self.collection.delete(ids=stale_ids)
+
+        if not registry:
+            return {
+                "upserted": 0,
+                "deleted": len(stale_ids),
+                "total_registry": 0,
+            }
+
+        docs, ids = self._build_docs_and_ids(registry)
         embeddings = self.embedder.embed_documents(docs)
 
         self.collection.upsert(
@@ -42,6 +66,17 @@ class APIVectorStore:
             embeddings=embeddings,
             ids=ids
         )
+
+        return {
+            "upserted": len(ids),
+            "deleted": len(stale_ids),
+            "total_registry": len(registry),
+        }
+
+    def index_tools(self, registry_path="app/tools/api_registry.json"):
+
+        # Backward-compatible alias for registry sync.
+        return self.sync_tools(registry_path=registry_path)
 
     def search_tools(self, query, k=5):
         """

@@ -1,8 +1,13 @@
 import json
 import re
+import logging
 from pathlib import Path
 
 from app.llm.llama_client import generate_response
+from app.config import settings
+
+logger = logging.getLogger(__name__)
+
 from app.core.domain_classifier import classify_domain
 from app.vectordb.api_vector_store import APIVectorStore
 
@@ -11,13 +16,17 @@ class ToolPlanner:
 
     def __init__(self):
 
-        registry_path = Path("app/tools/api_registry.json")
-
-        with open(registry_path, "r") as f:
-            self.registry = json.load(f)
+        self.registry_path = Path("app/tools/api_registry.json")
+        self.registry = {}
+        self._load_registry()
 
         # semantic search store
         self.vector_store = APIVectorStore()
+
+    def _load_registry(self):
+
+        with open(self.registry_path, "r") as f:
+            self.registry = json.load(f)
 
     def keyword_boost(self, query: str, tools: dict) -> list:
         """
@@ -123,6 +132,34 @@ class ToolPlanner:
         
         return filtered
 
+    def _filter_metadata_apis(self, tools: list, query: str) -> list:
+        """
+        Deprioritize metadata/type/status APIs unless explicitly requested.
+        These are less useful for general queries.
+        
+        Args:
+            tools: List of (tool_name, score) tuples
+            query: User query string
+        
+        Returns:
+            Filtered list with metadata APIs removed/downscored
+        """
+        metadata_keywords = ['type', 'status', 'config', 'setting', 'category']
+        query_lower = query.lower()
+        
+        # Don't filter if query explicitly asks for metadata
+        if any(kw in query_lower for kw in metadata_keywords):
+            return tools  # Keep all if metadata is requested
+        
+        filtered = []
+        for tool_name, score in tools:
+            tool_name_lower = tool_name.lower()
+            # Heavily penalize metadata APIs by removing them (not just downscoring)
+            if not any(marker in tool_name_lower for marker in metadata_keywords):
+                filtered.append((tool_name, score))
+        
+        return filtered if filtered else tools  # Return original if all filtered
+
     def _clean_llm_output(self, response: str) -> str:
         """
         Clean LLM output to extract just the tool name.
@@ -149,10 +186,12 @@ class ToolPlanner:
 
     def find_tool(self, query: str):
 
+        # Reload registry on each request so add/remove changes are picked up
+        # without restarting the API service.
+        self._load_registry()
+
         # Step 1 — Detect domain
         domain = classify_domain(query)
-
-        print(f"[ToolPlanner] Detected domain: {domain}")
 
         # Step 2 — Filter tools by domain
         filtered_tools = {}
@@ -164,8 +203,6 @@ class ToolPlanner:
 
         # fallback if domain not found
         if not filtered_tools:
-
-            print("[ToolPlanner] No domain match, using full registry")
             filtered_tools = self.registry
 
         # Step 3 — Prefer APIs without parameters
@@ -181,20 +218,13 @@ class ToolPlanner:
         if clean_tools:
             filtered_tools = clean_tools
 
-        print(f"[ToolPlanner] Tools after domain filter: {len(filtered_tools)}")
-
         # Step 4 — Compute keyword scores for all filtered tools
         keyword_scores_all = self.keyword_boost(query, filtered_tools)
         keyword_score_map = {tool_name: score for tool_name, score in keyword_scores_all}
-        
-        print("[ToolPlanner] Keyword scores:")
-        for tool_name, score in keyword_scores_all[:10]:
-            if score > 0:
-                print(f"  {tool_name} ({score:.4f})")
 
         # Step 5 — Semantic search with similarity ranking
         # Use enhanced search method that returns scores
-        semantic_candidates_scored = self.vector_store.search_tools_with_scores(query, k=10)
+        semantic_candidates_scored = self.vector_store.search_tools_with_scores(query, k=settings.SEMANTIC_SEARCH_K)
 
         # Filter candidates to only include tools from domain-filtered list
         semantic_candidates_scored = [
@@ -205,9 +235,8 @@ class ToolPlanner:
         # Filter dashboard APIs from semantic candidates if not requested
         semantic_candidates_scored = self._filter_dashboard_apis(semantic_candidates_scored, query)
 
-        print("[ToolPlanner] Semantic scores:")
-        for tool_name, score in semantic_candidates_scored[:10]:
-            print(f"  {tool_name} ({score:.4f})")
+        # Filter metadata/type/status APIs unless explicitly requested
+        semantic_candidates_scored = self._filter_metadata_apis(semantic_candidates_scored, query)
 
         # Step 6 — Hybrid scoring: combine semantic + keyword scores
         # final_score = semantic_score + keyword_score (as a boost)
@@ -218,28 +247,49 @@ class ToolPlanner:
             keyword_score = keyword_score_map.get(tool_name, 0.0)
             
             # Combine scores: semantic as primary, keyword as boost
-            final_score = semantic_score + keyword_score
+            final_score = semantic_score + (keyword_score * settings.KEYWORD_WEIGHT)
             
             hybrid_scores.append((tool_name, final_score, semantic_score, keyword_score))
         
         # Sort by final hybrid score descending
         hybrid_scores.sort(key=lambda x: x[1], reverse=True)
         
-        # Keep only top 3 tools for LLM decision
-        final_candidates = [tool_name for tool_name, _, _, _ in hybrid_scores[:3]]
+        # Filter to only top scoring tools (at least configured similarity threshold)
+        threshold_candidates = [(name, score, sem_score) for name, score, sem_score, _ in hybrid_scores if score >= settings.SIMILARITY_THRESHOLD]
         
-        print("[ToolPlanner] Hybrid ranking (semantic + keyword):")
-        for tool_name, final_score, semantic_score, keyword_score in hybrid_scores[:10]:
-            print(f"  {tool_name} ({final_score:.4f} = {semantic_score:.4f} + {keyword_score:.4f})")
+        if not threshold_candidates:
+            # Fallback: use top 1 if no tools meet threshold
+            threshold_candidates = [(hybrid_scores[0][0], hybrid_scores[0][1], hybrid_scores[0][2])] if hybrid_scores else []
         
-        print("[ToolPlanner] Final candidates (top 3 by hybrid score):")
-        for idx, tool_name in enumerate(final_candidates, 1):
-            print(f"  {idx}. {tool_name}")
-
-        # Handle fallback if no candidates found
-        if not final_candidates:
-            print("[ToolPlanner] No candidates found, using all domain-filtered tools")
-            final_candidates = list(filtered_tools.keys())[:3]
+        # HIGH CONFIDENCE SELECTION: Smart selection with strict criteria
+        if settings.REQUIRE_HIGH_CONFIDENCE and threshold_candidates and len(threshold_candidates) >= 1:
+            top_name, top_score, top_sem_score = threshold_candidates[0]
+            
+            # Confidence check: needs both high score AND clear winner status
+            second_score = threshold_candidates[1][1] if len(threshold_candidates) > 1 else 0
+            score_margin = top_score - second_score
+            
+            # STRICT: needs very high confidence OR clear margin over competitors
+            high_confidence = top_sem_score >= 0.7  # Very high semantic match (70%+)
+            clear_winner = score_margin >= 0.15  # At least 15% margin over second place
+            
+            if (high_confidence or clear_winner) and top_sem_score >= 0.6:
+                tool_data = filtered_tools.get(top_name)
+                tool_desc = tool_data.get("description", "").lower() if tool_data else ""
+                
+                # Verify tool description matches query intent
+                query_lower = query.lower()
+                if any(word in tool_desc for word in query_lower.split()):
+                    logger.info(f"Auto-selected (high confidence): {top_name} (score: {top_sem_score:.3f}, margin: {score_margin:.3f})")
+                    if tool_data:
+                        return top_name, tool_data
+        
+        # Use best single candidate (no LLM needed if only one)
+        if len(threshold_candidates) == 1:
+            final_candidates = [threshold_candidates[0][0]]
+        else:
+            # Only consult LLM if there are multiple candidates with similar scores
+            final_candidates = [name for name, _, _ in threshold_candidates[:3]]
 
         # Step 7 — Build tool list for LLM (using final candidates)
         tools_description = ""
@@ -254,65 +304,44 @@ class ToolPlanner:
 
             tools_description += f"{idx}. Tool: {tool_name}\n   Endpoint: {endpoint}\n   Description: {description}\n\n"
 
-        # Step 8 — Improved LLM prompt for tool selection
-        prompt = f"""You are an HRMS API tool selector.
+        logger.info(f"LLM candidates: {final_candidates}")
 
-Your task: Choose the BEST API tool that directly answers the user's request.
+        # Step 8 — Only use LLM if multiple candidates exist
+        if len(final_candidates) > 1:
+            prompt = f"""You are an HRMS API selector. Select the BEST API.
 
-CRITICAL RULES FOR TOOL SELECTION:
+RULES:
+1. PREFER: APIs returning data/records (get_*, retrieve, list, info) 
+2. AVOID: Type/Status/Config/Metadata APIs
+3. MATCH: Primary entity over secondary (employee > type/status)
+4. EXCLUDE: Dashboard, Report, Summary unless explicitly requested
 
-1. PREFER PRIMARY ENTITY APIs:
-   - If user asks for 'employee', choose APIs that return employee records/data.
-   - If user asks for 'department', choose APIs that return department data.
-   - Avoid metadata, status, dashboard, or summary APIs unless explicitly requested.
-
-2. AVOID MODIFIER/METADATA APIs:
-   - Avoid APIs for status, messages, alerts, dashboards, or audits.
-   - Avoid update/delete/create operations.
-   - Favor GET/retrieve operations that return the main entity.
-
-3. MATCH INTENT TO ENTITY:
-   - User query intent should match the API's primary entity.
-   - Example: "Show employee details" → get_employment (not get_employeestatus).
-
-4. STRICT SELECTION:
-   - Return ONLY the tool name.
-   - Do NOT return explanations, reasoning, or extra text.
-   - If unsure, choose the tool whose description most directly matches the user's request.
-
-AVAILABLE TOOLS:
-
+TOOLS:
 {tools_description}
 
-USER QUERY:
-{query}
+QUERY: {query}
 
-SELECTION:
+Return ONLY the tool name, nothing else."""
 
-Based on the rules above, the BEST tool is:
-"""
+            response = generate_response(prompt)
+            tool_name = self._clean_llm_output(response)
 
-        response = generate_response(prompt)
+            logger.info(f"LLM selected: {tool_name}")
 
-        print(f"[ToolPlanner] LLM raw response: {response}")
+            # Validate tool exists in final candidates
+            if tool_name in final_candidates:
+                return tool_name, filtered_tools[tool_name]
 
-        # Step 9 — Clean LLM output
-        tool_name = self._clean_llm_output(response)
-
-        print(f"[ToolPlanner] Cleaned tool name: {tool_name}")
-
-        # Step 10 — Validate tool exists in final candidates
-        if tool_name in final_candidates:
-            print(f"[ToolPlanner] Final selected tool: {tool_name}")
-            return tool_name, filtered_tools[tool_name]
-
-        # Step 11 — Safe fallback to first final candidate
-        print(f"[ToolPlanner] Tool '{tool_name}' not in candidates, using fallback")
-        if final_candidates:
-            fallback_tool = final_candidates[0]
-            print(f"[ToolPlanner] Final selected tool (fallback): {fallback_tool}")
-            return fallback_tool, filtered_tools[fallback_tool]
-
-        print("[ToolPlanner] No fallback available, returning None")
+            # Safe fallback to first final candidate
+            if final_candidates:
+                fallback_tool = final_candidates[0]
+                logger.info(f"LLM selection '{tool_name}' invalid, fallback: {fallback_tool}")
+                return fallback_tool, filtered_tools[fallback_tool]
+        else:
+            # Single candidate - use it directly
+            if final_candidates:
+                tool_name = final_candidates[0]
+                logger.info(f"Single candidate: {tool_name}")
+                return tool_name, filtered_tools[tool_name]
 
         return None, None

@@ -1,6 +1,10 @@
 import redis
 import json
 import re
+import logging
+from app.config import settings
+
+logger = logging.getLogger(__name__)
 
 
 class RedisCache:
@@ -8,14 +12,15 @@ class RedisCache:
     def __init__(self):
         try:
             self.client = redis.Redis(
-                host="localhost",
-                port=6379,
+                host=settings.REDIS_HOST,
+                port=settings.REDIS_PORT,
                 decode_responses=True
             )
             self.client.ping()
             self.enabled = True
+            logger.info("✓ Redis Cache ENABLED")
         except:
-            print("Redis not available, cache disabled")
+            logger.warning("✗ Redis Cache DISABLED - Using in-memory cache only")
             self.enabled = False
 
     def normalize_key(self, key: str):
@@ -48,5 +53,6 @@ class RedisCache:
 
         try:
             self.client.setex(key, ttl, json.dumps(value))
+            logger.debug(f"Redis STORE: key cached with ttl={ttl}s")
         except:
-            pass
+            logger.warning(f"Redis set() error")

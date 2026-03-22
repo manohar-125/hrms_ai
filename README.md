@@ -1,1029 +1,453 @@
 # HRMS AI Service
 
-**AI-powered backend system for natural language interaction with HRMS (Human Resource Management) systems.**
+AI-powered backend service for natural language interaction with HRMS data and company policy documents.
 
-Enable users to query employee data and HR policies using natural language instead of navigating complex HRMS interfaces.
+## What This Service Does
 
----
+This project lets users ask HR questions in natural language and get answers from:
 
-## 📋 Table of Contents
+- Live HRMS APIs (employee, department, attendance, etc.)
+- Policy documents via Retrieval-Augmented Generation (RAG)
 
-1. [Overview](#overview)
-2. [Key Features](#key-features)
-3. [Tech Stack](#tech-stack)
-4. [Project Structure](#project-structure)
-5. [Prerequisites](#prerequisites)
-6. [Installation & Setup](#installation--setup)
-7. [Configuration](#configuration)
-8. [API Documentation](#api-documentation)
-9. [System Architecture](#system-architecture)
-10. [Core Components](#core-components)
-11. [Processing Pipeline](#processing-pipeline)
-12. [Example Queries](#example-queries)
-13. [Troubleshooting](#troubleshooting)
+It supports:
 
----
-
-## Overview
-
-**HRMS AI Service** is an intelligent backend that bridges natural language understanding with HRMS data retrieval. Users can ask questions in plain English, and the system:
-
-✅ Classifies the query intent (policy lookup vs data retrieval)  
-✅ Finds the best-matching HRMS APIs using semantic search  
-✅ Retrieves relevant HR policy documents using RAG  
-✅ Generates natural language responses using Ollama LLM  
-✅ Caches results for improved performance  
-
-### Example Questions
-
-```
-"Show employee 102"
-"List all departments"
-"What are the leave policies?"
-"Show employee bank account details"
-"List employees in the IT department"
-"What is the maternity leave policy?"
-```
-
----
+- Query intent classification (policy vs API data)
+- Tool/API selection using semantic matching
+- Policy retrieval from vector database
+- Response generation with local LLM (Ollama)
+- Redis caching
+- Source attribution in responses
 
 ## Key Features
 
-| Feature | Description |
-|---------|-------------|
-| **Natural Language Processing** | Understands user intent from plain English queries |
-| **Intent Classification** | Distinguishes between policy queries (RAG) and data queries (API) |
-| **Semantic Tool Selection** | Uses hybrid ranking (BM25 + embeddings) to find optimal HRMS APIs |
-| **Policy RAG** | Vector database for storing/retrieving HR policy documents |
-| **Multi-stage LLM** | Ollama-powered intent classification, entity extraction, response generation |
-| **Redis Caching** | Caches frequent queries for improved response time |
-| **API Registry** | Swagger-based HRMS API discovery and indexing |
-
----
+- Natural language chat endpoint: `POST /chat`
+- Health endpoint: `GET /health`
+- Policy retrieval using ChromaDB + embeddings
+- API orchestration pipeline for data queries
+- Source attribution for both policy and API responses
+- Frontend chat UI with formatted source badges
+- Local-first setup (Ollama + Redis + FastAPI)
 
 ## Tech Stack
 
-### Backend
-- **FastAPI** - Modern Python web framework
-- **Python 3.11** - Core language
-- **Uvicorn** - ASGI server
+- Python 3.11+
+- FastAPI
+- Uvicorn
+- Ollama (default model from env)
+- ChromaDB
+- sentence-transformers
+- Redis
+- requests
 
-### AI & ML
-- **Ollama** - Local LLM inference (default: Llama2)
-- **ChromaDB** - Vector database for embeddings
-- **sentence-transformers** - Text embeddings (BAAI/bge-small-en)
-- **scikit-learn** - BM25 ranking algorithm
+## End-to-End Request Flow
 
-### Data & Cache
-- **Redis** - Caching layer (600s TTL)
-- **Requests** - HTTP client
+1. User sends a question to `POST /chat`.
+2. System checks Redis cache.
+3. Query is routed by intent.
+4. If policy query:
+   - Retrieve relevant chunks from vector DB.
+   - Build context and generate answer.
+   - Extract policy source metadata.
+5. If data query:
+   - Classify domain and extract entities.
+   - Select best API/tool using planner.
+   - Execute HRMS API request.
+   - Parse and generate final answer.
+   - Capture API source metadata.
+6. Return response with:
+   - `answer` (final text)
+   - `source` (formatted source attribution when available)
+7. Save to Redis cache.
 
----
+## Source Attribution Behavior
 
-## Project Structure
+The service includes source attribution for transparency.
 
-```
-hrms_ai_service/
-│
-├── app/
-│   ├── api/                          # REST API Routes
-│   │   ├── routes/
-│   │   │   ├── chat.py              # POST /chat endpoint
-│   │   │   └── health.py            # GET /health endpoint
-│   │   └── schemas/
-│   │       ├── chat_schema.py       # ChatRequest, ChatResponse
-│   │       └── response_schema.py   # Response models
-│   │
-│   ├── core/                        # Orchestration & Processing
-│   │   ├── rag_engine.py            # Main pipeline orchestrator
-│   │   ├── agent_router.py          # Data query processing pipeline
-│   │   ├── query_router.py          # Intent-based routing
-│   │   ├── policy_service.py        # Policy RAG retrieval
-│   │   ├── context_builder.py       # Conversation context management
-│   │   ├── tool_planner.py          # Hybrid tool/API selection
-│   │   ├── tool_validator.py        # Tool validation
-│   │   ├── tool_executor.py         # HRMS API execution
-│   │   ├── intent_classifier.py     # Intent classification
-│   │   ├── domain_classifier.py     # Domain identification
-│   │   └── entity_extractor.py      # Entity extraction (IDs, names)
-│   │
-│   ├── llm/                         # Language Model Integration
-│   │   ├── llama_client.py          # Ollama client
-│   │   ├── prompts.py               # System prompts & templates
-│   │   └── response_parser.py       # Response parsing & formatting
-│   │
-│   ├── embeddings/                  # Text Processing
-│   │   ├── embedding_model.py       # BGE embeddings
-│   │   └── chunking.py              # Text chunking with overlap
-│   │
-│   ├── vectordb/                    # Vector Database
-│   │   ├── chroma_client.py         # ChromaDB initialization
-│   │   ├── api_vector_store.py      # API tool indexing
-│   │   └── retriever.py             # Semantic search & retrieval
-│   │
-│   ├── cache/                       # Caching Layer
-│   │   └── redis_cache.py           # Redis cache implementation
-│   │
-│   ├── services/                    # External Services
-│   │   ├── hrms_api_client.py       # HRMS API HTTP client
-│   │   └── (Other API clients)
-│   │
-│   ├── tools/                       # Tool Definitions
-│   │   └── api_registry.json        # OpenAPI registry for HRMS APIs
-│   │
-│   ├── config.py                    # Configuration & env variables
-│   └── main.py                      # FastAPI app initialization
-│
-├── scripts/
-│   ├── build_registry.py            # Fetch & build API registry from Swagger
-│   └── index_api_registry.py        # Index APIs into vector database
-│
-├── chroma_db/                       # Vector database storage (local)
-├── dump.rdb                         # Redis snapshot (local)
-│
-├── requirements.txt                 # Python dependencies
-├── .env                             # Environment configuration
-└── README.md                        # This file
+### Policy Query Response
 
-```
+- Source format: `Source: <PolicyName>`
+- Example: `Source: Holiday_Policy`
 
----
+### API Query Response
 
-## Prerequisites
+- Source format: `Source: <HTTP_METHOD> <ENDPOINT>`
+- Example: `Source: GET /api/Department`
 
-### System Requirements
-- **Python 3.11+** - Core runtime
-- **Ollama** - Local LLM inference (download from https://ollama.ai)
-- **Redis** - Caching service (download or install via package manager)
-- **At least 4GB RAM** - For running Ollama models
+### Response Shape
 
-### Installation
-
-**Python 3.11:**
-- macOS: `brew install python@3.11` or download from https://www.python.org/downloads/
-- Linux: `sudo apt-get install python3.11`
-- Windows: Download from https://www.python.org/downloads/
-
-**Ollama:**
-- Download from https://ollama.ai
-- Install and run `ollama serve`
-
-**Redis:**
-- macOS: `brew install redis`
-- Linux: `sudo apt-get install redis-server`
-- Windows: Download from https://github.com/microsoftarchive/redis/releases
-
-### External Services
-1. **HRMS API** - Your HR management system
-   - Must be accessible from your machine
-   - Requires API token/credentials
-
----
-
-## Installation & Setup
-
-### Quick Start (5 Minutes)
-
-**1. Clone/Extract Repository:**
-```bash
-cd /path/to/hrms_ai_service
-```
-
-**2. Create Virtual Environment:**
-```bash
-python3.11 -m venv venv
-source venv/bin/activate  # macOS/Linux
-# OR
-venv\Scripts\activate  # Windows
-```
-
-**3. Install Dependencies:**
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-**4. Configure Environment:**
-```bash
-# Copy and edit environment file
-cp .env.example .env
-# Edit .env with your HRMS API credentials
-```
-
-**5. Start Services (3 Terminal Windows):**
-
-**Terminal 1 - Ollama:**
-```bash
-ollama serve
-```
-
-**Terminal 2 - Redis:**
-```bash
-redis-server
-```
-
-**Terminal 3 - FastAPI:**
-```bash
-source venv/bin/activate
-python -m uvicorn app.main:app --reload
-```
-
-**6. Verify Installation:**
-```bash
-curl http://localhost:8000/health
-# Response: {"status":"ok"}
-```
-
-**7. Access API:**
-- Swagger UI: http://localhost:8000/docs
-- Test endpoint: POST http://localhost:8000/chat
-
----
-
-## Configuration
-
-### Environment Variables
-
-Create a `.env` file in the project root (copy from `.env.example`):
-
-```env
-# Ollama Configuration
-OLLAMA_URL=http://localhost:11434
-LLM_MODEL=llama2
-EMBED_MODEL=BAAI/bge-small-en
-CHROMA_PATH=./chroma_db
-
-# HRMS API Configuration
-HRMS_API_BASE_URL=https://hrmsapi.leanxpert.in
-HRMS_API_TOKEN=your_actual_token_here
-
-# Redis Configuration
-REDIS_URL=redis://localhost:6379
-CACHE_TTL=600
-
-# Application Configuration
-APP_PORT=8000
-```
-
-### Configuration Reference
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `OLLAMA_URL` | `http://localhost:11434` | URL to Ollama LLM service |
-| `LLM_MODEL` | `llama2` | Model to use (llama2, mistral, etc.) |
-| `EMBED_MODEL` | `BAAI/bge-small-en` | Embedding model for text chunks |
-| `CHROMA_PATH` | `./chroma_db` | Path to vector database |
-| `HRMS_API_BASE_URL` | — | Your HRMS API endpoint |
-| `HRMS_API_TOKEN` | — | HRMS API authentication token |
-| `REDIS_URL` | `redis://localhost:6379` | Redis connection string |
-| `CACHE_TTL` | `600` | Cache expiration time (seconds) |
-| `APP_PORT` | `8000` | FastAPI server port |
-
-### Port Conflicts
-
-If port 8000 is already in use, edit `.env`:
-```env
-APP_PORT=9000
-```
-Then restart the FastAPI server.
-
----
-
-## API Documentation
-
-### Interactive API Docs
-
-**Swagger UI:** http://localhost:8000/docs  
-**ReDoc:** http://localhost:8000/redoc
-
-### Endpoints
-
-#### 1. Chat Endpoint
-
-**POST** `/chat`
-
-Process a natural language query and get an AI-generated response.
-
-**Request Body:**
 ```json
 {
-  "question": "Show employee 102"
+  "answer": "...answer text...\n\nSource: Holiday_Policy",
+  "source": "Source: Holiday_Policy"
 }
 ```
 
-**Response:**
 ```json
 {
-  "answer": "Employee ID 102, John Doe, works in IT Department with salary $85,000. Employment status: Active"
+  "answer": "...answer text...\n\nSource: GET /api/Department",
+  "source": "Source: GET /api/Department"
 }
 ```
 
-**Status Codes:**
-- `200` - Success
-- `400` - Invalid request
-- `500` - Internal server error
+### Notes
 
-**Example using cURL:**
-```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is the leave policy?"}'
-```
+- Source is available as a dedicated `source` field.
+- Source may also appear appended in `answer` depending on flow and cache behavior.
+- If source is unavailable, `source` can be `null`.
 
-**Example using Python:**
-```python
-import requests
+## API Endpoints
 
-response = requests.post(
-    "http://localhost:8000/chat",
-    json={"question": "Show employee 102"}
-)
-print(response.json()["answer"])
-```
+### `GET /health`
 
-#### 2. Health Check Endpoint
+Basic health check.
 
-**GET** `/health`
+Example response:
 
-Verify service is running.
-
-**Response:**
 ```json
 {
   "status": "ok"
 }
 ```
 
-**Status Codes:**
-- `200` - Service is healthy
+### `POST /chat`
 
-**Example:**
+Main query endpoint.
+
+Request:
+
+```json
+{
+  "question": "Show me the departments in the company"
+}
+```
+
+Possible response:
+
+```json
+{
+  "answer": "The company has the following departments: ...\n\nSource: GET /api/Department",
+  "source": "Source: GET /api/Department"
+}
+```
+
+## Setup and Run
+
+## Prerequisites
+
+- Python 3.11+
+- Redis server
+- Ollama installed and running
+
+## Installation
+
+```bash
+cd /Users/shyam_manohar/Desktop/Nighwan\ Tech/hrms_ai_service
+python3.11 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+## Start Required Services
+
+Terminal 1:
+
+```bash
+ollama serve
+```
+
+Terminal 2:
+
+```bash
+redis-server
+```
+
+Terminal 3:
+
+```bash
+source venv/bin/activate
+uvicorn app.main:app --reload
+```
+
+## Verify
+
 ```bash
 curl http://localhost:8000/health
 ```
 
----
+## Query Test
 
-## System Architecture
-
-### High-Level Flow
-
-```
-User Query
-    ↓
-[Intent Classification]
-    ├→ "policy" query (HR policies)
-    │   ↓
-    │ [Policy Service - RAG]
-    │   ├→ Embed query
-    │   ├→ Search ChromaDB
-    │   ├→ Generate response
-    │   ↓
-    │ Response to user
-    │
-    └→ "data" query (Employee/HR data)
-        ↓
-      [Agent Router - Data Pipeline]
-        ├→ Classify domain (employee, department, salary, etc.)
-        ├→ Extract entities (IDs, names, departments)
-        ├→ Plan tools (find best HRMS APIs using hybrid ranking)
-        ├→ Validate tools
-        ├→ Execute API calls
-        ├→ Parse responses
-        ├→ Generate natural language answer
-        ↓
-      Response to user
-```
-
-### Two Processing Pipelines
-
-#### Pipeline 1: Policy Queries (RAG)
-```
-Input: "What is the leave policy?"
-  ↓
-Intent Classification → "policy"
-  ↓
-Policy Service
-  ├→ Embed question using BAAI/bge-small-en
-  ├→ Search ChromaDB for similar policy chunks
-  ├→ Retrieve relevant policy documents
-  ├→ Add context to LLM prompt
-  ↓
-LLM Response Generation (via Ollama)
-  ↓
-Output: "The leave policy states... [full policy details]"
-```
-
-#### Pipeline 2: Data Queries (APIs)
-```
-Input: "Show employee 102"
-  ↓
-Intent Classification → "data"
-  ↓
-Agent Router (7-step pipeline)
-  ├ Step 1: Domain Classification → "employee"
-  ├ Step 2: Entity Extraction → ["102"] (employee ID)
-  ├ Step 3: Tool Planning (hybrid ranking)
-  │         ├→ Semantic search: embeddings vs API schemas
-  │         ├→ Keyword matching: BM25
-  │         ├→ Combined ranking
-  │         └→ Select top API: "GET /employees/{id}"
-  ├ Step 4: Tool Validation
-  ├ Step 5: API Execution → GET /employees/102
-  ├ Step 6: Response Parsing → Extract JSON fields
-  │         └→ employee_id, name, department, salary, etc.
-  ├ Step 7: LLM Answer Generation
-  │         └→ Format as: "Employee ID 102, John Doe, IT Department..."
-  ↓
-Output: Formatted natural language response
-```
-
-### Component Interaction Diagram
-
-```
-┌─────────────────────────────────────────────────────┐
-│                 FastAPI Application                 │
-│  ┌──────────────────────────────────────────────┐   │
-│  │  POST /chat (ChatRequest → ChatResponse)     │   │
-│  └──────────────────┬───────────────────────────┘   │
-│                     ↓                                 │
-│  ┌─────────────────────────────────────────────┐   │
-│  │  RAG Engine (answer_question)                │   │
-│  │  ├→ Step 1: Cache Check (Redis)              │   │
-│  │  ├→ Step 2: Build Context (prev messages)    │   │
-│  │  ├→ Step 3: Route Query (Intent)             │   │
-│  │  ├→ Step 4a: Policy Path → RAG Pipeline      │   │
-│  │  │           └→ Policy Service + ChromaDB    │   │
-│  │  ├→ Step 4b: Data Path → Agent Router        │   │
-│  │  │           ├→ Domain Classifier            │   │
-│  │  │           ├→ Tool Planner + Executor     │   │
-│  │  │           ├→ HRMS API Client             │   │
-│  │  │           └→ Response Parser             │   │
-│  │  ├→ Step 5: LLM Generation (Ollama)          │   │
-│  │  ├→ Step 6: Cache Result (Redis)             │   │
-│  │  └→ Step 7: Return Response                  │   │
-│  └─────────────────────────────────────────────┘   │
-│                     ↓                                 │
-│  ┌─────────┬─────────┬──────────┬──────────────┐   │
-│  ↓         ↓         ↓          ↓              ↓    │
-│ Ollama  ChromaDB  Redis    HRMS API      Embeddings │
-│ (LLM)   (Vector)  (Cache)   (External)  (BAAI/bge) │
-└─────────────────────────────────────────────────────┘
-```
-
----
-
-## Core Components
-
-### 1. RAG Engine (app/core/rag_engine.py)
-
-**Purpose:** Main orchestration engine that coordinates all pipelines
-
-**Main Function:**
-```python
-def answer_question(question: str, session_id: str = "default") -> str
-```
-
-**8-Step Process:**
-1. Check Redis cache
-2. Build conversation context from history
-3. Route query (policy vs data)
-4. Execute appropriate pipeline
-5. Generate LLM response
-6. Cache result
-7. Store in conversation context
-8. Return formatted answer
-
-**Key Variables:**
-- `cache_key`: Unique key for caching queries
-- `conversation_context`: Previous messages for context
-- `route_type`: "policy" or "data"
-- `final_answer`: LLM-generated response
-
-### 2. Intent Classifier (app/core/intent_classifier.py)
-
-**Purpose:** Classify user intent into one of 10 categories
-
-**Main Function:**
-```python
-def classify_intent(question: str) -> str
-    # Returns: "policy" | "data"
-```
-
-**Supported Intents:**
-- Policy queries: leave, benefits, compensation, compliance
-- Data queries: employee, department, salary, attendance
-
-**Implementation:**
-- Uses Ollama LLM
-- Prompt-based classification
-- Cached for performance
-
-### 3. Tool Planner (app/core/tool_planner.py)
-
-**Purpose:** Rank and select best HRMS APIs for a given query
-
-**Main Function:**
-```python
-def find_tool(domain: str, question: str, entities: dict) -> dict
-    # Returns: {"api": "/employees/{id}", "method": "GET", "params": {...}}
-```
-
-**8-Stage Hybrid Ranking Algorithm:**
-
-1. **Load API Registry** - Read api_registry.json
-2. **Semantic Search** - Embed question & API descriptions using BAAI/bge-small-en
-3. **Similarity Scoring** - Calculate cosine similarity
-4. **Keyword Matching** - BM25 ranking on API descriptions
-5. **Domain Filtering** - Filter APIs by domain
-6. **Entity Matching** - Match extracted entities to API parameters
-7. **Score Combination** - Weighted average: 60% semantic + 40% BM25
-8. **Select Top API** - Return highest-scoring candidate
-
-**Example:**
-```
-Input: question="Show employee 102", domain="employee", entities={"id": 102}
-↓
-Semantic search on embeddings
-Keyword matching on API docs
-Combined ranking
-↓
-Output: {
-  "api": "/employees/{id}",
-  "method": "GET",
-  "params": {"id": 102},
-  "description": "Get employee details by ID"
-}
-```
-
-### 4. Policy Service (app/core/policy_service.py)
-
-**Purpose:** Retrieve relevant HR policy documents using RAG
-
-**Main Function:**
-```python
-def get_policy_context(question: str) -> str
-    # Returns: Relevant policy text from ChromaDB
-```
-
-**RAG Pipeline:**
-1. Fetch policies from API (or cache)
-2. Chunk policy documents (500 tokens, 50 token overlap)
-3. Generate embeddings using BAAI/bge-small-en
-4. Store in ChromaDB vector database
-5. For queries: embed question, semantic search in ChromaDB
-6. Return top-k (default: 3) matching chunks
-
-**Storage:**
-- Policies stored in ChromaDB collections
-- Collection name: "hrms_policies"
-- Each document indexed with metadata
-
-### 5. Agent Router (app/core/agent_router.py)
-
-**Purpose:** Execute complete data query pipeline
-
-**Main Function:**
-```python
-def route_query(question: str, context: str, entities: dict) -> str
-    # Returns: Answer to the data query
-```
-
-**7-Step Pipeline:**
-1. Domain classification (employee, department, salary, etc.)
-2. Entity extraction (IDs, names, departments)
-3. Tool planning (select best API via hybrid ranking)
-4. Tool validation
-5. API execution (actual HTTP call to HRMS)
-6. Response parsing (extract relevant fields)
-7. Answer generation (LLM formats as natural language)
-
-### 6. LLM Integration (app/llm/llama_client.py)
-
-**Purpose:** Interface with Ollama for LLM inference
-
-**Main Function:**
-```python
-def generate_response(prompt: str, system_prompt: str = SYSTEM_PROMPT) -> str
-```
-
-**Parameters:**
-- `prompt`: User query + context + instructions
-- `system_prompt`: System-level instructions
-- `temperature`: 0.7 (for balanced creativity/consistency)
-- `top_p`: 0.9 (nucleus sampling)
-- `num_ctx`: 2048 (context window)
-
-**Used For:**
-- Intent classification
-- Domain classification
-- Entity extraction
-- Final answer generation
-
-### 7. Vector Database (app/vectordb/)
-
-**ChromaDB Implementation:**
-```python
-class ChromaDB:
-    - get_chroma_client() → chroma.Client
-    - get_hrms_collection() → Collection for policies
-    - add_documents(docs, embeddings) → store
-    - query(embedding, top_k=3) → retrieve similar docs
-```
-
-**Collections:**
-- `hrms_policies`: Policy documents and procedures
-- `api_schemas`: API documentation indexed for tool discovery
-
-### 8. Redis Cache (app/cache/redis_cache.py)
-
-**Purpose:** Caching layer for repeated queries
-
-**Configuration:**
-- **TTL:** 600 seconds (10 minutes)
-- **Key Format:** `"rag:{question}"` for query cache
-- **Operations:** get, set, delete
-
-**Cache Keys:**
-- Query results: `rag:{question}`
-- Intent classifications: `intent:{question}`
-- Tool selections: `tool:{domain}:{question}`
-
----
-
-## Processing Pipeline
-
-### Request → Response Flow
-
-```
-POST /chat
-{
-  "question": "Show employee 102"
-}
-    ↓
-[app/api/routes/chat.py]
-chat(ChatRequest) → answer_question(question)
-    ↓
-[app/core/rag_engine.py]
-answer_question() - 8 steps:
-    ↓
-Step 1: Check cache
-    - Key: rag:{question}
-    - If hit: return cached answer (SKIP to step 7)
-    - If miss: continue
-    ↓
-Step 2: Build context
-    - Load conversation history from session
-    - Format previous exchanges
-    ↓
-Step 3: Route query
-    - Call intent_classifier.classify_intent()
-    - Determine: "policy" or "data"
-    ↓
-Step 4a-b: Execute pipeline
-    
-    IF policy query:
-    - Call policy_service.get_policy_context()
-    - Retrieve documents from ChromaDB
-    - Use as context for LLM
-    
-    IF data query:
-    - Call agent_router.route_query()
-    - Execute 7-step data pipeline (see below)
-    
-    ↓
-Step 5: Generate LLM response
-    - Call llama_client.generate_response()
-    - Ollama inference with context
-    ↓
-Step 6: Cache result
-    - Store in Redis with TTL=600s
-    ↓
-Step 7: Return response
-
-{
-  "answer": "Employee ID 102, John Doe, IT Department..."
-}
-```
-
-### Agent Router (Data Query) - Detailed 7 Steps
-
-```
-Input: question="Show employee 102"
-
-Step 1: Domain Classification
-    ├→ LLM call: "What domain is this? employee/department/salary/etc"
-    ├→ Output: "employee"
-    ↓
-
-Step 2: Entity Extraction
-    ├→ LLM call: "Extract IDs, names, values from: [question]"
-    ├→ Output: entities = {"employee_id": "102"}
-    ↓
-
-Step 3: Tool Planning (Hybrid Ranking)
-    ├→ Load api_registry.json APIs
-    ├→ Semantic search: embed question vs API descriptions
-    ├→ BM25 keyword matching
-    ├→ Combined scoring: 60% semantic + 40% keyword
-    ├→ Filter by domain: keep only "employee" APIs
-    ├→ Match entities to API params
-    ├→ Output: selected_api = {
-    │     "api": "/employees/{id}",
-    │     "method": "GET",
-    │     "params": {"id": "102"}
-    │   }
-    ↓
-
-Step 4: Tool Validation
-    ├→ Verify API exists in registry
-    ├→ Check params match function signature
-    ├→ Validate param types
-    ├→ Output: validation_passed = true
-    ↓
-
-Step 5: API Execution
-    ├→ Call hrms_api_client.execute_api()
-    ├→ GET http://hrmsapi.leanxpert.in/employees/102
-    ├→ Response (JSON):
-    │   {
-    │     "id": 102,
-    │     "name": "John Doe",
-    │     "department": "IT",
-    │     "designation": "Senior Developer",
-    │     "salary": 85000,
-    │     "status": "Active"
-    │   }
-    ↓
-
-Step 6: Response Parsing
-    ├→ Extract relevant fields from JSON
-    ├→ Format for LLM consumption
-    ├→ Output: parsed_data = {
-    │     "employee_id": 102,
-    │     "name": "John Doe",
-    │     "department": "IT",
-    │     "designation": "Senior Developer",
-    │     "salary": 85000,
-    │     "status": "Active"
-    │   }
-    ↓
-
-Step 7: Answer Generation
-    ├→ LLM call with parsed data
-    ├→ Prompt: "Format this data as a natural response..."
-    ├→ Output: "Employee ID 102, John Doe, works in the IT Department as a Senior Developer with a salary of $85,000. Current status: Active"
-
-Final Answer returned to user
-```
-
----
-
-## Example Queries
-
-### Example 1: Data Query - Show Employee
-
-**Request:**
 ```bash
 curl -X POST "http://localhost:8000/chat" \
   -H "Content-Type: application/json" \
-  -d '{"question": "Show employee 102"}'
+  -d '{"question":"What are the company policies for holidays?"}'
 ```
 
-**Processing:**
+## Configuration
+
+Set values in `.env` (or your configured environment source):
+
+- `OLLAMA_URL`
+- `LLM_MODEL`
+- `EMBED_MODEL`
+- `CHROMA_PATH`
+- `HRMS_API_BASE_URL`
+- `HRMS_API_TOKEN`
+- `REDIS_HOST` (optional, default: `localhost`)
+- `REDIS_PORT` (optional, default: `6379`)
+
+API selection tuning (optional):
+
+- `SEMANTIC_SEARCH_K` (default: `10`)
+- `KEYWORD_WEIGHT` (default: `0.5`)
+- `SIMILARITY_THRESHOLD` (default: `0.2`)
+- `REQUIRE_HIGH_CONFIDENCE` (default: `true`)
+
+Notes:
+
+- The service resolves `.env` from project root, so scripts work even if run from `scripts/`.
+- After changing selection values, restart the API service.
+
+## Logging Behavior
+
+The terminal logs are intentionally concise. Typical lines include:
+
+- `RAG Cache HIT` / `RAG Cache MISS`
+- `Agent Cache HIT` / `Agent Cache MISS`
+- `Query route: policy|data`
+- `[ToolExecutor] Calling: <full-url>`
+- Uvicorn access log lines for request status
+
+API planner diagnostics (when selection goes through ranking/LLM):
+
+- `Auto-selected (high confidence): <tool_name> ...`
+- `LLM candidates: [...]`
+- `LLM selected: <tool_name>`
+
+## Frontend Behavior and Formatting
+
+The chat UI in `app/static/chat-ui.html` is configured to:
+
+- Preserve line breaks using `white-space: pre-wrap`
+- Wrap long words and lines cleanly
+- Display source attribution separately from answer content
+- Show source badges:
+  - Policy source style (green)
+  - API source style (orange)
+
+Formatting logic separates `answer` text from embedded `\n\nSource:` and renders source in a dedicated source section.
+
+## Folder Structure (Detailed)
+
+```text
+hrms_ai_service/
+├── app/
+│   ├── config.py
+│   ├── main.py
+│   ├── api/
+│   │   ├── routes/
+│   │   │   ├── chat.py
+│   │   │   └── health.py
+│   │   └── schemas/
+│   │       ├── chat_schema.py
+│   │       └── response_schema.py
+│   ├── cache/
+│   │   └── redis_cache.py
+│   ├── core/
+│   │   ├── agent_router.py
+│   │   ├── context_builder.py
+│   │   ├── domain_classifier.py
+│   │   ├── entity_extractor.py
+│   │   ├── intent_classifier.py
+│   │   ├── policy_service.py
+│   │   ├── query_router.py
+│   │   ├── rag_engine.py
+│   │   ├── tool_executor.py
+│   │   ├── tool_planner.py
+│   │   └── tool_validator.py
+│   ├── embeddings/
+│   │   ├── chunking.py
+│   │   └── embedding_model.py
+│   ├── llm/
+│   │   ├── llama_client.py
+│   │   ├── prompts.py
+│   │   └── response_parser.py
+│   ├── services/
+│   │   └── hrms_api_client.py
+│   ├── static/
+│   │   └── chat-ui.html
+│   ├── tools/
+│   │   └── api_registry.json
+│   └── vectordb/
+│       ├── api_vector_store.py
+│       ├── chroma_client.py
+│       └── retriever.py
+├── chroma_db/
+│   ├── chroma.sqlite3
+│   ├── 3cabfcf0-d70d-4cc9-96fb-dda96effed2d/
+│   └── 599433f8-572a-4ec7-b9cb-e453a33b4539/
+├── scripts/
+│   ├── build_registry.py
+│   └── index_api_registry.py
+├── dump.rdb
+├── requirements.txt
+├── README.md
+└── venv/
 ```
-Intent: "data" (requires API call)
-Domain: "employee"
-Entities: {"employee_id": 102}
-Selected API: GET /employees/{id}
-API Response: {id: 102, name: "John Doe", dept: "IT", salary: 85000}
-LLM Generation: "Format this as a natural response"
-```
 
-**Response:**
-```json
-{
-  "answer": "Employee ID 102, John Doe, is a Senior Developer in the IT Department with a salary of $85,000. Employment status: Active."
-}
-```
+## Folder and File Responsibilities
 
----
+### `app/`
 
-### Example 2: Policy Query - Leave Policy
+Main application package.
 
-**Request:**
+- `config.py`: Central configuration and environment loading.
+- `main.py`: FastAPI app initialization and router inclusion.
+
+### `app/api/routes/`
+
+HTTP endpoints.
+
+- `chat.py`: Accepts user questions and returns answer + source.
+- `health.py`: Service health endpoint.
+
+### `app/api/schemas/`
+
+Pydantic request/response models.
+
+- `chat_schema.py`: Chat request schema.
+- `response_schema.py`: Chat response schema including optional `source`.
+
+### `app/core/`
+
+Core orchestration and intelligence pipeline.
+
+- `rag_engine.py`: Top-level query orchestration.
+- `query_router.py`: Chooses query path.
+- `intent_classifier.py`: Intent detection.
+- `domain_classifier.py`: Domain categorization.
+- `entity_extractor.py`: Extracts IDs/names/entities from text.
+- `policy_service.py`: Policy retrieval and source extraction.
+- `agent_router.py`: Data query pipeline and API source capture.
+- `tool_planner.py`: Selects likely tools/APIs.
+- `tool_validator.py`: Validates selected tools.
+- `tool_executor.py`: Executes selected tool/API operations.
+- `context_builder.py`: Builds context for generation.
+
+### `app/embeddings/`
+
+Embedding and chunk preparation.
+
+- `embedding_model.py`: Embedding model loading/inference.
+- `chunking.py`: Splits long text into retrievable chunks.
+
+### `app/llm/`
+
+LLM integration.
+
+- `llama_client.py`: Ollama client wrapper.
+- `prompts.py`: Prompt templates.
+- `response_parser.py`: Output parsing and formatting helpers.
+
+### `app/vectordb/`
+
+Vector DB connectivity and retrieval.
+
+- `chroma_client.py`: ChromaDB client setup.
+- `api_vector_store.py`: Indexing/search for API tools.
+- `retriever.py`: Document retrieval, optional metadata return.
+
+### `app/cache/`
+
+Caching layer.
+
+- `redis_cache.py`: Redis read/write and TTL behavior.
+
+### `app/services/`
+
+External integrations.
+
+- `hrms_api_client.py`: Calls HRMS backend APIs with auth.
+
+### `app/tools/`
+
+Tool registry artifacts.
+
+- `api_registry.json`: API metadata for planner/retrieval.
+
+### `app/static/`
+
+Frontend assets.
+
+- `chat-ui.html`: Main and only chat UI.
+
+### `scripts/`
+
+Utility scripts for registry creation/indexing.
+
+- `build_registry.py`: Builds tool registry from API definitions.
+- `index_api_registry.py`: Pushes API registry data into vector index.
+
+### `chroma_db/`
+
+Local Chroma persistence directory.
+
+- `chroma.sqlite3` and collection directories store vector data.
+
+### `dump.rdb`
+
+Redis snapshot file.
+
+### `venv/`
+
+Local virtual environment (dependencies and third-party files).
+
+## Common Commands
+
+## Activate Environment
+
 ```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is the leave policy?"}'
+source venv/bin/activate
 ```
 
-**Processing:**
-```
-Intent: "policy" (requires RAG)
-Embed question: [0.12, 0.45, 0.78, ...] (384-dim vector)
-Search ChromaDB: Find 3 most similar policy chunks
-Retrieved: "Leave policy states: Employees get 20 days PTO..."
-LLM Generation: Generate comprehensive response using policy context
-```
+## Run Server
 
-**Response:**
-```json
-{
-  "answer": "According to the leave policy, employees are entitled to 20 days of Paid Time Off (PTO) per year. For maternity leave, eligible employees receive 12 weeks of paid leave. Sick leave is 10 days per year. All leave requests must be submitted 2 weeks in advance through the HR portal."
-}
-```
-
----
-
-### Example 3: Multi-Step Query
-
-**Request:**
 ```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "List employees in IT department"}'
+uvicorn app.main:app --reload
 ```
 
-**Processing:**
-```
-Intent: "data"
-Domain: "department"
-Entities: {"department": "IT"}
-Selected API: GET /departments/IT/employees
-API Response: [
-  {id: 102, name: "John", role: "Developer"},
-  {id: 103, name: "Jane", role: "Manager"},
-  {id: 105, name: "Bob", role: "QA"}
-]
-LLM Formatting: Convert list to natural language
-```
+## Rebuild API Registry (if APIs changed)
 
-**Response:**
-```json
-{
-  "answer": "The IT Department has 3 employees: John (Developer), Jane (Manager), and Bob (QA Specialist)."
-}
-```
-
----
-
-## Troubleshooting
-
-### Issue: Connection to Ollama Failed
-
-**Error:** `Connection refused: http://localhost:11434`
-
-**Solutions:**
-1. Verify Ollama is running: `curl http://localhost:11434/api/tags`
-2. Start Ollama: `ollama serve`
-3. Check if port 11434 is available: `lsof -i :11434`
-
-### Issue: ChromaDB Collection Not Found
-
-**Error:** `Collection 'hrms_policies' not found`
-
-**Solution:**
-Run the indexing script:
 ```bash
+python scripts/build_registry.py
 python scripts/index_api_registry.py
 ```
 
-### Issue: Port 8000 Already in Use
+Alternative from inside `scripts/`:
 
-**Solution:**
 ```bash
-# Find process using port 8000
-lsof -i :8000
-
-# Kill it
-kill -9 <PID>
-
-# OR change APP_PORT in .env file
+python build_registry.py
+python index_api_registry.py
 ```
 
-### Issue: Redis Connection Failed
+## Open Swagger Docs
 
-**Error:** `Connection refused: localhost:6379`
+- http://localhost:8000/docs
 
-**Solutions:**
-1. Check Redis is running: `redis-cli ping` (should return PONG)
-2. Start Redis: `redis-server`
-3. Verify port 6379 is available: `lsof -i :6379`
+## Troubleshooting
 
-### Issue: Python ModuleNotFoundError
+- `zsh: command not found: rg`
+  - Install ripgrep or use `find` as fallback.
+- `Connection refused` on `/chat`
+  - Ensure `uvicorn` is running on expected port.
+- Empty/weak answers for policy queries
+  - Verify policy data is indexed in ChromaDB.
+- API-related errors
+  - Check `HRMS_API_BASE_URL` and `HRMS_API_TOKEN`.
+- Slow first response
+  - First LLM/embedding call is usually slower due to warm-up.
 
-**Error:** `ModuleNotFoundError: No module named 'fastapi'`
+## Current Documentation Policy
 
-**Solutions:**
-1. Verify virtual environment is activated: `which python` (should show venv path)
-2. Reinstall dependencies: `pip install -r requirements.txt`
-3. Check Python version: `python --version` (should be 3.11+)
-
-### Issue: HRMS API Call Fails
-
-**Error:** `401 Unauthorized` or `Connection failed`
-
-**Solutions:**
-1. Verify `HRMS_API_BASE_URL` in `.env`
-2. Check `HRMS_API_TOKEN` is correct and not expired
-3. Test API manually: `curl https://your-api-url/health`
-4. Check network connectivity: `ping your-api-url`
-
-### Issue: Slow Response Times
-
-**Causes and Solutions:**
-- Ollama model is slow → Use smaller model: `LLM_MODEL=mistral-lite`
-- Large context → Reduce context window in llama_client.py
-- Cache TTL too short → Increase: `CACHE_TTL=3600` (1 hour)
-- Check system resources: `top` or `Activity Monitor` (macOS)
-
-### Issue: No Ollama Models Found
-
-**Error:** `No models available`
-
-**Solution:**
-```bash
-# Pull a model
-ollama pull llama2
-
-# List available models
-ollama list
-
-# Run served model first
-ollama serve llama2
-```
-
-### Issue: Virtual Environment Not Activating
-
-**Solution:**
-```bash
-# macOS/Linux
-source venv/bin/activate
-
-# Windows PowerShell
-venv\Scripts\Activate.ps1
-
-# Windows CMD
-venv\Scripts\activate.bat
-
-# Verify activation
-which python  # Should show venv path
-```
-
----
-
-### Testing the API
-
-**Using cURL:**
-```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is the leave policy?"}'
-```
-
-**Using Swagger UI:**
-Open browser: http://localhost:8000/docs
-
-**Using Python:**
-```python
-import requests
-response = requests.post(
-    "http://localhost:8000/chat",
-    json={"question": "Show employee 102"}
-)
-print(response.json())
-```
-
-### Adding New HRMS APIs
-
-1. Add Swagger URL to [scripts/build_registry.py](scripts/build_registry.py)
-2. Run: `python scripts/build_registry.py`
-3. Index into vector DB: `python scripts/index_api_registry.py`
-4. System automatically discovers and ranks new APIs
-
-### Debug Mode
-
-Enable debug logging in your code:
-```python
-import logging
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
-logger.debug(f"Variable: {variable}")
-```
-
----
-
-## Resources
-
-- **FastAPI Docs:** https://fastapi.tiangolo.com
-- **Ollama Project:** https://ollama.ai
-- **ChromaDB Docs:** https://docs.trychroma.com
-- **python-dotenv:** https://github.com/theskumar/python-dotenv
-
----
-
-**Version:** 1.0.0  
-**Last Updated:** March 2026
-
----
+All project documentation is consolidated into this single `README.md`.
+Separate project Markdown docs were removed to keep one canonical source of truth.

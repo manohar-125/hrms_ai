@@ -26,6 +26,7 @@ venv.bak/
 .env
 .env.*
 *.env
+!.env.example
 
 # ----------------------------
 # IDE / Editors
@@ -124,10 +125,3 @@ local.properties
 secrets/
 private_keys/
 config.local.py
-
-# ----------------------------
-# Node (if frontend added later)
-# ----------------------------
-node_modules/
-npm-debug.log
-yarn-error.log
