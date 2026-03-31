@@ -192,23 +192,40 @@ class ToolPlanner:
         Prefer personal-details API for employee contact/profile questions.
         This avoids selecting unrelated employee sub-resources (bank, task, etc.)
         when users ask for mobile/email/contact-type attributes.
+        
+        Supports queries with or without explicit "employee" keyword:
+        - "father name of ashish bharti" (personal attribute + name)
+        - "mobile of aman kumar" (personal attribute + name)
+        - "employee personal details" (explicit employee context)
         """
         query_lower = query.lower()
 
         personal_terms = [
             "mobile", "phone", "contact", "email", "mail", "dob",
-            "gender", "blood", "marital", "father", "husband", "personal"
+            "gender", "blood", "marital", "father", "mother", "husband", "wife", 
+            "spouse", "personal", "details"
         ]
-        employee_terms = ["employee", "employees", "emp"]
+        employee_terms = ["employee", "employees", "emp", "staff", "person"]
+        # Family is NOT a personal details attribute - it's for EmpFamily API
         bank_terms = ["bank", "account", "ifsc", "salary", "payroll", "pay"]
+        family_terms = ["family", "relative", "dependent", "relation"]
 
         asks_personal = any(term in query_lower for term in personal_terms)
         has_employee_context = any(term in query_lower for term in employee_terms)
         asks_bank_or_pay = any(term in query_lower for term in bank_terms)
+        asks_family = any(term in query_lower for term in family_terms)
 
-        if asks_personal and has_employee_context and not asks_bank_or_pay:
-            if EMPPERSDTLS_TOOL in filtered_tools:
-                return EMPPERSDTLS_TOOL, filtered_tools[EMPPERSDTLS_TOOL]
+        # Prefer personal details if:
+        # 1. Query asks for personal attribute AND (has employee context OR has a name pattern)
+        # 2. AND doesn't ask for family/bank/payroll info
+        if asks_personal and not asks_family and not asks_bank_or_pay:
+            # Accept if explicit employee context OR if it looks like a name query
+            has_name_pattern = any(word in query_lower for word in ["of", "for"]) or \
+                              bool(re.search(r'\b[A-Z][a-z]+\s+[A-Z][a-z]+', query))
+            
+            if has_employee_context or has_name_pattern:
+                if EMPPERSDTLS_TOOL in filtered_tools:
+                    return EMPPERSDTLS_TOOL, filtered_tools[EMPPERSDTLS_TOOL]
 
         return None, None
 
@@ -216,6 +233,8 @@ class ToolPlanner:
         """
         For unspecific "show all employees" queries, prefer get_employment
         to avoid semantic confusion with task/expense/timesheet tools.
+        Note: "family" in personal context should use personal_details API,
+        not employment. This filter only applies to actual "family" family-related queries.
         """
         query_lower = query.lower()
 
@@ -225,12 +244,18 @@ class ToolPlanner:
         asks_list = any(kw in query_lower for kw in list_keywords)
         asks_employee = any(kw in query_lower for kw in employee_keywords)
 
+        # Personal attributes that would be in EmpPersDtls, not employment
+        personal_attributes = ["mobile", "phone", "email", "dob", "gender", "blood", "marital", "father", "mother", "husband", "wife", "personal"]
+
         has_specific_attr = any(kw in query_lower for kw in [
-            "task", "timesheet", "expense", "bank", "family", "education", "certificate",
+            "task", "timesheet", "expense", "bank", "education", "certificate",
             "salary", "payroll", "leave", "attendance"
         ])
+        
+        # Has a personal detail being requested (don't force employment)
+        has_personal_attr = any(kw in query_lower for kw in personal_attributes)
 
-        if asks_list and asks_employee and not has_specific_attr:
+        if asks_list and asks_employee and not has_specific_attr and not has_personal_attr:
             if "get_employment" in filtered_tools:
                 return "get_employment", filtered_tools["get_employment"]
 

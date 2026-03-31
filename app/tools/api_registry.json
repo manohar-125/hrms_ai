@@ -3,1480 +3,1097 @@
     "domain": "hr",
     "endpoint": "/api/Address",
     "method": "GET",
-    "description": "Retrieve employee Address details from the HRMS system",
+    "description": "Retrieve employee address records including street address, city, state, postal code, and country",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "address",
-      "hrms",
-      "retrieve"
-    ]
+      "address"
+    ],
+    "normalized_name": "get_address",
+    "normalized_intent": "organization_structure"
   },
   "get_address_id": {
     "domain": "hr",
     "endpoint": "/api/Address/{id}",
     "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
+    "description": "Retrieve employee address records including street address, city, state, postal code, and country",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "address",
-      "hrms",
-      "retrieve"
-    ]
+      "address"
+    ],
+    "normalized_name": "get_address_id",
+    "normalized_intent": "organization_structure"
   },
   "get_alertmessage": {
     "domain": "hr",
     "endpoint": "/api/AlertMessage",
     "method": "GET",
-    "description": "Retrieve AlertMessage information from the HRMS system",
+    "description": "Retrieve system alert messages and notifications",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "alertmessage",
-      "retrieve"
-    ]
+      "alertmessage"
+    ],
+    "normalized_name": "get_alert_messages",
+    "normalized_intent": "organization_structure"
   },
   "get_bank": {
     "domain": "hr",
     "endpoint": "/api/Bank",
     "method": "GET",
-    "description": "Retrieve Bank information from the HRMS system",
+    "description": "Retrieve employee bank account details including account number, bank name, and IFSC code",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "bank",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "bank"
+    ],
+    "normalized_name": "get_banks",
+    "normalized_intent": "organization_structure"
   },
   "get_bank_id": {
     "domain": "hr",
     "endpoint": "/api/Bank/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve bank master data including names, codes, and branch information",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "bank",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "bank"
+    ],
+    "normalized_name": "get_bank_id",
+    "normalized_intent": "organization_structure"
   },
   "get_certification": {
     "domain": "hr",
     "endpoint": "/api/Certification",
     "method": "GET",
-    "description": "Retrieve Certification information from the HRMS system",
+    "description": "Retrieve employee certifications and professional qualifications",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "certification",
-      "api"
-    ]
+      "certification"
+    ],
+    "normalized_name": "get_certifications",
+    "normalized_intent": "organization_structure"
   },
   "get_certification_name": {
     "domain": "hr",
     "endpoint": "/api/Certification/{Name}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve employee certifications and professional qualifications",
     "parameters": {
       "Name": "Skill Name"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "name",
-      "system",
-      "hrms",
-      "certification"
-    ]
+      "certification",
+      "name"
+    ],
+    "normalized_name": "get_certification_names",
+    "normalized_intent": "organization_structure"
   },
   "get_city": {
     "domain": "hr",
     "endpoint": "/api/City",
     "method": "GET",
-    "description": "Retrieve City information from the HRMS system",
+    "description": "Retrieve city location data for address management",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "city",
-      "retrieve"
-    ]
+      "city"
+    ],
+    "normalized_name": "get_citys",
+    "normalized_intent": "organization_structure"
   },
   "get_client": {
     "domain": "client",
     "endpoint": "/api/Client",
     "method": "GET",
-    "description": "Retrieve Client information from the HRMS system",
+    "description": "Retrieve client organization details and contact information",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "client",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "client"
+    ],
+    "normalized_name": "get_clients",
+    "normalized_intent": "client_management"
   },
   "get_client_id": {
     "domain": "client",
     "endpoint": "/api/Client/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve client organization details and contact information",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "client",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "client"
+    ],
+    "normalized_name": "get_client_id",
+    "normalized_intent": "client_management"
   },
   "get_contact": {
     "domain": "hr",
     "endpoint": "/api/Contact",
     "method": "GET",
-    "description": "Retrieve employee Contact details from the HRMS system",
+    "description": "Retrieve employee contact information including mobile and email",
     "parameters": {},
     "keywords": [
-      "the",
-      "contact",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "contact"
+    ],
+    "normalized_name": "get_contacts",
+    "normalized_intent": "organization_structure"
   },
   "get_deductionplan": {
     "domain": "hr",
     "endpoint": "/api/DeductionPlan",
     "method": "GET",
-    "description": "Retrieve DeductionPlan information from the HRMS system",
+    "description": "Retrieve salary deduction plan configurations and calculation rules",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "deductionplan",
-      "retrieve"
-    ]
+      "deductionplan"
+    ],
+    "normalized_name": "get_deduction_plans",
+    "normalized_intent": "organization_structure"
   },
   "get_deductionplan_id": {
     "domain": "hr",
     "endpoint": "/api/DeductionPlan/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve salary deduction plan configurations and calculation rules",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "deductionplan",
-      "retrieve"
-    ]
+      "deductionplan"
+    ],
+    "normalized_name": "get_deductionplan_id",
+    "normalized_intent": "organization_structure"
   },
   "get_department": {
     "domain": "hr",
     "endpoint": "/api/Department",
     "method": "GET",
-    "description": "Retrieve Department information from the HRMS system",
+    "description": "Retrieve department organizational structure and hierarchies",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve",
-      "api"
-    ]
+      "department"
+    ],
+    "normalized_name": "get_departments",
+    "normalized_intent": "organization_structure"
   },
   "get_department_id": {
     "domain": "hr",
     "endpoint": "/api/Department/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve department organizational structure and hierarchies",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve",
-      "api"
-    ]
+      "department"
+    ],
+    "normalized_name": "get_department_id",
+    "normalized_intent": "organization_structure"
   },
   "get_designation": {
     "domain": "hr",
     "endpoint": "/api/Designation",
     "method": "GET",
-    "description": "Retrieve Designation information from the HRMS system",
+    "description": "Retrieve job designation and position level information",
     "parameters": {},
     "keywords": [
-      "designation",
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "designation"
+    ],
+    "normalized_name": "get_designations",
+    "normalized_intent": "organization_structure"
   },
   "get_designation_id": {
     "domain": "hr",
     "endpoint": "/api/Designation/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve job designation and position level information",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "designation",
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "designation"
+    ],
+    "normalized_name": "get_designation_id",
+    "normalized_intent": "organization_structure"
   },
   "get_designation_by_designation_name": {
     "domain": "hr",
     "endpoint": "/api/Designation/{Designation}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve job designation and position level information",
     "parameters": {
       "Designation": "Designation name"
     },
     "keywords": [
       "designation",
-      "information",
-      "the",
-      "get",
-      "from",
-      "name",
-      "system",
-      "hrms"
-    ]
+      "name"
+    ],
+    "normalized_name": "get_designation_by_designation_name",
+    "normalized_intent": "organization_structure"
   },
   "get_education": {
     "domain": "hr",
     "endpoint": "/api/Education",
     "method": "GET",
-    "description": "Retrieve Education information from the HRMS system",
+    "description": "Retrieve employee educational qualification records and certifications",
     "parameters": {},
     "keywords": [
-      "information",
-      "education",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "education"
+    ],
+    "normalized_name": "get_educations",
+    "normalized_intent": "organization_structure"
   },
   "get_education_id": {
     "domain": "hr",
     "endpoint": "/api/Education/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve employee educational background and academic qualifications",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "education",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "education"
+    ],
+    "normalized_name": "get_education_id",
+    "normalized_intent": "organization_structure"
   },
   "get_empbankaccount": {
     "domain": "employee",
     "endpoint": "/api/EmpBankAccount",
     "method": "GET",
-    "description": "Retrieve employee bank account details from the HRMS system",
+    "description": "Retrieve employee bank account details including account number, bank name, and IFSC code",
     "parameters": {},
     "keywords": [
-      "employee",
-      "bank",
       "account",
       "accounts",
-      "empbankaccount",
-      "details",
-      "hrms",
-      "retrieve"
-    ]
+      "bank",
+      "empbankaccount"
+    ],
+    "normalized_name": "get_employee_bank_accounts",
+    "normalized_intent": "employee_profile"
   },
   "get_empeducation": {
     "domain": "employee",
     "endpoint": "/api/EmpEducation",
     "method": "GET",
-    "description": "Retrieve employee EmpEducation details from the HRMS system",
+    "description": "Retrieve employee educational qualification records and certifications",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "empeducation",
-      "details",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "empeducation"
+    ],
+    "normalized_name": "get_employee_educations",
+    "normalized_intent": "employee_profile"
   },
   "get_empfamily": {
     "domain": "employee",
     "endpoint": "/api/EmpFamily",
     "method": "GET",
-    "description": "Retrieve employee EmpFamily details from the HRMS system",
+    "description": "Retrieve employee family member information and relationships",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "empfamily",
-      "retrieve"
-    ]
+      "empfamily"
+    ],
+    "normalized_name": "get_employee_familys",
+    "normalized_intent": "employee_profile"
   },
   "get_empfamily_id": {
     "domain": "employee",
     "endpoint": "/api/EmpFamily/{id}",
     "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
+    "description": "Retrieve employee family member information and relationships",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "empfamily",
-      "retrieve"
-    ]
+      "empfamily"
+    ],
+    "normalized_name": "get_empfamily_id",
+    "normalized_intent": "employee_profile"
   },
   "get_empidentity": {
     "domain": "employee",
     "endpoint": "/api/EmpIdentity",
     "method": "GET",
-    "description": "Retrieve employee EmpIdentity details from the HRMS system",
+    "description": "Retrieve employee identity documents and verification records",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "empidentity",
-      "details",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "empidentity"
+    ],
+    "normalized_name": "get_employee_identity",
+    "normalized_intent": "employee_profile"
   },
   "get_employeetasktimesheet": {
     "domain": "employee",
     "endpoint": "/api/EmployeeTaskTimeSheet",
     "method": "GET",
-    "description": "Retrieve employee EmployeeTaskTimeSheet details from the HRMS system",
+    "description": "Retrieve employee task-based timesheet and work logs",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "employeetasktimesheet",
-      "retrieve"
-    ]
+      "employeetasktimesheet"
+    ],
+    "normalized_name": "get_employee_task_timesheets",
+    "normalized_intent": "employee_profile"
   },
   "get_employeetasktimesheet_id": {
     "domain": "employee",
     "endpoint": "/api/EmployeeTaskTimeSheet/{id}",
     "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
+    "description": "Retrieve employee task-based timesheet and work logs",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "employeetasktimesheet",
-      "retrieve"
-    ]
-  },"get_employment": {
+      "employeetasktimesheet"
+    ],
+    "normalized_name": "get_employee_task_time_sheet_id",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employment": {
     "domain": "employee",
     "endpoint": "/api/Employment",
     "method": "GET",
-    "description": "Retrieve employee details from the HRMS system",
+    "description": "Retrieve employee employment history and tenure information",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "employment",
-      "retrieve"
-    ]
+      "employment"
+    ],
+    "normalized_name": "get_employments",
+    "normalized_intent": "employee_profile"
   },
   "get_employment_id": {
     "domain": "employee",
     "endpoint": "/api/Employment/{id}",
     "method": "GET",
-    "description": "Retrieve employee details from the HRMS system",
+    "description": "Retrieve employee employment history and tenure information",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "employment",
-      "retrieve"
-    ]
+      "employment"
+    ],
+    "normalized_name": "get_employment_id",
+    "normalized_intent": "employee_profile"
   },
   "get_emppersdtls": {
     "domain": "employee",
     "endpoint": "/api/EmpPersDtls",
     "method": "GET",
-    "description": "Retrieve employee personal details from the HRMS system",
+    "description": "Retrieve employee personal details including age, marital status, and biographical information",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "personal details",
-      "details",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "personal details"
+    ],
+    "normalized_name": "get_employee_personal_details",
+    "normalized_intent": "employee_profile"
   },
   "get_emptype": {
     "domain": "employee",
     "endpoint": "/api/EmpType",
     "method": "GET",
-    "description": "Retrieve employee type information from the HRMS system",
+    "description": "Retrieve employee type classifications (permanent, contract, temporary)",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "employee type",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "employee type"
+    ],
+    "normalized_name": "get_employee_types",
+    "normalized_intent": "employee_profile"
   },
   "get_emptype_id": {
     "domain": "employee",
     "endpoint": "/api/EmpType/{id}",
     "method": "GET",
-    "description": "Retrieve employee type information from the HRMS system",
+    "description": "Retrieve employee type classifications (permanent, contract, temporary)",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "employee type",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "employee type"
+    ],
+    "normalized_name": "get_emptype_id",
+    "normalized_intent": "employee_profile"
   },
   "get_empworkexperience": {
     "domain": "employee",
     "endpoint": "/api/EmpWorkExperience",
     "method": "GET",
-    "description": "Retrieve employee EmpWorkExperience details from the HRMS system",
+    "description": "Retrieve employee work history and professional experience",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "from",
-      "empworkexperience",
-      "details",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "empworkexperience"
+    ],
+    "normalized_name": "get_employee_work_experiences",
+    "normalized_intent": "employee_profile"
   },
   "get_errorlog": {
     "domain": "hr",
     "endpoint": "/api/ErrorLog",
     "method": "GET",
-    "description": "Retrieve ErrorLog information from the HRMS system",
+    "description": "Retrieve system error logs for debugging and monitoring",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "errorlog",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "errorlog"
+    ],
+    "normalized_name": "get_error_logs",
+    "normalized_intent": "organization_structure"
   },
   "get_errorlog_id": {
     "domain": "hr",
     "endpoint": "/api/ErrorLog/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve system error logs for debugging and monitoring",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "errorlog",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "errorlog"
+    ],
+    "normalized_name": "get_errorlog_id",
+    "normalized_intent": "organization_structure"
   },
   "get_financialyear": {
     "domain": "hr",
     "endpoint": "/api/FinancialYear",
     "method": "GET",
-    "description": "Retrieve FinancialYear information from the HRMS system",
+    "description": "Retrieve financial year configurations and fiscal periods",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "financialyear",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "financialyear"
+    ],
+    "normalized_name": "get_financial_years",
+    "normalized_intent": "organization_structure"
   },
   "get_financialyear_id": {
     "domain": "hr",
     "endpoint": "/api/FinancialYear/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve financial year configurations and fiscal periods",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "financialyear",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "financialyear"
+    ],
+    "normalized_name": "get_financialyear_id",
+    "normalized_intent": "organization_structure"
   },
   "get_gender": {
     "domain": "hr",
     "endpoint": "/api/Gender",
     "method": "GET",
-    "description": "Retrieve Gender information from the HRMS system",
+    "description": "Retrieve gender classification master data",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "gender",
-      "retrieve"
-    ]
+      "gender"
+    ],
+    "normalized_name": "get_genders",
+    "normalized_intent": "organization_structure"
   },
   "get_jobtitle": {
     "domain": "hr",
     "endpoint": "/api/JobTitle",
     "method": "GET",
-    "description": "Retrieve JobTitle information from the HRMS system",
+    "description": "Retrieve job title master data and position hierarchies",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "jobtitle",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "jobtitle"
+    ],
+    "normalized_name": "get_job_titles",
+    "normalized_intent": "organization_structure"
   },
   "get_jobtitle_id": {
     "domain": "hr",
     "endpoint": "/api/JobTitle/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve job title master data and position hierarchies",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "jobtitle",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "jobtitle"
+    ],
+    "normalized_name": "get_jobtitle_id",
+    "normalized_intent": "organization_structure"
   },
   "get_language": {
     "domain": "hr",
     "endpoint": "/api/Language",
     "method": "GET",
-    "description": "Retrieve Language information from the HRMS system",
+    "description": "Retrieve language master data",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "language",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "language"
+    ],
+    "normalized_name": "get_languages",
+    "normalized_intent": "organization_structure"
   },
   "get_leaveapply": {
     "domain": "leave",
     "endpoint": "/api/LeaveApply",
     "method": "GET",
-    "description": "Retrieve LeaveApply information from the HRMS system",
+    "description": "Retrieve leave applications and leave request records",
     "parameters": {},
     "keywords": [
       "leave",
-      "information",
-      "the",
-      "get",
-      "from",
-      "leaveapply",
-      "system",
-      "hrms"
-    ]
+      "leaveapply"
+    ],
+    "normalized_name": "get_leave_applications",
+    "normalized_intent": "leave_management"
   },
   "get_leaveapply_id": {
     "domain": "leave",
     "endpoint": "/api/LeaveApply/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve leave applications and leave request records",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
       "leave",
-      "information",
-      "the",
-      "get",
-      "from",
-      "leaveapply",
-      "system",
-      "hrms"
-    ]
+      "leaveapply"
+    ],
+    "normalized_name": "get_leaveapply_id",
+    "normalized_intent": "leave_management"
   },
   "get_manager": {
     "domain": "hr",
     "endpoint": "/api/Manager",
     "method": "GET",
-    "description": "Retrieve Manager information from the HRMS system",
+    "description": "Retrieve project manager assignments and responsibilities",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "manager",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "manager"
+    ],
+    "normalized_name": "get_managers",
+    "normalized_intent": "organization_structure"
   },
   "get_manager_id": {
     "domain": "hr",
     "endpoint": "/api/Manager/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve manager information and reporting hierarchies",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "manager",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "manager"
+    ],
+    "normalized_name": "get_manager_id",
+    "normalized_intent": "organization_structure"
   },
   "get_managesalarydays": {
     "domain": "payroll",
     "endpoint": "/api/ManageSalaryDays",
     "method": "GET",
-    "description": "Retrieve ManageSalaryDays information from the HRMS system",
+    "description": "Retrieve salary day configurations and payroll processing details",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
       "managesalarydays",
-      "system",
-      "hrms",
       "payroll"
-    ]
+    ],
+    "normalized_name": "get_manage_salary_days",
+    "normalized_intent": "payroll_management"
   },
   "get_managesalarydays_id": {
     "domain": "payroll",
     "endpoint": "/api/ManageSalaryDays/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve salary day configurations and payroll processing details",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
       "managesalarydays",
-      "system",
-      "hrms",
       "payroll"
-    ]
+    ],
+    "normalized_name": "get_managesalarydays_id",
+    "normalized_intent": "payroll_management"
   },
   "get_manualattendance": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance",
     "method": "GET",
-    "description": "Retrieve employee ManualAttendance details from the HRMS system",
+    "description": "Retrieve manually entered attendance records",
     "parameters": {},
     "keywords": [
-      "the",
-      "get",
-      "manualattendance",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "attendance"
-    ]
+      "attendance",
+      "manualattendance"
+    ],
+    "normalized_name": "get_manual_attendances",
+    "normalized_intent": "attendance_tracking"
   },
   "get_manualattendance_id": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance/{id}",
     "method": "GET",
-    "description": "Retrieve employee  details from the HRMS system",
+    "description": "Retrieve manually entered attendance records",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "the",
-      "get",
-      "manualattendance",
-      "from",
-      "details",
-      "system",
-      "hrms",
-      "attendance"
-    ]
+      "attendance",
+      "manualattendance"
+    ],
+    "normalized_name": "get_manualattendance_id",
+    "normalized_intent": "attendance_tracking"
   },
   "get_projectmanager": {
     "domain": "project",
     "endpoint": "/api/ProjectManager",
     "method": "GET",
-    "description": "Retrieve ProjectManager information from the HRMS system",
+    "description": "Retrieve project manager assignments and responsibilities",
     "parameters": {},
     "keywords": [
-      "information",
       "project",
-      "the",
-      "get",
-      "from",
-      "projectmanager",
-      "system",
-      "hrms"
-    ]
+      "projectmanager"
+    ],
+    "normalized_name": "get_project_managers",
+    "normalized_intent": "project_management"
   },
   "get_projectmanager_id": {
     "domain": "project",
     "endpoint": "/api/ProjectManager/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve project manager assignments and responsibilities",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
       "project",
-      "the",
-      "get",
-      "from",
-      "projectmanager",
-      "system",
-      "hrms"
-    ]
+      "projectmanager"
+    ],
+    "normalized_name": "get_projectmanager_id",
+    "normalized_intent": "project_management"
   },
   "get_projectmemorandum": {
     "domain": "project",
     "endpoint": "/api/ProjectMemorandum",
     "method": "GET",
-    "description": "Retrieve ProjectMemorandum information from the HRMS system",
+    "description": "Retrieve project memorandum and documentation",
     "parameters": {},
     "keywords": [
-      "information",
       "project",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
       "projectmemorandum"
-    ]
+    ],
+    "normalized_name": "get_project_memorandums",
+    "normalized_intent": "project_management"
   },
   "get_projectsupervisor": {
     "domain": "project",
     "endpoint": "/api/ProjectSupervisor",
     "method": "GET",
-    "description": "Retrieve ProjectSupervisor information from the HRMS system",
+    "description": "Retrieve project supervisor assignments and oversight",
     "parameters": {},
     "keywords": [
-      "information",
-      "projectsupervisor",
       "project",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms"
-    ]
+      "projectsupervisor"
+    ],
+    "normalized_name": "get_project_supervisors",
+    "normalized_intent": "project_management"
   },
   "get_projectsupervisor_id": {
     "domain": "project",
     "endpoint": "/api/ProjectSupervisor/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve project supervisor assignments and oversight",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "projectsupervisor",
       "project",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms"
-    ]
+      "projectsupervisor"
+    ],
+    "normalized_name": "get_projectsupervisor_id",
+    "normalized_intent": "project_management"
   },
   "get_reimbursementtype": {
     "domain": "hr",
     "endpoint": "/api/ReimbursementType",
     "method": "GET",
-    "description": "Retrieve ReimbursementType information from the HRMS system",
+    "description": "Retrieve reimbursement type classifications",
     "parameters": {},
     "keywords": [
-      "information",
-      "reimbursementtype",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "reimbursementtype"
+    ],
+    "normalized_name": "get_reimbursement_types",
+    "normalized_intent": "organization_structure"
   },
   "get_reimbursementtype_id": {
     "domain": "hr",
     "endpoint": "/api/ReimbursementType/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve reimbursement type classifications",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "reimbursementtype",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "reimbursementtype"
+    ],
+    "normalized_name": "get_reimbursementtype_id",
+    "normalized_intent": "organization_structure"
   },
   "get_role": {
     "domain": "hr",
     "endpoint": "/api/Role",
     "method": "GET",
-    "description": "Retrieve Role information from the HRMS system",
+    "description": "Retrieve system role definitions and access permissions",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "role",
-      "retrieve"
-    ]
+      "role"
+    ],
+    "normalized_name": "get_roles",
+    "normalized_intent": "organization_structure"
   },
   "get_role_id": {
     "domain": "hr",
     "endpoint": "/api/Role/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve system role definitions and access permissions",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "role",
-      "retrieve"
-    ]
+      "role"
+    ],
+    "normalized_name": "get_role_id",
+    "normalized_intent": "organization_structure"
   },
   "get_salaryearning": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning",
     "method": "GET",
-    "description": "Retrieve SalaryEarning information from the HRMS system",
+    "description": "Retrieve salary earning components and allowances",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
       "payroll",
       "salaryearning"
-    ]
+    ],
+    "normalized_name": "get_salary_earnings",
+    "normalized_intent": "payroll_management"
   },
   "get_salaryearning_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve salary earning components and allowances",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
       "payroll",
       "salaryearning"
-    ]
+    ],
+    "normalized_name": "get_salaryearning_id",
+    "normalized_intent": "payroll_management"
   },
   "get_salarypostdeduction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction",
     "method": "GET",
-    "description": "Retrieve SalaryPostDeduction information from the HRMS system",
+    "description": "Retrieve post-deduction salary components",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
       "payroll",
       "salarypostdeduction"
-    ]
+    ],
+    "normalized_name": "get_salary_post_deductions",
+    "normalized_intent": "payroll_management"
   },
   "get_salarypostdeduction_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve post-deduction salary components",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
       "payroll",
       "salarypostdeduction"
-    ]
+    ],
+    "normalized_name": "get_salarypostdeduction_id",
+    "normalized_intent": "payroll_management"
   },
   "get_salaryprededuction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction",
     "method": "GET",
-    "description": "Retrieve SalaryPreDeduction information from the HRMS system",
+    "description": "Retrieve pre-deduction salary components",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "salaryprededuction",
-      "system",
-      "hrms",
-      "payroll"
-    ]
+      "payroll",
+      "salaryprededuction"
+    ],
+    "normalized_name": "get_salary_pre_deductions",
+    "normalized_intent": "payroll_management"
   },
   "get_salaryprededuction_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve pre-deduction salary components",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "salaryprededuction",
-      "system",
-      "hrms",
-      "payroll"
-    ]
+      "payroll",
+      "salaryprededuction"
+    ],
+    "normalized_name": "get_salaryprededuction_id",
+    "normalized_intent": "payroll_management"
   },
   "get_salaryreimbursement": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement",
     "method": "GET",
-    "description": "Retrieve SalaryReimbursement information from the HRMS system",
+    "description": "Retrieve salary reimbursement records and claims",
     "parameters": {},
     "keywords": [
-      "information",
-      "salaryreimbursement",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "payroll"
-    ]
+      "payroll",
+      "salaryreimbursement"
+    ],
+    "normalized_name": "get_salary_reimbursements",
+    "normalized_intent": "payroll_management"
   },
   "get_salaryreimbursement_id": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve salary reimbursement records and claims",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "salaryreimbursement",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "payroll"
-    ]
+      "payroll",
+      "salaryreimbursement"
+    ],
+    "normalized_name": "get_salaryreimbursement_id",
+    "normalized_intent": "payroll_management"
   },
   "get_salarytamplate_getsalarytamplates": {
     "domain": "payroll",
     "endpoint": "/api/SalaryTamplate/GetSalaryTamplates",
     "method": "GET",
-    "description": "Retrieve GetSalaryTamplates information from the HRMS system",
+    "description": "Retrieve salary template and payroll structure configurations",
     "parameters": {},
     "keywords": [
-      "information",
       "getsalarytamplates",
-      "the",
-      "get",
-      "from",
-      "salarytamplate",
-      "system",
-      "hrms"
-    ]
+      "salarytamplate"
+    ],
+    "normalized_name": "get_salarytemplate_getsalarytemplates",
+    "normalized_intent": "payroll_management"
   },
   "get_salarytamplate_getsalarytamplatedetailbyid_templateid": {
     "domain": "employee",
     "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailById/{TemplateId}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve salary template and payroll structure configurations",
     "parameters": {
       "TemplateId": "template id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
       "salarytamplate",
-      "system",
-      "hrms",
       "templateid"
-    ]
+    ],
+    "normalized_name": "get_salarytemplate_getsalarytemplatedetailbyid_templateid",
+    "normalized_intent": "employee_profile"
   },
   "get_salarytamplatewithregid": {
     "domain": "payroll",
     "endpoint": "/api/SalaryTamplateWithRegId",
     "method": "GET",
-    "description": "Retrieve SalaryTamplateWithRegId information from the HRMS system",
+    "description": "Retrieve salary template and payroll structure configurations",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "salarytamplatewithregid",
-      "system",
-      "hrms",
-      "payroll"
-    ]
+      "payroll",
+      "salarytamplatewithregid"
+    ],
+    "normalized_name": "get_salary_template_with_registration_id",
+    "normalized_intent": "payroll_management"
   },
   "get_skill": {
     "domain": "hr",
     "endpoint": "/api/Skill",
     "method": "GET",
-    "description": "Retrieve Skill information from the HRMS system",
+    "description": "Retrieve employee skill classifications and competencies",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "skill",
-      "retrieve"
-    ]
+      "skill"
+    ],
+    "normalized_name": "get_skills",
+    "normalized_intent": "organization_structure"
   },
   "get_skill_id": {
     "domain": "hr",
     "endpoint": "/api/Skill/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve employee skill classifications and competencies",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "skill",
-      "retrieve"
-    ]
+      "skill"
+    ],
+    "normalized_name": "get_skill_id",
+    "normalized_intent": "organization_structure"
   },
   "get_state": {
     "domain": "hr",
     "endpoint": "/api/State",
     "method": "GET",
-    "description": "Retrieve State information from the HRMS system",
+    "description": "Retrieve state and province location data",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "state",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "state"
+    ],
+    "normalized_name": "get_states",
+    "normalized_intent": "organization_structure"
   },
   "get_submenu": {
     "domain": "hr",
     "endpoint": "/api/SubMenu",
     "method": "GET",
-    "description": "Retrieve SubMenu information from the HRMS system",
+    "description": "Retrieve system submenu navigation items",
     "parameters": {},
     "keywords": [
-      "information",
-      "submenu",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "submenu"
+    ],
+    "normalized_name": "get_submenus",
+    "normalized_intent": "organization_structure"
   },
   "get_submenu_id": {
     "domain": "hr",
     "endpoint": "/api/SubMenu/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve system submenu navigation items",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "submenu",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "submenu"
+    ],
+    "normalized_name": "get_submenu_id",
+    "normalized_intent": "organization_structure"
   },
   "get_supervisor": {
     "domain": "hr",
     "endpoint": "/api/Supervisor",
     "method": "GET",
-    "description": "Retrieve Supervisor information from the HRMS system",
+    "description": "Retrieve project supervisor assignments and oversight",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "supervisor",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "supervisor"
+    ],
+    "normalized_name": "get_supervisors",
+    "normalized_intent": "organization_structure"
   },
   "get_supervisor_id": {
     "domain": "hr",
     "endpoint": "/api/Supervisor/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve supervisor information and reporting structures",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "supervisor",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "supervisor"
+    ],
+    "normalized_name": "get_supervisor_id",
+    "normalized_intent": "organization_structure"
   },
   "get_task": {
     "domain": "task",
     "endpoint": "/api/Task",
     "method": "GET",
-    "description": "Retrieve Task information from the HRMS system",
+    "description": "Retrieve employee task-based timesheet and work logs",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "task",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "retrieve"
-    ]
+      "task"
+    ],
+    "normalized_name": "get_tasks",
+    "normalized_intent": "task_management"
   },
   "get_taskdetail": {
     "domain": "task",
     "endpoint": "/api/TaskDetail",
     "method": "GET",
-    "description": "Retrieve TaskDetail information from the HRMS system",
+    "description": "Retrieve detailed task information and specifications",
     "parameters": {},
     "keywords": [
-      "information",
-      "taskdetail",
-      "the",
       "task",
-      "get",
-      "from",
-      "system",
-      "hrms"
-    ]
+      "taskdetail"
+    ],
+    "normalized_name": "get_task_detail",
+    "normalized_intent": "task_management"
   },
   "get_taskdetail_id": {
     "domain": "task",
     "endpoint": "/api/TaskDetail/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve detailed task information and specifications",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "taskdetail",
-      "the",
       "task",
-      "get",
-      "from",
-      "system",
-      "hrms"
-    ]
+      "taskdetail"
+    ],
+    "normalized_name": "get_taskdetail_id",
+    "normalized_intent": "task_management"
   },
   "get_taskerrordetail": {
     "domain": "task",
     "endpoint": "/api/TaskErrorDetail",
     "method": "GET",
-    "description": "Retrieve TaskErrorDetail information from the HRMS system",
+    "description": "Retrieve task error details and troubleshooting information",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
       "task",
-      "get",
-      "from",
-      "taskerrordetail",
-      "system",
-      "hrms"
-    ]
+      "taskerrordetail"
+    ],
+    "normalized_name": "get_task_error_detail",
+    "normalized_intent": "task_management"
   },
   "get_taskerrordetail_id": {
     "domain": "task",
     "endpoint": "/api/TaskErrorDetail/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve task error details and troubleshooting information",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
       "task",
-      "get",
-      "from",
-      "taskerrordetail",
-      "system",
-      "hrms"
-    ]
+      "taskerrordetail"
+    ],
+    "normalized_name": "get_taskerrordetail_id",
+    "normalized_intent": "task_management"
   },
   "get_workshift": {
     "domain": "hr",
     "endpoint": "/api/WorkShift",
     "method": "GET",
-    "description": "Retrieve WorkShift information from the HRMS system",
+    "description": "Retrieve work shift configurations and scheduling details",
     "parameters": {},
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "workshift",
-      "retrieve"
-    ]
+      "workshift"
+    ],
+    "normalized_name": "get_work_shifts",
+    "normalized_intent": "organization_structure"
   },
   "get_workshift_id": {
     "domain": "hr",
     "endpoint": "/api/WorkShift/{id}",
     "method": "GET",
-    "description": "Retrieve  information from the HRMS system",
+    "description": "Retrieve work shift configurations and scheduling details",
     "parameters": {
       "id": "resource id"
     },
     "keywords": [
-      "information",
-      "the",
-      "get",
-      "from",
-      "system",
-      "hrms",
-      "workshift",
-      "retrieve"
-    ]
+      "workshift"
+    ],
+    "normalized_name": "get_workshift_id",
+    "normalized_intent": "organization_structure"
   }
 }
