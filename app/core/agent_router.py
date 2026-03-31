@@ -1,10 +1,11 @@
 import logging
+import re
+from difflib import SequenceMatcher
 from app.core.tool_planner import ToolPlanner
 from app.core.tool_executor import ToolExecutor
 from app.core.entity_extractor import extract_entities
 from app.core.tool_validator import ToolValidator
 from app.llm.llama_client import generate_answer
-from app.llm.response_parser import parse_api_response
 from app.cache.redis_cache import RedisCache
 
 logger = logging.getLogger(__name__)
@@ -14,6 +15,60 @@ planner = ToolPlanner()
 executor = ToolExecutor()
 validator = ToolValidator(planner.registry)
 cache = RedisCache()
+
+
+def _normalize_text(value: str) -> str:
+    value = value or ""
+    value = re.sub(r"[^a-zA-Z0-9\s]", " ", value.lower())
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def _extract_rows(api_response):
+    if isinstance(api_response, list):
+        return api_response
+    if isinstance(api_response, dict):
+        data = api_response.get("data")
+        if isinstance(data, list):
+            return data
+    return None
+
+
+def _filter_rows_by_employee_name(rows: list, employee_name: str):
+    if not rows or not employee_name:
+        return rows
+
+    target = _normalize_text(employee_name)
+    target_tokens = set(target.split())
+
+    scored = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+
+        full_name = str(row.get("fullName", ""))
+        norm_name = _normalize_text(full_name)
+        if not norm_name:
+            continue
+
+        row_tokens = set(norm_name.split())
+        token_overlap = len(target_tokens & row_tokens)
+        ratio = SequenceMatcher(None, target, norm_name).ratio()
+        active_bonus = 0.2 if row.get("isActive") is True else 0.0
+
+        score = token_overlap + ratio + active_bonus
+        scored.append((score, row))
+
+    if not scored:
+        return rows
+
+    scored.sort(key=lambda item: item[0], reverse=True)
+    best_score, best_row = scored[0]
+
+    # Require at least one overlapping token for confident name match.
+    if best_score <= 0 or not (target_tokens & set(_normalize_text(str(best_row.get("fullName", ""))).split())):
+        return rows
+
+    return [best_row]
 
 
 def route_query(intent: str, question: str, return_source: bool = False):
@@ -41,6 +96,8 @@ def route_query(intent: str, question: str, return_source: bool = False):
             return "Sorry, I could not find a suitable HRMS API for this query."
 
         # Step 2️⃣ Validate tool
+        # Keep validator in sync with planner's latest in-memory registry.
+        validator.registry = planner.registry
         is_valid, result = validator.validate(tool_name)
 
         if not is_valid:
@@ -65,11 +122,19 @@ def route_query(intent: str, question: str, return_source: bool = False):
         # Step 4️⃣ Execute API
         api_response = executor.execute(updated_tool_data)
 
-        # Step 5️⃣ Parse API response
-        parsed_response = parse_api_response(api_response)
+        # Step 4.1️⃣ For name-based queries, narrow list payloads to the best employee match.
+        employee_name = entities.get("employee_name")
+        rows = _extract_rows(api_response)
+        if employee_name and isinstance(rows, list):
+            filtered_rows = _filter_rows_by_employee_name(rows, employee_name)
+            if filtered_rows is not rows:
+                if isinstance(api_response, list):
+                    api_response = filtered_rows
+                elif isinstance(api_response, dict) and isinstance(api_response.get("data"), list):
+                    api_response = {**api_response, "data": filtered_rows}
 
-        # Step 6️⃣ Generate final answer
-        final_answer = generate_answer(question, parsed_response)
+        # Step 5️⃣ Generate final answer from raw API response
+        final_answer = generate_answer(question, api_response)
 
         # Step 7️⃣ Store result in cache
         cache.set(question, final_answer)

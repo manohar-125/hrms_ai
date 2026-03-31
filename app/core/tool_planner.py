@@ -12,6 +12,9 @@ from app.core.domain_classifier import classify_domain
 from app.vectordb.api_vector_store import APIVectorStore
 
 
+EMPPERSDTLS_TOOL = "get_emppersdtls"
+
+
 class ToolPlanner:
 
     def __init__(self):
@@ -184,6 +187,55 @@ class ToolPlanner:
         
         return tool_name.strip()
 
+    def _prefer_personal_details_tool(self, query: str, filtered_tools: dict):
+        """
+        Prefer personal-details API for employee contact/profile questions.
+        This avoids selecting unrelated employee sub-resources (bank, task, etc.)
+        when users ask for mobile/email/contact-type attributes.
+        """
+        query_lower = query.lower()
+
+        personal_terms = [
+            "mobile", "phone", "contact", "email", "mail", "dob",
+            "gender", "blood", "marital", "father", "husband", "personal"
+        ]
+        employee_terms = ["employee", "employees", "emp"]
+        bank_terms = ["bank", "account", "ifsc", "salary", "payroll", "pay"]
+
+        asks_personal = any(term in query_lower for term in personal_terms)
+        has_employee_context = any(term in query_lower for term in employee_terms)
+        asks_bank_or_pay = any(term in query_lower for term in bank_terms)
+
+        if asks_personal and has_employee_context and not asks_bank_or_pay:
+            if EMPPERSDTLS_TOOL in filtered_tools:
+                return EMPPERSDTLS_TOOL, filtered_tools[EMPPERSDTLS_TOOL]
+
+        return None, None
+
+    def _prefer_employment_for_list_queries(self, query: str, filtered_tools: dict):
+        """
+        For unspecific "show all employees" queries, prefer get_employment
+        to avoid semantic confusion with task/expense/timesheet tools.
+        """
+        query_lower = query.lower()
+
+        list_keywords = ["show", "list", "all", "display", "get", "fetch", "names"]
+        employee_keywords = ["employee", "employees", "emp", "staff", "member", "members"]
+
+        asks_list = any(kw in query_lower for kw in list_keywords)
+        asks_employee = any(kw in query_lower for kw in employee_keywords)
+
+        has_specific_attr = any(kw in query_lower for kw in [
+            "task", "timesheet", "expense", "bank", "family", "education", "certificate",
+            "salary", "payroll", "leave", "attendance"
+        ])
+
+        if asks_list and asks_employee and not has_specific_attr:
+            if "get_employment" in filtered_tools:
+                return "get_employment", filtered_tools["get_employment"]
+
+        return None, None
+
     def find_tool(self, query: str):
 
         # Reload registry on each request so add/remove changes are picked up
@@ -205,7 +257,9 @@ class ToolPlanner:
         if not filtered_tools:
             filtered_tools = self.registry
 
-        # Step 3 — Prefer APIs without parameters
+        # Step 3 — Prefer APIs without parameters when query doesn't request ID-style lookup
+        query_lower = query.lower()
+        id_focused_query = bool(re.search(r"\b\d+\b", query_lower)) or bool(re.search(r"\bid\b", query_lower))
         clean_tools = {}
 
         for name, data in filtered_tools.items():
@@ -215,8 +269,20 @@ class ToolPlanner:
             if "{" not in endpoint:
                 clean_tools[name] = data
 
-        if clean_tools:
+        if clean_tools and not id_focused_query:
             filtered_tools = clean_tools
+
+        # Step 3.1 — Short-circuit for known personal-details intents.
+        preferred_name, preferred_data = self._prefer_personal_details_tool(query, filtered_tools)
+        if preferred_name:
+            logger.info(f"Rule-selected personal details tool: {preferred_name}")
+            return preferred_name, preferred_data
+
+        # Step 3.2 — Short-circuit for generic employee-list queries.
+        preferred_name, preferred_data = self._prefer_employment_for_list_queries(query, filtered_tools)
+        if preferred_name:
+            logger.info(f"Rule-selected employment tool for list: {preferred_name}")
+            return preferred_name, preferred_data
 
         # Step 4 — Compute keyword scores for all filtered tools
         keyword_scores_all = self.keyword_boost(query, filtered_tools)

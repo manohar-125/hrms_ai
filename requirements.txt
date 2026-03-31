@@ -1,12 +1,12 @@
 # Web Framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
 
 # HTTP Client
-requests==2.31.0
+requests>=2.31.0
 
 # Caching
-redis==5.0.1
+redis>=5.0.1
 
 # Vector Database
 chromadb>=0.5.0
@@ -17,14 +17,14 @@ numpy>=1.26.0
 scipy>=1.12.0
 
 # LLM Integration
-ollama
+ollama>=0.4.0
 
 # Data Validation
 pydantic>=2.7.0
 
-pydantic_settings
+pydantic_settings>=2.2.1
 # Configuration
-python-dotenv==1.0.0
+python-dotenv>=1.0.0
 
 # PDF and OCR processing
 pypdf>=4.2.0

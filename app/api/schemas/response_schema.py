@@ -10,6 +10,6 @@ class ChatResponse(BaseModel):
         json_schema_extra = {
             "example": {
                 "answer": "The holiday policy allows for 12 paid holidays per year.",
-                "source": "Holiday Policy"
+                "source": "Source: Holiday_Policy"
             }
         }

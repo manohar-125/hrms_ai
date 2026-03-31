@@ -1,6 +1,12 @@
 from app.llm.llama_client import generate_response
 
 
+VALID_INTENTS = {
+    "employee", "department", "attendance", "leave", "payroll",
+    "project", "task", "client", "policy", "general"
+}
+
+
 INTENT_PROMPT = """
 You are an intent classifier for an HRMS AI assistant.
 
@@ -55,5 +61,15 @@ def classify_intent(question: str):
     prompt = INTENT_PROMPT.format(question=question)
 
     response = generate_response(prompt)
+    normalized = response.strip().lower()
 
-    return response.strip().lower()
+    # Handle occasional prefixes/suffixes from LLM output.
+    if "intent:" in normalized:
+        normalized = normalized.split("intent:")[-1].strip()
+
+    normalized = normalized.split()[0].strip(".,:;!?\"'()[]{}") if normalized else ""
+
+    if normalized in VALID_INTENTS:
+        return normalized
+
+    return "general"

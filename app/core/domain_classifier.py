@@ -1,6 +1,12 @@
 from app.llm.llama_client import generate_response
 
 
+VALID_DOMAINS = {
+    "employee", "department", "attendance", "leave", "payroll",
+    "project", "task", "client", "policy", "general"
+}
+
+
 DOMAIN_PROMPT = """
 You are an HRMS domain classifier.
 
@@ -66,6 +72,9 @@ def classify_domain(question: str):
         domain = domain.split("domain:")[-1].strip()
 
     # sometimes LLM returns extra text
-    domain = domain.split()[0]
+    domain = domain.split()[0].strip(".,:;!?\"'()[]{}") if domain else ""
 
-    return domain
+    if domain in VALID_DOMAINS:
+        return domain
+
+    return "general"

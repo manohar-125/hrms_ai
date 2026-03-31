@@ -426,8 +426,9 @@ python scripts/index_api_registry.py
 Alternative from inside `scripts/`:
 
 ```bash
-python build_registry.py
-python index_api_registry.py
+cd ..
+python scripts/build_registry.py
+python scripts/index_api_registry.py
 ```
 
 ## Open Swagger Docs

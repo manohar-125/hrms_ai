@@ -48,7 +48,7 @@ def _format_source_attribution(source_meta: dict | None) -> str:
 def answer_question(question: str, session_id: str = "default", return_source: bool = False):
 
     # Step 0️⃣ Cache check
-    cache_key = f"rag:{question}"
+    cache_key = f"rag:{session_id}:{question}"
 
     cached = cache.get(cache_key)
 
