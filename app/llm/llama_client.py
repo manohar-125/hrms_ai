@@ -25,7 +25,14 @@ def generate_response(prompt: str) -> str:
             timeout=60
         )
 
-        response.raise_for_status()
+        if response.status_code >= 400:
+            try:
+                error_detail = response.json().get("error", response.text)
+            except ValueError:
+                error_detail = response.text
+            raise requests.exceptions.HTTPError(
+                f"{response.status_code} Client Error for url: {response.url} - {error_detail}"
+            )
 
         data = response.json()
 

@@ -25,6 +25,62 @@
     "normalized_name": "get_address_id",
     "normalized_intent": "organization_structure"
   },
+  "get_aiquestionbank": {
+    "domain": "hr",
+    "endpoint": "/api/AIQuestionBank",
+    "method": "GET",
+    "description": "Retrieve AIQuestionBank records",
+    "parameters": {},
+    "keywords": [
+      "aiquestion",
+      "bank",
+      "get",
+      "aiquestionbank"
+    ],
+    "normalized_name": "get_aiquestionbank",
+    "normalized_intent": "organization_structure"
+  },
+  "get_aiquestionbank_id": {
+    "domain": "hr",
+    "endpoint": "/api/AIQuestionBank/{id}",
+    "method": "GET",
+    "description": "Retrieve AIQuestionBank details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "aiquestion",
+      "bank",
+      "get",
+      "aiquestionbank",
+      "id"
+    ],
+    "normalized_name": "get_aiquestionbank_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_aiquestionbank_updateaiquestionbankstatus_aiquestionbankid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AIQuestionBank/UpdateAIQuestionBankStatus/{AIQuestionBankId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AIQuestionBank details by parameter",
+    "parameters": {
+      "AIQuestionBankId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "aiquestion",
+      "bank",
+      "update",
+      "status",
+      "get",
+      "aiquestionbank",
+      "updateaiquestionbankstatus",
+      "aiquestionbankid"
+    ],
+    "normalized_name": "get_aiquestionbank_updateaiquestionbankstatus_aiquestionbankid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_alertmessage": {
     "domain": "hr",
     "endpoint": "/api/AlertMessage",
@@ -35,6 +91,644 @@
       "alertmessage"
     ],
     "normalized_name": "get_alert_messages",
+    "normalized_intent": "organization_structure"
+  },
+  "get_alertmessage_id": {
+    "domain": "hr",
+    "endpoint": "/api/AlertMessage/{id}",
+    "method": "GET",
+    "description": "Retrieve AlertMessage details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "alert",
+      "message",
+      "get",
+      "alertmessage",
+      "id"
+    ],
+    "normalized_name": "get_alertmessage_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_alertmessage_updatealertmessagestatus_alertmessageid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AlertMessage/UpdateAlertMessageStatus/{AlertMessageId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AlertMessage details by parameter",
+    "parameters": {
+      "AlertMessageId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "alert",
+      "message",
+      "update",
+      "status",
+      "get",
+      "alertmessage",
+      "updatealertmessagestatus",
+      "alertmessageid"
+    ],
+    "normalized_name": "get_alertmessage_updatealertmessagestatus_alertmessageid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_alerttype": {
+    "domain": "hr",
+    "endpoint": "/api/AlertType",
+    "method": "GET",
+    "description": "Retrieve AlertType records",
+    "parameters": {},
+    "keywords": [
+      "alert",
+      "type",
+      "get",
+      "alerttype"
+    ],
+    "normalized_name": "get_alerttype",
+    "normalized_intent": "organization_structure"
+  },
+  "get_alerttype_id": {
+    "domain": "hr",
+    "endpoint": "/api/AlertType/{id}",
+    "method": "GET",
+    "description": "Retrieve AlertType details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "alert",
+      "type",
+      "get",
+      "alerttype",
+      "id"
+    ],
+    "normalized_name": "get_alerttype_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_appraisalreport": {
+    "domain": "hr",
+    "endpoint": "/api/AppraisalReport",
+    "method": "GET",
+    "description": "Retrieve AppraisalReport records",
+    "parameters": {},
+    "keywords": [
+      "appraisal",
+      "report",
+      "get",
+      "appraisalreport"
+    ],
+    "normalized_name": "get_appraisalreport",
+    "normalized_intent": "organization_structure"
+  },
+  "get_appraisalreport_id": {
+    "domain": "hr",
+    "endpoint": "/api/AppraisalReport/{id}",
+    "method": "GET",
+    "description": "Retrieve AppraisalReport details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "appraisal",
+      "report",
+      "get",
+      "appraisalreport",
+      "id"
+    ],
+    "normalized_name": "get_appraisalreport_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_appraisalreport_updateappraisalreportstatus_appraisalreportid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AppraisalReport/UpdateAppraisalReportStatus/{AppraisalReportId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AppraisalReport details by parameter",
+    "parameters": {
+      "AppraisalReportId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "appraisal",
+      "report",
+      "update",
+      "status",
+      "get",
+      "appraisalreport",
+      "updateappraisalreportstatus",
+      "appraisalreportid"
+    ],
+    "normalized_name": "get_appraisalreport_updateappraisalreportstatus_appraisalreportid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_asset": {
+    "domain": "asset",
+    "endpoint": "/api/Asset",
+    "method": "GET",
+    "description": "Retrieve Asset records",
+    "parameters": {},
+    "keywords": [
+      "asset",
+      "get"
+    ],
+    "normalized_name": "get_asset",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_asset_getassetlog_assetid_serialnumber": {
+    "domain": "asset",
+    "endpoint": "/api/Asset/GetAssetLog/{AssetId}/{SerialNumber}",
+    "method": "GET",
+    "description": "Retrieve Asset details by parameter",
+    "parameters": {
+      "AssetId": "resource id",
+      "SerialNumber": "SerialNumber"
+    },
+    "keywords": [
+      "asset",
+      "get",
+      "log",
+      "getassetlog",
+      "assetid",
+      "serialnumber",
+      "id",
+      "serial"
+    ],
+    "normalized_name": "get_asset_getassetlog_assetid_serialnumber",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_asset_id": {
+    "domain": "asset",
+    "endpoint": "/api/Asset/{id}",
+    "method": "GET",
+    "description": "Retrieve Asset details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "asset",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_asset_id",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_asset_serialno": {
+    "domain": "asset",
+    "endpoint": "/api/Asset/{SerialNo}",
+    "method": "GET",
+    "description": "Retrieve Asset details by parameter",
+    "parameters": {
+      "SerialNo": "SerialNo"
+    },
+    "keywords": [
+      "asset",
+      "get",
+      "serialno",
+      "serial",
+      "no"
+    ],
+    "normalized_name": "get_asset_serialno",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetbrand": {
+    "domain": "asset",
+    "endpoint": "/api/AssetBrand",
+    "method": "GET",
+    "description": "Retrieve AssetBrand records",
+    "parameters": {},
+    "keywords": [
+      "asset",
+      "brand",
+      "get",
+      "assetbrand"
+    ],
+    "normalized_name": "get_assetbrand",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetbrand_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetBrand/{id}",
+    "method": "GET",
+    "description": "Retrieve AssetBrand details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "asset",
+      "brand",
+      "get",
+      "assetbrand",
+      "id"
+    ],
+    "normalized_name": "get_assetbrand_id",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetbrand_name": {
+    "domain": "asset",
+    "endpoint": "/api/AssetBrand/{Name}",
+    "method": "GET",
+    "description": "Retrieve AssetBrand details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "asset",
+      "brand",
+      "get",
+      "assetbrand",
+      "name"
+    ],
+    "normalized_name": "get_assetbrand_name",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetcategory": {
+    "domain": "asset",
+    "endpoint": "/api/AssetCategory",
+    "method": "GET",
+    "description": "Retrieve AssetCategory records",
+    "parameters": {},
+    "keywords": [
+      "asset",
+      "category",
+      "get",
+      "assetcategory"
+    ],
+    "normalized_name": "get_assetcategory",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetcategory_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetCategory/{id}",
+    "method": "GET",
+    "description": "Retrieve AssetCategory details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "asset",
+      "category",
+      "get",
+      "assetcategory",
+      "id"
+    ],
+    "normalized_name": "get_assetcategory_id",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetcategory_name": {
+    "domain": "asset",
+    "endpoint": "/api/AssetCategory/{Name}",
+    "method": "GET",
+    "description": "Retrieve AssetCategory details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "asset",
+      "category",
+      "get",
+      "assetcategory",
+      "name"
+    ],
+    "normalized_name": "get_assetcategory_name",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetmaintance": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance",
+    "method": "GET",
+    "description": "Retrieve AssetMaintance records",
+    "parameters": {},
+    "keywords": [
+      "asset",
+      "maintance",
+      "get",
+      "assetmaintance"
+    ],
+    "normalized_name": "get_assetmaintance",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetmaintance_getassetmaintanceproblemsdetail_assetmaintanceid_assetid_serialno": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance/GetAssetMaintanceProblemsDetail/{AssetMaintanceId}/{AssetId}/{SerialNo}",
+    "method": "GET",
+    "description": "Retrieve AssetMaintance details by parameter",
+    "parameters": {
+      "AssetMaintanceId": "resource id",
+      "AssetId": "resource id",
+      "SerialNo": "SerialNo"
+    },
+    "keywords": [
+      "asset",
+      "maintance",
+      "get",
+      "problems",
+      "detail",
+      "assetmaintance",
+      "getassetmaintanceproblemsdetail",
+      "assetmaintanceid"
+    ],
+    "normalized_name": "get_assetmaintance_getassetmaintanceproblemsdetail_assetmaintanceid_assetid_serialno",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetmaintance_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance/{id}",
+    "method": "GET",
+    "description": "Retrieve AssetMaintance details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "asset",
+      "maintance",
+      "get",
+      "assetmaintance",
+      "id"
+    ],
+    "normalized_name": "get_assetmaintance_id",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetmaintance_updateassetmaintancestatus_assetmaintanceid_status_updatedby": {
+    "domain": "asset",
+    "endpoint": "/api/AssetMaintance/UpdateAssetMaintanceStatus/{AssetMaintanceId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AssetMaintance details by parameter",
+    "parameters": {
+      "AssetMaintanceId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "asset",
+      "maintance",
+      "update",
+      "status",
+      "get",
+      "assetmaintance",
+      "updateassetmaintancestatus",
+      "assetmaintanceid"
+    ],
+    "normalized_name": "get_assetmaintance_updateassetmaintancestatus_assetmaintanceid_status_updatedby",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetstatus": {
+    "domain": "asset",
+    "endpoint": "/api/AssetStatus",
+    "method": "GET",
+    "description": "Retrieve AssetStatus records",
+    "parameters": {},
+    "keywords": [
+      "asset",
+      "status",
+      "get",
+      "assetstatus"
+    ],
+    "normalized_name": "get_assetstatus",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetstatus_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetStatus/{id}",
+    "method": "GET",
+    "description": "Retrieve AssetStatus details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "asset",
+      "status",
+      "get",
+      "assetstatus",
+      "id"
+    ],
+    "normalized_name": "get_assetstatus_id",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetvendor": {
+    "domain": "asset",
+    "endpoint": "/api/AssetVendor",
+    "method": "GET",
+    "description": "Retrieve AssetVendor records",
+    "parameters": {},
+    "keywords": [
+      "asset",
+      "vendor",
+      "get",
+      "assetvendor"
+    ],
+    "normalized_name": "get_assetvendor",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetvendor_id": {
+    "domain": "asset",
+    "endpoint": "/api/AssetVendor/{id}",
+    "method": "GET",
+    "description": "Retrieve AssetVendor details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "asset",
+      "vendor",
+      "get",
+      "assetvendor",
+      "id"
+    ],
+    "normalized_name": "get_assetvendor_id",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_assetvendor_name": {
+    "domain": "asset",
+    "endpoint": "/api/AssetVendor/{Name}",
+    "method": "GET",
+    "description": "Retrieve AssetVendor details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "asset",
+      "vendor",
+      "get",
+      "assetvendor",
+      "name"
+    ],
+    "normalized_name": "get_assetvendor_name",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_associatedeductiondetail": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionDetail",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionDetail records",
+    "parameters": {},
+    "keywords": [
+      "associate",
+      "deduction",
+      "detail",
+      "get",
+      "associatedeductiondetail"
+    ],
+    "normalized_name": "get_associatedeductiondetail",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductiondetail_id": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionDetail/{id}",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionDetail details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "associate",
+      "deduction",
+      "detail",
+      "get",
+      "associatedeductiondetail",
+      "id"
+    ],
+    "normalized_name": "get_associatedeductiondetail_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductiondetail_updateassociatedeductiondetailstatus_associatedeductiondetailid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionDetail/UpdateAssociateDeductionDetailStatus/{AssociateDeductionDetailId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionDetail details by parameter",
+    "parameters": {
+      "AssociateDeductionDetailId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "associate",
+      "deduction",
+      "detail",
+      "update",
+      "status",
+      "get",
+      "associatedeductiondetail",
+      "updateassociatedeductiondetailstatus"
+    ],
+    "normalized_name": "get_associatedeductiondetail_updateassociatedeductiondetailstatus_associatedeductiondetailid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductionhead": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionHead",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionHead records",
+    "parameters": {},
+    "keywords": [
+      "associate",
+      "deduction",
+      "head",
+      "get",
+      "associatedeductionhead"
+    ],
+    "normalized_name": "get_associatedeductionhead",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductionhead_id": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionHead/{id}",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionHead details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "associate",
+      "deduction",
+      "head",
+      "get",
+      "associatedeductionhead",
+      "id"
+    ],
+    "normalized_name": "get_associatedeductionhead_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductionhead_updateassociatedeductionheadstatus_associatedeductionheadid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionHead/UpdateAssociateDeductionHeadStatus/{AssociateDeductionHeadId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionHead details by parameter",
+    "parameters": {
+      "AssociateDeductionHeadId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "associate",
+      "deduction",
+      "head",
+      "update",
+      "status",
+      "get",
+      "associatedeductionhead",
+      "updateassociatedeductionheadstatus"
+    ],
+    "normalized_name": "get_associatedeductionhead_updateassociatedeductionheadstatus_associatedeductionheadid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductionsub": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionSub",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionSub records",
+    "parameters": {},
+    "keywords": [
+      "associate",
+      "deduction",
+      "sub",
+      "get",
+      "associatedeductionsub"
+    ],
+    "normalized_name": "get_associatedeductionsub",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductionsub_id": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionSub/{id}",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionSub details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "associate",
+      "deduction",
+      "sub",
+      "get",
+      "associatedeductionsub",
+      "id"
+    ],
+    "normalized_name": "get_associatedeductionsub_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_associatedeductionsub_updateassociatedeductionsubstatus_associatedeductionsubid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/AssociateDeductionSub/UpdateAssociateDeductionSubStatus/{AssociateDeductionSubId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve AssociateDeductionSub details by parameter",
+    "parameters": {
+      "AssociateDeductionSubId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "associate",
+      "deduction",
+      "sub",
+      "update",
+      "status",
+      "get",
+      "associatedeductionsub",
+      "updateassociatedeductionsubstatus"
+    ],
+    "normalized_name": "get_associatedeductionsub_updateassociatedeductionsubstatus_associatedeductionsubid_status_updatedby",
     "normalized_intent": "organization_structure"
   },
   "get_bank": {
@@ -63,6 +757,27 @@
     "normalized_name": "get_bank_id",
     "normalized_intent": "organization_structure"
   },
+  "get_certificateofintern_getcertificateofintern_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/CertificateOfIntern/GetCertificateOfIntern/{EmpRegId}",
+    "method": "GET",
+    "description": "Retrieve CertificateOfIntern details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    },
+    "keywords": [
+      "certificate",
+      "of",
+      "intern",
+      "get",
+      "certificateofintern",
+      "getcertificateofintern",
+      "empregid",
+      "emp"
+    ],
+    "normalized_name": "get_certificateofintern_getcertificateofintern_empregid",
+    "normalized_intent": "employee_profile"
+  },
   "get_certification": {
     "domain": "hr",
     "endpoint": "/api/Certification",
@@ -73,6 +788,22 @@
       "certification"
     ],
     "normalized_name": "get_certifications",
+    "normalized_intent": "organization_structure"
+  },
+  "get_certification_id": {
+    "domain": "hr",
+    "endpoint": "/api/Certification/{id}",
+    "method": "GET",
+    "description": "Retrieve Certification details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "certification",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_certification_id",
     "normalized_intent": "organization_structure"
   },
   "get_certification_name": {
@@ -102,6 +833,45 @@
     "normalized_name": "get_citys",
     "normalized_intent": "organization_structure"
   },
+  "get_city_id": {
+    "domain": "hr",
+    "endpoint": "/api/City/{id}",
+    "method": "GET",
+    "description": "Retrieve City details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "city",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_city_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_city_updatecitystatus_cityid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/City/UpdateCityStatus/{CityId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve City details by parameter",
+    "parameters": {
+      "CityId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "city",
+      "update",
+      "status",
+      "get",
+      "updatecitystatus",
+      "cityid",
+      "updatedby",
+      "id"
+    ],
+    "normalized_name": "get_city_updatecitystatus_cityid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_client": {
     "domain": "client",
     "endpoint": "/api/Client",
@@ -128,6 +898,29 @@
     "normalized_name": "get_client_id",
     "normalized_intent": "client_management"
   },
+  "get_client_updateclientstatus_clientid_status_updatedby": {
+    "domain": "client",
+    "endpoint": "/api/Client/UpdateClientStatus/{ClientId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Client details by parameter",
+    "parameters": {
+      "ClientId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "client",
+      "update",
+      "status",
+      "get",
+      "updateclientstatus",
+      "clientid",
+      "updatedby",
+      "id"
+    ],
+    "normalized_name": "get_client_updateclientstatus_clientid_status_updatedby",
+    "normalized_intent": "client_management"
+  },
   "get_contact": {
     "domain": "hr",
     "endpoint": "/api/Contact",
@@ -139,6 +932,199 @@
     ],
     "normalized_name": "get_contacts",
     "normalized_intent": "organization_structure"
+  },
+  "get_contact_id": {
+    "domain": "hr",
+    "endpoint": "/api/Contact/{id}",
+    "method": "GET",
+    "description": "Retrieve Contact details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "contact",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_contact_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_contact_mobile": {
+    "domain": "hr",
+    "endpoint": "/api/Contact/{Mobile}",
+    "method": "GET",
+    "description": "Retrieve Contact details by parameter",
+    "parameters": {
+      "Mobile": "Mobile"
+    },
+    "keywords": [
+      "contact",
+      "get",
+      "mobile"
+    ],
+    "normalized_name": "get_contact_mobile",
+    "normalized_intent": "organization_structure"
+  },
+  "get_country": {
+    "domain": "hr",
+    "endpoint": "/api/Country",
+    "method": "GET",
+    "description": "Retrieve Country records",
+    "parameters": {},
+    "keywords": [
+      "country",
+      "get"
+    ],
+    "normalized_name": "get_country",
+    "normalized_intent": "organization_structure"
+  },
+  "get_country_id": {
+    "domain": "hr",
+    "endpoint": "/api/Country/{id}",
+    "method": "GET",
+    "description": "Retrieve Country details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "country",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_country_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_dashboarddetail_getassetdashboarddetail": {
+    "domain": "asset",
+    "endpoint": "/api/DashboardDetail/GetAssetDashboardDetail",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail records",
+    "parameters": {},
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "asset",
+      "dashboarddetail",
+      "getassetdashboarddetail"
+    ],
+    "normalized_name": "get_dashboarddetail_getassetdashboarddetail",
+    "normalized_intent": "asset_tracking"
+  },
+  "get_dashboarddetail_getclientdashboarddetail": {
+    "domain": "client",
+    "endpoint": "/api/DashboardDetail/GetClientDashboardDetail",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail records",
+    "parameters": {},
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "client",
+      "dashboarddetail",
+      "getclientdashboarddetail"
+    ],
+    "normalized_name": "get_dashboarddetail_getclientdashboarddetail",
+    "normalized_intent": "client_management"
+  },
+  "get_dashboarddetail_getemployeedashboarddetail": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetEmployeeDashboardDetail",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail records",
+    "parameters": {},
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "employee",
+      "dashboarddetail",
+      "getemployeedashboarddetail"
+    ],
+    "normalized_name": "get_dashboarddetail_getemployeedashboarddetail",
+    "normalized_intent": "employee_profile"
+  },
+  "get_dashboarddetail_getemployeeprofiledetail_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetEmployeeProfileDetail/{EmpRegId}",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    },
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "employee",
+      "profile",
+      "dashboarddetail",
+      "getemployeeprofiledetail",
+      "empregid"
+    ],
+    "normalized_name": "get_dashboarddetail_getemployeeprofiledetail_empregid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_dashboarddetail_getprojectdashboarddetail": {
+    "domain": "project",
+    "endpoint": "/api/DashboardDetail/GetProjectDashboardDetail",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail records",
+    "parameters": {},
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "project",
+      "dashboarddetail",
+      "getprojectdashboarddetail"
+    ],
+    "normalized_name": "get_dashboarddetail_getprojectdashboarddetail",
+    "normalized_intent": "project_management"
+  },
+  "get_dashboarddetail_getrolebasedashboarddetail_rolename_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetRoleBaseDashboardDetail/{RoleName}/{EmpRegId}",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail details by parameter",
+    "parameters": {
+      "RoleName": "RoleName",
+      "EmpRegId": "employee registration id"
+    },
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "role",
+      "base",
+      "dashboarddetail",
+      "getrolebasedashboarddetail",
+      "rolename"
+    ],
+    "normalized_name": "get_dashboarddetail_getrolebasedashboarddetail_rolename_empregid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_dashboarddetail_gettaskdashboarddetail_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/DashboardDetail/GetTaskDashboardDetail/{EmpRegId}",
+    "method": "GET",
+    "description": "Retrieve DashboardDetail details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    },
+    "keywords": [
+      "dashboard",
+      "detail",
+      "get",
+      "task",
+      "dashboarddetail",
+      "gettaskdashboarddetail",
+      "empregid",
+      "emp"
+    ],
+    "normalized_name": "get_dashboarddetail_gettaskdashboarddetail_empregid",
+    "normalized_intent": "employee_profile"
   },
   "get_deductionplan": {
     "domain": "hr",
@@ -166,6 +1152,29 @@
     "normalized_name": "get_deductionplan_id",
     "normalized_intent": "organization_structure"
   },
+  "get_deductionplan_updatedeductionplanstatus_deductionplanid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/DeductionPlan/UpdateDeductionPlanStatus/{DeductionPlanId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve DeductionPlan details by parameter",
+    "parameters": {
+      "DeductionPlanId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "deduction",
+      "plan",
+      "update",
+      "status",
+      "get",
+      "deductionplan",
+      "updatedeductionplanstatus",
+      "deductionplanid"
+    ],
+    "normalized_name": "get_deductionplan_updatedeductionplanstatus_deductionplanid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_department": {
     "domain": "hr",
     "endpoint": "/api/Department",
@@ -176,6 +1185,23 @@
       "department"
     ],
     "normalized_name": "get_departments",
+    "normalized_intent": "organization_structure"
+  },
+  "get_department_departmentname": {
+    "domain": "hr",
+    "endpoint": "/api/Department/{DepartmentName}",
+    "method": "GET",
+    "description": "Retrieve Department details by parameter",
+    "parameters": {
+      "DepartmentName": "DepartmentName"
+    },
+    "keywords": [
+      "department",
+      "get",
+      "departmentname",
+      "name"
+    ],
+    "normalized_name": "get_department_departmentname",
     "normalized_intent": "organization_structure"
   },
   "get_department_id": {
@@ -204,6 +1230,21 @@
     "normalized_name": "get_designations",
     "normalized_intent": "organization_structure"
   },
+  "get_designation_designation": {
+    "domain": "hr",
+    "endpoint": "/api/Designation/{Designation}",
+    "method": "GET",
+    "description": "Retrieve Designation details by parameter",
+    "parameters": {
+      "Designation": "Designation name"
+    },
+    "keywords": [
+      "designation",
+      "get"
+    ],
+    "normalized_name": "get_designation_designation",
+    "normalized_intent": "organization_structure"
+  },
   "get_designation_id": {
     "domain": "hr",
     "endpoint": "/api/Designation/{id}",
@@ -216,21 +1257,6 @@
       "designation"
     ],
     "normalized_name": "get_designation_id",
-    "normalized_intent": "organization_structure"
-  },
-  "get_designation_by_designation_name": {
-    "domain": "hr",
-    "endpoint": "/api/Designation/{Designation}",
-    "method": "GET",
-    "description": "Retrieve job designation and position level information",
-    "parameters": {
-      "Designation": "Designation name"
-    },
-    "keywords": [
-      "designation",
-      "name"
-    ],
-    "normalized_name": "get_designation_by_designation_name",
     "normalized_intent": "organization_structure"
   },
   "get_education": {
@@ -274,6 +1300,45 @@
     "normalized_name": "get_employee_bank_accounts",
     "normalized_intent": "employee_profile"
   },
+  "get_empbankaccount_accountno": {
+    "domain": "employee",
+    "endpoint": "/api/EmpBankAccount/{AccountNo}",
+    "method": "GET",
+    "description": "Retrieve EmpBankAccount details by parameter",
+    "parameters": {
+      "AccountNo": "AccountNo"
+    },
+    "keywords": [
+      "emp",
+      "bank",
+      "account",
+      "get",
+      "empbankaccount",
+      "accountno",
+      "no"
+    ],
+    "normalized_name": "get_empbankaccount_accountno",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empbankaccount_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpBankAccount/{id}",
+    "method": "GET",
+    "description": "Retrieve EmpBankAccount details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "emp",
+      "bank",
+      "account",
+      "get",
+      "empbankaccount",
+      "id"
+    ],
+    "normalized_name": "get_empbankaccount_id",
+    "normalized_intent": "employee_profile"
+  },
   "get_empeducation": {
     "domain": "employee",
     "endpoint": "/api/EmpEducation",
@@ -284,6 +1349,42 @@
       "empeducation"
     ],
     "normalized_name": "get_employee_educations",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empeducation_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpEducation/{id}",
+    "method": "GET",
+    "description": "Retrieve EmpEducation details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "emp",
+      "education",
+      "get",
+      "empeducation",
+      "id"
+    ],
+    "normalized_name": "get_empeducation_id",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empeducation_name": {
+    "domain": "employee",
+    "endpoint": "/api/EmpEducation/{Name}",
+    "method": "GET",
+    "description": "Retrieve EmpEducation details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "emp",
+      "education",
+      "get",
+      "empeducation",
+      "name"
+    ],
+    "normalized_name": "get_empeducation_name",
     "normalized_intent": "employee_profile"
   },
   "get_empfamily": {
@@ -312,6 +1413,24 @@
     "normalized_name": "get_empfamily_id",
     "normalized_intent": "employee_profile"
   },
+  "get_empfamily_mobile": {
+    "domain": "employee",
+    "endpoint": "/api/EmpFamily/{Mobile}",
+    "method": "GET",
+    "description": "Retrieve EmpFamily details by parameter",
+    "parameters": {
+      "Mobile": "Mobile"
+    },
+    "keywords": [
+      "emp",
+      "family",
+      "get",
+      "empfamily",
+      "mobile"
+    ],
+    "normalized_name": "get_empfamily_mobile",
+    "normalized_intent": "employee_profile"
+  },
   "get_empidentity": {
     "domain": "employee",
     "endpoint": "/api/EmpIdentity",
@@ -322,6 +1441,77 @@
       "empidentity"
     ],
     "normalized_name": "get_employee_identity",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empidentity_aadhaarno": {
+    "domain": "employee",
+    "endpoint": "/api/EmpIdentity/{AadhaarNo}",
+    "method": "GET",
+    "description": "Retrieve EmpIdentity details by parameter",
+    "parameters": {
+      "AadhaarNo": "AadhaarNo"
+    },
+    "keywords": [
+      "emp",
+      "identity",
+      "get",
+      "empidentity",
+      "aadhaarno",
+      "aadhaar",
+      "no"
+    ],
+    "normalized_name": "get_empidentity_aadhaarno",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empidentity_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpIdentity/{id}",
+    "method": "GET",
+    "description": "Retrieve EmpIdentity details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "emp",
+      "identity",
+      "get",
+      "empidentity",
+      "id"
+    ],
+    "normalized_name": "get_empidentity_id",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employeestatus": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeStatus",
+    "method": "GET",
+    "description": "Retrieve EmployeeStatus records",
+    "parameters": {},
+    "keywords": [
+      "employee",
+      "status",
+      "get",
+      "employeestatus"
+    ],
+    "normalized_name": "get_employeestatus",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employeestatus_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeStatus/{id}",
+    "method": "GET",
+    "description": "Retrieve EmployeeStatus details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "employee",
+      "status",
+      "get",
+      "employeestatus",
+      "id"
+    ],
+    "normalized_name": "get_employeestatus_id",
     "normalized_intent": "employee_profile"
   },
   "get_employeetasktimesheet": {
@@ -336,6 +1526,77 @@
     "normalized_name": "get_employee_task_timesheets",
     "normalized_intent": "employee_profile"
   },
+  "get_employeetasktimesheet_getemployeetasktimesheet_empregid_monthid_year": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/GetEmployeeTaskTimeSheet/{EmpRegId}/{MonthId}/{Year}",
+    "method": "GET",
+    "description": "Retrieve EmployeeTaskTimeSheet details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "MonthId": "resource id",
+      "Year": "Year"
+    },
+    "keywords": [
+      "employee",
+      "task",
+      "time",
+      "sheet",
+      "get",
+      "employeetasktimesheet",
+      "getemployeetasktimesheet",
+      "empregid"
+    ],
+    "normalized_name": "get_employeetasktimesheet_getemployeetasktimesheet_empregid_monthid_year",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employeetasktimesheet_getemployeetasktimesheetdescriptiondetail_projectid_taskid_empregid_timesheetdate": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/GetEmployeeTaskTimeSheetDescriptionDetail/{ProjectId}/{TaskId}/{EmpRegId}/{TimeSheetDate}",
+    "method": "GET",
+    "description": "Retrieve EmployeeTaskTimeSheet details by parameter",
+    "parameters": {
+      "ProjectId": "resource id",
+      "TaskId": "resource id",
+      "EmpRegId": "employee registration id",
+      "TimeSheetDate": "TimeSheetDate"
+    },
+    "keywords": [
+      "employee",
+      "task",
+      "time",
+      "sheet",
+      "get",
+      "description",
+      "detail",
+      "employeetasktimesheet"
+    ],
+    "normalized_name": "get_employeetasktimesheet_getemployeetasktimesheetdescriptiondetail_projectid_taskid_empregid_timesheetdate",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employeetasktimesheet_getemployeetasktimesheetdetail_projectid_taskid_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/GetEmployeeTaskTimeSheetDetail/{ProjectId}/{TaskId}/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Retrieve EmployeeTaskTimeSheet details by parameter",
+    "parameters": {
+      "ProjectId": "resource id",
+      "TaskId": "resource id",
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    },
+    "keywords": [
+      "employee",
+      "task",
+      "time",
+      "sheet",
+      "get",
+      "detail",
+      "employeetasktimesheet",
+      "getemployeetasktimesheetdetail"
+    ],
+    "normalized_name": "get_employeetasktimesheet_getemployeetasktimesheetdetail_projectid_taskid_empregid_date",
+    "normalized_intent": "employee_profile"
+  },
   "get_employeetasktimesheet_id": {
     "domain": "employee",
     "endpoint": "/api/EmployeeTaskTimeSheet/{id}",
@@ -348,6 +1609,54 @@
       "employeetasktimesheet"
     ],
     "normalized_name": "get_employee_task_time_sheet_id",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employeetasktimesheet_timesheetapprovereject_timesheetid_statusid_statusname_statusremarks_updatedby": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/TimeSheetApproveReject/{TimeSheetId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve EmployeeTaskTimeSheet details by parameter",
+    "parameters": {
+      "TimeSheetId": "resource id",
+      "StatusId": "resource id",
+      "StatusName": "StatusName",
+      "StatusRemarks": "StatusRemarks",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "employee",
+      "task",
+      "time",
+      "sheet",
+      "approve",
+      "reject",
+      "get",
+      "employeetasktimesheet"
+    ],
+    "normalized_name": "get_employeetasktimesheet_timesheetapprovereject_timesheetid_statusid_statusname_statusremarks_updatedby",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employeetasktimesheet_updateemployeetasktimesheetstatus_employeetasktimesheetid_status_updatedby": {
+    "domain": "employee",
+    "endpoint": "/api/EmployeeTaskTimeSheet/UpdateEmployeeTaskTimeSheetStatus/{EmployeeTaskTimeSheetId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve EmployeeTaskTimeSheet details by parameter",
+    "parameters": {
+      "EmployeeTaskTimeSheetId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "employee",
+      "task",
+      "time",
+      "sheet",
+      "update",
+      "status",
+      "get",
+      "employeetasktimesheet"
+    ],
+    "normalized_name": "get_employeetasktimesheet_updateemployeetasktimesheetstatus_employeetasktimesheetid_status_updatedby",
     "normalized_intent": "employee_profile"
   },
   "get_employment": {
@@ -388,6 +1697,122 @@
     "normalized_name": "get_employee_personal_details",
     "normalized_intent": "employee_profile"
   },
+  "get_emppersdtls_fullname": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls/{FullName}",
+    "method": "GET",
+    "description": "Retrieve EmpPersDtls details by parameter",
+    "parameters": {
+      "FullName": "FullName"
+    },
+    "keywords": [
+      "emp",
+      "pers",
+      "dtls",
+      "get",
+      "emppersdtls",
+      "fullname",
+      "full",
+      "name"
+    ],
+    "normalized_name": "get_emppersdtls_fullname",
+    "normalized_intent": "employee_profile"
+  },
+  "get_emppersdtls_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls/{id}",
+    "method": "GET",
+    "description": "Retrieve EmpPersDtls details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "emp",
+      "pers",
+      "dtls",
+      "get",
+      "emppersdtls",
+      "id"
+    ],
+    "normalized_name": "get_emppersdtls_id",
+    "normalized_intent": "employee_profile"
+  },
+  "get_emppersdtls_updateemployeestatus_empregid_status_updatedby": {
+    "domain": "employee",
+    "endpoint": "/api/EmpPersDtls/UpdateEmployeeStatus/{EmpRegId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve EmpPersDtls details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "emp",
+      "pers",
+      "dtls",
+      "update",
+      "employee",
+      "status",
+      "get",
+      "emppersdtls"
+    ],
+    "normalized_name": "get_emppersdtls_updateemployeestatus_empregid_status_updatedby",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empreg": {
+    "domain": "employee",
+    "endpoint": "/api/EmpReg",
+    "method": "GET",
+    "description": "Retrieve EmpReg records",
+    "parameters": {},
+    "keywords": [
+      "emp",
+      "reg",
+      "get",
+      "empreg"
+    ],
+    "normalized_name": "get_empreg",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empreg_fullname": {
+    "domain": "employee",
+    "endpoint": "/api/EmpReg/{FullName}",
+    "method": "GET",
+    "description": "Retrieve EmpReg details by parameter",
+    "parameters": {
+      "FullName": "FullName"
+    },
+    "keywords": [
+      "emp",
+      "reg",
+      "get",
+      "empreg",
+      "fullname",
+      "full",
+      "name"
+    ],
+    "normalized_name": "get_empreg_fullname",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empreg_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpReg/{id}",
+    "method": "GET",
+    "description": "Retrieve EmpReg details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "emp",
+      "reg",
+      "get",
+      "empreg",
+      "id"
+    ],
+    "normalized_name": "get_empreg_id",
+    "normalized_intent": "employee_profile"
+  },
   "get_emptype": {
     "domain": "employee",
     "endpoint": "/api/EmpType",
@@ -426,6 +1851,75 @@
     "normalized_name": "get_employee_work_experiences",
     "normalized_intent": "employee_profile"
   },
+  "get_empworkexperience_id": {
+    "domain": "employee",
+    "endpoint": "/api/EmpWorkExperience/{id}",
+    "method": "GET",
+    "description": "Retrieve EmpWorkExperience details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "emp",
+      "work",
+      "experience",
+      "get",
+      "empworkexperience",
+      "id"
+    ],
+    "normalized_name": "get_empworkexperience_id",
+    "normalized_intent": "employee_profile"
+  },
+  "get_empworkexperience_serialno": {
+    "domain": "employee",
+    "endpoint": "/api/EmpWorkExperience/{SerialNo}",
+    "method": "GET",
+    "description": "Retrieve EmpWorkExperience details by parameter",
+    "parameters": {
+      "SerialNo": "SerialNo"
+    },
+    "keywords": [
+      "emp",
+      "work",
+      "experience",
+      "get",
+      "empworkexperience",
+      "serialno",
+      "serial",
+      "no"
+    ],
+    "normalized_name": "get_empworkexperience_serialno",
+    "normalized_intent": "employee_profile"
+  },
+  "get_epf": {
+    "domain": "hr",
+    "endpoint": "/api/EPF",
+    "method": "GET",
+    "description": "Retrieve EPF records",
+    "parameters": {},
+    "keywords": [
+      "epf",
+      "get"
+    ],
+    "normalized_name": "get_epf",
+    "normalized_intent": "organization_structure"
+  },
+  "get_epf_id": {
+    "domain": "hr",
+    "endpoint": "/api/EPF/{id}",
+    "method": "GET",
+    "description": "Retrieve EPF details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "epf",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_epf_id",
+    "normalized_intent": "organization_structure"
+  },
   "get_errorlog": {
     "domain": "hr",
     "endpoint": "/api/ErrorLog",
@@ -450,6 +1944,190 @@
       "errorlog"
     ],
     "normalized_name": "get_errorlog_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_errorlog_updateerrorlogstatus_errorlogid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/ErrorLog/UpdateErrorLogStatus/{ErrorLogId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve ErrorLog details by parameter",
+    "parameters": {
+      "ErrorLogId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "error",
+      "log",
+      "update",
+      "status",
+      "get",
+      "errorlog",
+      "updateerrorlogstatus",
+      "errorlogid"
+    ],
+    "normalized_name": "get_errorlog_updateerrorlogstatus_errorlogid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_esic": {
+    "domain": "hr",
+    "endpoint": "/api/ESIC",
+    "method": "GET",
+    "description": "Retrieve ESIC records",
+    "parameters": {},
+    "keywords": [
+      "esic",
+      "get"
+    ],
+    "normalized_name": "get_esic",
+    "normalized_intent": "organization_structure"
+  },
+  "get_esic_id": {
+    "domain": "hr",
+    "endpoint": "/api/ESIC/{id}",
+    "method": "GET",
+    "description": "Retrieve ESIC details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "esic",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_esic_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_expense": {
+    "domain": "hr",
+    "endpoint": "/api/Expense",
+    "method": "GET",
+    "description": "Retrieve Expense records",
+    "parameters": {},
+    "keywords": [
+      "expense",
+      "get"
+    ],
+    "normalized_name": "get_expense",
+    "normalized_intent": "organization_structure"
+  },
+  "get_expense_id": {
+    "domain": "hr",
+    "endpoint": "/api/Expense/{id}",
+    "method": "GET",
+    "description": "Retrieve Expense details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "expense",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_expense_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_expense_updateexpensestatus_expenseid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Expense/UpdateExpenseStatus/{ExpenseId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Expense details by parameter",
+    "parameters": {
+      "ExpenseId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "expense",
+      "update",
+      "status",
+      "get",
+      "updateexpensestatus",
+      "expenseid",
+      "updatedby",
+      "id"
+    ],
+    "normalized_name": "get_expense_updateexpensestatus_expenseid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_expensecategory": {
+    "domain": "hr",
+    "endpoint": "/api/ExpenseCategory",
+    "method": "GET",
+    "description": "Retrieve ExpenseCategory records",
+    "parameters": {},
+    "keywords": [
+      "expense",
+      "category",
+      "get",
+      "expensecategory"
+    ],
+    "normalized_name": "get_expensecategory",
+    "normalized_intent": "organization_structure"
+  },
+  "get_expensecategory_id": {
+    "domain": "hr",
+    "endpoint": "/api/ExpenseCategory/{id}",
+    "method": "GET",
+    "description": "Retrieve ExpenseCategory details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "expense",
+      "category",
+      "get",
+      "expensecategory",
+      "id"
+    ],
+    "normalized_name": "get_expensecategory_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_expensecategory_name": {
+    "domain": "hr",
+    "endpoint": "/api/ExpenseCategory/{Name}",
+    "method": "GET",
+    "description": "Retrieve ExpenseCategory details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "expense",
+      "category",
+      "get",
+      "expensecategory",
+      "name"
+    ],
+    "normalized_name": "get_expensecategory_name",
+    "normalized_intent": "organization_structure"
+  },
+  "get_family": {
+    "domain": "hr",
+    "endpoint": "/api/Family",
+    "method": "GET",
+    "description": "Retrieve Family records",
+    "parameters": {},
+    "keywords": [
+      "family",
+      "get"
+    ],
+    "normalized_name": "get_family",
+    "normalized_intent": "organization_structure"
+  },
+  "get_family_id": {
+    "domain": "hr",
+    "endpoint": "/api/Family/{id}",
+    "method": "GET",
+    "description": "Retrieve Family details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "family",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_family_id",
     "normalized_intent": "organization_structure"
   },
   "get_financialyear": {
@@ -478,6 +2156,29 @@
     "normalized_name": "get_financialyear_id",
     "normalized_intent": "organization_structure"
   },
+  "get_financialyear_updatefinancialyearstatus_financialyearid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/FinancialYear/UpdateFinancialYearStatus/{FinancialYearId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve FinancialYear details by parameter",
+    "parameters": {
+      "FinancialYearId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "financial",
+      "year",
+      "update",
+      "status",
+      "get",
+      "financialyear",
+      "updatefinancialyearstatus",
+      "financialyearid"
+    ],
+    "normalized_name": "get_financialyear_updatefinancialyearstatus_financialyearid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_gender": {
     "domain": "hr",
     "endpoint": "/api/Gender",
@@ -488,6 +2189,352 @@
       "gender"
     ],
     "normalized_name": "get_genders",
+    "normalized_intent": "organization_structure"
+  },
+  "get_gender_id": {
+    "domain": "hr",
+    "endpoint": "/api/Gender/{id}",
+    "method": "GET",
+    "description": "Retrieve Gender details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "gender",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_gender_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_gender_updategenderstatus_financialyearid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Gender/UpdateGenderStatus/{FinancialYearId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Gender details by parameter",
+    "parameters": {
+      "FinancialYearId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "gender",
+      "update",
+      "status",
+      "get",
+      "updategenderstatus",
+      "financialyearid",
+      "updatedby",
+      "financial"
+    ],
+    "normalized_name": "get_gender_updategenderstatus_financialyearid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_happybirthday_gethappybirthdaymessage": {
+    "domain": "hr",
+    "endpoint": "/api/HappyBirthday/GetHappyBirthdayMessage",
+    "method": "GET",
+    "description": "Retrieve HappyBirthday records",
+    "parameters": {},
+    "keywords": [
+      "happy",
+      "birthday",
+      "get",
+      "message",
+      "happybirthday",
+      "gethappybirthdaymessage"
+    ],
+    "normalized_name": "get_happybirthday_gethappybirthdaymessage",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holiday": {
+    "domain": "hr",
+    "endpoint": "/api/HoliDay",
+    "method": "GET",
+    "description": "Retrieve HoliDay records",
+    "parameters": {},
+    "keywords": [
+      "holi",
+      "day",
+      "get",
+      "holiday"
+    ],
+    "normalized_name": "get_holiday",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holiday_id": {
+    "domain": "hr",
+    "endpoint": "/api/HoliDay/{id}",
+    "method": "GET",
+    "description": "Retrieve HoliDay details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "holi",
+      "day",
+      "get",
+      "holiday",
+      "id"
+    ],
+    "normalized_name": "get_holiday_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holiday_name": {
+    "domain": "hr",
+    "endpoint": "/api/HoliDay/{Name}",
+    "method": "GET",
+    "description": "Retrieve HoliDay details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "holi",
+      "day",
+      "get",
+      "holiday",
+      "name"
+    ],
+    "normalized_name": "get_holiday_name",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holidaycalendar": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayCalendar",
+    "method": "GET",
+    "description": "Retrieve HolidayCalendar records",
+    "parameters": {},
+    "keywords": [
+      "holiday",
+      "calendar",
+      "get",
+      "holidaycalendar"
+    ],
+    "normalized_name": "get_holidaycalendar",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holidaycalendar_id": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayCalendar/{id}",
+    "method": "GET",
+    "description": "Retrieve HolidayCalendar details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "holiday",
+      "calendar",
+      "get",
+      "holidaycalendar",
+      "id"
+    ],
+    "normalized_name": "get_holidaycalendar_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holidaycalendar_updateholidaycalendarstatus_holidaycalendarid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayCalendar/UpdateHolidayCalendarStatus/{HolidayCalendarId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve HolidayCalendar details by parameter",
+    "parameters": {
+      "HolidayCalendarId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "holiday",
+      "calendar",
+      "update",
+      "status",
+      "get",
+      "holidaycalendar",
+      "updateholidaycalendarstatus",
+      "holidaycalendarid"
+    ],
+    "normalized_name": "get_holidaycalendar_updateholidaycalendarstatus_holidaycalendarid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holidaytype": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayType",
+    "method": "GET",
+    "description": "Retrieve HolidayType records",
+    "parameters": {},
+    "keywords": [
+      "holiday",
+      "type",
+      "get",
+      "holidaytype"
+    ],
+    "normalized_name": "get_holidaytype",
+    "normalized_intent": "organization_structure"
+  },
+  "get_holidaytype_id": {
+    "domain": "hr",
+    "endpoint": "/api/HolidayType/{id}",
+    "method": "GET",
+    "description": "Retrieve HolidayType details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "holiday",
+      "type",
+      "get",
+      "holidaytype",
+      "id"
+    ],
+    "normalized_name": "get_holidaytype_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_hrmsreports_getemployeeattendanceweeklyreport": {
+    "domain": "employee",
+    "endpoint": "/api/HRMSReports/GetEmployeeAttendanceWeeklyReport",
+    "method": "GET",
+    "description": "Retrieve HRMSReports records",
+    "parameters": {},
+    "keywords": [
+      "hrmsreports",
+      "get",
+      "employee",
+      "attendance",
+      "weekly",
+      "report",
+      "getemployeeattendanceweeklyreport"
+    ],
+    "normalized_name": "get_hrmsreports_getemployeeattendanceweeklyreport",
+    "normalized_intent": "employee_profile"
+  },
+  "get_hrmsreports_getemployeeweeklywisereports": {
+    "domain": "employee",
+    "endpoint": "/api/HRMSReports/GetEmployeeWeeklyWiseReports",
+    "method": "GET",
+    "description": "Retrieve HRMSReports records",
+    "parameters": {},
+    "keywords": [
+      "hrmsreports",
+      "get",
+      "employee",
+      "weekly",
+      "wise",
+      "reports",
+      "getemployeeweeklywisereports"
+    ],
+    "normalized_name": "get_hrmsreports_getemployeeweeklywisereports",
+    "normalized_intent": "employee_profile"
+  },
+  "get_jobpost": {
+    "domain": "hr",
+    "endpoint": "/api/JobPost",
+    "method": "GET",
+    "description": "Retrieve JobPost records",
+    "parameters": {},
+    "keywords": [
+      "job",
+      "post",
+      "get",
+      "jobpost"
+    ],
+    "normalized_name": "get_jobpost",
+    "normalized_intent": "organization_structure"
+  },
+  "get_jobpost_id": {
+    "domain": "hr",
+    "endpoint": "/api/JobPost/{id}",
+    "method": "GET",
+    "description": "Retrieve JobPost details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "job",
+      "post",
+      "get",
+      "jobpost",
+      "id"
+    ],
+    "normalized_name": "get_jobpost_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_jobpost_updatejobpoststatus_jobpostid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/JobPost/UpdateJobPostStatus/{JobPostId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve JobPost details by parameter",
+    "parameters": {
+      "JobPostId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "job",
+      "post",
+      "update",
+      "status",
+      "get",
+      "jobpost",
+      "updatejobpoststatus",
+      "jobpostid"
+    ],
+    "normalized_name": "get_jobpost_updatejobpoststatus_jobpostid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_jobpostdetail": {
+    "domain": "hr",
+    "endpoint": "/api/JobPostDetail",
+    "method": "GET",
+    "description": "Retrieve JobPostDetail records",
+    "parameters": {},
+    "keywords": [
+      "job",
+      "post",
+      "detail",
+      "get",
+      "jobpostdetail"
+    ],
+    "normalized_name": "get_jobpostdetail",
+    "normalized_intent": "organization_structure"
+  },
+  "get_jobpostdetail_id": {
+    "domain": "hr",
+    "endpoint": "/api/JobPostDetail/{id}",
+    "method": "GET",
+    "description": "Retrieve JobPostDetail details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "job",
+      "post",
+      "detail",
+      "get",
+      "jobpostdetail",
+      "id"
+    ],
+    "normalized_name": "get_jobpostdetail_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_jobpostdetail_updatejobpostdetailstatus_jobpostdetailid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/JobPostDetail/UpdateJobPostDetailStatus/{JobPostDetailId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve JobPostDetail details by parameter",
+    "parameters": {
+      "JobPostDetailId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "job",
+      "post",
+      "detail",
+      "update",
+      "status",
+      "get",
+      "jobpostdetail",
+      "updatejobpostdetailstatus"
+    ],
+    "normalized_name": "get_jobpostdetail_updatejobpostdetailstatus_jobpostdetailid_status_updatedby",
     "normalized_intent": "organization_structure"
   },
   "get_jobtitle": {
@@ -528,6 +2575,90 @@
     "normalized_name": "get_languages",
     "normalized_intent": "organization_structure"
   },
+  "get_language_id": {
+    "domain": "hr",
+    "endpoint": "/api/Language/{id}",
+    "method": "GET",
+    "description": "Retrieve Language details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "language",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_language_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_language_name": {
+    "domain": "hr",
+    "endpoint": "/api/Language/{Name}",
+    "method": "GET",
+    "description": "Retrieve Language details by parameter",
+    "parameters": {
+      "Name": "Skill Name"
+    },
+    "keywords": [
+      "language",
+      "get",
+      "name"
+    ],
+    "normalized_name": "get_language_name",
+    "normalized_intent": "organization_structure"
+  },
+  "get_leave": {
+    "domain": "leave",
+    "endpoint": "/api/Leave",
+    "method": "GET",
+    "description": "Retrieve Leave records",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "get"
+    ],
+    "normalized_name": "get_leave",
+    "normalized_intent": "leave_management"
+  },
+  "get_leave_id": {
+    "domain": "leave",
+    "endpoint": "/api/Leave/{id}",
+    "method": "GET",
+    "description": "Retrieve Leave details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_leave_id",
+    "normalized_intent": "leave_management"
+  },
+  "get_leave_updateleavestatus_leavedetailid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/Leave/UpdateLeaveStatus/{LeaveDetailId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Leave details by parameter",
+    "parameters": {
+      "LeaveDetailId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "leave",
+      "update",
+      "status",
+      "get",
+      "updateleavestatus",
+      "leavedetailid",
+      "updatedby",
+      "detail"
+    ],
+    "normalized_name": "get_leave_updateleavestatus_leavedetailid_status_updatedby",
+    "normalized_intent": "leave_management"
+  },
   "get_leaveapply": {
     "domain": "leave",
     "endpoint": "/api/LeaveApply",
@@ -556,6 +2687,336 @@
     "normalized_name": "get_leaveapply_id",
     "normalized_intent": "leave_management"
   },
+  "get_leaveapply_updateleaveapplystatus_leaveapplyid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApply/UpdateLeaveApplyStatus/{LeaveApplyId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve LeaveApply details by parameter",
+    "parameters": {
+      "LeaveApplyId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "leave",
+      "apply",
+      "update",
+      "status",
+      "get",
+      "leaveapply",
+      "updateleaveapplystatus",
+      "leaveapplyid"
+    ],
+    "normalized_name": "get_leaveapply_updateleaveapplystatus_leaveapplyid_status_updatedby",
+    "normalized_intent": "leave_management"
+  },
+  "get_leaveapply_updateleaveapplystatus_leaveapplyid_statusid_statusname_statusremarks_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApply/UpdateLeaveApplyStatus/{LeaveApplyId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve LeaveApply details by parameter",
+    "parameters": {
+      "LeaveApplyId": "resource id",
+      "StatusId": "resource id",
+      "StatusName": "StatusName",
+      "StatusRemarks": "StatusRemarks",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "leave",
+      "apply",
+      "update",
+      "status",
+      "get",
+      "leaveapply",
+      "updateleaveapplystatus",
+      "leaveapplyid"
+    ],
+    "normalized_name": "get_leaveapply_updateleaveapplystatus_leaveapplyid_statusid_statusname_statusremarks_updatedby",
+    "normalized_intent": "leave_management"
+  },
+  "get_leaveapprovreject": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApprovReject",
+    "method": "GET",
+    "description": "Retrieve LeaveApprovReject records",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "approv",
+      "reject",
+      "get",
+      "leaveapprovreject"
+    ],
+    "normalized_name": "get_leaveapprovreject",
+    "normalized_intent": "leave_management"
+  },
+  "get_leaveapprovreject_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveApprovReject/{id}",
+    "method": "GET",
+    "description": "Retrieve LeaveApprovReject details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "approv",
+      "reject",
+      "get",
+      "leaveapprovreject",
+      "id"
+    ],
+    "normalized_name": "get_leaveapprovreject_id",
+    "normalized_intent": "leave_management"
+  },
+  "get_leaveassign": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveAssign",
+    "method": "GET",
+    "description": "Retrieve LeaveAssign records",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "assign",
+      "get",
+      "leaveassign"
+    ],
+    "normalized_name": "get_leaveassign",
+    "normalized_intent": "leave_management"
+  },
+  "get_leaveassign_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveAssign/{id}",
+    "method": "GET",
+    "description": "Retrieve LeaveAssign details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "assign",
+      "get",
+      "leaveassign",
+      "id"
+    ],
+    "normalized_name": "get_leaveassign_id",
+    "normalized_intent": "leave_management"
+  },
+  "get_leaveassign_updateleaveassignstatus_leaveassignid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveAssign/UpdateLeaveAssignStatus/{LeaveAssignId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve LeaveAssign details by parameter",
+    "parameters": {
+      "LeaveAssignId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "leave",
+      "assign",
+      "update",
+      "status",
+      "get",
+      "leaveassign",
+      "updateleaveassignstatus",
+      "leaveassignid"
+    ],
+    "normalized_name": "get_leaveassign_updateleaveassignstatus_leaveassignid_status_updatedby",
+    "normalized_intent": "leave_management"
+  },
+  "get_leavedashboard_getallleavedashboarddetailwithempid_empregid_financialyearid": {
+    "domain": "employee",
+    "endpoint": "/api/LeaveDashboard/GetAllLeaveDashboardDetailWithEmpId/{EmpRegid}/{FinancialYearId}",
+    "method": "GET",
+    "description": "Retrieve LeaveDashboard details by parameter",
+    "parameters": {
+      "EmpRegid": "employee registration id",
+      "FinancialYearId": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "dashboard",
+      "get",
+      "all",
+      "detail",
+      "with",
+      "emp",
+      "id"
+    ],
+    "normalized_name": "get_leavedashboard_getallleavedashboarddetailwithempid_empregid_financialyearid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_leavedashboard_getleavedashboarddetailwithempid_empregid_leavetypeid_leavetypename_financialyearid": {
+    "domain": "employee",
+    "endpoint": "/api/LeaveDashboard/GetLeaveDashboardDetailWithEmpId/{EmpRegid}/{LeaveTypeId}/{LeaveTypeName}/{FinancialYearId}",
+    "method": "GET",
+    "description": "Retrieve LeaveDashboard details by parameter",
+    "parameters": {
+      "EmpRegid": "employee registration id",
+      "LeaveTypeId": "resource id",
+      "LeaveTypeName": "LeaveTypeName",
+      "FinancialYearId": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "dashboard",
+      "get",
+      "detail",
+      "with",
+      "emp",
+      "id",
+      "leavedashboard"
+    ],
+    "normalized_name": "get_leavedashboard_getleavedashboarddetailwithempid_empregid_leavetypeid_leavetypename_financialyearid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_leavepolicy": {
+    "domain": "leave",
+    "endpoint": "/api/LeavePolicy",
+    "method": "GET",
+    "description": "Retrieve LeavePolicy records",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "policy",
+      "get",
+      "leavepolicy"
+    ],
+    "normalized_name": "get_leavepolicy",
+    "normalized_intent": "leave_management"
+  },
+  "get_leavepolicy_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeavePolicy/{id}",
+    "method": "GET",
+    "description": "Retrieve LeavePolicy details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "policy",
+      "get",
+      "leavepolicy",
+      "id"
+    ],
+    "normalized_name": "get_leavepolicy_id",
+    "normalized_intent": "leave_management"
+  },
+  "get_leavepolicy_updateleavepolicystatus_leavepolicyid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeavePolicy/UpdateLeavePolicyStatus/{LeavePolicyId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve LeavePolicy details by parameter",
+    "parameters": {
+      "LeavePolicyId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "leave",
+      "policy",
+      "update",
+      "status",
+      "get",
+      "leavepolicy",
+      "updateleavepolicystatus",
+      "leavepolicyid"
+    ],
+    "normalized_name": "get_leavepolicy_updateleavepolicystatus_leavepolicyid_status_updatedby",
+    "normalized_intent": "leave_management"
+  },
+  "get_leavetype": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveType",
+    "method": "GET",
+    "description": "Retrieve LeaveType records",
+    "parameters": {},
+    "keywords": [
+      "leave",
+      "type",
+      "get",
+      "leavetype"
+    ],
+    "normalized_name": "get_leavetype",
+    "normalized_intent": "leave_management"
+  },
+  "get_leavetype_id": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveType/{id}",
+    "method": "GET",
+    "description": "Retrieve LeaveType details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "leave",
+      "type",
+      "get",
+      "leavetype",
+      "id"
+    ],
+    "normalized_name": "get_leavetype_id",
+    "normalized_intent": "leave_management"
+  },
+  "get_leavetype_updateleavetypestatus_leavetypeid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/LeaveType/UpdateLeaveTypeStatus/{LeaveTypeId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve LeaveType details by parameter",
+    "parameters": {
+      "LeaveTypeId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "leave",
+      "type",
+      "update",
+      "status",
+      "get",
+      "leavetype",
+      "updateleavetypestatus",
+      "leavetypeid"
+    ],
+    "normalized_name": "get_leavetype_updateleavetypestatus_leavetypeid_status_updatedby",
+    "normalized_intent": "leave_management"
+  },
+  "get_mailsave": {
+    "domain": "hr",
+    "endpoint": "/api/MailSave",
+    "method": "GET",
+    "description": "Retrieve MailSave records",
+    "parameters": {},
+    "keywords": [
+      "mail",
+      "save",
+      "get",
+      "mailsave"
+    ],
+    "normalized_name": "get_mailsave",
+    "normalized_intent": "organization_structure"
+  },
+  "get_mailsave_id": {
+    "domain": "hr",
+    "endpoint": "/api/MailSave/{id}",
+    "method": "GET",
+    "description": "Retrieve MailSave details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "mail",
+      "save",
+      "get",
+      "mailsave",
+      "id"
+    ],
+    "normalized_name": "get_mailsave_id",
+    "normalized_intent": "organization_structure"
+  },
   "get_manager": {
     "domain": "hr",
     "endpoint": "/api/Manager",
@@ -566,6 +3027,28 @@
       "manager"
     ],
     "normalized_name": "get_managers",
+    "normalized_intent": "organization_structure"
+  },
+  "get_manager_getmanagername_departmentid_desginationid": {
+    "domain": "hr",
+    "endpoint": "/api/Manager/GetManagerName/{DepartmentId}/{DesginationId}",
+    "method": "GET",
+    "description": "Retrieve Manager details by parameter",
+    "parameters": {
+      "DepartmentId": "resource id",
+      "DesginationId": "resource id"
+    },
+    "keywords": [
+      "manager",
+      "get",
+      "name",
+      "getmanagername",
+      "departmentid",
+      "desginationid",
+      "department",
+      "id"
+    ],
+    "normalized_name": "get_manager_getmanagername_departmentid_desginationid",
     "normalized_intent": "organization_structure"
   },
   "get_manager_id": {
@@ -580,6 +3063,21 @@
       "manager"
     ],
     "normalized_name": "get_manager_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_manager_manager": {
+    "domain": "hr",
+    "endpoint": "/api/Manager/{Manager}",
+    "method": "GET",
+    "description": "Retrieve Manager details by parameter",
+    "parameters": {
+      "Manager": "Manager"
+    },
+    "keywords": [
+      "manager",
+      "get"
+    ],
+    "normalized_name": "get_manager_manager",
     "normalized_intent": "organization_structure"
   },
   "get_managesalarydays": {
@@ -610,6 +3108,29 @@
     "normalized_name": "get_managesalarydays_id",
     "normalized_intent": "payroll_management"
   },
+  "get_managesalarydays_updatemanagesalarydaysstatus_managesalarydaysid_status_updatedby": {
+    "domain": "payroll",
+    "endpoint": "/api/ManageSalaryDays/UpdateManageSalaryDaysStatus/{ManageSalaryDaysId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve ManageSalaryDays details by parameter",
+    "parameters": {
+      "ManageSalaryDaysId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "manage",
+      "salary",
+      "days",
+      "update",
+      "status",
+      "get",
+      "managesalarydays",
+      "updatemanagesalarydaysstatus"
+    ],
+    "normalized_name": "get_managesalarydays_updatemanagesalarydaysstatus_managesalarydaysid_status_updatedby",
+    "normalized_intent": "payroll_management"
+  },
   "get_manualattendance": {
     "domain": "attendance",
     "endpoint": "/api/ManualAttendance",
@@ -622,6 +3143,117 @@
     ],
     "normalized_name": "get_manual_attendances",
     "normalized_intent": "attendance_tracking"
+  },
+  "get_manualattendance_att_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/{Att}/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "Att": "Att",
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "get",
+      "manualattendance",
+      "att",
+      "empregid",
+      "date",
+      "emp"
+    ],
+    "normalized_name": "get_manualattendance_att_empregid_date",
+    "normalized_intent": "employee_profile"
+  },
+  "get_manualattendance_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "get",
+      "manualattendance",
+      "empregid",
+      "date",
+      "emp",
+      "reg"
+    ],
+    "normalized_name": "get_manualattendance_empregid_date",
+    "normalized_intent": "employee_profile"
+  },
+  "get_manualattendance_getapprovalrejectbysupervisoryid_supervisoryid": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/GetApprovalRejectBySupervisoryId/{SupervisoryId}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "SupervisoryId": "resource id"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "get",
+      "approval",
+      "reject",
+      "by",
+      "supervisory",
+      "id"
+    ],
+    "normalized_name": "get_manualattendance_getapprovalrejectbysupervisoryid_supervisoryid",
+    "normalized_intent": "attendance_tracking"
+  },
+  "get_manualattendance_getattandencedetailbyid_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/GetAttandenceDetailById/{EmpRegId}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "get",
+      "attandence",
+      "detail",
+      "by",
+      "id",
+      "manualattendance"
+    ],
+    "normalized_name": "get_manualattendance_getattandencedetailbyid_empregid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_manualattendance_getattandencedetailmonthwise_flag_empregid_monthid_year": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/GetAttandenceDetailMonthWise/{Flag}/{EmpRegId}/{MonthId}/{Year}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "Flag": "Flag",
+      "EmpRegId": "employee registration id",
+      "MonthId": "resource id",
+      "Year": "Year"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "get",
+      "attandence",
+      "detail",
+      "month",
+      "wise",
+      "manualattendance"
+    ],
+    "normalized_name": "get_manualattendance_getattandencedetailmonthwise_flag_empregid_monthid_year",
+    "normalized_intent": "employee_profile"
   },
   "get_manualattendance_id": {
     "domain": "attendance",
@@ -637,6 +3269,438 @@
     ],
     "normalized_name": "get_manualattendance_id",
     "normalized_intent": "attendance_tracking"
+  },
+  "get_manualattendance_type": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/{Type}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "Type": "Type"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "get",
+      "manualattendance",
+      "type"
+    ],
+    "normalized_name": "get_manualattendance_type",
+    "normalized_intent": "attendance_tracking"
+  },
+  "get_manualattendance_updatemanualattestatus_manualattendanceid_statusid_statusname_statusremarks_updatedby": {
+    "domain": "attendance",
+    "endpoint": "/api/ManualAttendance/UpdateManualAtteStatus/{ManualAttendanceId}/{StatusId}/{StatusName}/{StatusRemarks}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "ManualAttendanceId": "resource id",
+      "StatusId": "resource id",
+      "StatusName": "StatusName",
+      "StatusRemarks": "StatusRemarks",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "update",
+      "atte",
+      "status",
+      "get",
+      "manualattendance",
+      "updatemanualattestatus"
+    ],
+    "normalized_name": "get_manualattendance_updatemanualattestatus_manualattendanceid_statusid_statusname_statusremarks_updatedby",
+    "normalized_intent": "attendance_tracking"
+  },
+  "get_medical": {
+    "domain": "hr",
+    "endpoint": "/api/Medical",
+    "method": "GET",
+    "description": "Retrieve Medical records",
+    "parameters": {},
+    "keywords": [
+      "medical",
+      "get"
+    ],
+    "normalized_name": "get_medical",
+    "normalized_intent": "organization_structure"
+  },
+  "get_medical_id": {
+    "domain": "hr",
+    "endpoint": "/api/Medical/{id}",
+    "method": "GET",
+    "description": "Retrieve Medical details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "medical",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_medical_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_menu": {
+    "domain": "hr",
+    "endpoint": "/api/Menu",
+    "method": "GET",
+    "description": "Retrieve Menu records",
+    "parameters": {},
+    "keywords": [
+      "menu",
+      "get"
+    ],
+    "normalized_name": "get_menu",
+    "normalized_intent": "organization_structure"
+  },
+  "get_menu_id": {
+    "domain": "hr",
+    "endpoint": "/api/Menu/{id}",
+    "method": "GET",
+    "description": "Retrieve Menu details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "menu",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_menu_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_menu_updatemenustatus_menuid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Menu/UpdateMenuStatus/{MenuId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Menu details by parameter",
+    "parameters": {
+      "MenuId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "menu",
+      "update",
+      "status",
+      "get",
+      "updatemenustatus",
+      "menuid",
+      "updatedby",
+      "id"
+    ],
+    "normalized_name": "get_menu_updatemenustatus_menuid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_office": {
+    "domain": "hr",
+    "endpoint": "/api/Office",
+    "method": "GET",
+    "description": "Retrieve Office records",
+    "parameters": {},
+    "keywords": [
+      "office",
+      "get"
+    ],
+    "normalized_name": "get_office",
+    "normalized_intent": "organization_structure"
+  },
+  "get_office_id": {
+    "domain": "hr",
+    "endpoint": "/api/Office/{id}",
+    "method": "GET",
+    "description": "Retrieve Office details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "office",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_office_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_organationleaveassign": {
+    "domain": "leave",
+    "endpoint": "/api/OrganationleaveAssign",
+    "method": "GET",
+    "description": "Retrieve OrganationleaveAssign records",
+    "parameters": {},
+    "keywords": [
+      "organationleave",
+      "assign",
+      "get",
+      "organationleaveassign"
+    ],
+    "normalized_name": "get_organationleaveassign",
+    "normalized_intent": "leave_management"
+  },
+  "get_organationleaveassign_id": {
+    "domain": "leave",
+    "endpoint": "/api/OrganationleaveAssign/{id}",
+    "method": "GET",
+    "description": "Retrieve OrganationleaveAssign details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "organationleave",
+      "assign",
+      "get",
+      "organationleaveassign",
+      "id"
+    ],
+    "normalized_name": "get_organationleaveassign_id",
+    "normalized_intent": "leave_management"
+  },
+  "get_organationleaveassign_updateorganationleaveassignstatus_organationleaveassignid_status_updatedby": {
+    "domain": "leave",
+    "endpoint": "/api/OrganationleaveAssign/UpdateOrganationleaveAssignStatus/{OrganationleaveAssignId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve OrganationleaveAssign details by parameter",
+    "parameters": {
+      "OrganationleaveAssignId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "organationleave",
+      "assign",
+      "update",
+      "status",
+      "get",
+      "organationleaveassign",
+      "updateorganationleaveassignstatus",
+      "organationleaveassignid"
+    ],
+    "normalized_name": "get_organationleaveassign_updateorganationleaveassignstatus_organationleaveassignid_status_updatedby",
+    "normalized_intent": "leave_management"
+  },
+  "get_project": {
+    "domain": "project",
+    "endpoint": "/api/Project",
+    "method": "GET",
+    "description": "Retrieve Project records",
+    "parameters": {},
+    "keywords": [
+      "project",
+      "get"
+    ],
+    "normalized_name": "get_project",
+    "normalized_intent": "project_management"
+  },
+  "get_project_getprojectreportdetail_projectid_startdate_enddate": {
+    "domain": "project",
+    "endpoint": "/api/Project/GetProjectReportDetail/{ProjectId}/{StartDate}/{EndDate}",
+    "method": "GET",
+    "description": "Retrieve Project details by parameter",
+    "parameters": {
+      "ProjectId": "resource id",
+      "StartDate": "StartDate",
+      "EndDate": "EndDate"
+    },
+    "keywords": [
+      "project",
+      "get",
+      "report",
+      "detail",
+      "getprojectreportdetail",
+      "projectid",
+      "startdate",
+      "enddate"
+    ],
+    "normalized_name": "get_project_getprojectreportdetail_projectid_startdate_enddate",
+    "normalized_intent": "project_management"
+  },
+  "get_project_id": {
+    "domain": "project",
+    "endpoint": "/api/Project/{id}",
+    "method": "GET",
+    "description": "Retrieve Project details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "project",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_project_id",
+    "normalized_intent": "project_management"
+  },
+  "get_project_projectactivedeactive_projectid_status_updatedby": {
+    "domain": "project",
+    "endpoint": "/api/Project/ProjectActiveDeactive/{ProjectId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Project details by parameter",
+    "parameters": {
+      "ProjectId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "project",
+      "active",
+      "deactive",
+      "get",
+      "projectactivedeactive",
+      "projectid",
+      "status",
+      "updatedby"
+    ],
+    "normalized_name": "get_project_projectactivedeactive_projectid_status_updatedby",
+    "normalized_intent": "project_management"
+  },
+  "get_project_updateprojectstatus_projectid_status_updatedby": {
+    "domain": "project",
+    "endpoint": "/api/Project/UpdateProjectStatus/{ProjectId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Project details by parameter",
+    "parameters": {
+      "ProjectId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "project",
+      "update",
+      "status",
+      "get",
+      "updateprojectstatus",
+      "projectid",
+      "updatedby",
+      "id"
+    ],
+    "normalized_name": "get_project_updateprojectstatus_projectid_status_updatedby",
+    "normalized_intent": "project_management"
+  },
+  "get_projectassigneduser": {
+    "domain": "project",
+    "endpoint": "/api/ProjectAssignedUser",
+    "method": "GET",
+    "description": "Retrieve ProjectAssignedUser records",
+    "parameters": {},
+    "keywords": [
+      "project",
+      "assigned",
+      "user",
+      "get",
+      "projectassigneduser"
+    ],
+    "normalized_name": "get_projectassigneduser",
+    "normalized_intent": "project_management"
+  },
+  "get_projectassigneduser_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectAssignedUser/{id}",
+    "method": "GET",
+    "description": "Retrieve ProjectAssignedUser details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "project",
+      "assigned",
+      "user",
+      "get",
+      "projectassigneduser",
+      "id"
+    ],
+    "normalized_name": "get_projectassigneduser_id",
+    "normalized_intent": "project_management"
+  },
+  "get_projectassigneduser_updateprojectassigneduserstatus_projassuserid_status_updatedby_statusremarks": {
+    "domain": "project",
+    "endpoint": "/api/ProjectAssignedUser/UpdateProjectAssignedUserStatus/{ProjAssUserId}/{Status}/{UpdatedBy}/{StatusRemarks}",
+    "method": "GET",
+    "description": "Retrieve ProjectAssignedUser details by parameter",
+    "parameters": {
+      "ProjAssUserId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusRemarks": "StatusRemarks"
+    },
+    "keywords": [
+      "project",
+      "assigned",
+      "user",
+      "update",
+      "status",
+      "get",
+      "projectassigneduser",
+      "updateprojectassigneduserstatus"
+    ],
+    "normalized_name": "get_projectassigneduser_updateprojectassigneduserstatus_projassuserid_status_updatedby_statusremarks",
+    "normalized_intent": "project_management"
+  },
+  "get_projectcredential": {
+    "domain": "project",
+    "endpoint": "/api/ProjectCredential",
+    "method": "GET",
+    "description": "Retrieve ProjectCredential records",
+    "parameters": {},
+    "keywords": [
+      "project",
+      "credential",
+      "get",
+      "projectcredential"
+    ],
+    "normalized_name": "get_projectcredential",
+    "normalized_intent": "project_management"
+  },
+  "get_projectcredential_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectCredential/{id}",
+    "method": "GET",
+    "description": "Retrieve ProjectCredential details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "project",
+      "credential",
+      "get",
+      "projectcredential",
+      "id"
+    ],
+    "normalized_name": "get_projectcredential_id",
+    "normalized_intent": "project_management"
+  },
+  "get_projectdocument": {
+    "domain": "project",
+    "endpoint": "/api/ProjectDocument",
+    "method": "GET",
+    "description": "Retrieve ProjectDocument records",
+    "parameters": {},
+    "keywords": [
+      "project",
+      "document",
+      "get",
+      "projectdocument"
+    ],
+    "normalized_name": "get_projectdocument",
+    "normalized_intent": "project_management"
+  },
+  "get_projectdocument_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectDocument/{id}",
+    "method": "GET",
+    "description": "Retrieve ProjectDocument details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "project",
+      "document",
+      "get",
+      "projectdocument",
+      "id"
+    ],
+    "normalized_name": "get_projectdocument_id",
+    "normalized_intent": "project_management"
   },
   "get_projectmanager": {
     "domain": "project",
@@ -666,6 +3730,30 @@
     "normalized_name": "get_projectmanager_id",
     "normalized_intent": "project_management"
   },
+  "get_projectmanager_updateprojectmanagerstatus_projectmanagerid_status_updatedby_statusremarks": {
+    "domain": "project",
+    "endpoint": "/api/ProjectManager/UpdateProjectManagerStatus/{ProjectManagerId}/{Status}/{UpdatedBy}/{StatusRemarks}",
+    "method": "GET",
+    "description": "Retrieve ProjectManager details by parameter",
+    "parameters": {
+      "ProjectManagerId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusRemarks": "StatusRemarks"
+    },
+    "keywords": [
+      "project",
+      "manager",
+      "update",
+      "status",
+      "get",
+      "projectmanager",
+      "updateprojectmanagerstatus",
+      "projectmanagerid"
+    ],
+    "normalized_name": "get_projectmanager_updateprojectmanagerstatus_projectmanagerid_status_updatedby_statusremarks",
+    "normalized_intent": "project_management"
+  },
   "get_projectmemorandum": {
     "domain": "project",
     "endpoint": "/api/ProjectMemorandum",
@@ -677,6 +3765,24 @@
       "projectmemorandum"
     ],
     "normalized_name": "get_project_memorandums",
+    "normalized_intent": "project_management"
+  },
+  "get_projectmemorandum_id": {
+    "domain": "project",
+    "endpoint": "/api/ProjectMemorandum/{id}",
+    "method": "GET",
+    "description": "Retrieve ProjectMemorandum details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "project",
+      "memorandum",
+      "get",
+      "projectmemorandum",
+      "id"
+    ],
+    "normalized_name": "get_projectmemorandum_id",
     "normalized_intent": "project_management"
   },
   "get_projectsupervisor": {
@@ -707,6 +3813,109 @@
     "normalized_name": "get_projectsupervisor_id",
     "normalized_intent": "project_management"
   },
+  "get_projectsupervisor_updateprojectsupervisorstatus_projectsupervisorid_status_updatedby_statusremarks": {
+    "domain": "project",
+    "endpoint": "/api/ProjectSupervisor/UpdateProjectSupervisorStatus/{ProjectSupervisorId}/{Status}/{UpdatedBy}/{StatusRemarks}",
+    "method": "GET",
+    "description": "Retrieve ProjectSupervisor details by parameter",
+    "parameters": {
+      "ProjectSupervisorId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusRemarks": "StatusRemarks"
+    },
+    "keywords": [
+      "project",
+      "supervisor",
+      "update",
+      "status",
+      "get",
+      "projectsupervisor",
+      "updateprojectsupervisorstatus",
+      "projectsupervisorid"
+    ],
+    "normalized_name": "get_projectsupervisor_updateprojectsupervisorstatus_projectsupervisorid_status_updatedby_statusremarks",
+    "normalized_intent": "project_management"
+  },
+  "get_reimbursementamount": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementAmount",
+    "method": "GET",
+    "description": "Retrieve ReimbursementAmount records",
+    "parameters": {},
+    "keywords": [
+      "reimbursement",
+      "amount",
+      "get",
+      "reimbursementamount"
+    ],
+    "normalized_name": "get_reimbursementamount",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reimbursementamount_getreimbursementdetailbyempregid_empregid": {
+    "domain": "employee",
+    "endpoint": "/api/ReimbursementAmount/GetReimbursementDetailbyEmpRegId/{EmpRegId}",
+    "method": "GET",
+    "description": "Retrieve ReimbursementAmount details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id"
+    },
+    "keywords": [
+      "reimbursement",
+      "amount",
+      "get",
+      "detailby",
+      "emp",
+      "reg",
+      "id",
+      "reimbursementamount"
+    ],
+    "normalized_name": "get_reimbursementamount_getreimbursementdetailbyempregid_empregid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_reimbursementamount_id": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementAmount/{id}",
+    "method": "GET",
+    "description": "Retrieve ReimbursementAmount details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "reimbursement",
+      "amount",
+      "get",
+      "reimbursementamount",
+      "id"
+    ],
+    "normalized_name": "get_reimbursementamount_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reimbursementamount_updatereimbursementamountstatus_reimbursementamountid_status_updatedby_statusid_approvedmessage": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementAmount/UpdateReimbursementAmountStatus/{ReimbursementAmountId}/{Status}/{UpdatedBy}/{StatusId}/{ApprovedMessage}",
+    "method": "GET",
+    "description": "Retrieve ReimbursementAmount details by parameter",
+    "parameters": {
+      "ReimbursementAmountId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy",
+      "StatusId": "resource id",
+      "ApprovedMessage": "ApprovedMessage"
+    },
+    "keywords": [
+      "reimbursement",
+      "amount",
+      "update",
+      "status",
+      "get",
+      "reimbursementamount",
+      "updatereimbursementamountstatus",
+      "reimbursementamountid"
+    ],
+    "normalized_name": "get_reimbursementamount_updatereimbursementamountstatus_reimbursementamountid_status_updatedby_statusid_approvedmessage",
+    "normalized_intent": "organization_structure"
+  },
   "get_reimbursementtype": {
     "domain": "hr",
     "endpoint": "/api/ReimbursementType",
@@ -731,6 +3940,150 @@
       "reimbursementtype"
     ],
     "normalized_name": "get_reimbursementtype_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reimbursementtype_updatereimbursementtypestatus_reimbursementtypeid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/ReimbursementType/UpdateReimbursementTypeStatus/{ReimbursementTypeId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve ReimbursementType details by parameter",
+    "parameters": {
+      "ReimbursementTypeId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "reimbursement",
+      "type",
+      "update",
+      "status",
+      "get",
+      "reimbursementtype",
+      "updatereimbursementtypestatus",
+      "reimbursementtypeid"
+    ],
+    "normalized_name": "get_reimbursementtype_updatereimbursementtypestatus_reimbursementtypeid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_resignationletter": {
+    "domain": "hr",
+    "endpoint": "/api/ResignationLetter",
+    "method": "GET",
+    "description": "Retrieve ResignationLetter records",
+    "parameters": {},
+    "keywords": [
+      "resignation",
+      "letter",
+      "get",
+      "resignationletter"
+    ],
+    "normalized_name": "get_resignationletter",
+    "normalized_intent": "organization_structure"
+  },
+  "get_resignationletter_getresignationletter_empregid_empname_statusid_status_statusremarks_resignationremarks": {
+    "domain": "employee",
+    "endpoint": "/api/ResignationLetter/GetResignationLetter/{EmpRegId}/{EmpName}/{StatusId}/{Status}/{StatusRemarks}/{ResignationRemarks}",
+    "method": "GET",
+    "description": "Retrieve ResignationLetter details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "EmpName": "EmpName",
+      "StatusId": "resource id",
+      "Status": "Status",
+      "StatusRemarks": "StatusRemarks",
+      "ResignationRemarks": "ResignationRemarks"
+    },
+    "keywords": [
+      "resignation",
+      "letter",
+      "get",
+      "resignationletter",
+      "getresignationletter",
+      "empregid",
+      "empname",
+      "statusid"
+    ],
+    "normalized_name": "get_resignationletter_getresignationletter_empregid_empname_statusid_status_statusremarks_resignationremarks",
+    "normalized_intent": "employee_profile"
+  },
+  "get_resignationletter_id": {
+    "domain": "hr",
+    "endpoint": "/api/ResignationLetter/{id}",
+    "method": "GET",
+    "description": "Retrieve ResignationLetter details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "resignation",
+      "letter",
+      "get",
+      "resignationletter",
+      "id"
+    ],
+    "normalized_name": "get_resignationletter_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reviews": {
+    "domain": "hr",
+    "endpoint": "/api/Reviews",
+    "method": "GET",
+    "description": "Retrieve Reviews records",
+    "parameters": {},
+    "keywords": [
+      "reviews",
+      "get"
+    ],
+    "normalized_name": "get_reviews",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reviews_id": {
+    "domain": "hr",
+    "endpoint": "/api/Reviews/{id}",
+    "method": "GET",
+    "description": "Retrieve Reviews details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "reviews",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_reviews_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reviewtype": {
+    "domain": "hr",
+    "endpoint": "/api/ReviewType",
+    "method": "GET",
+    "description": "Retrieve ReviewType records",
+    "parameters": {},
+    "keywords": [
+      "review",
+      "type",
+      "get",
+      "reviewtype"
+    ],
+    "normalized_name": "get_reviewtype",
+    "normalized_intent": "organization_structure"
+  },
+  "get_reviewtype_id": {
+    "domain": "hr",
+    "endpoint": "/api/ReviewType/{id}",
+    "method": "GET",
+    "description": "Retrieve ReviewType details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "review",
+      "type",
+      "get",
+      "reviewtype",
+      "id"
+    ],
+    "normalized_name": "get_reviewtype_id",
     "normalized_intent": "organization_structure"
   },
   "get_role": {
@@ -759,6 +4112,186 @@
     "normalized_name": "get_role_id",
     "normalized_intent": "organization_structure"
   },
+  "get_role_rolename": {
+    "domain": "hr",
+    "endpoint": "/api/Role/{RoleName}",
+    "method": "GET",
+    "description": "Retrieve Role details by parameter",
+    "parameters": {
+      "RoleName": "RoleName"
+    },
+    "keywords": [
+      "role",
+      "get",
+      "rolename",
+      "name"
+    ],
+    "normalized_name": "get_role_rolename",
+    "normalized_intent": "organization_structure"
+  },
+  "get_salary": {
+    "domain": "payroll",
+    "endpoint": "/api/Salary",
+    "method": "GET",
+    "description": "Retrieve Salary records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "get"
+    ],
+    "normalized_name": "get_salary",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salary_id": {
+    "domain": "payroll",
+    "endpoint": "/api/Salary/{id}",
+    "method": "GET",
+    "description": "Retrieve Salary details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_salary_id",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarycomponent": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryComponent",
+    "method": "GET",
+    "description": "Retrieve SalaryComponent records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "component",
+      "get",
+      "salarycomponent"
+    ],
+    "normalized_name": "get_salarycomponent",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarycomponent_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryComponent/{id}",
+    "method": "GET",
+    "description": "Retrieve SalaryComponent details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "component",
+      "get",
+      "salarycomponent",
+      "id"
+    ],
+    "normalized_name": "get_salarycomponent_id",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarycomponent_updatesalarycomponentstatus_salarycomponentid_status_updatedby": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryComponent/UpdateSalaryComponentStatus/{SalaryComponentId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve SalaryComponent details by parameter",
+    "parameters": {
+      "SalaryComponentId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "salary",
+      "component",
+      "update",
+      "status",
+      "get",
+      "salarycomponent",
+      "updatesalarycomponentstatus",
+      "salarycomponentid"
+    ],
+    "normalized_name": "get_salarycomponent_updatesalarycomponentstatus_salarycomponentid_status_updatedby",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarydeduction": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryDeduction",
+    "method": "GET",
+    "description": "Retrieve SalaryDeduction records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "deduction",
+      "get",
+      "salarydeduction"
+    ],
+    "normalized_name": "get_salarydeduction",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarydeduction_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryDeduction/{id}",
+    "method": "GET",
+    "description": "Retrieve SalaryDeduction details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "deduction",
+      "get",
+      "salarydeduction",
+      "id"
+    ],
+    "normalized_name": "get_salarydeduction_id",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarydetailperemployee_getsalarydetailperemployee_empregid_year_month": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryDetailPerEmployee/GetSalaryDetailPerEmployee/{EmpRegId}/{Year}/{Month}",
+    "method": "GET",
+    "description": "Retrieve SalaryDetailPerEmployee details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Year": "Year",
+      "Month": "Month"
+    },
+    "keywords": [
+      "salary",
+      "detail",
+      "per",
+      "employee",
+      "get",
+      "salarydetailperemployee",
+      "getsalarydetailperemployee",
+      "empregid"
+    ],
+    "normalized_name": "get_salarydetailperemployee_getsalarydetailperemployee_empregid_year_month",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarydetailperemployee_getsalarylistperemployee_empregid_year": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryDetailPerEmployee/GetSalaryListPerEmployee/{EmpRegId}/{Year}",
+    "method": "GET",
+    "description": "Retrieve SalaryDetailPerEmployee details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Year": "Year"
+    },
+    "keywords": [
+      "salary",
+      "detail",
+      "per",
+      "employee",
+      "get",
+      "list",
+      "salarydetailperemployee",
+      "getsalarylistperemployee"
+    ],
+    "normalized_name": "get_salarydetailperemployee_getsalarylistperemployee_empregid_year",
+    "normalized_intent": "employee_profile"
+  },
   "get_salaryearning": {
     "domain": "payroll",
     "endpoint": "/api/SalaryEarning",
@@ -770,6 +4303,68 @@
       "salaryearning"
     ],
     "normalized_name": "get_salary_earnings",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryearning_getsalaryearningallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/GetSalaryEarningAllComponentsDetail",
+    "method": "GET",
+    "description": "Retrieve SalaryEarning records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "earning",
+      "get",
+      "all",
+      "components",
+      "detail",
+      "salaryearning",
+      "getsalaryearningallcomponentsdetail"
+    ],
+    "normalized_name": "get_salaryearning_getsalaryearningallcomponentsdetail",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryearning_getsalaryearningdetail_earningtypeid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/GetSalaryEarningDetail/{EarningTypeId}",
+    "method": "GET",
+    "description": "Retrieve SalaryEarning details by parameter",
+    "parameters": {
+      "EarningTypeId": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "earning",
+      "get",
+      "detail",
+      "salaryearning",
+      "getsalaryearningdetail",
+      "earningtypeid",
+      "type"
+    ],
+    "normalized_name": "get_salaryearning_getsalaryearningdetail_earningtypeid",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryearning_getsalaryearningdetailwithearningid_earningid_earningtypeid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/GetSalaryEarningDetailWithEarningId/{EarningId}/{EarningTypeId}",
+    "method": "GET",
+    "description": "Retrieve SalaryEarning details by parameter",
+    "parameters": {
+      "EarningId": "resource id",
+      "EarningTypeId": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "earning",
+      "get",
+      "detail",
+      "with",
+      "id",
+      "salaryearning",
+      "getsalaryearningdetailwithearningid"
+    ],
+    "normalized_name": "get_salaryearning_getsalaryearningdetailwithearningid_earningid_earningtypeid",
     "normalized_intent": "payroll_management"
   },
   "get_salaryearning_id": {
@@ -787,6 +4382,208 @@
     "normalized_name": "get_salaryearning_id",
     "normalized_intent": "payroll_management"
   },
+  "get_salaryearning_updatesalaryearningstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarning/UpdateSalaryEarningStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Retrieve SalaryEarning details by parameter",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    },
+    "keywords": [
+      "salary",
+      "earning",
+      "update",
+      "status",
+      "get",
+      "salaryearning",
+      "updatesalaryearningstatus",
+      "id"
+    ],
+    "normalized_name": "get_salaryearning_updatesalaryearningstatus_id_status",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryearningtype": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarningType",
+    "method": "GET",
+    "description": "Retrieve SalaryEarningType records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "earning",
+      "type",
+      "get",
+      "salaryearningtype"
+    ],
+    "normalized_name": "get_salaryearningtype",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryearningtype_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarningType/{id}",
+    "method": "GET",
+    "description": "Retrieve SalaryEarningType details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "earning",
+      "type",
+      "get",
+      "salaryearningtype",
+      "id"
+    ],
+    "normalized_name": "get_salaryearningtype_id",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryearningtype_updatesalaryearningtypestatus_salaryearningtypeid_status_updatedby": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryEarningType/UpdateSalaryEarningTypeStatus/{SalaryEarningTypeId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve SalaryEarningType details by parameter",
+    "parameters": {
+      "SalaryEarningTypeId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "salary",
+      "earning",
+      "type",
+      "update",
+      "status",
+      "get",
+      "salaryearningtype",
+      "updatesalaryearningtypestatus"
+    ],
+    "normalized_name": "get_salaryearningtype_updatesalaryearningtypestatus_salaryearningtypeid_status_updatedby",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarygenerate_getemployeesalarycomputation_empregid_financialyear_month_monthname_paymentmodeid_paymentmodename": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetEmployeeSalaryComputation/{EmpRegId}/{FinancialYear}/{Month}/{MonthName}/{PaymentModeId}/{PaymentModeName}",
+    "method": "GET",
+    "description": "Retrieve SalaryGenerate details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName",
+      "PaymentModeId": "resource id",
+      "PaymentModeName": "PaymentModeName"
+    },
+    "keywords": [
+      "salary",
+      "generate",
+      "get",
+      "employee",
+      "computation",
+      "salarygenerate",
+      "getemployeesalarycomputation",
+      "empregid"
+    ],
+    "normalized_name": "get_salarygenerate_getemployeesalarycomputation_empregid_financialyear_month_monthname_paymentmodeid_paymentmodename",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarygenerate_getgetmonthwisesalarydetail_empregid_financialyear_month_monthname": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetGetMonthWiseSalaryDetail/{EmpRegId}/{FinancialYear}/{Month}/{MonthName}",
+    "method": "GET",
+    "description": "Retrieve SalaryGenerate details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName"
+    },
+    "keywords": [
+      "salary",
+      "generate",
+      "get",
+      "month",
+      "wise",
+      "detail",
+      "salarygenerate",
+      "getgetmonthwisesalarydetail"
+    ],
+    "normalized_name": "get_salarygenerate_getgetmonthwisesalarydetail_empregid_financialyear_month_monthname",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarygenerate_getmonthwiseemployeeactivelist_financialyear_month_monthname_paymentmodeid_paymentmodename": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetMonthWiseEmployeeActiveList/{FinancialYear}/{Month}/{MonthName}/{PaymentModeId}/{PaymentModeName}",
+    "method": "GET",
+    "description": "Retrieve SalaryGenerate details by parameter",
+    "parameters": {
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName",
+      "PaymentModeId": "resource id",
+      "PaymentModeName": "PaymentModeName"
+    },
+    "keywords": [
+      "salary",
+      "generate",
+      "get",
+      "month",
+      "wise",
+      "employee",
+      "active",
+      "list"
+    ],
+    "normalized_name": "get_salarygenerate_getmonthwiseemployeeactivelist_financialyear_month_monthname_paymentmodeid_paymentmodename",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarygenerate_getsalarygeneratebyempregid_empregid_financialyear_month_monthname": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryGenerate/GetSalaryGenerateByEmpRegId/{EmpRegId}/{FinancialYear}/{Month}/{MonthName}",
+    "method": "GET",
+    "description": "Retrieve SalaryGenerate details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName"
+    },
+    "keywords": [
+      "salary",
+      "generate",
+      "get",
+      "by",
+      "emp",
+      "reg",
+      "id",
+      "salarygenerate"
+    ],
+    "normalized_name": "get_salarygenerate_getsalarygeneratebyempregid_empregid_financialyear_month_monthname",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarygenerate_getsalarygenerateforall_financialyear_month_monthname": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryGenerate/GetSalaryGenerateForAll/{FinancialYear}/{Month}/{MonthName}",
+    "method": "GET",
+    "description": "Retrieve SalaryGenerate details by parameter",
+    "parameters": {
+      "FinancialYear": "FinancialYear",
+      "Month": "Month",
+      "MonthName": "MonthName"
+    },
+    "keywords": [
+      "salary",
+      "generate",
+      "get",
+      "for",
+      "all",
+      "salarygenerate",
+      "getsalarygenerateforall",
+      "financialyear"
+    ],
+    "normalized_name": "get_salarygenerate_getsalarygenerateforall_financialyear_month_monthname",
+    "normalized_intent": "payroll_management"
+  },
   "get_salarypostdeduction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPostDeduction",
@@ -798,6 +4595,46 @@
       "salarypostdeduction"
     ],
     "normalized_name": "get_salary_post_deductions",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarypostdeduction_getsalarypostdeductionallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionAllComponentsDetail",
+    "method": "GET",
+    "description": "Retrieve SalaryPostDeduction records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "post",
+      "deduction",
+      "get",
+      "all",
+      "components",
+      "detail",
+      "salarypostdeduction"
+    ],
+    "normalized_name": "get_salarypostdeduction_getsalarypostdeductionallcomponentsdetail",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarypostdeduction_getsalarypostdeductiondetailwithearningid_postdeductionid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/GetSalaryPostDeductionDetailWithEarningId/{PostDeductionId}",
+    "method": "GET",
+    "description": "Retrieve SalaryPostDeduction details by parameter",
+    "parameters": {
+      "PostDeductionId": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "post",
+      "deduction",
+      "get",
+      "detail",
+      "with",
+      "earning",
+      "id"
+    ],
+    "normalized_name": "get_salarypostdeduction_getsalarypostdeductiondetailwithearningid_postdeductionid",
     "normalized_intent": "payroll_management"
   },
   "get_salarypostdeduction_id": {
@@ -815,6 +4652,28 @@
     "normalized_name": "get_salarypostdeduction_id",
     "normalized_intent": "payroll_management"
   },
+  "get_salarypostdeduction_updatesalarypostdeductionstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPostDeduction/UpdateSalaryPostDeductionStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Retrieve SalaryPostDeduction details by parameter",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    },
+    "keywords": [
+      "salary",
+      "post",
+      "deduction",
+      "update",
+      "status",
+      "get",
+      "salarypostdeduction",
+      "updatesalarypostdeductionstatus"
+    ],
+    "normalized_name": "get_salarypostdeduction_updatesalarypostdeductionstatus_id_status",
+    "normalized_intent": "payroll_management"
+  },
   "get_salaryprededuction": {
     "domain": "payroll",
     "endpoint": "/api/SalaryPreDeduction",
@@ -826,6 +4685,46 @@
       "salaryprededuction"
     ],
     "normalized_name": "get_salary_pre_deductions",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryprededuction_getsalarypredeductionallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionAllComponentsDetail",
+    "method": "GET",
+    "description": "Retrieve SalaryPreDeduction records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "pre",
+      "deduction",
+      "get",
+      "all",
+      "components",
+      "detail",
+      "salaryprededuction"
+    ],
+    "normalized_name": "get_salaryprededuction_getsalarypredeductionallcomponentsdetail",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryprededuction_getsalarypredeductiondetailwithearningid_predeductionid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/GetSalaryPreDeductionDetailWithEarningId/{PreDeductionId}",
+    "method": "GET",
+    "description": "Retrieve SalaryPreDeduction details by parameter",
+    "parameters": {
+      "PreDeductionId": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "pre",
+      "deduction",
+      "get",
+      "detail",
+      "with",
+      "earning",
+      "id"
+    ],
+    "normalized_name": "get_salaryprededuction_getsalarypredeductiondetailwithearningid_predeductionid",
     "normalized_intent": "payroll_management"
   },
   "get_salaryprededuction_id": {
@@ -843,6 +4742,28 @@
     "normalized_name": "get_salaryprededuction_id",
     "normalized_intent": "payroll_management"
   },
+  "get_salaryprededuction_updatesalarypredeductionstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryPreDeduction/UpdateSalaryPreDeductionStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Retrieve SalaryPreDeduction details by parameter",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    },
+    "keywords": [
+      "salary",
+      "pre",
+      "deduction",
+      "update",
+      "status",
+      "get",
+      "salaryprededuction",
+      "updatesalarypredeductionstatus"
+    ],
+    "normalized_name": "get_salaryprededuction_updatesalarypredeductionstatus_id_status",
+    "normalized_intent": "payroll_management"
+  },
   "get_salaryreimbursement": {
     "domain": "payroll",
     "endpoint": "/api/SalaryReimbursement",
@@ -854,6 +4775,46 @@
       "salaryreimbursement"
     ],
     "normalized_name": "get_salary_reimbursements",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryreimbursement_getreimbursementallcomponentsdetail": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/GetReimbursementAllComponentsDetail",
+    "method": "GET",
+    "description": "Retrieve SalaryReimbursement records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "reimbursement",
+      "get",
+      "all",
+      "components",
+      "detail",
+      "salaryreimbursement",
+      "getreimbursementallcomponentsdetail"
+    ],
+    "normalized_name": "get_salaryreimbursement_getreimbursementallcomponentsdetail",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salaryreimbursement_getsalaryreimbursementdetailwithearningid_reimbursementid": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/GetSalaryReimbursementDetailWithEarningId/{ReimbursementId}",
+    "method": "GET",
+    "description": "Retrieve SalaryReimbursement details by parameter",
+    "parameters": {
+      "ReimbursementId": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "reimbursement",
+      "get",
+      "detail",
+      "with",
+      "earning",
+      "id",
+      "salaryreimbursement"
+    ],
+    "normalized_name": "get_salaryreimbursement_getsalaryreimbursementdetailwithearningid_reimbursementid",
     "normalized_intent": "payroll_management"
   },
   "get_salaryreimbursement_id": {
@@ -871,6 +4832,80 @@
     "normalized_name": "get_salaryreimbursement_id",
     "normalized_intent": "payroll_management"
   },
+  "get_salaryreimbursement_updatesalaryreimbursementstatus_id_status": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryReimbursement/UpdateSalaryReimbursementStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Retrieve SalaryReimbursement details by parameter",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    },
+    "keywords": [
+      "salary",
+      "reimbursement",
+      "update",
+      "status",
+      "get",
+      "salaryreimbursement",
+      "updatesalaryreimbursementstatus",
+      "id"
+    ],
+    "normalized_name": "get_salaryreimbursement_updatesalaryreimbursementstatus_id_status",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarytamplate": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplate",
+    "method": "GET",
+    "description": "Retrieve SalaryTamplate records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "tamplate",
+      "get",
+      "salarytamplate"
+    ],
+    "normalized_name": "get_salarytamplate",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarytamplate_getsalarytamplatedetailbyid_templateid": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailById/{TemplateId}",
+    "method": "GET",
+    "description": "Retrieve salary template and payroll structure configurations",
+    "parameters": {
+      "TemplateId": "resource id"
+    },
+    "keywords": [
+      "salarytamplate",
+      "templateid"
+    ],
+    "normalized_name": "get_salarytemplate_getsalarytemplatedetailbyid_templateid",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarytamplate_getsalarytamplatedetailbyidwithamount_templateid_salaryamount": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailByIdWithAmount/{TemplateId}/{SalaryAmount}",
+    "method": "GET",
+    "description": "Retrieve SalaryTamplate details by parameter",
+    "parameters": {
+      "TemplateId": "resource id",
+      "SalaryAmount": "SalaryAmount"
+    },
+    "keywords": [
+      "salary",
+      "tamplate",
+      "get",
+      "detail",
+      "by",
+      "id",
+      "with",
+      "amount"
+    ],
+    "normalized_name": "get_salarytamplate_getsalarytamplatedetailbyidwithamount_templateid_salaryamount",
+    "normalized_intent": "employee_profile"
+  },
   "get_salarytamplate_getsalarytamplates": {
     "domain": "payroll",
     "endpoint": "/api/SalaryTamplate/GetSalaryTamplates",
@@ -884,20 +4919,23 @@
     "normalized_name": "get_salarytemplate_getsalarytemplates",
     "normalized_intent": "payroll_management"
   },
-  "get_salarytamplate_getsalarytamplatedetailbyid_templateid": {
-    "domain": "employee",
-    "endpoint": "/api/SalaryTamplate/GetSalaryTamplateDetailById/{TemplateId}",
+  "get_salarytamplate_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplate/{id}",
     "method": "GET",
-    "description": "Retrieve salary template and payroll structure configurations",
+    "description": "Retrieve SalaryTamplate details by parameter",
     "parameters": {
-      "TemplateId": "template id"
+      "id": "resource id"
     },
     "keywords": [
+      "salary",
+      "tamplate",
+      "get",
       "salarytamplate",
-      "templateid"
+      "id"
     ],
-    "normalized_name": "get_salarytemplate_getsalarytemplatedetailbyid_templateid",
-    "normalized_intent": "employee_profile"
+    "normalized_name": "get_salarytamplate_id",
+    "normalized_intent": "payroll_management"
   },
   "get_salarytamplatewithregid": {
     "domain": "payroll",
@@ -910,6 +4948,45 @@
       "salarytamplatewithregid"
     ],
     "normalized_name": "get_salary_template_with_registration_id",
+    "normalized_intent": "payroll_management"
+  },
+  "get_salarytamplatewithregid_getassignedsalarytemplatedetail": {
+    "domain": "employee",
+    "endpoint": "/api/SalaryTamplateWithRegId/GetAssignedSalaryTemplateDetail",
+    "method": "GET",
+    "description": "Retrieve SalaryTamplateWithRegId records",
+    "parameters": {},
+    "keywords": [
+      "salary",
+      "tamplate",
+      "with",
+      "reg",
+      "id",
+      "get",
+      "assigned",
+      "template"
+    ],
+    "normalized_name": "get_salarytamplatewithregid_getassignedsalarytemplatedetail",
+    "normalized_intent": "employee_profile"
+  },
+  "get_salarytamplatewithregid_id": {
+    "domain": "payroll",
+    "endpoint": "/api/SalaryTamplateWithRegId/{id}",
+    "method": "GET",
+    "description": "Retrieve SalaryTamplateWithRegId details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "salary",
+      "tamplate",
+      "with",
+      "reg",
+      "id",
+      "get",
+      "salarytamplatewithregid"
+    ],
+    "normalized_name": "get_salarytamplatewithregid_id",
     "normalized_intent": "payroll_management"
   },
   "get_skill": {
@@ -950,6 +5027,39 @@
     "normalized_name": "get_states",
     "normalized_intent": "organization_structure"
   },
+  "get_state_id": {
+    "domain": "hr",
+    "endpoint": "/api/State/{id}",
+    "method": "GET",
+    "description": "Retrieve State details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "state",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_state_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_state_statename": {
+    "domain": "hr",
+    "endpoint": "/api/State/{StateName}",
+    "method": "GET",
+    "description": "Retrieve State details by parameter",
+    "parameters": {
+      "StateName": "StateName"
+    },
+    "keywords": [
+      "state",
+      "get",
+      "statename",
+      "name"
+    ],
+    "normalized_name": "get_state_statename",
+    "normalized_intent": "organization_structure"
+  },
   "get_submenu": {
     "domain": "hr",
     "endpoint": "/api/SubMenu",
@@ -976,6 +5086,29 @@
     "normalized_name": "get_submenu_id",
     "normalized_intent": "organization_structure"
   },
+  "get_submenu_updatesubmenustatus_submenuid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/SubMenu/UpdateSubMenuStatus/{SubMenuId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve SubMenu details by parameter",
+    "parameters": {
+      "SubMenuId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "sub",
+      "menu",
+      "update",
+      "status",
+      "get",
+      "submenu",
+      "updatesubmenustatus",
+      "submenuid"
+    ],
+    "normalized_name": "get_submenu_updatesubmenustatus_submenuid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_supervisor": {
     "domain": "hr",
     "endpoint": "/api/Supervisor",
@@ -986,6 +5119,28 @@
       "supervisor"
     ],
     "normalized_name": "get_supervisors",
+    "normalized_intent": "organization_structure"
+  },
+  "get_supervisor_getsupervisorname_departmentid_designationid": {
+    "domain": "hr",
+    "endpoint": "/api/Supervisor/GetSupervisorName/{DepartmentId}/{designationId}",
+    "method": "GET",
+    "description": "Retrieve Supervisor details by parameter",
+    "parameters": {
+      "DepartmentId": "resource id",
+      "designationId": "Designation name"
+    },
+    "keywords": [
+      "supervisor",
+      "get",
+      "name",
+      "getsupervisorname",
+      "departmentid",
+      "designationid",
+      "department",
+      "id"
+    ],
+    "normalized_name": "get_supervisor_getsupervisorname_departmentid_designationid",
     "normalized_intent": "organization_structure"
   },
   "get_supervisor_id": {
@@ -1002,6 +5157,21 @@
     "normalized_name": "get_supervisor_id",
     "normalized_intent": "organization_structure"
   },
+  "get_supervisor_supervisor": {
+    "domain": "hr",
+    "endpoint": "/api/Supervisor/{Supervisor}",
+    "method": "GET",
+    "description": "Retrieve Supervisor details by parameter",
+    "parameters": {
+      "Supervisor": "Supervisor"
+    },
+    "keywords": [
+      "supervisor",
+      "get"
+    ],
+    "normalized_name": "get_supervisor_supervisor",
+    "normalized_intent": "organization_structure"
+  },
   "get_task": {
     "domain": "task",
     "endpoint": "/api/Task",
@@ -1012,6 +5182,149 @@
       "task"
     ],
     "normalized_name": "get_tasks",
+    "normalized_intent": "task_management"
+  },
+  "get_task_attendancesummary_department": {
+    "domain": "task",
+    "endpoint": "/api/Task/AttendanceSummary/{department}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "department": "department"
+    },
+    "keywords": [
+      "task",
+      "attendance",
+      "summary",
+      "get",
+      "attendancesummary",
+      "department"
+    ],
+    "normalized_name": "get_task_attendancesummary_department",
+    "normalized_intent": "task_management"
+  },
+  "get_task_employeesummary_fyear": {
+    "domain": "employee",
+    "endpoint": "/api/Task/EmployeeSummary/{FYear}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "FYear": "FYear"
+    },
+    "keywords": [
+      "task",
+      "employee",
+      "summary",
+      "get",
+      "employeesummary",
+      "fyear"
+    ],
+    "normalized_name": "get_task_employeesummary_fyear",
+    "normalized_intent": "employee_profile"
+  },
+  "get_task_id": {
+    "domain": "task",
+    "endpoint": "/api/Task/{id}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "task",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_task_id",
+    "normalized_intent": "task_management"
+  },
+  "get_task_leavesummary_monthid_fyear": {
+    "domain": "leave",
+    "endpoint": "/api/Task/LeaveSummary/{MonthId}/{FYear}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "MonthId": "resource id",
+      "FYear": "FYear"
+    },
+    "keywords": [
+      "task",
+      "leave",
+      "summary",
+      "get",
+      "leavesummary",
+      "monthid",
+      "fyear",
+      "month"
+    ],
+    "normalized_name": "get_task_leavesummary_monthid_fyear",
+    "normalized_intent": "leave_management"
+  },
+  "get_task_rolesummary_departmentid": {
+    "domain": "task",
+    "endpoint": "/api/Task/RoleSummary/{departmentId}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "departmentId": "resource id"
+    },
+    "keywords": [
+      "task",
+      "role",
+      "summary",
+      "get",
+      "rolesummary",
+      "departmentid",
+      "department",
+      "id"
+    ],
+    "normalized_name": "get_task_rolesummary_departmentid",
+    "normalized_intent": "task_management"
+  },
+  "get_task_summary_employeeid_monthid_fyear": {
+    "domain": "employee",
+    "endpoint": "/api/Task/Summary/{EmployeeId}/{MonthId}/{FYear}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "EmployeeId": "resource id",
+      "MonthId": "resource id",
+      "FYear": "FYear"
+    },
+    "keywords": [
+      "task",
+      "summary",
+      "get",
+      "employeeid",
+      "monthid",
+      "fyear",
+      "employee",
+      "id"
+    ],
+    "normalized_name": "get_task_summary_employeeid_monthid_fyear",
+    "normalized_intent": "employee_profile"
+  },
+  "get_task_updatetaskstatus_taskid_status_updatedby": {
+    "domain": "task",
+    "endpoint": "/api/Task/UpdateTaskStatus/{TaskId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Task details by parameter",
+    "parameters": {
+      "TaskId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "task",
+      "update",
+      "status",
+      "get",
+      "updatetaskstatus",
+      "taskid",
+      "updatedby",
+      "id"
+    ],
+    "normalized_name": "get_task_updatetaskstatus_taskid_status_updatedby",
     "normalized_intent": "task_management"
   },
   "get_taskdetail": {
@@ -1070,6 +5383,82 @@
     "normalized_name": "get_taskerrordetail_id",
     "normalized_intent": "task_management"
   },
+  "get_userregistration": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration",
+    "method": "GET",
+    "description": "Retrieve UserRegistration records",
+    "parameters": {},
+    "keywords": [
+      "user",
+      "registration",
+      "get",
+      "userregistration"
+    ],
+    "normalized_name": "get_userregistration",
+    "normalized_intent": "organization_structure"
+  },
+  "get_userregistration_getuserregistrationdetailwithearningid_id": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration/GetUserRegistrationDetailWithEarningId/{Id}",
+    "method": "GET",
+    "description": "Retrieve UserRegistration details by parameter",
+    "parameters": {
+      "Id": "resource id"
+    },
+    "keywords": [
+      "user",
+      "registration",
+      "get",
+      "detail",
+      "with",
+      "earning",
+      "id",
+      "userregistration"
+    ],
+    "normalized_name": "get_userregistration_getuserregistrationdetailwithearningid_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_userregistration_id": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration/{id}",
+    "method": "GET",
+    "description": "Retrieve UserRegistration details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "user",
+      "registration",
+      "get",
+      "userregistration",
+      "id"
+    ],
+    "normalized_name": "get_userregistration_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_userregistration_updateuserregistrationstatus_id_status": {
+    "domain": "hr",
+    "endpoint": "/api/UserRegistration/UpdateUserRegistrationStatus/{Id}/{status}",
+    "method": "GET",
+    "description": "Retrieve UserRegistration details by parameter",
+    "parameters": {
+      "Id": "resource id",
+      "status": "status"
+    },
+    "keywords": [
+      "user",
+      "registration",
+      "update",
+      "status",
+      "get",
+      "userregistration",
+      "updateuserregistrationstatus",
+      "id"
+    ],
+    "normalized_name": "get_userregistration_updateuserregistrationstatus_id_status",
+    "normalized_intent": "organization_structure"
+  },
   "get_workshift": {
     "domain": "hr",
     "endpoint": "/api/WorkShift",
@@ -1094,6 +5483,96 @@
       "workshift"
     ],
     "normalized_name": "get_workshift_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_worktype": {
+    "domain": "hr",
+    "endpoint": "/api/WorkType",
+    "method": "GET",
+    "description": "Retrieve WorkType records",
+    "parameters": {},
+    "keywords": [
+      "work",
+      "type",
+      "get",
+      "worktype"
+    ],
+    "normalized_name": "get_worktype",
+    "normalized_intent": "organization_structure"
+  },
+  "get_worktype_id": {
+    "domain": "hr",
+    "endpoint": "/api/WorkType/{id}",
+    "method": "GET",
+    "description": "Retrieve WorkType details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "work",
+      "type",
+      "get",
+      "worktype",
+      "id"
+    ],
+    "normalized_name": "get_worktype_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_zipcodedetail": {
+    "domain": "hr",
+    "endpoint": "/api/ZipCodeDetail",
+    "method": "GET",
+    "description": "Retrieve ZipCodeDetail records",
+    "parameters": {},
+    "keywords": [
+      "zip",
+      "code",
+      "detail",
+      "get",
+      "zipcodedetail"
+    ],
+    "normalized_name": "get_zipcodedetail",
+    "normalized_intent": "organization_structure"
+  },
+  "get_zipcodedetail_getzipcodedetaildetail_zipcode_flag": {
+    "domain": "hr",
+    "endpoint": "/api/ZipCodeDetail/GetZipCodeDetailDetail/{ZipCode}/{Flag}",
+    "method": "GET",
+    "description": "Retrieve ZipCodeDetail details by parameter",
+    "parameters": {
+      "ZipCode": "ZipCode",
+      "Flag": "Flag"
+    },
+    "keywords": [
+      "zip",
+      "code",
+      "detail",
+      "get",
+      "zipcodedetail",
+      "getzipcodedetaildetail",
+      "zipcode",
+      "flag"
+    ],
+    "normalized_name": "get_zipcodedetail_getzipcodedetaildetail_zipcode_flag",
+    "normalized_intent": "organization_structure"
+  },
+  "get_zipcodedetail_id": {
+    "domain": "hr",
+    "endpoint": "/api/ZipCodeDetail/{id}",
+    "method": "GET",
+    "description": "Retrieve ZipCodeDetail details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "zip",
+      "code",
+      "detail",
+      "get",
+      "zipcodedetail",
+      "id"
+    ],
+    "normalized_name": "get_zipcodedetail_id",
     "normalized_intent": "organization_structure"
   }
 }

@@ -27,5 +27,4 @@ class Settings(BaseSettings):
         # Look for .env in project root (2 levels up from app/)
         env_file = str(Path(__file__).parent.parent / ".env")
 
-
 settings = Settings()
