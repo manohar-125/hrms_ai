@@ -1,6 +1,9 @@
+import json
 import logging
+import re
 
 from app.cache.redis_cache import get_cache, normalize_query, set_cache, should_skip_cache
+from app.config import settings
 from app.llm.llm_factory import get_llm
 
 
@@ -31,10 +34,13 @@ Available intents (choose only one):
 - general (other queries, unrelated to specific categories)
 
 Classification Rules:
-1. Return ONLY the intent name in lowercase.
+1. Return ONLY valid JSON with a single "intent" key.
 2. Do NOT include explanations or reasoning.
 3. If multiple intents match, choose the PRIMARY intent.
 4. Be strict and precise in your classification.
+
+Output format:
+{{"intent": "employee"}}
 
 Examples:
 
@@ -62,6 +68,33 @@ Intent:
 """
 
 
+def _truncate_for_log(value: str, limit: int = 800) -> str:
+    if not value:
+        return ""
+    return value if len(value) <= limit else f"{value[:limit]}..."
+
+
+def _try_parse_json(text: str) -> dict | None:
+    if not text:
+        return None
+    cleaned = text.strip()
+    cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\s*```$", "", cleaned)
+    match = re.search(r"\{.*\}", cleaned, re.DOTALL)
+    if match:
+        cleaned = match.group(0)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        return None
+
+
+def _normalize_intent(value: str | None) -> str:
+    if not value:
+        return ""
+    return value.strip().lower()
+
+
 def classify_intent(question: str):
     normalized_query = normalize_query(question)
     cache_key = f"intent:{normalized_query}"
@@ -79,14 +112,32 @@ def classify_intent(question: str):
     prompt = INTENT_PROMPT.format(question=question)
 
     llm = get_llm()
+    provider_name = (settings.LLM_PROVIDER or "unknown").strip().lower()
+    logger.info("[LLM REQUEST] provider=%s task=intent", provider_name)
     response = llm.generate(prompt)
-    normalized = response.strip().lower()
+    logger.info("[LLM RESPONSE] raw=%s", _truncate_for_log(response))
+
+    parsed_json = _try_parse_json(response)
+    normalized = _normalize_intent(parsed_json.get("intent") if parsed_json else None)
+
+    if not normalized:
+        retry_prompt = f"{prompt}\nReturn ONLY valid JSON. Do not include any extra text."
+        logger.info("[LLM REQUEST] provider=%s task=intent retry=1", provider_name)
+        retry_response = llm.generate(retry_prompt)
+        logger.info("[LLM RESPONSE] raw=%s", _truncate_for_log(retry_response))
+        parsed_json = _try_parse_json(retry_response)
+        normalized = _normalize_intent(parsed_json.get("intent") if parsed_json else None)
+
+    if not normalized:
+        normalized = response.strip().lower()
 
     # Handle occasional prefixes/suffixes from LLM output.
     if "intent:" in normalized:
         normalized = normalized.split("intent:")[-1].strip()
 
     normalized = normalized.split()[0].strip(".,:;!?\"'()[]{}") if normalized else ""
+
+    logger.info("[LLM PARSED] result=%s", normalized or "")
 
     if normalized in VALID_INTENTS:
         if not cache_skipped:

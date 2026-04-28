@@ -6,6 +6,7 @@ from app.core.tool_planner import ToolPlanner
 from app.core.tool_executor import ToolExecutor
 from app.core.entity_extractor import extract_entities
 from app.core.tool_validator import ToolValidator
+from app.config import settings
 from app.llm.llm_factory import get_llm
 from app.cache.redis_cache import RedisCache
 
@@ -72,6 +73,47 @@ def _filter_rows_by_employee_name(rows: list, employee_name: str):
     return [best_row]
 
 
+def _truncate_api_response(api_response):
+    max_items = settings.LLM_MAX_API_ITEMS
+    max_chars = settings.LLM_MAX_API_RESPONSE_CHARS
+    truncated = False
+
+    def _truncate_list(items: list):
+        nonlocal truncated
+        if max_items is not None and len(items) > max_items:
+            truncated = True
+            return items[:max_items]
+        return items
+
+    prepared = api_response
+    if isinstance(api_response, list):
+        prepared = _truncate_list(api_response)
+        if prepared is not api_response:
+            prepared = {
+                "_truncated": True,
+                "total_items": len(api_response),
+                "items": prepared,
+            }
+    elif isinstance(api_response, dict):
+        data = api_response.get("data")
+        if isinstance(data, list):
+            trimmed = _truncate_list(data)
+            if trimmed is not data:
+                prepared = {**api_response, "data": trimmed, "_truncated": True, "total_items": len(data)}
+
+    serialized = json.dumps(prepared, indent=2)
+    if max_chars is not None and len(serialized) > max_chars:
+        truncated = True
+        preview = serialized[:max_chars]
+        prepared = {
+            "_truncated": True,
+            "preview": preview,
+            "note": f"Preview truncated to {max_chars} characters.",
+        }
+
+    return prepared, truncated
+
+
 def route_query(intent: str, question: str, return_source: bool = False):
 
     try:
@@ -135,6 +177,8 @@ def route_query(intent: str, question: str, return_source: bool = False):
                     api_response = {**api_response, "data": filtered_rows}
 
         # Step 5️⃣ Generate final answer from raw API response
+        prepared_response, was_truncated = _truncate_api_response(api_response)
+        truncation_note = "\nNote: API response was truncated for length." if was_truncated else ""
         llm = get_llm()
         final_answer = llm.generate(
             f"""
@@ -143,8 +187,8 @@ def route_query(intent: str, question: str, return_source: bool = False):
     User question:
     {question}
 
-    HRMS API response (JSON):
-{json.dumps(api_response, indent=2)}
+    HRMS API response (JSON):{truncation_note}
+{json.dumps(prepared_response, indent=2)}
 
     Instructions:
     - Convert the API response into a clear natural language answer.

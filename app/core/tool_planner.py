@@ -13,7 +13,32 @@ from app.core.domain_classifier import classify_domain
 from app.vectordb.api_vector_store import APIVectorStore
 
 
-EMPPERSDTLS_TOOL = "get_emppersdtls"
+PERSONAL_DETAILS_TOOL_KEYS = (
+    "get_emp_pers_dtls",
+    "get_emppers_dtls",
+    "get_emppersdtls",
+)
+
+
+def _truncate_for_log(value: str, limit: int = 800) -> str:
+    if not value:
+        return ""
+    return value if len(value) <= limit else f"{value[:limit]}..."
+
+
+def _try_parse_json(text: str) -> dict | None:
+    if not text:
+        return None
+    cleaned = text.strip()
+    cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\s*```$", "", cleaned)
+    match = re.search(r"\{.*\}", cleaned, re.DOTALL)
+    if match:
+        cleaned = match.group(0)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        return None
 
 
 class ToolPlanner:
@@ -177,16 +202,49 @@ class ToolPlanner:
         cleaned = response.strip()
         
         # Remove patterns like "Tool:", "Tool is:", "The best tool is:", etc.
-        cleaned = re.sub(r'^(Tool|The best tool|Selected tool)[:\s]+', '', cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r'^(Tool|The best tool|Selected tool|RESPONSE FORMAT:)[:\s]+', '', cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r'^[\d\.\)]+\s*', '', cleaned)  # Remove numbering like "1. " or "1) "
         
-        # Extract the first word (tool name should not have spaces)
-        tool_name = cleaned.split()[0] if cleaned else ""
-        
-        # Remove any trailing punctuation
-        tool_name = re.sub(r'[:\.,;\'"]*$', '', tool_name)
-        
+        # Extract first valid token (tool names have alphanumeric and underscores only)
+        tokens = cleaned.split()
+        tool_name = ""
+
+        for token in tokens:
+            # Remove trailing punctuation
+            token = re.sub(r'[:\.,;\'\"]*$', '', token)
+
+            # Check if token looks like a tool name (alphanumeric + underscores only)
+            if token and re.match(r'^[a-z0-9_]+$', token):
+                tool_name = token
+                break
+
         return tool_name.strip()
+
+    def _parse_tool_response(self, response: str) -> str:
+        parsed_json = _try_parse_json(response)
+        if parsed_json:
+            for key in ("tool", "tool_name", "name"):
+                value = parsed_json.get(key)
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+        return self._clean_llm_output(response)
+
+    def _is_out_of_scope_query(self, query: str) -> bool:
+        """
+        Detect if query is asking for functionality not available in HRMS system.
+        Returns True if query is out-of-scope.
+        """
+        out_of_scope_keywords = [
+            "weather", "traffic", "map", "location", "gps", "route",
+            "map direction", "navigation", "booking", "hotel", "flight",
+            "train", "bus", "ride", "taxi", "restaurant", "food", "order",
+        ]
+
+        query_lower = query.lower()
+        for keyword in out_of_scope_keywords:
+            if keyword in query_lower:
+                return True
+        return False
 
     def _prefer_personal_details_tool(self, query: str, filtered_tools: dict):
         """
@@ -204,7 +262,7 @@ class ToolPlanner:
         personal_terms = [
             "mobile", "phone", "contact", "email", "mail", "dob",
             "gender", "blood", "marital", "father", "mother", "husband", "wife", 
-            "spouse", "personal", "details"
+            "spouse", "personal", "details", "religion"
         ]
         employee_terms = ["employee", "employees", "emp", "staff", "person"]
         # Family is NOT a personal details attribute - it's for EmpFamily API
@@ -225,8 +283,50 @@ class ToolPlanner:
                               bool(re.search(r'\b[A-Z][a-z]+\s+[A-Z][a-z]+', query))
             
             if has_employee_context or has_name_pattern:
-                if EMPPERSDTLS_TOOL in filtered_tools:
-                    return EMPPERSDTLS_TOOL, filtered_tools[EMPPERSDTLS_TOOL]
+                for tool_key in PERSONAL_DETAILS_TOOL_KEYS:
+                    if tool_key in filtered_tools:
+                        return tool_key, filtered_tools[tool_key]
+
+                for tool_name, tool_data in filtered_tools.items():
+                    if str(tool_data.get("endpoint", "")).lower() == "/api/emppersdtls":
+                        return tool_name, tool_data
+
+                for tool_key in PERSONAL_DETAILS_TOOL_KEYS:
+                    if tool_key in self.registry:
+                        return tool_key, self.registry[tool_key]
+                for tool_name, tool_data in self.registry.items():
+                    if str(tool_data.get("endpoint", "")).lower() == "/api/emppersdtls":
+                        return tool_name, tool_data
+
+        return None, None
+
+    def _prefer_vision_detection_tool(self, query: str, filtered_tools: dict):
+        """Route detection-related queries to the matching vision APIs."""
+        query_lower = (query or "").lower()
+        has_detect_intent = any(
+            kw in query_lower for kw in ("detect", "detected", "detection", "plate")
+        )
+        if not has_detect_intent:
+            return None, None
+
+        preferred = []
+        if any(kw in query_lower for kw in ("vehicle", "vechile", "car", "number plate", "license plate", "plate")):
+            preferred.append("get_vechile_detect")
+        if any(kw in query_lower for kw in ("face", "facial")):
+            preferred.append("get_face_detect")
+        if "dress" in query_lower:
+            preferred.append("get_dress_detect")
+        if any(kw in query_lower for kw in ("object", "item")):
+            preferred.append("get_object_detect")
+
+        if not preferred:
+            return None, None
+
+        for tool_name in preferred:
+            if tool_name in filtered_tools:
+                return tool_name, filtered_tools[tool_name]
+            if tool_name in self.registry:
+                return tool_name, self.registry[tool_name]
 
         return None, None
 
@@ -262,11 +362,32 @@ class ToolPlanner:
 
         return None, None
 
+    def _prefer_department_list_tool(self, query: str, filtered_tools: dict):
+        query_lower = query.lower()
+        if "department" not in query_lower and "deparment" not in query_lower:
+            return None, None
+
+        list_keywords = ["list", "show", "all", "display", "names", "department", "departments", "deparment", "deparments"]
+        asks_list = any(kw in query_lower for kw in list_keywords)
+
+        if asks_list:
+            if "get_department" in filtered_tools:
+                return "get_department", filtered_tools["get_department"]
+            if "get_department" in self.registry:
+                return "get_department", self.registry["get_department"]
+
+        return None, None
+
     def find_tool(self, query: str):
 
         # Reload registry on each request so add/remove changes are picked up
         # without restarting the API service.
         self._load_registry()
+
+        # EARLY DETECTION: Check if query is asking for out-of-scope APIs
+        if self._is_out_of_scope_query(query):
+            logger.warning("Out-of-scope query detected: %s", query)
+            return None, None
 
         # Step 1 — Detect domain
         domain = classify_domain(query)
@@ -296,9 +417,18 @@ class ToolPlanner:
             if tool_data.get("domain") == domain:
                 filtered_tools[tool_name] = tool_data
 
-        # fallback if domain not found
+        # Fallback if domain not found: match by keywords/endpoint/description
         if not filtered_tools:
-            filtered_tools = self.registry
+            domain_key = domain.lower()
+            keyword_filtered = {}
+            for tool_name, tool_data in self.registry.items():
+                keywords = [kw.lower() for kw in tool_data.get("keywords", [])]
+                endpoint = str(tool_data.get("endpoint", "")).lower()
+                description = str(tool_data.get("description", "")).lower()
+                if domain_key in keywords or domain_key in endpoint or domain_key in description:
+                    keyword_filtered[tool_name] = tool_data
+
+            filtered_tools = keyword_filtered or self.registry
 
         # Step 3 — Prefer APIs without parameters when query doesn't request ID-style lookup
         query_lower = query.lower()
@@ -322,7 +452,31 @@ class ToolPlanner:
             _cache_selected_tool(preferred_name)
             return preferred_name, preferred_data
 
-        # Step 3.2 — Short-circuit for generic employee-list queries.
+        # Step 3.2 — Short-circuit for vision detection queries.
+        preferred_name, preferred_data = self._prefer_vision_detection_tool(query, filtered_tools)
+        if preferred_name:
+            logger.info(f"Rule-selected vision detection tool: {preferred_name}")
+            _cache_selected_tool(preferred_name)
+            return preferred_name, preferred_data
+
+        # Step 3.3 — Short-circuit for department list queries.
+        preferred_name, preferred_data = self._prefer_department_list_tool(query, filtered_tools)
+        if preferred_name:
+            logger.info(f"Rule-selected department tool: {preferred_name}")
+            _cache_selected_tool(preferred_name)
+            return preferred_name, preferred_data
+
+        if domain == "department":
+            if "get_department" in filtered_tools:
+                logger.info("Rule-selected department tool by domain: get_department")
+                _cache_selected_tool("get_department")
+                return "get_department", filtered_tools["get_department"]
+            if "get_department" in self.registry:
+                logger.info("Rule-selected department tool by domain: get_department")
+                _cache_selected_tool("get_department")
+                return "get_department", self.registry["get_department"]
+
+        # Step 3.4 — Short-circuit for generic employee-list queries.
         preferred_name, preferred_data = self._prefer_employment_for_list_queries(query, filtered_tools)
         if preferred_name:
             logger.info(f"Rule-selected employment tool for list: {preferred_name}")
@@ -342,6 +496,9 @@ class ToolPlanner:
             (tool_name, score) for tool_name, score in semantic_candidates_scored
             if tool_name in filtered_tools
         ]
+
+        if not semantic_candidates_scored:
+            semantic_candidates_scored = [(tool_name, 0.0) for tool_name in filtered_tools.keys()]
         
         # Filter dashboard APIs from semantic candidates if not requested
         semantic_candidates_scored = self._filter_dashboard_apis(semantic_candidates_scored, query)
@@ -433,11 +590,18 @@ TOOLS:
 
 QUERY: {query}
 
-Return ONLY the tool name, nothing else."""
+Output format:
+Return ONLY valid JSON in this format:
+{{"tool": "get_employee"}}
+"""
 
             llm = get_llm()
+            provider_name = (settings.LLM_PROVIDER or "unknown").strip().lower()
+            logger.info("[LLM REQUEST] provider=%s task=tool_selection", provider_name)
             response = llm.generate(prompt)
-            tool_name = self._clean_llm_output(response)
+            logger.info("[LLM RESPONSE] raw=%s", _truncate_for_log(response))
+            tool_name = self._parse_tool_response(response)
+            logger.info("[LLM PARSED] result=%s", tool_name or "")
 
             logger.info(f"LLM selected: {tool_name}")
 
