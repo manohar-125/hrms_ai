@@ -1,19 +1,29 @@
 from pydantic_settings import BaseSettings
-from typing import Optional
 from pathlib import Path
 
 
 class Settings(BaseSettings):
 
-    OLLAMA_URL: str
-    LLM_MODEL: str
+    LLM_PROVIDER: str = "openai"
     EMBED_MODEL: str
     CHROMA_PATH: str
+
+    OPENAI_MODEL: str = "gpt-4o-mini"
+    GROQ_MODEL: str = "llama-3.1-8b-instant"
+    ANTHROPIC_MODEL: str = "claude-3-5-sonnet-latest"
+    GEMINI_MODEL: str = "gemini-2.0-flash"
+
+    OPENAI_API_KEY: str = ""
+    GROQ_API_KEY: str = ""
+    GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
+    ANTHROPIC_API_KEY: str = ""
+    GEMINI_API_KEY: str = ""
 
     HRMS_API_BASE_URL: str
     HRMS_API_TOKEN: str
     
     # Redis configuration (optional with defaults)
+    ENABLE_CACHE: bool = True
     REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
     

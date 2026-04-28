@@ -4,7 +4,7 @@ from pathlib import Path
 
 import requests
 
-SWAGGER_URL = "https://hrmsapilive.leanxpert.in/swagger/v1/swagger.json"
+SWAGGER_URL = "https://hrmsapi.leanxpert.in/swagger/v1/swagger.json"
 OUTPUT_FILE = Path("app/tools/api_registry.json")
 
 

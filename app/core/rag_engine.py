@@ -3,7 +3,7 @@ from app.core.query_router import route
 from app.core.agent_router import route_query
 from app.core.policy_service import get_policy_context
 from app.core.context_builder import add_to_context, build_context_prompt
-from app.llm.llama_client import generate_response
+from app.llm.llm_factory import get_llm
 from app.llm.prompts import SYSTEM_PROMPT
 from app.cache.redis_cache import RedisCache
 
@@ -90,7 +90,8 @@ Question:
 Answer:
 """
 
-        answer = generate_response(prompt)
+        llm = get_llm()
+        answer = llm.generate(prompt, SYSTEM_PROMPT)
 
         add_to_context(session_id, question, answer)
 

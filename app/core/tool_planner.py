@@ -3,7 +3,8 @@ import re
 import logging
 from pathlib import Path
 
-from app.llm.llama_client import generate_response
+from app.cache.redis_cache import get_cache, normalize_query, set_cache, should_skip_cache
+from app.llm.llm_factory import get_llm
 from app.config import settings
 
 logger = logging.getLogger(__name__)
@@ -270,6 +271,23 @@ class ToolPlanner:
         # Step 1 — Detect domain
         domain = classify_domain(query)
 
+        normalized_query = normalize_query(query)
+        cache_key = f"tool:{normalized_query}:{domain}"
+        cache_skipped = should_skip_cache(query)
+
+        def _cache_selected_tool(tool_name: str):
+            if not cache_skipped and tool_name:
+                set_cache(cache_key, {"tool": tool_name}, ttl=3600)
+
+        if not cache_skipped:
+            cached = get_cache(cache_key)
+            if isinstance(cached, dict):
+                cached_tool = (cached.get("tool") or "").strip()
+                if cached_tool and cached_tool in self.registry:
+                    logger.info("[CACHE HIT] tool:%s:%s", normalized_query, domain)
+                    return cached_tool, self.registry[cached_tool]
+            logger.info("[CACHE MISS] tool:%s:%s", normalized_query, domain)
+
         # Step 2 — Filter tools by domain
         filtered_tools = {}
 
@@ -301,12 +319,14 @@ class ToolPlanner:
         preferred_name, preferred_data = self._prefer_personal_details_tool(query, filtered_tools)
         if preferred_name:
             logger.info(f"Rule-selected personal details tool: {preferred_name}")
+            _cache_selected_tool(preferred_name)
             return preferred_name, preferred_data
 
         # Step 3.2 — Short-circuit for generic employee-list queries.
         preferred_name, preferred_data = self._prefer_employment_for_list_queries(query, filtered_tools)
         if preferred_name:
             logger.info(f"Rule-selected employment tool for list: {preferred_name}")
+            _cache_selected_tool(preferred_name)
             return preferred_name, preferred_data
 
         # Step 4 — Compute keyword scores for all filtered tools
@@ -373,6 +393,7 @@ class ToolPlanner:
                 if any(word in tool_desc for word in query_lower.split()):
                     logger.info(f"Auto-selected (high confidence): {top_name} (score: {top_sem_score:.3f}, margin: {score_margin:.3f})")
                     if tool_data:
+                        _cache_selected_tool(top_name)
                         return top_name, tool_data
         
         # Use best single candidate (no LLM needed if only one)
@@ -414,25 +435,29 @@ QUERY: {query}
 
 Return ONLY the tool name, nothing else."""
 
-            response = generate_response(prompt)
+            llm = get_llm()
+            response = llm.generate(prompt)
             tool_name = self._clean_llm_output(response)
 
             logger.info(f"LLM selected: {tool_name}")
 
             # Validate tool exists in final candidates
             if tool_name in final_candidates:
+                _cache_selected_tool(tool_name)
                 return tool_name, filtered_tools[tool_name]
 
             # Safe fallback to first final candidate
             if final_candidates:
                 fallback_tool = final_candidates[0]
                 logger.info(f"LLM selection '{tool_name}' invalid, fallback: {fallback_tool}")
+                _cache_selected_tool(fallback_tool)
                 return fallback_tool, filtered_tools[fallback_tool]
         else:
             # Single candidate - use it directly
             if final_candidates:
                 tool_name = final_candidates[0]
                 logger.info(f"Single candidate: {tool_name}")
+                _cache_selected_tool(tool_name)
                 return tool_name, filtered_tools[tool_name]
 
         return None, None

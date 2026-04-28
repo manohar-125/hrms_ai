@@ -1,107 +1,57 @@
 # HRMS AI Service
 
-AI-powered backend service for natural language interaction with HRMS data and company policy documents.
+FastAPI service for asking HR questions in natural language and answering them from live HRMS APIs or policy documents.
 
-## What This Service Does
+## Overview
 
-This project lets users ask HR questions in natural language and get answers from:
+The application routes each chat question into one of two paths:
 
-- Live HRMS APIs (employee, department, attendance, etc.)
-- Policy documents via Retrieval-Augmented Generation (RAG)
+- Policy questions use a RAG flow over ChromaDB-backed policy chunks.
+- Data questions use an HRMS API selection and execution flow.
 
-It supports:
+The response includes the final answer plus source attribution when available.
 
-- Query intent classification (policy vs API data)
-- Tool/API selection using semantic matching
-- Policy retrieval from vector database
-- Response generation with local LLM (Ollama)
-- Redis caching
-- Source attribution in responses
+## What The Service Does
 
-## Key Features
+- Accepts chat requests at `POST /chat`.
+- Serves a health check at `GET /health`.
+- Serves the chat UI at `/` and static assets under `/static`.
+- Classifies each question as policy or data.
+- Uses Redis caching for repeated questions.
+- Retrieves policy text from the HRMS API, chunks it, and stores it in ChromaDB.
+- Selects the best HRMS API tool using domain filtering, keyword scoring, semantic search, and an LLM tie-breaker.
+- Calls the selected HRMS API with the configured bearer token.
+- Formats source attribution for both policy and API answers.
 
-- Natural language chat endpoint: `POST /chat`
-- Health endpoint: `GET /health`
-- Policy retrieval using ChromaDB + embeddings
-- API orchestration pipeline for data queries
-- Source attribution for both policy and API responses
-- Frontend chat UI with formatted source badges
-- Local-first setup (Ollama + Redis + FastAPI)
+## Request Flow
 
-## Tech Stack
-
-- Python 3.11+
-- FastAPI
-- Uvicorn
-- Ollama (default model from env)
-- ChromaDB
-- sentence-transformers
-- Redis
-- requests
-
-## End-to-End Request Flow
-
-1. User sends a question to `POST /chat`.
-2. System checks Redis cache.
-3. Query is routed by intent.
-4. If policy query:
-   - Retrieve relevant chunks from vector DB.
-   - Build context and generate answer.
-   - Extract policy source metadata.
-5. If data query:
-   - Classify domain and extract entities.
-   - Select best API/tool using planner.
-   - Execute HRMS API request.
-   - Parse and generate final answer.
-   - Capture API source metadata.
-6. Return response with:
-   - `answer` (final text)
-   - `source` (formatted source attribution when available)
-7. Save to Redis cache.
-
-## Source Attribution Behavior
-
-The service includes source attribution for transparency.
-
-### Policy Query Response
-
-- Source format: `Source: <PolicyName>`
-- Example: `Source: Holiday_Policy`
-
-### API Query Response
-
-- Source format: `Source: <HTTP_METHOD> <ENDPOINT>`
-- Example: `Source: GET /api/Department`
-
-### Response Shape
-
-```json
-{
-  "answer": "...answer text...\n\nSource: Holiday_Policy",
-  "source": "Source: Holiday_Policy"
-}
-```
-
-```json
-{
-  "answer": "...answer text...\n\nSource: GET /api/Department",
-  "source": "Source: GET /api/Department"
-}
-```
-
-### Notes
-
-- Source is available as a dedicated `source` field.
-- Source may also appear appended in `answer` depending on flow and cache behavior.
-- If source is unavailable, `source` can be `null`.
+1. A client sends `POST /chat` with a JSON body containing `question`.
+2. `app/core/rag_engine.py` checks Redis cache first.
+3. The question is classified by intent in `app/core/intent_classifier.py`.
+4. `app/core/query_router.py` maps `policy` questions to the policy RAG path and all other intents to the data path.
+5. Policy path:
+   - `app/core/policy_service.py` fetches policy data from `/api/Policies`, then falls back to `/LeavePolicy`.
+   - The best policy candidate is chosen using embedding similarity plus lexical overlap.
+   - Existing Chroma chunks are queried first.
+   - If no chunks exist, the policy is cleaned, chunked, embedded, and stored.
+   - A prompt is built from the system prompt, conversation history, retrieved context, and question.
+  - The configured LLM provider generates the final answer.
+6. Data path:
+   - `app/core/agent_router.py` checks its cache and then asks `app/core/tool_planner.py` for a tool.
+   - `app/core/domain_classifier.py` narrows the registry to the most relevant domain.
+   - `app/core/entity_extractor.py` extracts numeric IDs and employee names.
+   - The planner combines registry keywords, semantic search from ChromaDB, and LLM selection when multiple candidates remain.
+   - `app/core/tool_validator.py` verifies the chosen tool exists and has `endpoint` and `method`.
+   - `app/core/tool_executor.py` performs the API call.
+   - `app/llm/llama_client.py` turns the raw JSON payload into a natural-language answer.
+7. The answer and source metadata are returned to the route handler.
+8. The route appends source attribution to the answer and returns the `ChatResponse` payload.
 
 ## API Endpoints
 
 ### `GET /health`
 
-Basic health check.
-
-Example response:
+Returns a simple health response:
 
 ```json
 {
@@ -111,9 +61,7 @@ Example response:
 
 ### `POST /chat`
 
-Main query endpoint.
-
-Request:
+Request body:
 
 ```json
 {
@@ -121,7 +69,7 @@ Request:
 }
 ```
 
-Possible response:
+Response shape:
 
 ```json
 {
@@ -130,120 +78,147 @@ Possible response:
 }
 ```
 
-## Setup and Run
+For policy answers, the source format becomes `Source: <PolicyName>` and may include a page number when available.
 
-## Prerequisites
+## Source Attribution
 
-- Python 3.11+
-- Redis server
-- Ollama installed and running
+Source formatting is handled in `app/core/rag_engine.py` and returned through `app/api/routes/chat.py`.
 
-## Installation
+- Policy sources use `Source: <PolicyName>` or `Source: <PolicyName> (Page <n>)`.
+- API sources use `Source: <HTTP_METHOD> <ENDPOINT>`.
+- The frontend separates embedded source text from the main answer and renders a dedicated source badge.
 
-```bash
-cd /Users/shyam_manohar/Desktop/Nighwan\ Tech/hrms_ai_service
-python3.11 -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
-```
+## UI
 
-## Start Required Services
+The built-in chat UI lives in `app/static/chat-ui.html` and is served at the app root.
 
-Terminal 1:
+- Dark, neon-styled layout with a grid background and glassmorphism panels.
+- Uses `Inter` for body text and `Syne` for the title.
+- Includes `Export PDF` and `Clear Chat` controls.
+- Preserves line breaks with `white-space: pre-wrap`.
+- Shows policy sources as green badges and API sources as orange badges.
+- Uses a loading spinner while exporting to PDF.
 
-```bash
-ollama serve
-```
+## Runtime Components
 
-Terminal 2:
+### App startup
 
-```bash
-redis-server
-```
+`app/main.py` creates the FastAPI application, includes the chat and health routers, mounts static files, and serves `chat-ui.html` from `/` when available.
 
-Terminal 3:
+### Configuration
 
-```bash
-source venv/bin/activate
-uvicorn app.main:app --reload
-```
+`app/config.py` reads settings from `.env` in the project root.
 
-## Verify
+Required variables:
 
-```bash
-curl http://localhost:8000/health
-```
-
-## Query Test
-
-```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question":"What are the company policies for holidays?"}'
-```
-
-## Configuration
-
-Set values in `.env` (or your configured environment source):
-
-- `OLLAMA_URL`
-- `LLM_MODEL`
+- `LLM_PROVIDER`
 - `EMBED_MODEL`
 - `CHROMA_PATH`
 - `HRMS_API_BASE_URL`
 - `HRMS_API_TOKEN`
-- `REDIS_HOST` (optional, default: `localhost`)
-- `REDIS_PORT` (optional, default: `6379`)
+- `OPENAI_API_KEY`
+- `GROQ_API_KEY`
+- `ANTHROPIC_API_KEY`
+- `GEMINI_API_KEY`
 
-API selection tuning (optional):
+Provider-specific model variables:
 
-- `SEMANTIC_SEARCH_K` (default: `10`)
-- `KEYWORD_WEIGHT` (default: `0.5`)
-- `SIMILARITY_THRESHOLD` (default: `0.2`)
-- `REQUIRE_HIGH_CONFIDENCE` (default: `true`)
+- `OPENAI_MODEL`
+- `GROQ_MODEL`
+- `ANTHROPIC_MODEL`
+- `GEMINI_MODEL`
 
-Notes:
+Optional variables:
 
-- The service resolves `.env` from project root, so scripts work even if run from `scripts/`.
-- After changing selection values, restart the API service.
+- `REDIS_HOST` default: `localhost`
+- `REDIS_PORT` default: `6379`
+- `SEMANTIC_SEARCH_K` default: `10`
+- `KEYWORD_WEIGHT` default: `0.5`
+- `SIMILARITY_THRESHOLD` default: `0.2`
+- `REQUIRE_HIGH_CONFIDENCE` default: `true`
 
-## Logging Behavior
+### Caching
 
-The terminal logs are intentionally concise. Typical lines include:
+`app/cache/redis_cache.py` uses Redis when available and falls back to disabled caching if Redis cannot be reached. Keys are normalized to reduce duplicate cache entries.
 
-- `RAG Cache HIT` / `RAG Cache MISS`
-- `Agent Cache HIT` / `Agent Cache MISS`
-- `Query route: policy|data`
-- `[ToolExecutor] Calling: <full-url>`
-- Uvicorn access log lines for request status
+### Conversation context
 
-API planner diagnostics (when selection goes through ranking/LLM):
+`app/core/context_builder.py` keeps in-memory conversation history only. It stores question/answer pairs per session and includes the last five exchanges in the prompt context.
 
-- `Auto-selected (high confidence): <tool_name> ...`
-- `LLM candidates: [...]`
-- `LLM selected: <tool_name>`
+### LLM integration
 
-## Frontend Behavior and Formatting
+`app/llm/llm_factory.py` selects the active provider from `LLM_PROVIDER`.
 
-The chat UI in `app/static/chat-ui.html` is configured to:
+`app/llm/providers/` contains the OpenAI, Groq, Anthropic, and Gemini implementations. The execution layer is used for:
 
-- Preserve line breaks using `white-space: pre-wrap`
-- Wrap long words and lines cleanly
-- Display source attribution separately from answer content
-- Show source badges:
-  - Policy source style (green)
-  - API source style (orange)
+- Free-form answer generation for policy queries.
+- Natural-language conversion of API JSON responses.
+- Intent and domain classification prompts.
+- Tool selection tie-breaking when multiple APIs are plausible.
 
-Formatting logic separates `answer` text from embedded `\n\nSource:` and renders source in a dedicated source section.
+### Policy retrieval
 
-## Folder Structure (Detailed)
+`app/core/policy_service.py`:
+
+- Fetches policies from the HRMS API.
+- Accepts text fields, PDF URLs, base64 PDF payloads, and raw PDF bytes.
+- Uses PyPDF, PyMuPDF, and Tesseract OCR when needed.
+- Cleans repeated headers/footers and short noisy lines.
+- Chunks policy text with 500-character chunks and 50-character overlap.
+- Stores policy embeddings in the `hrms_documents` Chroma collection.
+
+### API selection
+
+`app/core/tool_planner.py`:
+
+- Loads `app/tools/api_registry.json` on each request.
+- Filters tools by domain.
+- Prefers non-parameterized endpoints when the query does not look like an ID lookup.
+- Applies special rules for personal-details and employee-list queries.
+- Combines semantic similarity and keyword scoring.
+- Falls back to LLM selection only when multiple candidates remain.
+
+### API execution
+
+`app/core/tool_executor.py` performs GET requests against the configured HRMS base URL and sends the bearer token in the `Authorization` header.
+
+### HRMS API client
+
+`app/services/hrms_api_client.py` wraps generic GET requests, fetches policies, and downloads binary policy files.
+
+## Vector Store
+
+The project uses ChromaDB for two separate collections:
+
+- `hrms_documents` for policy chunks.
+- `api_tools` for API registry search.
+
+Embedding uses `sentence-transformers` with `BAAI/bge-small-en`.
+
+`app/vectordb/api_vector_store.py` indexes registry entries as tool documents and supports semantic search with similarity scores.
+
+`app/vectordb/retriever.py` queries policy chunks, optionally returning metadata.
+
+## Registry Scripts
+
+### `scripts/build_registry.py`
+
+- Downloads the Swagger spec from `https://hrmsapi.leanxpert.in/swagger/v1/swagger.json`.
+- Generates `app/tools/api_registry.json` from GET endpoints under `/api/`.
+- Infers tool names, domains, keywords, parameters, and normalized intent metadata.
+
+### `scripts/index_api_registry.py`
+
+- Validates `app/tools/api_registry.json`.
+- Syncs the registry into ChromaDB.
+- Removes stale vector entries.
+- Supports `--watch` mode for automatic re-sync on file changes.
+
+## Project Structure
 
 ```text
 hrms_ai_service/
 ├── app/
-│   ├── config.py
-│   ├── main.py
 │   ├── api/
 │   │   ├── routes/
 │   │   │   ├── chat.py
@@ -255,6 +230,7 @@ hrms_ai_service/
 │   │   └── redis_cache.py
 │   ├── core/
 │   │   ├── agent_router.py
+│   │   ├── api_selector.py
 │   │   ├── context_builder.py
 │   │   ├── domain_classifier.py
 │   │   ├── entity_extractor.py
@@ -269,9 +245,15 @@ hrms_ai_service/
 │   │   ├── chunking.py
 │   │   └── embedding_model.py
 │   ├── llm/
+│   │   ├── base_llm.py
 │   │   ├── llama_client.py
-│   │   ├── prompts.py
-│   │   └── response_parser.py
+│   │   ├── llm_factory.py
+│   │   ├── provider_utils.py
+│   │   └── providers/
+│   │       ├── anthropic_provider.py
+│   │       ├── gemini_provider.py
+│   │       ├── groq_provider.py
+│   │       └── openai_provider.py
 │   ├── services/
 │   │   └── hrms_api_client.py
 │   ├── static/
@@ -283,172 +265,119 @@ hrms_ai_service/
 │       ├── chroma_client.py
 │       └── retriever.py
 ├── chroma_db/
-│   ├── chroma.sqlite3
-│   ├── 3cabfcf0-d70d-4cc9-96fb-dda96effed2d/
-│   └── 599433f8-572a-4ec7-b9cb-e453a33b4539/
 ├── scripts/
 │   ├── build_registry.py
 │   └── index_api_registry.py
 ├── dump.rdb
 ├── requirements.txt
-├── README.md
-└── venv/
+└── README.md
 ```
 
-## Folder and File Responsibilities
+## Setup
 
-### `app/`
+### Prerequisites
 
-Main application package.
+- Python 3.11+
+- Redis server
+- HRMS API access token and base URL
+- At least one LLM provider key if you want to use OpenAI, Groq, Anthropic, or Gemini
 
-- `config.py`: Central configuration and environment loading.
-- `main.py`: FastAPI app initialization and router inclusion.
+### Install
 
-### `app/api/routes/`
+```bash
+cd /Users/shyam_manohar/Desktop/Nighwan\ Tech/hrms_ai_service
+python3.11 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-HTTP endpoints.
+### Run
 
-- `chat.py`: Accepts user questions and returns answer + source.
-- `health.py`: Service health endpoint.
+Terminal 1:
 
-### `app/api/schemas/`
+```bash
+redis-server
+```
 
-Pydantic request/response models.
+Terminal 2:
 
-- `chat_schema.py`: Chat request schema.
-- `response_schema.py`: Chat response schema including optional `source`.
+```bash
+source venv/bin/activate
+uvicorn app.main:app --reload
+```
 
-### `app/core/`
+### Verify
 
-Core orchestration and intelligence pipeline.
+```bash
+curl http://localhost:8000/health
+```
 
-- `rag_engine.py`: Top-level query orchestration.
-- `query_router.py`: Chooses query path.
-- `intent_classifier.py`: Intent detection.
-- `domain_classifier.py`: Domain categorization.
-- `entity_extractor.py`: Extracts IDs/names/entities from text.
-- `policy_service.py`: Policy retrieval and source extraction.
-- `agent_router.py`: Data query pipeline and API source capture.
-- `tool_planner.py`: Selects likely tools/APIs.
-- `tool_validator.py`: Validates selected tools.
-- `tool_executor.py`: Executes selected tool/API operations.
-- `context_builder.py`: Builds context for generation.
+### Test a chat request
 
-### `app/embeddings/`
+```bash
+curl -X POST "http://localhost:8000/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"question":"What are the company policies for holidays?"}'
+```
 
-Embedding and chunk preparation.
+## Useful Commands
 
-- `embedding_model.py`: Embedding model loading/inference.
-- `chunking.py`: Splits long text into retrievable chunks.
-
-### `app/llm/`
-
-LLM integration.
-
-- `llama_client.py`: Ollama client wrapper.
-- `prompts.py`: Prompt templates.
-- `response_parser.py`: Output parsing and formatting helpers.
-
-### `app/vectordb/`
-
-Vector DB connectivity and retrieval.
-
-- `chroma_client.py`: ChromaDB client setup.
-- `api_vector_store.py`: Indexing/search for API tools.
-- `retriever.py`: Document retrieval, optional metadata return.
-
-### `app/cache/`
-
-Caching layer.
-
-- `redis_cache.py`: Redis read/write and TTL behavior.
-
-### `app/services/`
-
-External integrations.
-
-- `hrms_api_client.py`: Calls HRMS backend APIs with auth.
-
-### `app/tools/`
-
-Tool registry artifacts.
-
-- `api_registry.json`: API metadata for planner/retrieval.
-
-### `app/static/`
-
-Frontend assets.
-
-- `chat-ui.html`: Main and only chat UI.
-
-### `scripts/`
-
-Utility scripts for registry creation/indexing.
-
-- `build_registry.py`: Builds tool registry from API definitions.
-- `index_api_registry.py`: Pushes API registry data into vector index.
-
-### `chroma_db/`
-
-Local Chroma persistence directory.
-
-- `chroma.sqlite3` and collection directories store vector data.
-
-### `dump.rdb`
-
-Redis snapshot file.
-
-### `venv/`
-
-Local virtual environment (dependencies and third-party files).
-
-## Common Commands
-
-## Activate Environment
+Activate the virtual environment:
 
 ```bash
 source venv/bin/activate
 ```
 
-## Run Server
+Run the API:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-## Rebuild API Registry (if APIs changed)
+Rebuild and reindex the API registry:
 
 ```bash
 python scripts/build_registry.py
 python scripts/index_api_registry.py
 ```
 
-Alternative from inside `scripts/`:
-
-```bash
-cd ..
-python scripts/build_registry.py
-python scripts/index_api_registry.py
-```
-
-## Open Swagger Docs
+Open the API docs:
 
 - http://localhost:8000/docs
 
-## Troubleshooting
+## Logging
 
-- `zsh: command not found: rg`
-  - Install ripgrep or use `find` as fallback.
-- `Connection refused` on `/chat`
-  - Ensure `uvicorn` is running on expected port.
-- Empty/weak answers for policy queries
-  - Verify policy data is indexed in ChromaDB.
-- API-related errors
-  - Check `HRMS_API_BASE_URL` and `HRMS_API_TOKEN`.
-- Slow first response
-  - First LLM/embedding call is usually slower due to warm-up.
+The service logs are intentionally concise. Common messages include:
 
-## Current Documentation Policy
+- `RAG Cache HIT` and `RAG Cache MISS`
+- `Agent Cache HIT` and `Agent Cache MISS`
+- `Query route: policy` or `Query route: data`
+- `[ToolExecutor] Calling: <full-url>`
+- `[LLM] Provider: <name>`
+- `[LLM] Prompt tokens: <n>`
+- `[LLM] Response time: <n> ms`
+- `Auto-selected (high confidence): <tool_name>`
+- `LLM candidates: [...]`
+- `LLM selected: <tool_name>`
 
-All project documentation is consolidated into this single `README.md`.
-Separate project Markdown docs were removed to keep one canonical source of truth.
+## Dependencies
+
+Key packages from `requirements.txt`:
+
+- FastAPI and Uvicorn
+- requests
+- redis
+- chromadb
+- sentence-transformers
+- numpy and scipy
+- pydantic and pydantic-settings
+- pypdf, PyMuPDF, pytesseract, and Pillow
+
+## Notes
+
+- The app serves the chat UI at `/`, so opening the root URL is the quickest way to test the frontend.
+- Conversation history is in-memory only and resets when the process restarts.
+- Source may appear both in the `answer` text and in the dedicated `source` field.
+- If Redis is unavailable, caching is disabled rather than blocking the service.
+- All project documentation is consolidated into this single `README.md`.

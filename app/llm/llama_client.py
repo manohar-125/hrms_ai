@@ -1,48 +1,11 @@
-import requests
 import json
-from app.config import settings
 
-
-OLLAMA_URL = settings.OLLAMA_URL
-LLM_MODEL = settings.LLM_MODEL
+from app.llm.llm_factory import get_llm
 
 
 def generate_response(prompt: str) -> str:
-    """
-    Sends a prompt to the Ollama LLM and returns the generated response.
-    """
-
-    payload = {
-        "model": LLM_MODEL,
-        "prompt": prompt,
-        "stream": False
-    }
-
-    try:
-        response = requests.post(
-            f"{OLLAMA_URL}/api/generate",
-            json=payload,
-            timeout=60
-        )
-
-        if response.status_code >= 400:
-            try:
-                error_detail = response.json().get("error", response.text)
-            except ValueError:
-                error_detail = response.text
-            raise requests.exceptions.HTTPError(
-                f"{response.status_code} Client Error for url: {response.url} - {error_detail}"
-            )
-
-        data = response.json()
-
-        return data.get("response", "").strip()
-
-    except requests.exceptions.RequestException as e:
-        return f"LLM service error: {str(e)}"
-
-    except Exception as e:
-        return f"Unexpected LLM error: {str(e)}"
+    llm = get_llm()
+    return llm.generate(prompt)
 
 
 def generate_answer(question: str, api_response: dict) -> str:
@@ -69,4 +32,5 @@ Instructions:
 Answer:
 """
 
-    return generate_response(prompt)
+    llm = get_llm()
+    return llm.generate(prompt)

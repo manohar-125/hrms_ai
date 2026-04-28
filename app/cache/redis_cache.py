@@ -56,3 +56,39 @@ class RedisCache:
             logger.debug(f"Redis STORE: key cached with ttl={ttl}s")
         except:
             logger.warning(f"Redis set() error")
+
+
+_DYNAMIC_VALUE_PATTERN = re.compile(
+    r"\b(\d{1,6}|\d{4}-\d{1,2}-\d{1,2}|\d{1,2}/\d{1,2}/\d{2,4})\b"
+)
+
+
+def normalize_query(query: str) -> str:
+    """Normalize query for deterministic cache key generation."""
+    text = (query or "").lower().strip()
+    return re.sub(r"\s+", " ", text)
+
+
+def should_skip_cache(query: str) -> bool:
+    """Skip cache for short or dynamic queries."""
+    normalized = normalize_query(query)
+    if len(normalized.split()) < 3:
+        return True
+    return bool(_DYNAMIC_VALUE_PATTERN.search(normalized))
+
+
+_cache = RedisCache()
+
+
+def get_cache(key: str):
+    """Read value from Redis cache with graceful fallback."""
+    if not getattr(settings, "ENABLE_CACHE", True):
+        return None
+    return _cache.get(key)
+
+
+def set_cache(key: str, value, ttl: int = 3600):
+    """Write value to Redis cache with graceful fallback."""
+    if not getattr(settings, "ENABLE_CACHE", True):
+        return
+    _cache.set(key, value, ttl=ttl)

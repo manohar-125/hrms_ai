@@ -1,10 +1,16 @@
-from app.llm.llama_client import generate_response
+import logging
+
+from app.cache.redis_cache import get_cache, normalize_query, set_cache, should_skip_cache
+from app.llm.llm_factory import get_llm
 
 
 VALID_DOMAINS = {
     "employee", "department", "attendance", "leave", "payroll",
     "project", "task", "client", "policy", "general"
 }
+
+
+logger = logging.getLogger(__name__)
 
 
 DOMAIN_PROMPT = """
@@ -60,10 +66,23 @@ Domain:
 
 
 def classify_domain(question: str):
+    normalized_query = normalize_query(question)
+    cache_key = f"domain:{normalized_query}"
+    cache_skipped = should_skip_cache(question)
+
+    if not cache_skipped:
+        cached = get_cache(cache_key)
+        if isinstance(cached, dict):
+            cached_domain = (cached.get("domain") or "").strip().lower()
+            if cached_domain in VALID_DOMAINS:
+                logger.info("[CACHE HIT] domain:%s", normalized_query)
+                return cached_domain
+        logger.info("[CACHE MISS] domain:%s", normalized_query)
 
     prompt = DOMAIN_PROMPT.format(question=question)
 
-    response = generate_response(prompt)
+    llm = get_llm()
+    response = llm.generate(prompt)
 
     domain = response.strip().lower()
 
@@ -75,6 +94,10 @@ def classify_domain(question: str):
     domain = domain.split()[0].strip(".,:;!?\"'()[]{}") if domain else ""
 
     if domain in VALID_DOMAINS:
+        if not cache_skipped:
+            set_cache(cache_key, {"domain": domain}, ttl=3600)
         return domain
 
+    if not cache_skipped:
+        set_cache(cache_key, {"domain": "general"}, ttl=3600)
     return "general"

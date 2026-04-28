@@ -1259,6 +1259,62 @@
     "normalized_name": "get_designation_id",
     "normalized_intent": "organization_structure"
   },
+  "get_dressdetect": {
+    "domain": "hr",
+    "endpoint": "/api/DressDetect",
+    "method": "GET",
+    "description": "Retrieve Dress Detect records",
+    "parameters": {},
+    "keywords": [
+      "dress",
+      "detect",
+      "get",
+      "dressdetect"
+    ],
+    "normalized_name": "get_dressdetect",
+    "normalized_intent": "organization_structure"
+  },
+  "get_dressdetect_id": {
+    "domain": "hr",
+    "endpoint": "/api/DressDetect/{id}",
+    "method": "GET",
+    "description": "Retrieve Dress Detect details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "dress",
+      "detect",
+      "get",
+      "dressdetect",
+      "id"
+    ],
+    "normalized_name": "get_dressdetect_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_dressdetect_updatedressdetectstatus_objectdetectid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/DressDetect/UpdateDressDetectStatus/{ObjectDetectId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve DressDetect details by parameter",
+    "parameters": {
+      "ObjectDetectId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "dress",
+      "detect",
+      "update",
+      "status",
+      "get",
+      "dressdetect",
+      "updatedressdetectstatus",
+      "objectdetectid"
+    ],
+    "normalized_name": "get_dressdetect_updatedressdetectstatus_objectdetectid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_education": {
     "domain": "hr",
     "endpoint": "/api/Education",
@@ -1669,6 +1725,28 @@
       "employment"
     ],
     "normalized_name": "get_employments",
+    "normalized_intent": "employee_profile"
+  },
+  "get_employment_getmaxempregiddeptdegination_departmentid_designationid": {
+    "domain": "employee",
+    "endpoint": "/api/Employment/GetMaxEmpRegIdDeptDegination/{DepartmentId}/{DesignationId}",
+    "method": "GET",
+    "description": "Retrieve Employment details by parameter",
+    "parameters": {
+      "DepartmentId": "resource id",
+      "DesignationId": "Designation name"
+    },
+    "keywords": [
+      "employment",
+      "get",
+      "max",
+      "emp",
+      "reg",
+      "id",
+      "dept",
+      "degination"
+    ],
+    "normalized_name": "get_employment_getmaxempregiddeptdegination_departmentid_designationid",
     "normalized_intent": "employee_profile"
   },
   "get_employment_id": {
@@ -2099,6 +2177,118 @@
       "name"
     ],
     "normalized_name": "get_expensecategory_name",
+    "normalized_intent": "organization_structure"
+  },
+  "get_facedetect": {
+    "domain": "hr",
+    "endpoint": "/api/FaceDetect",
+    "method": "GET",
+    "description": "Retrieve FaceDetect records",
+    "parameters": {},
+    "keywords": [
+      "face",
+      "detect",
+      "get",
+      "facedetect"
+    ],
+    "normalized_name": "get_facedetect",
+    "normalized_intent": "organization_structure"
+  },
+  "get_facedetect_id": {
+    "domain": "hr",
+    "endpoint": "/api/FaceDetect/{id}",
+    "method": "GET",
+    "description": "Retrieve FaceDetect details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "face",
+      "detect",
+      "get",
+      "facedetect",
+      "id"
+    ],
+    "normalized_name": "get_facedetect_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_facedetect_updatefacedetectstatus_objectdetectid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/FaceDetect/UpdateFaceDetectStatus/{ObjectDetectId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve FaceDetect details by parameter",
+    "parameters": {
+      "ObjectDetectId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "face",
+      "detect",
+      "update",
+      "status",
+      "get",
+      "facedetect",
+      "updatefacedetectstatus",
+      "objectdetectid"
+    ],
+    "normalized_name": "get_facedetect_updatefacedetectstatus_objectdetectid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_faceregistration": {
+    "domain": "hr",
+    "endpoint": "/api/FaceRegistration",
+    "method": "GET",
+    "description": "Retrieve FaceRegistration records",
+    "parameters": {},
+    "keywords": [
+      "face",
+      "registration",
+      "get",
+      "faceregistration"
+    ],
+    "normalized_name": "get_faceregistration",
+    "normalized_intent": "organization_structure"
+  },
+  "get_faceregistration_id": {
+    "domain": "hr",
+    "endpoint": "/api/FaceRegistration/{id}",
+    "method": "GET",
+    "description": "Retrieve FaceRegistration details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "face",
+      "registration",
+      "get",
+      "faceregistration",
+      "id"
+    ],
+    "normalized_name": "get_faceregistration_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_faceregistration_updatefaceregistrationstatus_faceregistrationid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/FaceRegistration/UpdateFaceRegistrationStatus/{FaceRegistrationId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve FaceRegistration details by parameter",
+    "parameters": {
+      "FaceRegistrationId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "face",
+      "registration",
+      "update",
+      "status",
+      "get",
+      "faceregistration",
+      "updatefaceregistrationstatus",
+      "faceregistrationid"
+    ],
+    "normalized_name": "get_faceregistration_updatefaceregistrationstatus_faceregistrationid_status_updatedby",
     "normalized_intent": "organization_structure"
   },
   "get_family": {
@@ -3167,6 +3357,28 @@
     "normalized_name": "get_manualattendance_att_empregid_date",
     "normalized_intent": "employee_profile"
   },
+  "get_manualattendance_attendancedaywisesummary_empregid_date": {
+    "domain": "employee",
+    "endpoint": "/api/ManualAttendance/AttendanceDayWiseSummary/{EmpRegId}/{Date}",
+    "method": "GET",
+    "description": "Retrieve ManualAttendance details by parameter",
+    "parameters": {
+      "EmpRegId": "employee registration id",
+      "Date": "Date"
+    },
+    "keywords": [
+      "manual",
+      "attendance",
+      "day",
+      "wise",
+      "summary",
+      "get",
+      "manualattendance",
+      "attendancedaywisesummary"
+    ],
+    "normalized_name": "get_manualattendance_attendancedaywisesummary_empregid_date",
+    "normalized_intent": "employee_profile"
+  },
   "get_manualattendance_empregid_date": {
     "domain": "employee",
     "endpoint": "/api/ManualAttendance/{EmpRegId}/{Date}",
@@ -3394,6 +3606,62 @@
     "normalized_name": "get_menu_updatemenustatus_menuid_status_updatedby",
     "normalized_intent": "organization_structure"
   },
+  "get_objectdetect": {
+    "domain": "hr",
+    "endpoint": "/api/ObjectDetect",
+    "method": "GET",
+    "description": "Retrieve ObjectDetect records",
+    "parameters": {},
+    "keywords": [
+      "object",
+      "detect",
+      "get",
+      "objectdetect"
+    ],
+    "normalized_name": "get_objectdetect",
+    "normalized_intent": "organization_structure"
+  },
+  "get_objectdetect_id": {
+    "domain": "hr",
+    "endpoint": "/api/ObjectDetect/{id}",
+    "method": "GET",
+    "description": "Retrieve ObjectDetect details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "object",
+      "detect",
+      "get",
+      "objectdetect",
+      "id"
+    ],
+    "normalized_name": "get_objectdetect_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_objectdetect_updateobjectdetectstatus_objectdetectid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/ObjectDetect/UpdateObjectDetectStatus/{ObjectDetectId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve ObjectDetect details by parameter",
+    "parameters": {
+      "ObjectDetectId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "object",
+      "detect",
+      "update",
+      "status",
+      "get",
+      "objectdetect",
+      "updateobjectdetectstatus",
+      "objectdetectid"
+    ],
+    "normalized_name": "get_objectdetect_updateobjectdetectstatus_objectdetectid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
   "get_office": {
     "domain": "hr",
     "endpoint": "/api/Office",
@@ -3478,6 +3746,81 @@
     ],
     "normalized_name": "get_organationleaveassign_updateorganationleaveassignstatus_organationleaveassignid_status_updatedby",
     "normalized_intent": "leave_management"
+  },
+  "get_policies": {
+    "domain": "hr",
+    "endpoint": "/api/Policies",
+    "method": "GET",
+    "description": "Retrieve Policies records",
+    "parameters": {},
+    "keywords": [
+      "policies",
+      "get"
+    ],
+    "normalized_name": "get_policies",
+    "normalized_intent": "organization_structure"
+  },
+  "get_policies_id": {
+    "domain": "hr",
+    "endpoint": "/api/Policies/{id}",
+    "method": "GET",
+    "description": "Retrieve Policies details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "policies",
+      "get",
+      "id"
+    ],
+    "normalized_name": "get_policies_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_policies_policiesactivedeactive_policiesid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/Policies/PoliciesActiveDeactive/{PoliciesId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Policies details by parameter",
+    "parameters": {
+      "PoliciesId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "policies",
+      "active",
+      "deactive",
+      "get",
+      "policiesactivedeactive",
+      "policiesid",
+      "status",
+      "updatedby"
+    ],
+    "normalized_name": "get_policies_policiesactivedeactive_policiesid_status_updatedby",
+    "normalized_intent": "organization_structure"
+  },
+  "get_policies_updateprojectstatus_policiesid_status_updatedby": {
+    "domain": "project",
+    "endpoint": "/api/Policies/UpdateProjectStatus/{PoliciesId}/{status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve Policies details by parameter",
+    "parameters": {
+      "PoliciesId": "resource id",
+      "status": "status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "policies",
+      "update",
+      "project",
+      "status",
+      "get",
+      "updateprojectstatus",
+      "policiesid",
+      "updatedby"
+    ],
+    "normalized_name": "get_policies_updateprojectstatus_policiesid_status_updatedby",
+    "normalized_intent": "project_management"
   },
   "get_project": {
     "domain": "project",
@@ -5238,14 +5581,14 @@
     "normalized_name": "get_task_id",
     "normalized_intent": "task_management"
   },
-  "get_task_leavesummary_monthid_fyear": {
+  "get_task_leavesummary_fromdate_todate": {
     "domain": "leave",
-    "endpoint": "/api/Task/LeaveSummary/{MonthId}/{FYear}",
+    "endpoint": "/api/Task/LeaveSummary/{FromDate}/{ToDate}",
     "method": "GET",
     "description": "Retrieve Task details by parameter",
     "parameters": {
-      "MonthId": "resource id",
-      "FYear": "FYear"
+      "FromDate": "FromDate",
+      "ToDate": "ToDate"
     },
     "keywords": [
       "task",
@@ -5253,11 +5596,11 @@
       "summary",
       "get",
       "leavesummary",
-      "monthid",
-      "fyear",
-      "month"
+      "fromdate",
+      "todate",
+      "from"
     ],
-    "normalized_name": "get_task_leavesummary_monthid_fyear",
+    "normalized_name": "get_task_leavesummary_fromdate_todate",
     "normalized_intent": "leave_management"
   },
   "get_task_rolesummary_departmentid": {
@@ -5457,6 +5800,62 @@
       "id"
     ],
     "normalized_name": "get_userregistration_updateuserregistrationstatus_id_status",
+    "normalized_intent": "organization_structure"
+  },
+  "get_vechiledetect": {
+    "domain": "hr",
+    "endpoint": "/api/VechileDetect",
+    "method": "GET",
+    "description": "Retrieve VechileDetect records",
+    "parameters": {},
+    "keywords": [
+      "vechile",
+      "detect",
+      "get",
+      "vechiledetect"
+    ],
+    "normalized_name": "get_vechiledetect",
+    "normalized_intent": "organization_structure"
+  },
+  "get_vechiledetect_id": {
+    "domain": "hr",
+    "endpoint": "/api/VechileDetect/{id}",
+    "method": "GET",
+    "description": "Retrieve VechileDetect details by parameter",
+    "parameters": {
+      "id": "resource id"
+    },
+    "keywords": [
+      "vechile",
+      "detect",
+      "get",
+      "vechiledetect",
+      "id"
+    ],
+    "normalized_name": "get_vechiledetect_id",
+    "normalized_intent": "organization_structure"
+  },
+  "get_vechiledetect_updatevechiledetectstatus_vechiledetectid_status_updatedby": {
+    "domain": "hr",
+    "endpoint": "/api/VechileDetect/UpdateVechileDetectStatus/{VechileDetectId}/{Status}/{UpdatedBy}",
+    "method": "GET",
+    "description": "Retrieve VechileDetect details by parameter",
+    "parameters": {
+      "VechileDetectId": "resource id",
+      "Status": "Status",
+      "UpdatedBy": "UpdatedBy"
+    },
+    "keywords": [
+      "vechile",
+      "detect",
+      "update",
+      "status",
+      "get",
+      "vechiledetect",
+      "updatevechiledetectstatus",
+      "vechiledetectid"
+    ],
+    "normalized_name": "get_vechiledetect_updatevechiledetectstatus_vechiledetectid_status_updatedby",
     "normalized_intent": "organization_structure"
   },
   "get_workshift": {

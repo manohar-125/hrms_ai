@@ -1,10 +1,16 @@
-from app.llm.llama_client import generate_response
+import logging
+
+from app.cache.redis_cache import get_cache, normalize_query, set_cache, should_skip_cache
+from app.llm.llm_factory import get_llm
 
 
 VALID_INTENTS = {
     "employee", "department", "attendance", "leave", "payroll",
     "project", "task", "client", "policy", "general"
 }
+
+
+logger = logging.getLogger(__name__)
 
 
 INTENT_PROMPT = """
@@ -57,10 +63,23 @@ Intent:
 
 
 def classify_intent(question: str):
+    normalized_query = normalize_query(question)
+    cache_key = f"intent:{normalized_query}"
+    cache_skipped = should_skip_cache(question)
+
+    if not cache_skipped:
+        cached = get_cache(cache_key)
+        if isinstance(cached, dict):
+            cached_intent = (cached.get("intent") or "").strip().lower()
+            if cached_intent in VALID_INTENTS:
+                logger.info("[CACHE HIT] intent:%s", normalized_query)
+                return cached_intent
+        logger.info("[CACHE MISS] intent:%s", normalized_query)
 
     prompt = INTENT_PROMPT.format(question=question)
 
-    response = generate_response(prompt)
+    llm = get_llm()
+    response = llm.generate(prompt)
     normalized = response.strip().lower()
 
     # Handle occasional prefixes/suffixes from LLM output.
@@ -70,6 +89,10 @@ def classify_intent(question: str):
     normalized = normalized.split()[0].strip(".,:;!?\"'()[]{}") if normalized else ""
 
     if normalized in VALID_INTENTS:
+        if not cache_skipped:
+            set_cache(cache_key, {"intent": normalized}, ttl=3600)
         return normalized
 
+    if not cache_skipped:
+        set_cache(cache_key, {"intent": "general"}, ttl=3600)
     return "general"

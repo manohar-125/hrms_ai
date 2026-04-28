@@ -1,11 +1,12 @@
 import logging
 import re
+import json
 from difflib import SequenceMatcher
 from app.core.tool_planner import ToolPlanner
 from app.core.tool_executor import ToolExecutor
 from app.core.entity_extractor import extract_entities
 from app.core.tool_validator import ToolValidator
-from app.llm.llama_client import generate_answer
+from app.llm.llm_factory import get_llm
 from app.cache.redis_cache import RedisCache
 
 logger = logging.getLogger(__name__)
@@ -134,7 +135,27 @@ def route_query(intent: str, question: str, return_source: bool = False):
                     api_response = {**api_response, "data": filtered_rows}
 
         # Step 5️⃣ Generate final answer from raw API response
-        final_answer = generate_answer(question, api_response)
+        llm = get_llm()
+        final_answer = llm.generate(
+            f"""
+    You are an HRMS assistant.
+
+    User question:
+    {question}
+
+    HRMS API response (JSON):
+{json.dumps(api_response, indent=2)}
+
+    Instructions:
+    - Convert the API response into a clear natural language answer.
+    - If it is a list, format it nicely.
+    - If data is empty, say no data found.
+    - Do not explain JSON.
+    - Only return the final answer.
+
+    Answer:
+    """
+        )
 
         # Step 7️⃣ Store result in cache
         cache.set(question, final_answer)
