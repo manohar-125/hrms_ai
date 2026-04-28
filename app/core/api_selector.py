@@ -280,7 +280,7 @@ class APISelector:
             # Hybrid score: 0.5 semantic + 0.3 keyword + 0.2 intent
             final_score = (
                 settings.SEMANTIC_WEIGHT * semantic_score +
-                settings.KEYWORD_WEIGHT_NEW * keyword_score +
+                settings.KEYWORD_WEIGHT * keyword_score +
                 settings.INTENT_WEIGHT * intent_score
             )
 

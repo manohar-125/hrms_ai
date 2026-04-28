@@ -3,7 +3,7 @@ import re
 from difflib import SequenceMatcher
 from app.core.tool_planner import ToolPlanner
 from app.core.tool_executor import ToolExecutor
-from app.core.entity_extractor import extract_entities
+from app.core.entity_extractor import extract_entities, extract_employee_name, detect_requested_attribute
 from app.core.tool_validator import ToolValidator
 from app.llm.llama_client import generate_answer
 from app.cache.redis_cache import RedisCache
@@ -71,14 +71,39 @@ def _filter_rows_by_employee_name(rows: list, employee_name: str):
     return [best_row]
 
 
+def _is_personal_details_query(question: str) -> bool:
+    query_lower = (question or "").lower()
+    requested_attribute = detect_requested_attribute(question)
+    employee_name = extract_employee_name(question)
+    has_employee_hint = any(
+        token in query_lower for token in ("employee", "emp", "staff", "person")
+    )
+    return bool(requested_attribute and (employee_name or has_employee_hint))
+
+
+def _get_personal_details_tool():
+    preferred_keys = ("get_emp_pers_dtls", "get_emppers_dtls", "get_emppersdtls")
+    for key in preferred_keys:
+        if key in planner.registry:
+            return key, planner.registry[key]
+
+    for tool_name, tool_data in planner.registry.items():
+        if str(tool_data.get("endpoint", "")).lower() == "/api/emppersdtls":
+            return tool_name, tool_data
+
+    return None, None
+
+
 def route_query(intent: str, question: str, return_source: bool = False):
 
     try:
 
-        # Step 0️⃣ Check cache first
+        force_personal_details = _is_personal_details_query(question)
+
+        # Step 0️⃣ Check cache first (skip cache for personal-details queries to avoid stale misrouted answers)
         cached = cache.get(question)
 
-        if cached:
+        if cached and not force_personal_details:
             logger.info(f"Agent Cache HIT")
             if return_source:
                 # Return cached answer without source (will be added by RAG engine)
@@ -88,7 +113,14 @@ def route_query(intent: str, question: str, return_source: bool = False):
         logger.info(f"Agent Cache MISS")
 
         # Step 1️⃣ Find appropriate tool
-        tool_name, tool_data = planner.find_tool(question)
+        if force_personal_details:
+            tool_name, tool_data = _get_personal_details_tool()
+            if tool_name:
+                logger.info(f"Forced personal-details routing: {tool_name}")
+            else:
+                tool_name, tool_data = planner.find_tool(question)
+        else:
+            tool_name, tool_data = planner.find_tool(question)
 
         if not tool_name:
             if return_source:

@@ -12,7 +12,11 @@ from app.core.domain_classifier import classify_domain
 from app.vectordb.api_vector_store import APIVectorStore
 
 
-EMPPERSDTLS_TOOL = "get_emppersdtls"
+PERSONAL_DETAILS_TOOL_KEYS = (
+    "get_emp_pers_dtls",
+    "get_emppers_dtls",
+    "get_emppersdtls",
+)
 
 
 class ToolPlanner:
@@ -171,21 +175,49 @@ class ToolPlanner:
         - "The best tool is get_employment"
         - "get_employment"
         - "1. get_employment"
+        
+        Returns empty string if no valid tool name pattern found.
+        Valid tool names: alphanumeric + underscores only, typically start with get_
         """
         # Remove common prefixes
         cleaned = response.strip()
         
         # Remove patterns like "Tool:", "Tool is:", "The best tool is:", etc.
-        cleaned = re.sub(r'^(Tool|The best tool|Selected tool)[:\s]+', '', cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r'^(Tool|The best tool|Selected tool|RESPONSE FORMAT:)[:\s]+', '', cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r'^[\d\.\)]+\s*', '', cleaned)  # Remove numbering like "1. " or "1) "
         
-        # Extract the first word (tool name should not have spaces)
-        tool_name = cleaned.split()[0] if cleaned else ""
+        # Extract first valid token (tool names have alphanumeric and underscores only)
+        tokens = cleaned.split()
+        tool_name = ""
         
-        # Remove any trailing punctuation
-        tool_name = re.sub(r'[:\.,;\'"]*$', '', tool_name)
+        for token in tokens:
+            # Remove trailing punctuation
+            token = re.sub(r'[:\.,;\'"]*$', '', token)
+            
+            # Check if token looks like a tool name (alphanumeric + underscores only)
+            if token and re.match(r'^[a-z0-9_]+$', token):
+                tool_name = token
+                break
         
         return tool_name.strip()
+    
+    def _is_out_of_scope_query(self, query: str) -> bool:
+        """
+        Detect if query is asking for functionality not available in HRMS system.
+        Returns True if query is out-of-scope.
+        """
+        out_of_scope_keywords = [
+            # Other non-HRMS services
+            'weather', 'traffic', 'map', 'location', 'gps', 'route',
+            'map direction', 'navigation', 'booking', 'hotel', 'flight',
+            'train', 'bus', 'ride', 'taxi', 'restaurant', 'food', 'order'
+        ]
+        
+        query_lower = query.lower()
+        for keyword in out_of_scope_keywords:
+            if keyword in query_lower:
+                return True
+        return False
 
     def _prefer_personal_details_tool(self, query: str, filtered_tools: dict):
         """
@@ -203,7 +235,7 @@ class ToolPlanner:
         personal_terms = [
             "mobile", "phone", "contact", "email", "mail", "dob",
             "gender", "blood", "marital", "father", "mother", "husband", "wife", 
-            "spouse", "personal", "details"
+            "spouse", "personal", "details", "religion"
         ]
         employee_terms = ["employee", "employees", "emp", "staff", "person"]
         # Family is NOT a personal details attribute - it's for EmpFamily API
@@ -224,8 +256,51 @@ class ToolPlanner:
                               bool(re.search(r'\b[A-Z][a-z]+\s+[A-Z][a-z]+', query))
             
             if has_employee_context or has_name_pattern:
-                if EMPPERSDTLS_TOOL in filtered_tools:
-                    return EMPPERSDTLS_TOOL, filtered_tools[EMPPERSDTLS_TOOL]
+                for tool_key in PERSONAL_DETAILS_TOOL_KEYS:
+                    if tool_key in filtered_tools:
+                        return tool_key, filtered_tools[tool_key]
+
+                for tool_name, tool_data in filtered_tools.items():
+                    if str(tool_data.get("endpoint", "")).lower() == "/api/emppersdtls":
+                        return tool_name, tool_data
+
+                # Domain filter can exclude personal details; fallback to whole registry.
+                for tool_key in PERSONAL_DETAILS_TOOL_KEYS:
+                    if tool_key in self.registry:
+                        return tool_key, self.registry[tool_key]
+                for tool_name, tool_data in self.registry.items():
+                    if str(tool_data.get("endpoint", "")).lower() == "/api/emppersdtls":
+                        return tool_name, tool_data
+
+        return None, None
+
+    def _prefer_vision_detection_tool(self, query: str, filtered_tools: dict):
+        """Route detection-related queries to the matching vision APIs."""
+        query_lower = (query or "").lower()
+        has_detect_intent = any(
+            kw in query_lower for kw in ("detect", "detected", "detection", "plate")
+        )
+        if not has_detect_intent:
+            return None, None
+
+        preferred = []
+        if any(kw in query_lower for kw in ("vehicle", "vechile", "car", "number plate", "license plate", "plate")):
+            preferred.append("get_vechile_detect")
+        if any(kw in query_lower for kw in ("face", "facial")):
+            preferred.append("get_face_detect")
+        if "dress" in query_lower:
+            preferred.append("get_dress_detect")
+        if any(kw in query_lower for kw in ("object", "item")):
+            preferred.append("get_object_detect")
+
+        if not preferred:
+            return None, None
+
+        for tool_name in preferred:
+            if tool_name in filtered_tools:
+                return tool_name, filtered_tools[tool_name]
+            if tool_name in self.registry:
+                return tool_name, self.registry[tool_name]
 
         return None, None
 
@@ -267,6 +342,11 @@ class ToolPlanner:
         # without restarting the API service.
         self._load_registry()
 
+        # EARLY DETECTION: Check if query is asking for out-of-scope APIs
+        if self._is_out_of_scope_query(query):
+            logger.warning(f"Out-of-scope query detected: {query}")
+            return None, None
+
         # Step 1 — Detect domain
         domain = classify_domain(query)
 
@@ -303,7 +383,13 @@ class ToolPlanner:
             logger.info(f"Rule-selected personal details tool: {preferred_name}")
             return preferred_name, preferred_data
 
-        # Step 3.2 — Short-circuit for generic employee-list queries.
+        # Step 3.2 — Short-circuit for vision detection queries.
+        preferred_name, preferred_data = self._prefer_vision_detection_tool(query, filtered_tools)
+        if preferred_name:
+            logger.info(f"Rule-selected vision detection tool: {preferred_name}")
+            return preferred_name, preferred_data
+
+        # Step 3.3 — Short-circuit for generic employee-list queries.
         preferred_name, preferred_data = self._prefer_employment_for_list_queries(query, filtered_tools)
         if preferred_name:
             logger.info(f"Rule-selected employment tool for list: {preferred_name}")
@@ -399,7 +485,9 @@ class ToolPlanner:
 
         # Step 8 — Only use LLM if multiple candidates exist
         if len(final_candidates) > 1:
-            prompt = f"""You are an HRMS API selector. Select the BEST API.
+            prompt = f"""You are an HRMS API selector. Select the BEST API from the list below.
+
+IMPORTANT: You MUST respond with ONLY ONE tool name from the list. Nothing else.
 
 RULES:
 1. PREFER: APIs returning data/records (get_*, retrieve, list, info) 
@@ -407,26 +495,31 @@ RULES:
 3. MATCH: Primary entity over secondary (employee > type/status)
 4. EXCLUDE: Dashboard, Report, Summary unless explicitly requested
 
-TOOLS:
+AVAILABLE TOOLS (choose exactly one):
 {tools_description}
 
 QUERY: {query}
 
-Return ONLY the tool name, nothing else."""
+RESPONSE FORMAT: Just the tool name. Examples: get_employee, get_payroll, get_attendance
+Your answer:"""
 
             response = generate_response(prompt)
             tool_name = self._clean_llm_output(response)
 
             logger.info(f"LLM selected: {tool_name}")
 
-            # Validate tool exists in final candidates
+            # Strict validation: tool name must exist in final candidates
             if tool_name in final_candidates:
                 return tool_name, filtered_tools[tool_name]
-
-            # Safe fallback to first final candidate
+            
+            # If LLM returns invalid tool, log and fallback to best candidate
+            if tool_name:
+                logger.warning(f"LLM selection '{tool_name}' not in candidates: {final_candidates}")
+            
+            # Safe fallback to first final candidate (highest score)
             if final_candidates:
                 fallback_tool = final_candidates[0]
-                logger.info(f"LLM selection '{tool_name}' invalid, fallback: {fallback_tool}")
+                logger.info(f"Using fallback candidate: {fallback_tool}")
                 return fallback_tool, filtered_tools[fallback_tool]
         else:
             # Single candidate - use it directly

@@ -55,3 +55,24 @@ def extract_entities(question: str):
         entities["employee_name"] = employee_name
 
     return entities
+
+
+def detect_requested_attribute(question: str) -> str | None:
+    """Detect personal attribute requested in a user question."""
+    query = (question or "").lower()
+    attribute_aliases = {
+        "email": ["email", "mail", "email id"],
+        "mobile": ["mobile", "phone", "contact number"],
+        "blood_group": ["blood group", "blood"],
+        "dob": ["dob", "date of birth", "birth date"],
+        "gender": ["gender", "sex"],
+        "religion": ["religion", "religious"],
+        "marital_status": ["marital status", "married", "single"],
+        "father_name": ["father name", "father"],
+        "mother_name": ["mother name", "mother"],
+    }
+
+    for attribute, aliases in attribute_aliases.items():
+        if any(alias in query for alias in aliases):
+            return attribute
+    return None

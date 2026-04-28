@@ -20,6 +20,11 @@ class Settings(BaseSettings):
     # API Selection configuration (tunable for accuracy)
     SEMANTIC_SEARCH_K: int = 10  # Number of candidates from semantic search
     KEYWORD_WEIGHT: float = 0.5  # Weight for keyword score in hybrid scoring (0.0 to 1.0)
+    
+    # Hybrid scoring weights (must sum to 1.0 ideally)
+    SEMANTIC_WEIGHT: float = 0.5  # Weight for semantic similarity score
+    INTENT_WEIGHT: float = 0.2    # Weight for intent matching score
+    
     SIMILARITY_THRESHOLD: float = 0.2  # Minimum similarity score to consider an API
     REQUIRE_HIGH_CONFIDENCE: bool = True  # Require high similarity (>0.5) to auto-select
 
