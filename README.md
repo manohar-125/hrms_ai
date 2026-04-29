@@ -115,6 +115,8 @@ Required/important keys:
 - `CHROMA_PATH`
 - `HRMS_API_BASE_URL`
 - `HRMS_API_TOKEN`
+- `HRMS_API_VERIFY_SSL` (defaults to `false` for the current self-signed HRMS chain)
+- `HRMS_API_TIMEOUT`
 - `REDIS_HOST`
 - `REDIS_PORT`
 
@@ -208,5 +210,9 @@ If temporary debug scripts are created in future, keep them out of mainline unle
   - embedding/LLM warm-up is expected
 - API auth failures
   - verify `HRMS_API_BASE_URL` and `HRMS_API_TOKEN`
+- HTTPS certificate verification errors
+  - set `HRMS_API_VERIFY_SSL=false` when the upstream uses a self-signed certificate chain
+- Ollama read timeouts
+  - the service now trims large API payloads before summarization, but you can also raise `OLLAMA_TIMEOUT` if the local model is slow
 - Redis connection error
   - ensure `redis-server` is running and `.env` host/port match

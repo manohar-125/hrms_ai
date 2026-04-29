@@ -5,6 +5,8 @@ from app.config import settings
 logger = logging.getLogger(__name__)
 BASE_URL = settings.HRMS_API_BASE_URL
 TOKEN = settings.HRMS_API_TOKEN
+VERIFY_SSL = settings.HRMS_API_VERIFY_SSL
+REQUEST_TIMEOUT = settings.HRMS_API_TIMEOUT
 
 
 class ToolExecutor:
@@ -24,7 +26,7 @@ class ToolExecutor:
         logger.info(f"[ToolExecutor] Calling: {url}")
 
         if method == "GET":
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT, verify=VERIFY_SSL)
 
         else:
             raise Exception("Unsupported HTTP method")

@@ -4,6 +4,8 @@ from app.config import settings
 
 BASE_URL = settings.HRMS_API_BASE_URL
 TOKEN = settings.HRMS_API_TOKEN
+VERIFY_SSL = settings.HRMS_API_VERIFY_SSL
+REQUEST_TIMEOUT = settings.HRMS_API_TIMEOUT
 logger = logging.getLogger(__name__)
 
 
@@ -23,7 +25,8 @@ def get(endpoint: str, params: dict | None = None):
             url,
             headers=headers,
             params=params,
-            timeout=10
+            timeout=REQUEST_TIMEOUT,
+            verify=VERIFY_SSL
         )
 
         response.raise_for_status()
@@ -96,7 +99,7 @@ def download_binary(url: str):
 
     try:
         logger.info("Downloading policy PDF from URL: %s", url)
-        response = requests.get(url, headers=headers, timeout=20)
+        response = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT, verify=VERIFY_SSL)
         response.raise_for_status()
         logger.info("Policy PDF downloaded successfully (bytes=%d)", len(response.content))
         return response.content
